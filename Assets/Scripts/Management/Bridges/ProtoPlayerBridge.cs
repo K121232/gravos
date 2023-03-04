@@ -1,0 +1,28 @@
+using UnityEngine;
+using UnityEngine.SceneManagement;
+
+public class ProtoPlayerBridge : Zetha {
+
+    public  Animator        deathPanel;
+    public  TeflonPMove     movement;
+
+    public void GUIRESET () {
+        SceneManager.LoadScene ( 0 );
+    } 
+
+    public override void DeltaIncoming ( int id, int delta ) {
+        if ( CheckID ( id ) ) {
+            CoreWHB ( id, delta );
+            if ( currentHealth <= 0 ) {
+                deathPanel.SetBool ( "Dispatch", true );
+                movement.acc = 0;
+                movement.angleAcc = 0;
+                movement.angleNeutralDrag = 0;
+                movement.angleControlDrag = 0;
+                for ( int i = 1; i < movement.transform.childCount; i++ ) {
+                    movement.transform.GetChild ( i ).gameObject.SetActive ( false );
+                }
+            }
+        }
+    }
+}
