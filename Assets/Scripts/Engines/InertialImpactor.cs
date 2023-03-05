@@ -9,7 +9,6 @@ public class InertialImpactor : MonoBehaviour {
     public void OnEnable() {
         GetComponent<Rigidbody2D>().velocity = v0 + transform.up * velocity;
         v0 = Vector3.zero;
-        Debug.DrawLine ( transform.position, transform.position + ( Vector3 ) GetComponent<Rigidbody2D> ().velocity / 10, Color.red );
     }
 
     public void Prime ( Rigidbody2D rgb ) {

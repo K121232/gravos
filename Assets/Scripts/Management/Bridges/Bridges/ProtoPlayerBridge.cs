@@ -17,7 +17,7 @@ public class ProtoPlayerBridge : Zetha {
         if ( CheckID ( id ) ) {
             
             delta *= hitboxes [ id ].beta;
-            delta -= shieldCell.VariDrain ( delta * STRShield );
+            delta -= shieldCell.VariDrain ( delta * STRShield ) / STRShield;
             currentHealth -= delta;
 
             if ( currentHealth <= 0 ) {

@@ -6,8 +6,11 @@ public class InertialLauncher : Launcher {
     
     public override void Fire() {
         GameObject delta = autoLoader.Request();
-        delta.GetComponent<InertialImpactor>().velocity = Random.Range( mnV, mxV );
-        delta.transform.SetPositionAndRotation( transform.position + ( ( Vector3 )Random.insideUnitCircle * maxRange ), Quaternion.Euler( 0, 0, 360 * Random.value ) );
+        if ( delta.GetComponent<InertialImpactor> () != null ) {
+            delta.GetComponent<InertialImpactor> ().velocity = Random.Range ( mnV, mxV );
+        }
+        float targetDistance = Random.Range ( minRange, maxRange );
+        delta.transform.SetPositionAndRotation( transform.position + (Vector3)Random.insideUnitCircle.normalized * targetDistance, Quaternion.Euler( 0, 0, 360 * Random.value ) );
         delta.SetActive( true );
     }
 }
