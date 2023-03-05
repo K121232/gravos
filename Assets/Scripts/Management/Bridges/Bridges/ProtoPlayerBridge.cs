@@ -1,9 +1,11 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class ProtoPlayerBridge : Zetha {
 
     public  Animator        deathPanel;
+    public  TMP_Text        deathLabel;
     public  TeflonPMove     movement;
 
     public  PowerCell       shieldCell;
@@ -20,16 +22,28 @@ public class ProtoPlayerBridge : Zetha {
             delta -= shieldCell.VariDrain ( delta * STRShield ) / STRShield;
             currentHealth -= delta;
 
-            if ( currentHealth <= 0 ) {
-                deathPanel.SetBool ( "Dispatch", true );
-                movement.acc = 0;
-                movement.angleAcc = 0;
-                movement.angleNeutralDrag = 0;
-                movement.angleControlDrag = 0;
-                for ( int i = 1; i < movement.transform.childCount; i++ ) {
-                    movement.transform.GetChild ( i ).gameObject.SetActive ( false );
-                }
+            if ( currentHealth <= 0.01f ) {
+                Detach ( "GAME OVER" );
             }
+        }
+    }
+
+    public  void    Detach  ( string messig ) {
+        deathPanel.SetBool ( "Dispatch", true );
+        deathLabel.text = messig;
+        movement.SetLock ( true );
+        for ( int i = 1; i < movement.transform.childCount; i++ ) {
+            movement.transform.GetChild ( i ).gameObject.SetActive ( false );
+        }
+    }
+
+    public void Reattach () {
+        deathPanel.SetBool ( "Dispatch", false );
+
+        movement.SetLock ( false );
+
+        for ( int i = 1; i < movement.transform.childCount; i++ ) {
+            movement.transform.GetChild ( i ).gameObject.SetActive ( true );
         }
     }
 }

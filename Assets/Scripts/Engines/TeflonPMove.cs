@@ -12,9 +12,11 @@ public class TeflonPMove : TeflonMovement {
     public  float       r;
 
     public  bool        regen;
+    public  bool        armourLock = false;
 
     public override void Start () {
         regen = true;
+        armourLock = false;
         base.Start ();
     }
 
@@ -78,7 +80,16 @@ public class TeflonPMove : TeflonMovement {
         DEBUG1 [ DEBUG2++ ] = ( rgb.velocity.magnitude / mxv ) * DEBUGSY;
         DEBUG2 %= 200;
         */
+        if ( armourLock ) {
+            delta       = 0;
+            deltaAngle  = 0;
+            angleDrag = 0;
+        }
         base.FixedUpdate();
         angleDrag = 0;
+    }
+
+    public  void SetLock ( bool a ) {
+        armourLock = a;
     }
 }
