@@ -98,7 +98,7 @@ GameObject:
   - component: {fileID: 687800561341309169}
   - component: {fileID: 6938031529853935775}
   - component: {fileID: 7781164887404175965}
-  - component: {fileID: 6792583486144370663}
+  - component: {fileID: 4084763166377000118}
   m_Layer: 0
   m_Name: Rockit
   m_TagString: Missile
@@ -219,7 +219,7 @@ MonoBehaviour:
   z: 1
   r: 1
   regen: 0
---- !u!114 &6792583486144370663
+--- !u!114 &4084763166377000118
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -228,7 +228,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 687800561341309174}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4999db74c03c36b4cb28f424e1576ace, type: 3}
+  m_Script: {fileID: 11500000, guid: 5e37d555e265c074a98fb232e7c76350, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   damageBase: 2

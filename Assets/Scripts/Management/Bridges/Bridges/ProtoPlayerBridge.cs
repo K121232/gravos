@@ -6,13 +6,20 @@ public class ProtoPlayerBridge : Zetha {
     public  Animator        deathPanel;
     public  TeflonPMove     movement;
 
+    public  PowerCell       shieldCell;
+    public  float           STRShield;
+
     public void GUIRESET () {
         SceneManager.LoadScene ( 0 );
     } 
 
-    public override void DeltaIncoming ( int id, int delta ) {
+    public override void DeltaIncoming ( int id, float delta ) {
         if ( CheckID ( id ) ) {
-            CoreWHB ( id, delta );
+            
+            delta *= hitboxes [ id ].beta;
+            delta -= shieldCell.VariDrain ( delta * STRShield );
+            currentHealth -= delta;
+
             if ( currentHealth <= 0 ) {
                 deathPanel.SetBool ( "Dispatch", true );
                 movement.acc = 0;

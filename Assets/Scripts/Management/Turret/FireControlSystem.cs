@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class FireControlSystem : MonoBehaviour {
     public  Turret[]        turrets;
+    public  Launcher[]      launchers;
+
     public  Radar           perimeterRadar;
 
     private GameObject      trackedTarget;
@@ -19,6 +21,9 @@ public class FireControlSystem : MonoBehaviour {
         }
         for ( int i = 0; i < turrets.Length; i++ ) {
             turrets [ i ].LoadTarget ( delta );
+        }
+        for ( int i = 0; i < launchers.Length; i++ ) {
+            ((MissileLauncher)launchers [ i ] ).target = delta;
         }
         trackedTarget = null;
     }

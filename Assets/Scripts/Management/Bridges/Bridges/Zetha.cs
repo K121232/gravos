@@ -29,10 +29,12 @@ public class Zetha : MonoBehaviour {
         return id >= 0 && id < hitboxes.Count;
     }
 
-    public virtual void DeltaIncoming ( int id, int delta ) {
+    public virtual void DeltaIncoming ( int id, float delta ) {
+        CoreWHB ( id, delta );
+        CoreODR ();
     }
 
-    public void CoreWHB ( int id, int delta ) {         // Weighted Hitbox
+    public void CoreWHB ( int id, float delta ) {         // Weighted Hitbox
         currentHealth -= hitboxes [ id ].beta * delta;
     }
 

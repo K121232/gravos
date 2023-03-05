@@ -8,11 +8,13 @@ public class Launcher : MonoBehaviour {
     public  float       safeTime;
     protected float     deltaTime;
 
-    public  float       spawnRange;
+    public  float       maxRange;
+    public  float       minRange;
 
     public virtual void Fire () {}
 
     public virtual void Update() {
+        if ( spawnChance <= 0 ) return;
         if ( deltaTime <= 0 ) {
             if ( Random.value < spawnChance ) {
                 Fire();

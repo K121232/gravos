@@ -59,12 +59,13 @@ public class Turret : TriggerAssembly {
         }
         float delta = Vector2.SignedAngle ( transform.up, tgv );
         float actualAngle = delta;
-        if ( regen ) {
-            sod = new SOD ( f, z, r, delta );
+        if ( traversalSpeed != 0 ) {
+            if ( regen ) {
+                sod = new SOD ( f, z, r, delta );
+            }
+            delta = sod.Update ( Time.deltaTime, delta, Vector2.SignedAngle ( Vector2.up, tgv ) );
+            transform.Rotate ( Vector3.forward, Mathf.Clamp ( delta, -traversalSpeed * Time.deltaTime, traversalSpeed * Time.deltaTime ) );
         }
-        delta = sod.Update ( Time.deltaTime, delta, Vector2.SignedAngle ( Vector2.up, tgv ) );
-        transform.Rotate( Vector3.forward, Mathf.Clamp ( delta, -traversalSpeed * Time.deltaTime, traversalSpeed * Time.deltaTime ) );
-
         //Debug.DrawLine( transform.position, transform.position + transform.up * 5, Color.cyan );
         //DEBUGRange( coneMaxRange );
        
@@ -85,7 +86,13 @@ public class Turret : TriggerAssembly {
         instTrail.GetComponent<TrailAddon> ().Bind ( instPayload.transform );
         Vector3 minHullClearance = transform.position + transform.up * minRangeOffset;
 
-        instPayload.GetComponent<InertialImpactor>().Prime ( rgb );
+        if ( instPayload.GetComponent<InertialImpactor> () != null ) {
+            instPayload.GetComponent<InertialImpactor> ().Prime ( rgb );
+        }
+
+        if ( instPayload.GetComponent<HSTM>() != null ) {
+            instPayload.GetComponent<HSTM> ().Bind ( target );
+        }
 
         instPayload.transform.SetPositionAndRotation( minHullClearance, transform.rotation );
 

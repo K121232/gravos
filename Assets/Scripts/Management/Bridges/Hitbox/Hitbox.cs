@@ -4,7 +4,7 @@ public class Hitbox : MonoBehaviour {
     private void EvWrapper ( GameObject col ) {
         Hitgen delta = col.GetComponent<Hitgen>();
         if ( delta != null ) {
-            DeltaF ( delta.damageBase );
+            DeltaF ( delta.Bump() );
         }
     }
     

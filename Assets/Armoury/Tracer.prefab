@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4823976640582569772}
   - component: {fileID: 4823976640582569773}
   - component: {fileID: 2963599755253607024}
-  - component: {fileID: 3222069220237108072}
+  - component: {fileID: -841570625396425226}
   m_Layer: 7
   m_Name: Tracer
   m_TagString: Tracer
@@ -111,7 +111,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lifespan: 10
---- !u!114 &3222069220237108072
+--- !u!114 &-841570625396425226
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -120,7 +120,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 4823976640582569768}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4999db74c03c36b4cb28f424e1576ace, type: 3}
+  m_Script: {fileID: 11500000, guid: 5e37d555e265c074a98fb232e7c76350, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   damageBase: 1
