@@ -45,4 +45,9 @@ public class Zetha : MonoBehaviour {
         }
     }
 
+    public  float   GetProcentHP() {
+        if ( baseHealth == 0 ) return 0;
+        return currentHealth / baseHealth;
+    }
+
 }

@@ -14,7 +14,7 @@ public class ShipHUD : MonoBehaviour {
     }
 
     void LateUpdate () {
-        hpSlider.value      = ( bridge.currentHealth / bridge.baseHealth )              * hpSlider.maxValue;
-        shieldSlider.value  = shieldCell.GetAvailableLoad()                             * shieldSlider.maxValue;
+        hpSlider.value      = bridge.GetProcentHP()         * hpSlider.maxValue;
+        shieldSlider.value  = shieldCell.GetAvailableLoad() * shieldSlider.maxValue;
     }
 }
