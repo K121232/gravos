@@ -95,12 +95,10 @@ GameObject:
   - component: {fileID: 687800561341309173}
   - component: {fileID: 687800561341309171}
   - component: {fileID: 687800561341309170}
-  - component: {fileID: 4084763166377000118}
-  - component: {fileID: 687800561341309169}
   - component: {fileID: 6938031529853935775}
   - component: {fileID: 7781164887404175965}
   m_Layer: 0
-  m_Name: Rockit
+  m_Name: Testbed
   m_TagString: Missile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -169,32 +167,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 2.5}
   m_EdgeRadius: 0
---- !u!114 &4084763166377000118
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 687800561341309174}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5e37d555e265c074a98fb232e7c76350, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damageBase: 2
---- !u!114 &687800561341309169
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 687800561341309174}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 838565ead8fd1af4b88abe7cbdf64ffc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  lifespan: 25
 --- !u!114 &6938031529853935775
 MonoBehaviour:
   m_ObjectHideFlags: 0

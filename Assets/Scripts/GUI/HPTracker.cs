@@ -4,38 +4,49 @@ using UnityEngine;
 
 public class HPTracker : MonoBehaviour {
     public  Transform   player;
+    public  Transform   canvasRoot;
 
-    public  RectTransform       dsp;
-    public  Transform   target;
+    [System.Serializable]
+    public struct EnemyContact {
+        public  Zetha           bridge;
+        public  string          displayName;
+        public  BoxCollider2D   boundingBox;
+        public  RectTransform   linked;
+        [HideInInspector]
+        public  Slider          slider;
+    }
+    public  EnemyContact[]      tracked;
 
-    public  BoxCollider2D   boundingBox;
+    public  GameObject          HUDObject;
 
-    private Slider      hpSlider;
-    private TMP_Text    label;
-
-    public  string      displayName;
-
-    public  Zetha       bridge;
+    private void SetScale ( Transform sliderRoot, float aScale ) {
+        sliderRoot.GetChild ( 1 ).GetChild ( 0 ).GetComponent<Image> ().pixelsPerUnitMultiplier = aScale * 0.66f;
+    }
 
     private void Start () {
-        hpSlider    = dsp.GetChild (0).GetComponent<Slider> ();
-        label       = dsp.GetChild (1).GetComponent<TMP_Text> ();
+        for ( int i = 0; i < tracked.Length; i++ ) {
+            tracked [ i ].linked = Instantiate ( HUDObject, canvasRoot ).GetComponent<RectTransform>();
+            tracked [ i ].slider = tracked [ i ].linked.GetChild ( 0 ).GetComponent<Slider> ();
+            tracked [ i ].linked.GetChild ( 1 ).GetComponent<TMP_Text> ().text = tracked [ i ].displayName;
+            SetScale ( tracked [ i ].slider.transform, tracked [ i ].bridge.baseHealth );
+        }
     }
 
     void Update () {
-        if ( !target.gameObject.activeInHierarchy ) {
-            dsp.gameObject.SetActive (false);
-            return;
+        for ( int i = 0; i < tracked.Length; i++ ) {
+            if ( !tracked [ i ].bridge.gameObject.activeInHierarchy ) {
+                tracked [ i ].linked.gameObject.SetActive ( false );
+                continue;
+            }
+            Vector2 delta = tracked [ i ].boundingBox.ClosestPoint ( player.position );
+
+            tracked [ i ].linked.position = delta;
+
+            delta += ( delta - (Vector2) tracked [ i ].bridge.transform.position ) * 5;
+
+            //dsp.rotation = Quaternion.Euler( 0, 0, 90 ) * target.rotation;
+
+            tracked [ i ].slider.value = tracked [ i ].bridge.GetProcentHP () * tracked [ i ].slider.maxValue;
         }
-        Vector2 delta = boundingBox.ClosestPoint ( player.position );
-
-        dsp.position = delta;
-
-        delta += ( delta -  (Vector2) target.position ) * 5;
-
-        //dsp.rotation = Quaternion.Euler( 0, 0, 90 ) * target.rotation;
-
-        label.text = displayName;
-        hpSlider.value = bridge.GetProcentHP () * hpSlider.maxValue;
     }
 }

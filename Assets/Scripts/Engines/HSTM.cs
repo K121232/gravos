@@ -8,6 +8,7 @@ public class HSTM : MonoBehaviour {
     public  Transform   target;
     public  Rigidbody2D targetRGB;
 
+    public  float       STRP;
     public  float       STRV1;
     public  float       STRV2;
 
@@ -43,7 +44,8 @@ public class HSTM : MonoBehaviour {
     }
 
     public void Update () {
-        Vector2 deltaH = target.position - transform.position + ( Vector3 ) rgb.velocity * STRV1;
+        Vector2 deltaH = ( target.position - transform.position ) * STRP;
+        deltaH -= rgb.velocity * STRV1;
 
         if ( targetRGB != null ) deltaH += targetRGB.velocity * STRV2;
 
@@ -57,7 +59,7 @@ public class HSTM : MonoBehaviour {
         deltaAA = sod.Update ( Time.fixedDeltaTime, Vector2.SignedAngle ( transform.up, deltaH ), Vector2.SignedAngle ( Vector2.up, deltaH ), rgb.angularVelocity );
 
         /*
-        Debug.DrawLine ( transform.position, transform.position + (Vector3)deltaH );
+        Debug.DrawLine ( transform.position, transform.position + (Vector3)deltaH, Color.green );
         Debug.DrawLine ( transform.position, target.position, Color.red );
         Debug.DrawLine ( transform.position, transform.position + transform.up * 4, Color.blue );
         */

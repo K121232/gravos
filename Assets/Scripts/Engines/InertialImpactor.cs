@@ -2,7 +2,6 @@ using UnityEngine;
 
 public class InertialImpactor : MonoBehaviour {
     public  float   velocity;
-    public  float   drag;
 
     private Vector3 v0;
 

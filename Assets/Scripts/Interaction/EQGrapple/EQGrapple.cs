@@ -74,6 +74,10 @@ public class EQGrapple : TriggerAssembly {
 
                         angleAccumulator = Vector3.SignedAngle( delta, pastTetherHeading, Vector3.back );
 
+                        if ( Vector2.Dot ( forceAccumulator, transform.position - head.transform.position ) > 0 ) {
+                            forceAccumulator -= (Vector2)Vector3.Project ( forceAccumulator, transform.position - head.transform.position );
+                        }
+
                         rgb.AddForce ( forceAccumulator, ForceMode2D.Impulse );
                         head.Propagate ( -forceAccumulator * rgb.mass );
                     }

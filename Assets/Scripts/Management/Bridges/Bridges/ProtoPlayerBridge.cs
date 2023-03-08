@@ -13,7 +13,20 @@ public class ProtoPlayerBridge : Zetha {
 
     public void GUIRESET () {
         SceneManager.LoadScene ( 0 );
-    } 
+    }
+
+    public  float   stunTime;
+    private float   deltaTime;
+
+    private void Update () {
+        if ( deltaTime > 0 ) {
+            deltaTime -= Time.deltaTime;
+            if ( deltaTime <= 0 ) {
+                deltaTime = 0;
+                movement.SetLock (false);
+            }
+        }    
+    }
 
     public override void DeltaIncoming ( int id, float delta ) {
         if ( CheckID ( id ) ) {
@@ -21,6 +34,8 @@ public class ProtoPlayerBridge : Zetha {
             delta *= hitboxes [ id ].beta;
             delta -= shieldCell.VariDrain ( delta * STRShield ) / STRShield;
             currentHealth -= delta;
+            movement.SetLock (false);
+            deltaTime = stunTime;
 
             if ( currentHealth <= 0.01f ) {
                 Detach ( "GAME OVER" );
