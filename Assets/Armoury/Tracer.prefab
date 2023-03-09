@@ -50,7 +50,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   velocity: 100
-  drag: 0
 --- !u!50 &4823976640582569772
 Rigidbody2D:
   serializedVersion: 4
@@ -123,7 +122,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e37d555e265c074a98fb232e7c76350, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damageBase: 1
+  damageBase: 0
 --- !u!1 &4823976640752799586
 GameObject:
   m_ObjectHideFlags: 0

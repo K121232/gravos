@@ -27,7 +27,9 @@ public class SOD {
     }
     public float Update ( float T, float delta, float ax ) {
         float yacc = Update ( T, delta, ax, yd );
-        yd += yacc * T;
         return yacc;
+    }
+    public  void   UpdateYD ( float a ) {
+        yd += a;
     }
 }

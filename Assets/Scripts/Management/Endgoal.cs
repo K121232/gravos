@@ -5,6 +5,14 @@ public class Endgoal : MonoBehaviour {
 
     public  ProtoPlayerBridge       playerBridge;
 
+    private void Start () {
+        for ( int i = 0; i < killTargets.Length; i++ ) {
+            if ( !killTargets [ i ].activeInHierarchy ) {
+                gameObject.SetActive( false );
+            }
+        }
+    }
+
     void Update () {
         int copium = 0;
         for ( int i = 0; i < killTargets.Length; i++ ) {

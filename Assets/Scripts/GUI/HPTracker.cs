@@ -20,7 +20,7 @@ public class HPTracker : MonoBehaviour {
     public  GameObject          HUDObject;
 
     private void SetScale ( Transform sliderRoot, float aScale ) {
-        sliderRoot.GetChild ( 1 ).GetChild ( 0 ).GetComponent<Image> ().pixelsPerUnitMultiplier = aScale * 0.66f;
+        sliderRoot.GetChild ( 1 ).GetChild ( 0 ).GetComponent<Image> ().pixelsPerUnitMultiplier = aScale * 0.066f;
     }
 
     private void Start () {

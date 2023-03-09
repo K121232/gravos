@@ -22,6 +22,8 @@ public class Turret : TriggerAssembly {
     public  float       z;
     public  float       r;
 
+    public  bool        fireControlOverride = false;
+
     public  void LoadTarget ( GameObject alpha ) {
         if ( target == alpha ) return;
         if ( alpha == null ) { target = null; targetRGB = null; return; }
@@ -62,18 +64,23 @@ public class Turret : TriggerAssembly {
         if ( traversalSpeed != 0 ) {
             if ( regen ) {
                 sod = new SOD ( f, z, r, delta );
+                regen = false;
             }
             delta = sod.Update ( Time.deltaTime, delta, Vector2.SignedAngle ( Vector2.up, tgv ) );
-            transform.Rotate ( Vector3.forward, Mathf.Clamp ( delta, -traversalSpeed * Time.deltaTime, traversalSpeed * Time.deltaTime ) );
+            delta = Mathf.Clamp ( delta, -traversalSpeed, traversalSpeed ) * Time.deltaTime;
+            transform.Rotate ( Vector3.forward, delta );
+            sod.UpdateYD ( delta );
         }
         //Debug.DrawLine( transform.position, transform.position + transform.up * 5, Color.cyan );
         //DEBUGRange( coneMaxRange );
        
         if ( deltaA == 0 ) { Reload(); }
-        if ( target != null && Mathf.Abs ( actualAngle ) < coneMaxDeviation ) {
-            TriggerHold();
-        } else {
-            TriggerRelease();
+        if ( !fireControlOverride ) {
+            if ( target != null && Mathf.Abs ( actualAngle ) < coneMaxDeviation ) {
+                TriggerHold ();
+            } else {
+                TriggerRelease ();
+            }
         }
 
         base.Update();

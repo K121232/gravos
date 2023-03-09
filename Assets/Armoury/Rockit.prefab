@@ -181,7 +181,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e37d555e265c074a98fb232e7c76350, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damageBase: 2
+  damageBase: 0
 --- !u!114 &687800561341309169
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -224,12 +224,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6898f9bbb9bd2f49bcd569cdeec3a72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  f: 5
+  z: 1
+  r: 1
+  regen: 0
+  targetLink: {x: 0, y: 0}
   target: {fileID: 0}
   targetRGB: {fileID: 0}
   STRP: 0.95
   STRV1: 0.15
   STRV2: 0.15
-  f: 5
-  z: 1
-  r: 1
-  regen: 0
