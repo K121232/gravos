@@ -76,6 +76,7 @@ public class EQGrapple : TriggerAssembly {
 
                         if ( Vector2.Dot ( forceAccumulator, transform.position - head.transform.position ) > 0 ) {
                             forceAccumulator -= (Vector2)Vector3.Project ( forceAccumulator, transform.position - head.transform.position );
+                            forceAccumulator = Vector3.zero;
                         }
 
                         rgb.AddForce ( forceAccumulator, ForceMode2D.Impulse );

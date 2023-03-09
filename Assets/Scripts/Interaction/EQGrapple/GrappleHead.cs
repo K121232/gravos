@@ -10,6 +10,7 @@ public class GrappleHead : MonoBehaviour {
     public  Transform       savedParent;
     public  bool            detached;
     public  float           attachLength;
+    public  float           minAttachLength;
 
     public  Radar       attachRadar;
     public  Radar       gravRadar;
@@ -67,7 +68,7 @@ public class GrappleHead : MonoBehaviour {
         if ( detached && attachRadar.collectedCount != 0 ) {
             detached = false;
 
-            attachLength = ( transform.position - anchor.position ).magnitude;
+            attachLength = Mathf.Max ( minAttachLength, ( transform.position - anchor.position ).magnitude );
             transform.SetParent( attachRadar.collectedColliders[0].transform );
             transform.position = attachRadar.collectedColliders[0].ClosestPoint( transform.position );
 

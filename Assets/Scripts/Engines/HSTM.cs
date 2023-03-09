@@ -1,30 +1,12 @@
 using UnityEngine;
 
-public class HSTM : MonoBehaviour {
-    // Oh its Heat seeking targeting module ( dumb name )
-    private TeflonMovement      PROPULSION;
-    private Rigidbody2D         rgb;
-
+public class HSTM : TM {
     public  Transform   target;
     public  Rigidbody2D targetRGB;
 
     public  float       STRP;
     public  float       STRV1;
     public  float       STRV2;
-
-    private SOD         sod;
-
-    public  float       f;
-    public  float       z;
-    public  float       r;
-
-    public  bool        regen;
-
-    public void Start () {
-        regen = true;
-        PROPULSION      = GetComponent<TeflonMovement> ();
-        rgb             = GetComponent<Rigidbody2D> ();
-    }
 
     private void OnEnable () {
         regen = true;
@@ -43,27 +25,11 @@ public class HSTM : MonoBehaviour {
         alpha.TryGetComponent ( out targetRGB );
     }
 
-    public void Update () {
-        Vector2 deltaH = ( target.position - transform.position ) * STRP;
-        deltaH -= rgb.velocity * STRV1;
+    public override void Update () {
+        targetLink = ( target.position - transform.position ) * STRP;
+        targetLink -= rgb.velocity * STRV1;
 
-        if ( targetRGB != null ) deltaH += targetRGB.velocity * STRV2;
-
-        if ( regen ) {
-            sod = new SOD ( f, z, r, Vector2.SignedAngle ( Vector2.up, deltaH ) );
-            regen = false;
-        }
-
-        float deltaAA;
-
-        deltaAA = sod.Update ( Time.fixedDeltaTime, Vector2.SignedAngle ( transform.up, deltaH ), Vector2.SignedAngle ( Vector2.up, deltaH ), rgb.angularVelocity );
-
-        /*
-        Debug.DrawLine ( transform.position, transform.position + (Vector3)deltaH, Color.green );
-        Debug.DrawLine ( transform.position, target.position, Color.red );
-        Debug.DrawLine ( transform.position, transform.position + transform.up * 4, Color.blue );
-        */
-
-        PROPULSION.UpdateDeltas ( 1, deltaAA, false );
+        if ( targetRGB != null ) targetLink += targetRGB.velocity * STRV2;
+        base.Update ();
     }
 }

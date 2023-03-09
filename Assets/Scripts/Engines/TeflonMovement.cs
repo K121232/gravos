@@ -65,6 +65,7 @@ public class TeflonMovement : MonoBehaviour {
 
     virtual public void Update() {
         ticks++;
+        Debug.DrawLine ( transform.position + new Vector3 ( 3, 0 ), transform.position + new Vector3 ( 3, 0 ) + Quaternion.Euler ( 0, 0, rgb.angularVelocity ) * Vector2.up, Color.cyan );
     }
 
     virtual public void FixedUpdate() {

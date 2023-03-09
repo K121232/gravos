@@ -96,7 +96,7 @@ GameObject:
   - component: {fileID: 687800561341309171}
   - component: {fileID: 687800561341309170}
   - component: {fileID: 6938031529853935775}
-  - component: {fileID: 7781164887404175965}
+  - component: {fileID: 4502390183091003174}
   m_Layer: 0
   m_Name: Testbed
   m_TagString: Missile
@@ -184,7 +184,7 @@ MonoBehaviour:
   angleAcc: 180
   angleMxv: 90
   angleDrag: 0
---- !u!114 &7781164887404175965
+--- !u!114 &4502390183091003174
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -193,15 +193,20 @@ MonoBehaviour:
   m_GameObject: {fileID: 687800561341309174}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e6898f9bbb9bd2f49bcd569cdeec3a72, type: 3}
+  m_Script: {fileID: 11500000, guid: 93a969173d01a2c4a9965b0b20b79cd4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 0}
-  targetRGB: {fileID: 0}
-  STRP: 0.95
-  STRV1: 0.15
-  STRV2: 0.15
-  f: 5
-  z: 1
+  f: 10
+  z: 0
   r: 1
   regen: 0
+  targetLink: {x: 0, y: 0}
+  points:
+  - {x: 0, y: 0}
+  - {x: 0, y: 0}
+  - {x: 10, y: 0}
+  - {x: 0, y: 10}
+  - {x: 20, y: 0}
+  - {x: 0, y: 0}
+  resolution: 0.01
+  DEBUGHANDLE: {fileID: 0}
