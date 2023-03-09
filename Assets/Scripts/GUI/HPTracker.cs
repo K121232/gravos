@@ -10,7 +10,7 @@ public class HPTracker : MonoBehaviour {
     public struct EnemyContact {
         public  Zetha           bridge;
         public  string          displayName;
-        public  BoxCollider2D   boundingBox;
+        public  Collider2D      boundingBox;
         public  RectTransform   linked;
         [HideInInspector]
         public  Slider          slider;

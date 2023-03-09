@@ -59,27 +59,8 @@ public class TeflonPMove : TeflonMovement {
         base.Update();
     }
 
-    /*  Debug speedometer 
-    private float[] DEBUG1 = new float[ 200 ];
-    private int     DEBUG2;
-    public  float   DEBUGS;
-    public  float   DEBUGSY;
-    public  Vector2 DEBUGOFF;
-
-    private void LateUpdate () {
-        for ( int i = 0; i < 199; i++ ) {
-            Debug.DrawLine ( (Vector2) transform.position + DEBUGOFF + new Vector2 ( i * DEBUGS, DEBUG1 [ i ] ), ( Vector2 )transform.position + DEBUGOFF + new Vector2 ( ( i + 1 ) * DEBUGS, DEBUG1 [ i + 1 ] ) );
-        }
-        Debug.DrawLine ( ( Vector2 )transform.position + DEBUGOFF + new Vector2 ( 0, DEBUGSY ), ( Vector2 )transform.position + DEBUGOFF + new Vector2 ( 200 * DEBUGS, DEBUGSY ), Color.red );
-    }
-    */
-
     public override void FixedUpdate() {
         if ( ticks != 0 ) { angleDrag /= ticks; angleDragBackup = angleDrag; } else { angleDrag = angleDragBackup; }
-        /*
-        DEBUG1 [ DEBUG2++ ] = ( rgb.velocity.magnitude / mxv ) * DEBUGSY;
-        DEBUG2 %= 200;
-        */
         if ( armourLock ) {
             delta       = 0;
             deltaAngle  = 0;

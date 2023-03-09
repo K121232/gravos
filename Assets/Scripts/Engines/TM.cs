@@ -19,7 +19,7 @@ public class TM : MonoBehaviour {
         rgb = GetComponent<Rigidbody2D> ();
     }
 
-    public  Vector2 targetLink;
+    protected   Vector2 targetLink;
     public virtual void Update () {
         targetLink -= (Vector2)transform.position;
         // Disable this when there is no debug

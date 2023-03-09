@@ -9,7 +9,8 @@ public class LRCTM : TM {
     public  int             major = 0;
     public  float           minor = 0;
 
-    public  float           STRV;
+    public  float           STRV;       // Pathfind velocity offset
+    public  float           STRVT;      // Targeting velocity offset
 
     public  Vector2 Gitmas ( int a2, float a1 ) {
         return points [ a2 ] * ( 1 - a1 ) * ( 1 - a1 ) * ( 1 - a1 ) + 3 * ( ( 1 - a1 ) * ( 1 - a1 ) * a1 * ( points [ a2 ] + points [ a2 + 1 ] * ( a2 % 4 == 0 ? 1 : -1 ) ) + ( 1 - a1 ) * a1 * a1 * ( points [ a2 + 2 ] + points [ a2 + 3 ] ) ) + a1 * a1 * a1 * points [ a2 + 2 ];
@@ -53,7 +54,7 @@ public class LRCTM : TM {
         major = Mathf.RoundToInt ( deltaB.x );
         minor = deltaB.y;
 
-        targetLink = Gitmas ( major, minor );
+        targetLink = Gitmas ( major, minor ) - rgb.velocity * STRVT;
 
         Debug.DrawLine ( target, targetLink, Color.red );
 

@@ -20,7 +20,6 @@ public class EQFireControl : MonoBehaviour {
         
 
         if ( Input.GetMouseButtonDown( 0 ) ) {
-            Debug.Log ( "PEW" );
             for ( int i = 0; i < turrets.Length; i++ ) {
                 turrets [ i ].TriggerHold ();
             }

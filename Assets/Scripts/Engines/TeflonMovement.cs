@@ -68,23 +68,40 @@ public class TeflonMovement : MonoBehaviour {
         Debug.DrawLine ( transform.position + new Vector3 ( 3, 0 ), transform.position + new Vector3 ( 3, 0 ) + Quaternion.Euler ( 0, 0, rgb.angularVelocity ) * Vector2.up, Color.cyan );
     }
 
+    private float[] DEBUG1 = new float[ 200 ];
+    private int     DEBUG2;
+    private float   DEBUGS = 0.1f;         // horizontal offset per unit
+    private float   DEBUGSY = 5;        // vertical max
+    public  Vector2 DEBUGOFF;
+
+    private void LateUpdate () {
+        for ( int i = 0; i < 199; i++ ) {
+            Debug.DrawLine ( (Vector2) transform.position + DEBUGOFF + new Vector2 ( i * DEBUGS, DEBUG1 [ i ] ), (Vector2) transform.position + DEBUGOFF + new Vector2 ( ( i + 1 ) * DEBUGS, DEBUG1 [ i + 1 ] ) );
+        }
+        Debug.DrawLine ( (Vector2) transform.position + DEBUGOFF + new Vector2 ( 0, DEBUGSY ), (Vector2) transform.position + DEBUGOFF + new Vector2 ( 200 * DEBUGS, DEBUGSY ), Color.red );
+    }
+
     virtual public void FixedUpdate() {
         if ( ticks == 0 ) { delta = backupDelta; deltaAngle = backupDeltaAngle; } else { deltaAngle /= ticks; delta /= ticks; backupDeltaAngle = deltaAngle; backupDelta = delta; }
 
+        DEBUG1 [ DEBUG2++ ] = ( rgb.velocity.magnitude / mxv ) * DEBUGSY;
+        DEBUG2 %= 200;
+
         deltaAngle = VClip( deltaAngle * angleAcc * Time.fixedDeltaTime, rgb.angularVelocity, angleMxv );
 
+        if ( deltaAngle == float.NaN ) deltaAngle = 0;
         rgb.angularVelocity += deltaAngle;
         rgb.angularVelocity -= angleDrag * rgb.angularVelocity * Time.fixedDeltaTime;
 
-        Vector2 deltaProcessed = Cutter( transform.up * delta * acc, rgb.velocity, mxv );
+        Vector2 deltaProcessed = Cutter( transform.up * delta * acc * Time.fixedDeltaTime, rgb.velocity, mxv );
 
         //deltaProcessed = Vector3.Project( deltaProcessed, transform.up );
         //Debug.Log( rgb.velocity.magnitude.ToString( "0.00" ) );
         //Debug.Log( Vector2.Dot( deltaProcessed.normalized, transform.up ).ToString("0.00") );
 
-        //Debug.Log ( deltaBB.magnitude.ToString("0.00") + " " + rgb.velocity.magnitude.ToString ("0.00") + " " + deltaProcessed.magnitude.ToString ( "0.00" ) );
+        //Debug.Log ( rgb.velocity.magnitude.ToString ("0.00") + " " + deltaProcessed.magnitude.ToString ( "0.00" ) );
 
-        rgb.AddForce( deltaProcessed * rgb.mass * Time.fixedDeltaTime, ForceMode2D.Impulse );
+        rgb.AddForce( deltaProcessed * rgb.mass / Time.fixedDeltaTime );
 
         deltaAngle = 0;
         delta = 0;
