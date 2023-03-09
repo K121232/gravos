@@ -74,7 +74,7 @@ Material:
     m_Colors:
     - _Color: {r: 0.11792451, g: 0.9232019, b: 1, a: 1}
     - _Flip: {r: 1, g: 1, b: 1, a: 1}
-    - _ManualOffset: {r: 0.99999774, g: 0.0000000056739147, b: 0, a: 0}
+    - _ManualOffset: {r: 11.871379, g: 13.935852, b: 0, a: 0}
     - _RendererColor: {r: 1, g: 1, b: 1, a: 1}
     - _Something: {r: 1, g: 1, b: 1, a: 0}
     - _layer2Color: {r: 1, g: 0, b: 0, a: 1}

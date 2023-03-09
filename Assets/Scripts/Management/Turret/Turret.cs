@@ -69,7 +69,7 @@ public class Turret : TriggerAssembly {
             delta = sod.Update ( Time.deltaTime, delta, Vector2.SignedAngle ( Vector2.up, tgv ) );
             delta = Mathf.Clamp ( delta, -traversalSpeed, traversalSpeed ) * Time.deltaTime;
             transform.Rotate ( Vector3.forward, delta );
-            sod.UpdateYD ( delta );
+            //sod.UpdateYD ( delta );
         }
         //Debug.DrawLine( transform.position, transform.position + transform.up * 5, Color.cyan );
         //DEBUGRange( coneMaxRange );
