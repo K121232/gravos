@@ -8,7 +8,7 @@ public class RotationIndicator : MonoBehaviour {
     private void Start() {
         if ( angleNeutralDrag == -1 ) {
             TeflonPMove delta;
-            if ( TryGetComponent( out delta ) ) {
+            if ( transform.parent.TryGetComponent( out delta ) ) {
                 angleNeutralDrag = delta.angleNeutralDrag;
             }
         }
@@ -24,6 +24,6 @@ public class RotationIndicator : MonoBehaviour {
             rhoSpeed -= rhoSpeed * angleNeutralDrag * Time.fixedDeltaTime;
         }
 
-        indicator.SetPositionAndRotation( transform.position + ( Vector3 )rhoIndicator * 2, Quaternion.FromToRotation( Vector2.up, rhoIndicator ) );
+        indicator.rotation = Quaternion.FromToRotation( Vector2.up, rhoIndicator );
     }
 }

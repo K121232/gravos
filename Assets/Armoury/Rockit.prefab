@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 687800559616794390}
   - component: {fileID: 687800559616794389}
   m_Layer: 0
-  m_Name: Square
+  m_Name: Main hull
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -26,7 +26,7 @@ Transform:
   m_GameObject: {fileID: 687800559616794391}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.2, y: 2, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 687800561341309173}
@@ -52,7 +52,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: fab7ae8d5e7e066498d8985e17958c02, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -72,13 +72,13 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_SortingOrder: 1
+  m_Sprite: {fileID: -882966434, guid: 920ce87f941f0614aa7196468f5c20ca, type: 3}
+  m_Color: {r: 1, g: 0, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
-  m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_DrawMode: 2
+  m_Size: {x: 1, y: 2.15}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -167,8 +167,8 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 2.5}
-  m_EdgeRadius: 0
+  m_Size: {x: 0.3, y: 1.8}
+  m_EdgeRadius: 0.2
 --- !u!114 &4084763166377000118
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -194,7 +194,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 838565ead8fd1af4b88abe7cbdf64ffc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lifespan: 25
+  lifespan: -1
 --- !u!114 &6938031529853935775
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -212,6 +212,7 @@ MonoBehaviour:
   angleAcc: 180
   angleMxv: 90
   angleDrag: 0
+  DEBUGOFF: {x: 0, y: 0}
 --- !u!114 &7781164887404175965
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -228,9 +229,8 @@ MonoBehaviour:
   z: 1
   r: 1
   regen: 0
-  targetLink: {x: 0, y: 0}
   target: {fileID: 0}
   targetRGB: {fileID: 0}
-  STRP: 0.95
+  STRP: 0.6
   STRV1: 0.15
   STRV2: 0.15

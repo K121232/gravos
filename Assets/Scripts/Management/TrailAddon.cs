@@ -8,7 +8,7 @@ public class TrailAddon : Autodeleter {
         target = alpha;
         tr = GetComponent<TrailRenderer> ();
         var delta = alpha.GetComponent<Autodeleter>();
-        if ( delta != null ) {
+        if ( delta != null && delta.lifespan != -1 ) {
             lifespan = delta.lifespan + tr.time;
         }
         if ( tr != null ) { tr.Clear (); }

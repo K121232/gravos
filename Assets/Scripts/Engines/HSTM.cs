@@ -26,7 +26,8 @@ public class HSTM : TM {
     }
 
     public override void Update () {
-        targetLink = ( target.position - transform.position ) * STRP;
+        targetLink = target.position * STRP;
+        targetLink += (Vector2) transform.position * ( 1f - STRP );
         targetLink -= rgb.velocity * STRV1;
 
         if ( targetRGB != null ) targetLink += targetRGB.velocity * STRV2;

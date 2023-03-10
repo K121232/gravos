@@ -2,7 +2,6 @@ using UnityEngine;
 
 public class EQGrapple : TriggerAssembly {
     public  GrappleHead head;
-    public  Camera      stwpCam;
 
     public  float       launchSpeed;
     public  float       maxRange;
@@ -16,7 +15,6 @@ public class EQGrapple : TriggerAssembly {
 
     private Vector3     pastTetherHeading;
     private Vector2     forceAccumulator;
-    private float       angleAccumulator;
 
     private  LineRenderer    lineRenderer;
 
@@ -72,8 +70,6 @@ public class EQGrapple : TriggerAssembly {
                         forceAccumulator =  deltaN * ( ( delta.magnitude - head.attachLength ) * linearSpringStrength - velocityDampeningStrength * deltaS ) * Time.fixedDeltaTime;
                         forceAccumulator -= deltaT.normalized * Mathf.Pow( deltaT.magnitude, orbitalDampeningPower ) * orbitalDampeningStrength;
 
-                        angleAccumulator = Vector3.SignedAngle( delta, pastTetherHeading, Vector3.back );
-
                         if ( Vector2.Dot ( forceAccumulator, transform.position - head.transform.position ) > 0 ) {
                             forceAccumulator -= (Vector2)Vector3.Project ( forceAccumulator, transform.position - head.transform.position );
                             forceAccumulator = Vector3.zero;
@@ -92,14 +88,13 @@ public class EQGrapple : TriggerAssembly {
             //rgb.transform.Rotate ( Vector3.forward, angleAccumulator );
 
             forceAccumulator = Vector3.zero;
-            angleAccumulator = 0;
         }
     }
 
     public override void Fire( Vector2 prv ) {
         headLaunched = true;
         head.transform.SetParent( head.savedParent );
-        head.transform.position = transform.position + transform.up * ( 1 + rgb.velocity.magnitude * Time.fixedDeltaTime * 2 );
+        head.transform.position = transform.position + transform.up * ( 2 + rgb.velocity.magnitude * Time.fixedDeltaTime * 2 );
         head.transform.rotation = transform.rotation;
         head.gameObject.SetActive( true );
         head.GetComponent<Rigidbody2D>().velocity = ( Vector3 ) prv + transform.up * launchSpeed;

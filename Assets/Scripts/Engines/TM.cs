@@ -21,6 +21,8 @@ public class TM : MonoBehaviour {
 
     protected   Vector2 targetLink;
     public virtual void Update () {
+        Debug.DrawLine ( transform.position, targetLink, Color.yellow );
+
         targetLink -= (Vector2)transform.position;
         // Disable this when there is no debug
         if ( regen ) {
