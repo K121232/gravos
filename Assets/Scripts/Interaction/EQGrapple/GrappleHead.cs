@@ -107,4 +107,8 @@ public class GrappleHead : MonoBehaviour {
         }
         return -1;
     }
+
+    public  Rigidbody2D GetAnchorRGB() {
+        return anchorRgb;
+    }
 }
