@@ -25,18 +25,18 @@ public class EQGrapple : TriggerAssembly {
         base.Start();
     }
 
-    public override void Update() {
+    public override void Update () {
         //transform.rotation = Quaternion.Euler( 0, 0, Vector2.SignedAngle( Vector2.up, stwpCam.ScreenToWorldPoint( Input.mousePosition ) - transform.position ) );
 
-        if ( Input.GetKey(KeyCode.E) || Input.GetKey (KeyCode.K) ) {
-            TriggerHold();
+        if ( Input.GetKey ( KeyCode.E ) || Input.GetKey ( KeyCode.K ) || Input.GetMouseButton ( 1 ) ) {
+            TriggerHold ();
         } else {
-            TriggerRelease();
+            TriggerRelease ();
         }
 
-        if ( deltaA == 0 ) Reload();
+        if ( deltaA == 0 ) Reload ();
 
-        base.Update();
+        base.Update ();
 
     }
 
