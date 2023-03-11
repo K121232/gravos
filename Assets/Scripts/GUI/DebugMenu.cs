@@ -2,10 +2,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class DebugMenu : MonoBehaviour {
-    public  GameObject      mainPanel;
-    private Animator        panelAnimation;
-
+public class DebugMenu : MenuCore {
     public  TeflonPMove     playerShip;
     public  CameraTether    camTether;
 
@@ -15,15 +12,15 @@ public class DebugMenu : MonoBehaviour {
     public  TMP_Text        fbwStatus;
     private bool            deltaFBWS;
 
-    private void Start() {
-        sliders[0].SetValueWithoutNotify( playerShip.mxv );
+    public override void Start() {
+        base.Start ();
+        sliders [ 0].SetValueWithoutNotify( playerShip.mxv );
         sliders[1].SetValueWithoutNotify( playerShip.acc );
         sliders[2].SetValueWithoutNotify( playerShip.angleMxv );
         sliders[3].SetValueWithoutNotify( playerShip.angleAcc );
         sliders[4].SetValueWithoutNotify( camTether.rotationStrength );
-        panelAnimation = mainPanel.GetComponent<Animator> ();
-        panelAnimation.SetBool ( "Dispatch", false );
         deltaFBWS = playerShip.flybywire;
+        Backflow ( false );
         Redraw ();
     }
     
@@ -47,13 +44,13 @@ public class DebugMenu : MonoBehaviour {
         camTether.rotationStrength = sliders [ 4 ].value;
         playerShip.flybywire = deltaFBWS;
         Redraw ();
-        panelAnimation.SetBool ( "Dispatch", false );
+        Backflow ( false );
     }
 
     public void Update() {
         if ( Input.GetKeyDown (KeyCode.M) ) {
             deltaFBWS = playerShip.flybywire;
-            panelAnimation.SetBool ( "Dispatch", !panelAnimation.GetBool("Dispatch") );
+            Backflow ( true );
         } 
     }
 }
