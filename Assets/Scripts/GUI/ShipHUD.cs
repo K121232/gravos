@@ -9,7 +9,7 @@ public class ShipHUD : MonoBehaviour {
     public  Slider              shieldSlider;
 
     private void SetScale ( Transform sliderRoot, float aScale ) {
-        sliderRoot.GetChild ( 1 ).GetChild ( 0 ).GetComponent<Image> ().pixelsPerUnitMultiplier = aScale * 0.66f;
+        sliderRoot.GetChild ( 1 ).GetChild ( 0 ).GetComponent<Image> ().pixelsPerUnitMultiplier = aScale * 0.44f;
     }
 
     private void Start () {

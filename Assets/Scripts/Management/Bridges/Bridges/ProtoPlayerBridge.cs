@@ -34,8 +34,10 @@ public class ProtoPlayerBridge : Zetha {
             delta *= hitboxes [ id ].beta;
             delta -= shieldCell.VariDrain ( delta * STRShield ) / STRShield;
             currentHealth -= delta;
-            movement.SetLock ( true );
-            deltaTime = stunTime;
+            if ( stunTime != -1 ) {
+                movement.SetLock ( true );
+                deltaTime = stunTime;
+            }
 
             if ( currentHealth <= 0.01f ) {
                 Detach ( "GAME OVER" );

@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 2963599755253607024}
   - component: {fileID: -841570625396425226}
   m_Layer: 7
-  m_Name: Tracer
+  m_Name: Tracer 5
   m_TagString: Tracer
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -122,7 +122,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e37d555e265c074a98fb232e7c76350, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damageBase: 1
+  damageBase: 5
 --- !u!1 &4823976640752799586
 GameObject:
   m_ObjectHideFlags: 0

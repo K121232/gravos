@@ -47,7 +47,7 @@ TextureImporter:
   spriteMeshType: 0
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 50
+  spritePixelsToUnits: 75
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -376,6 +376,27 @@ TextureImporter:
       bones: []
       spriteID: edb643f8f1bb1fd45b4753fa7f71b191
       internalID: -1467294457
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Shipverse_9
+      rect:
+        serializedVersion: 2
+        x: 894
+        y: 496
+        width: 239
+        height: 937
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3dd33a1803720484da139b53c10a3898
+      internalID: -1001058137
       vertices: []
       indices: 
       edges: []

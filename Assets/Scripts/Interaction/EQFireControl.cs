@@ -12,13 +12,14 @@ public class EQFireControl : MonoBehaviour {
         }
     }
 
-    void Update () {
+    private void LateUpdate () {
         Vector3 delta = cam.ScreenToWorldPoint ( Input.mousePosition );
         delta.z = 0;
         carrot.position = delta;
         carrot.rotation = transform.rotation;
-        
+    }
 
+    void Update () {
         if ( Input.GetMouseButtonDown( 0 ) ) {
             for ( int i = 0; i < turrets.Length; i++ ) {
                 turrets [ i ].TriggerHold ();
