@@ -15,6 +15,7 @@ public class MenuManager : MonoBehaviour {
     private void Start () {
         for ( int i = 0; i < menus.Length; i++  ) {
             menus [ i ].menuHandle.Handshake ( this, i );
+            menus [ i ].menuHandle.Incoming ( false );
             menus [ i ].status = false;
         }
         currentPrio = -1;
@@ -30,7 +31,7 @@ public class MenuManager : MonoBehaviour {
         for ( int i = 0; i < menus.Length; i++ ) {
             delta = i == id ? target : ( !target ? menus[ i ].status : false );
             if ( delta != menus [ i ].status ) {
-                menus [ i ].menuHandle.Incoming ( menus [ i ].status );
+                menus [ i ].menuHandle.Incoming ( delta );
                 menus [ i ].status = delta;
             }
             if ( menus[i].status ) {

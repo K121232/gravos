@@ -1,5 +1,6 @@
 using TMPro;
 using UnityEngine.SceneManagement;
+using UnityEngine;
 
 public class NoticeMenu : MenuCore {
     public  TMP_Text    label;
@@ -14,5 +15,11 @@ public class NoticeMenu : MenuCore {
 
     public void ButtonReset () {
         SceneManager.LoadScene ( 0 );
+    }
+
+    public void Update () {
+        if ( Input.GetKeyDown ( KeyCode.N ) ) {
+            Backflow ( !status );
+        }
     }
 }
