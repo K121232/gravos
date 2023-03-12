@@ -23,6 +23,6 @@ public class CameraTether : MonoBehaviour {
         }
         delta += offset;
         transform.position = Vector3.Lerp( transform.position - offset, delta, strength ) + offset;
-        transform.rotation = Quaternion.Lerp ( transform.rotation, target.rotation, rotationStrength * Time.deltaTime );
+        transform.rotation = Quaternion.Lerp ( transform.rotation, target.rotation, rotationStrength * Time.unscaledDeltaTime );
     }
 }
