@@ -2737,7 +2737,7 @@ Transform:
   m_GameObject: {fileID: 340051849}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 238.4}
-  m_LocalScale: {x: 200, y: 200, z: 1}
+  m_LocalScale: {x: 300, y: 300, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 519420032}
@@ -2785,7 +2785,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 82893ba8a51e408408c3a50baa16fb60, type: 3}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Color: {r: 0.5471698, g: 0, b: 0.13227609, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -5335,6 +5335,7 @@ GameObject:
   - component: {fileID: 519420033}
   - component: {fileID: 519420034}
   - component: {fileID: 519420035}
+  - component: {fileID: 519420036}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -5500,6 +5501,23 @@ MonoBehaviour:
   rgb: {fileID: 954266147}
   strVEL: 0.1
   mat: {fileID: 2100000, guid: f68be68287cfe1943a848b8a476588bd, type: 2}
+--- !u!114 &519420036
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 519420028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a63d7617e45e70c4e92dc5ed80ab59cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bodyA: {fileID: 954266147}
+  bodyB: {fileID: 687800561004745351}
+  STRPD: 0.1
+  STRORS: 0.2
+  maxOrtoSize: 50
 --- !u!1 &521464329
 GameObject:
   m_ObjectHideFlags: 0
@@ -17147,7 +17165,7 @@ Transform:
   m_GameObject: {fileID: 1634551428}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 238.4}
-  m_LocalScale: {x: 130, y: 90, z: 1}
+  m_LocalScale: {x: 300, y: 300, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 519420032}
@@ -18217,7 +18235,7 @@ Transform:
   m_GameObject: {fileID: 1731196898}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 238.4}
-  m_LocalScale: {x: 130, y: 90, z: 1}
+  m_LocalScale: {x: 300, y: 300, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 519420032}
