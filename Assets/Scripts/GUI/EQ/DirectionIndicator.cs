@@ -24,11 +24,12 @@ public class DirectionIndicator : MonoBehaviour {
             }
             indicator.gameObject.SetActive ( delta );
         }
+        float deltaMY = 0;
         if ( delta && headRGB != null ) {
             indicator.rotation = Quaternion.FromToRotation ( Vector2.up, headRGB.velocity );
-            float deltaMY = 0.6f * Mathf.Round ( headRGB.velocity.magnitude * STRV );
-            indicator.GetChild ( 0 ).GetComponent<SpriteRenderer> ().size = new Vector2 ( 1, deltaMY );
+            deltaMY = 0.6f * Mathf.Round ( headRGB.velocity.magnitude * STRV );
         }
+        indicator.GetChild ( 0 ).GetComponent<SpriteRenderer> ().size = new Vector2 ( 1, deltaMY );
         deltaC = delta;
     }
 }
