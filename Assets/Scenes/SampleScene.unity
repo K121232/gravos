@@ -1412,7 +1412,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 450386760}
-  m_RootOrder: 3
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &195569619
 MonoBehaviour:
@@ -3257,7 +3257,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 100
+  m_Radius: 50
 --- !u!114 &392353657
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3588,7 +3588,7 @@ GameObject:
   - component: {fileID: 404197988}
   - component: {fileID: 404197987}
   m_Layer: 7
-  m_Name: Turret
+  m_Name: Turret Aft R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4433,12 +4433,12 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 809066353}
-  - {fileID: 1200828439}
-  - {fileID: 961161167}
   - {fileID: 195569618}
   - {fileID: 883509023}
-  - {fileID: 1072375454}
   - {fileID: 675728145}
+  - {fileID: 961161167}
+  - {fileID: 1072375454}
+  - {fileID: 1147689492}
   m_Father: {fileID: 1836057055}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5007,6 +5007,72 @@ RectTransform:
   m_AnchoredPosition: {x: 1.1, y: -20.000015}
   m_SizeDelta: {x: 400, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &500246546
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 500246547}
+  - component: {fileID: 500246549}
+  - component: {fileID: 500246548}
+  m_Layer: 7
+  m_Name: Proxy Missile Range
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &500246547
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 500246546}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2138652972}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!58 &500246548
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 500246546}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 75
+--- !u!114 &500246549
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 500246546}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03d7a733d384851458d103dc79f6de9d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  collectedColliders: []
+  collectedCount: 0
+  maskTag:
+  - Ship
+  invertMaskTag: 1
 --- !u!1 &502076421
 GameObject:
   m_ObjectHideFlags: 0
@@ -5518,6 +5584,7 @@ MonoBehaviour:
   STRPD: 0.1
   STRORS: 0.2
   maxOrtoSize: 50
+  maxDist: 10
 --- !u!1 &521464329
 GameObject:
   m_ObjectHideFlags: 0
@@ -6229,7 +6296,7 @@ GameObject:
   - component: {fileID: 574143166}
   - component: {fileID: 574143167}
   m_Layer: 7
-  m_Name: Launcher
+  m_Name: Launcher Port
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6293,7 +6360,7 @@ GameObject:
   - component: {fileID: 603600841}
   m_Layer: 7
   m_Name: Hitboxes
-  m_TagString: Untagged
+  m_TagString: Ship
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6846,7 +6913,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 450386760}
-  m_RootOrder: 6
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &675728146
 MonoBehaviour:
@@ -8821,7 +8888,7 @@ GameObject:
   - component: {fileID: 883509023}
   - component: {fileID: 883509024}
   m_Layer: 0
-  m_Name: Pool Tracer2
+  m_Name: Pool Tracer Slow 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8840,7 +8907,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 450386760}
-  m_RootOrder: 4
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &883509024
 MonoBehaviour:
@@ -9521,7 +9588,6 @@ GameObject:
   - component: {fileID: 954266155}
   - component: {fileID: 954266157}
   - component: {fileID: 954266156}
-  - component: {fileID: 954266149}
   - component: {fileID: 954266147}
   m_Layer: 6
   m_Name: Player
@@ -9551,36 +9617,6 @@ Rigidbody2D:
   m_SleepingMode: 0
   m_CollisionDetection: 1
   m_Constraints: 0
---- !u!60 &954266149
-PolygonCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 954266146}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Points:
-    m_Paths:
-    - - {x: 0, y: 1}
-      - {x: -0.95105654, y: 0.30901697}
-      - {x: -0.5877852, y: -0.80901706}
-      - {x: 0.58778536, y: -0.80901694}
-      - {x: 0.9510565, y: 0.30901712}
 --- !u!4 &954266155
 Transform:
   m_ObjectHideFlags: 0
@@ -9680,7 +9716,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 450386760}
-  m_RootOrder: 2
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &961161168
 MonoBehaviour:
@@ -9707,12 +9743,12 @@ GameObject:
   m_Component:
   - component: {fileID: 979949053}
   m_Layer: 7
-  m_Name: Hardpoint Aft 1
+  m_Name: Hardpoint Aft L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &979949053
 Transform:
   m_ObjectHideFlags: 0
@@ -9727,7 +9763,7 @@ Transform:
   m_Children:
   - {fileID: 1019172814}
   m_Father: {fileID: 1390872749}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
 --- !u!1 &985507948
 GameObject:
@@ -10400,7 +10436,7 @@ MonoBehaviour:
   target: {fileID: 954266146}
   tracker: {fileID: 954266155}
   varieties:
-  - {fileID: 1200828440}
+  - {fileID: 0}
   - {fileID: 809066354}
   selection: 0
 --- !u!1 &1015301004
@@ -10491,7 +10527,7 @@ GameObject:
   - component: {fileID: 1019172816}
   - component: {fileID: 1019172815}
   m_Layer: 7
-  m_Name: Turret
+  m_Name: Turret Aft L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11379,7 +11415,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1093017029
 Transform:
   m_ObjectHideFlags: 0
@@ -11870,6 +11906,53 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1145125657}
   m_CullTransparentMesh: 1
+--- !u!1 &1147689491
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1147689492}
+  - component: {fileID: 1147689493}
+  m_Layer: 0
+  m_Name: Pool Tracer Rail slug
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1147689492
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1147689491}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 450386760}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1147689493
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1147689491}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95561c068d5494849a919b0f78fcbe50, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  generator: {fileID: 4823976640582569768, guid: 5654ad0affa20b74181a30a0b6e7a098, type: 3}
+  expected: 5
+  pos: 0
 --- !u!1 &1152109158
 GameObject:
   m_ObjectHideFlags: 0
@@ -12541,53 +12624,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1198273971}
   m_CullTransparentMesh: 1
---- !u!1 &1200828438
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1200828439}
-  - component: {fileID: 1200828440}
-  m_Layer: 0
-  m_Name: Pool TEST
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1200828439
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1200828438}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 450386760}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1200828440
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1200828438}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 95561c068d5494849a919b0f78fcbe50, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  generator: {fileID: 687800561341309174, guid: 844f332839523e74faa2973b4d09a641, type: 3}
-  expected: 10
-  pos: 0
 --- !u!1 &1201073515
 GameObject:
   m_ObjectHideFlags: 0
@@ -14294,6 +14330,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1390872749}
   - component: {fileID: 1390872750}
+  - component: {fileID: 1390872752}
+  - component: {fileID: 1390872751}
   m_Layer: 7
   m_Name: Hardpoints
   m_TagString: Untagged
@@ -14313,9 +14351,9 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 2086510476}
   - {fileID: 979949053}
   - {fileID: 1968166974}
-  - {fileID: 2086510476}
   - {fileID: 1093017029}
   - {fileID: 1618281213}
   m_Father: {fileID: 687800561004745345}
@@ -14334,13 +14372,40 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   turrets:
-  - {fileID: 1019172815}
   - {fileID: 404197987}
+  - {fileID: 1019172815}
+  perimeterRadar: {fileID: 392353657}
+--- !u!114 &1390872751
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1390872748}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6fbc4558756700a4a8f1a1342f24417d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  turrets:
   - {fileID: 1412836197}
+  perimeterRadar: {fileID: 1517623859}
+--- !u!114 &1390872752
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1390872748}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6fbc4558756700a4a8f1a1342f24417d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  turrets:
   - {fileID: 574143167}
   - {fileID: 2071131212}
-  launchers: []
-  perimeterRadar: {fileID: 392353657}
+  perimeterRadar: {fileID: 500246549}
 --- !u!1 &1395347783
 GameObject:
   m_ObjectHideFlags: 0
@@ -14623,7 +14688,7 @@ GameObject:
   - component: {fileID: 1412836198}
   - component: {fileID: 1412836197}
   m_Layer: 7
-  m_Name: Turret
+  m_Name: Turret Bow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14658,24 +14723,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canAuto: 1
-  fireRate: 0.1
-  cooldownReload: 1
+  fireRate: 0
+  cooldownReload: 5
   reserve: -1
   clip: 1
   clipDrain: 1
   mainHull: {fileID: 687800561004745346}
-  autoloader: {fileID: 883509024}
+  autoloader: {fileID: 1147689493}
   trailLoader: {fileID: 1072375455}
   target: {fileID: 0}
   targetRGB: {fileID: 0}
-  traversalSpeed: 90
-  velocityPredictStrength: 0.2
-  coneMaxDeviation: 5
+  traversalSpeed: 120
+  velocityPredictStrength: 0.15
+  coneMaxDeviation: 0.01
   minRangeOffset: 2
   regen: 0
-  f: 5
-  z: 0
-  r: 2
+  f: 6
+  z: 0.5
+  r: 7
   fireControlOverride: 0
 --- !u!114 &1412836198
 MonoBehaviour:
@@ -15409,7 +15474,7 @@ GameObject:
   - component: {fileID: 1477007618}
   m_Layer: 6
   m_Name: Main Hitbox
-  m_TagString: Untagged
+  m_TagString: Ship
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -15439,7 +15504,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -15615,7 +15680,7 @@ GameObject:
   - component: {fileID: 1492350465}
   m_Layer: 6
   m_Name: Hitboxes
-  m_TagString: Untagged
+  m_TagString: Ship
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -15712,6 +15777,72 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1502255055}
   m_CullTransparentMesh: 1
+--- !u!1 &1517623856
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1517623857}
+  - component: {fileID: 1517623859}
+  - component: {fileID: 1517623858}
+  m_Layer: 7
+  m_Name: Proxy Long Range
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1517623857
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1517623856}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2138652972}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!58 &1517623858
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1517623856}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 150
+--- !u!114 &1517623859
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1517623856}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03d7a733d384851458d103dc79f6de9d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  collectedColliders: []
+  collectedCount: 0
+  maskTag:
+  - Ship
+  invertMaskTag: 1
 --- !u!1 &1520130068
 GameObject:
   m_ObjectHideFlags: 0
@@ -16987,7 +17118,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1618281213
 Transform:
   m_ObjectHideFlags: 0
@@ -20959,12 +21090,12 @@ GameObject:
   m_Component:
   - component: {fileID: 1968166974}
   m_Layer: 7
-  m_Name: Hardpoint Aft 2
+  m_Name: Hardpoint Aft R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1968166974
 Transform:
   m_ObjectHideFlags: 0
@@ -20979,7 +21110,7 @@ Transform:
   m_Children:
   - {fileID: 404197986}
   m_Father: {fileID: 1390872749}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
 --- !u!1 &1978895997
 GameObject:
@@ -22036,7 +22167,7 @@ GameObject:
   - component: {fileID: 2071131211}
   - component: {fileID: 2071131212}
   m_Layer: 7
-  m_Name: Launcher
+  m_Name: Launcher Starboard
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -22232,7 +22363,7 @@ Transform:
   m_Children:
   - {fileID: 1412836196}
   m_Father: {fileID: 1390872749}
-  m_RootOrder: 2
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2104378777
 GameObject:
@@ -22688,6 +22819,8 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 392353655}
+  - {fileID: 500246547}
+  - {fileID: 1517623857}
   m_Father: {fileID: 687800561004745345}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -22989,7 +23122,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 687800561004745346}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 93a969173d01a2c4a9965b0b20b79cd4, type: 3}
   m_Name: 

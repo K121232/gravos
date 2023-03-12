@@ -68,14 +68,14 @@ Material:
     - _MarginSize_1: 0.1
     - _QueueControl: 0
     - _QueueOffset: 0
-    - _SANG: -111.67511
-    - _SVEL: 98.68966
+    - _SANG: 166.82602
+    - _SVEL: 120.45454
     - _VDENS: 8
     m_Colors:
     - _Color: {r: 0.40620375, g: 0, b: 1, a: 1}
     - _Flip: {r: 1, g: 1, b: 1, a: 1}
     - _RendererColor: {r: 1, g: 1, b: 1, a: 1}
-    - _SRCENT: {r: -74.77203, g: -135.47333, b: 0, a: 0}
+    - _SRCENT: {r: 21.905119, g: 424.79965, b: 0, a: 0}
     - _SVEL: {r: 0, g: -5.81, b: 0, a: 0}
     - _Vector2: {r: 0.9, g: 0.9, b: 0, a: 0}
   m_BuildTextureStacks: []

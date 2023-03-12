@@ -23,7 +23,6 @@ public class SOD {
         if ( yv == Mathf.Infinity ) yv = 0;
 
         float ya = T * ( delta + k3 * xv - k1 * yv ) / k2s;
-        yv += ya;
 
         return ya; 
     }

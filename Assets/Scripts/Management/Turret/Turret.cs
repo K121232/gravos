@@ -28,8 +28,8 @@ public class Turret : TriggerAssembly {
         if ( target == alpha ) return;
         if ( alpha == null ) { target = null; targetRGB = null; return; }
         target = alpha.transform;
-        if ( !alpha.TryGetComponent ( out targetRGB ) ) {
-            targetRGB = null;
+        if ( target.GetComponent<Collider2D> () != null ) {
+            targetRGB = target.GetComponent<Collider2D> ().attachedRigidbody;
         }
     }
 
@@ -54,10 +54,10 @@ public class Turret : TriggerAssembly {
         Vector3 tgv;
         if ( target == null ) { tgv = transform.parent.up; } else { tgv = target.position - transform.position; }
         if ( rgb != null ) {
-            tgv += (Vector3)rgb.velocity * velocityPredictStrength;
+            tgv -= (Vector3)rgb.velocity * velocityPredictStrength;
         }
         if ( targetRGB != null ) {
-            tgv -= ( Vector3 )targetRGB.velocity * velocityPredictStrength;
+            tgv += ( Vector3 )targetRGB.velocity * velocityPredictStrength;
         }
         float delta = Vector2.SignedAngle ( transform.up, tgv );
         float actualAngle = delta;
@@ -66,12 +66,13 @@ public class Turret : TriggerAssembly {
                 sod = new SOD ( f, z, r, delta );
                 regen = false;
             }
-            delta = sod.Update ( Time.deltaTime, delta, Vector2.SignedAngle ( Vector2.up, tgv ) );
+            delta = sod.Update ( Time.deltaTime, delta, Vector2.SignedAngle ( Vector2.up, tgv ), rgb != null ? rgb.angularVelocity : 0 );
             delta = Mathf.Clamp ( delta, -traversalSpeed, traversalSpeed ) * Time.deltaTime;
             transform.Rotate ( Vector3.forward, delta );
-            //sod.UpdateYD ( delta );
         }
-        //Debug.DrawLine( transform.position, transform.position + transform.up * 5, Color.cyan );
+
+        Debug.DrawLine ( transform.position, tgv + transform.position, Color.yellow );
+        Debug.DrawLine( transform.position, transform.position + transform.up * 50, Color.cyan );
         //DEBUGRange( coneMaxRange );
        
         if ( deltaA == 0 ) { Reload(); }
