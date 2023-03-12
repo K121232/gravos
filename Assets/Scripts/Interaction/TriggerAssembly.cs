@@ -76,7 +76,13 @@ public class TriggerAssembly : MonoBehaviour {
 
     public virtual void Fire( Vector2 prv ) { }
 
-    public virtual int  GetAmmo() {
-        return Mathf.CeilToInt ( deltaA / clipDrain );
+    public virtual float  GetAmmo() {
+        if ( clipDrain == 0 ) return 999; 
+        return deltaA / clipDrain;
+    }
+
+    public virtual float GetPercentLoad () {
+        if ( clip == 0 ) return 0;
+        return deltaA / clip;
     }
 }
