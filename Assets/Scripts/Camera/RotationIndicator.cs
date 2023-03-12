@@ -20,8 +20,8 @@ public class RotationIndicator : MonoBehaviour {
         int safety = 400;
 
         while ( Mathf.Abs( rhoSpeed ) > 0.05f && safety-- > 0 ) {
-            rhoIndicator = Quaternion.Euler( 0, 0, rhoSpeed * Time.fixedTime ) * rhoIndicator;
-            rhoSpeed -= rhoSpeed * angleNeutralDrag * Time.fixedTime;
+            rhoIndicator = Quaternion.Euler( 0, 0, rhoSpeed * Time.fixedDeltaTime ) * rhoIndicator;
+            rhoSpeed -= rhoSpeed * angleNeutralDrag * Time.fixedDeltaTime;
         }
 
         indicator.rotation = Quaternion.FromToRotation( Vector2.up, rhoIndicator );
