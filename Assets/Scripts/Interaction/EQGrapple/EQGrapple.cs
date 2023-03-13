@@ -3,6 +3,10 @@ using UnityEngine;
 public class EQGrapple : TriggerAssembly {
     public  GrappleHead head;
 
+    public  AimHelper   aimHelper;
+    public  Transform   aimHelperTarget;
+    public  Transform   aimHelperBase;
+
     public  float       launchSpeed;
     public  float       maxRange;
     public  bool        headLaunched;
@@ -29,8 +33,10 @@ public class EQGrapple : TriggerAssembly {
         //transform.rotation = Quaternion.Euler( 0, 0, Vector2.SignedAngle( Vector2.up, stwpCam.ScreenToWorldPoint( Input.mousePosition ) - transform.position ) );
 
         if ( Input.GetKey ( KeyCode.E ) || Input.GetKey ( KeyCode.K ) || Input.GetMouseButton ( 1 ) ) {
+            aimHelper.LockIn ( aimHelperTarget );
             TriggerHold ();
         } else {
+            aimHelper.LockIn ( aimHelperBase );
             TriggerRelease ();
         }
 
