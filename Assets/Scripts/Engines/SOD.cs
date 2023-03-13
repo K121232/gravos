@@ -16,6 +16,7 @@ public class SOD {
     }
 
     public  float   Update ( float T, float delta, float x, float yv = Mathf.Infinity ) {
+        if ( T == 0 ) return 0;
         xv = ( x - xp ) / T;
         xp = x;
         float k2s = Mathf.Max ( k2, 1.1f * ( T * T / 4 + T * k1 / 2 ) );

@@ -89,7 +89,7 @@ public class TeflonMovement : MonoBehaviour {
 
         deltaAngle = VClip( deltaAngle * angleAcc * Time.fixedDeltaTime, rgb.angularVelocity, angleMxv );
 
-        if ( deltaAngle == float.NaN ) deltaAngle = 0;
+        if ( float.IsNaN ( deltaAngle ) ) deltaAngle = 0;
         rgb.angularVelocity += deltaAngle;
         rgb.angularVelocity -= angleDrag * rgb.angularVelocity * Time.fixedDeltaTime;
 
