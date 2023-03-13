@@ -5786,12 +5786,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bodyA: {fileID: 954266147}
   bodyB: {fileID: 687800561004745351}
-  STRPD: 0.125
-  STRORS: 0.2
-  maxDistance: 200
+  STRPD: 0.3
+  STRORS: 0.3
+  maxDistance: 20
   minOrtoSize: 25
-  maxOrtoSize: 70
-  maxDist: 0
+  maxOrtoSize: 90
 --- !u!1 &521464329
 GameObject:
   m_ObjectHideFlags: 0
@@ -10465,7 +10464,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hitboxes:
   - alpha: {fileID: 1477007618}
-    beta: 1
+    beta: 0
   baseHealth: 5
   currentHealth: 0
   notice: {fileID: 1072182623}
@@ -25531,7 +25530,7 @@ MonoBehaviour:
   - {x: 0, y: 250}
   - {x: 0, y: 0}
   - {x: -500, y: 1000}
-  resolution: 0.01
+  resolution: 0.001
   scanDistance: 0.1
   major: 0
   minor: 0

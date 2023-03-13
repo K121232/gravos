@@ -52,13 +52,17 @@ public class Turret : TriggerAssembly {
 
     public override void Update() {
         Vector3 tgv;
-        if ( target == null ) { tgv = transform.parent.up; } else { tgv = target.position - transform.position; }
-        if ( rgb != null ) {
-            tgv -= (Vector3)rgb.velocity * velocityPredictStrength;
+        
+        if ( target == null ) { tgv = transform.parent.up; } else {
+            tgv = target.position - transform.position;
+            if ( rgb != null ) {
+                tgv -= (Vector3) rgb.velocity * velocityPredictStrength;
+            }
+            if ( targetRGB != null ) {
+                tgv += (Vector3) targetRGB.velocity * velocityPredictStrength;
+            }
         }
-        if ( targetRGB != null ) {
-            tgv += ( Vector3 )targetRGB.velocity * velocityPredictStrength;
-        }
+
         float delta = Vector2.SignedAngle ( transform.up, tgv );
         float actualAngle = delta;
         if ( traversalSpeed != 0 ) {
@@ -71,8 +75,8 @@ public class Turret : TriggerAssembly {
             transform.Rotate ( Vector3.forward, delta );
         }
 
-        Debug.DrawLine ( transform.position, tgv + transform.position, Color.yellow );
-        Debug.DrawLine( transform.position, transform.position + transform.up * 50, Color.cyan );
+        //Debug.DrawLine ( transform.position, tgv + transform.position, Color.yellow );
+        //Debug.DrawLine( transform.position, transform.position + transform.up * 50, Color.cyan );
         //DEBUGRange( coneMaxRange );
        
         if ( deltaA == 0 ) { Reload(); }

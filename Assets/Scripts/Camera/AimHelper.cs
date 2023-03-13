@@ -17,7 +17,6 @@ public class AimHelper : MonoBehaviour {
 
     public  float           minOrtoSize;
     public  float           maxOrtoSize;
-    public  float           maxDist;
 
     private void Start () {
         cam = GetComponent<Camera> ();
@@ -27,7 +26,7 @@ public class AimHelper : MonoBehaviour {
     }
 
     void LateUpdate () {
-        Vector2 delta = ( bodyB.transform.position - bodyA.transform.position );
+        Vector2 delta = ( bodyB.transform.position - bodyA.transform.position ) * STRPD;
         Vector2 filter =  new Vector2 ( ((float)Screen.height)/((float)Screen.width), 1 );
 
         delta.Scale ( filter );
@@ -36,7 +35,7 @@ public class AimHelper : MonoBehaviour {
         filter.y = 1.0f / filter.y;
         delta.Scale ( filter );
 
-        tether.offset = originalOffset + (Vector3)delta * STRPD;
+        tether.offset = originalOffset + (Vector3)delta;
         cam.orthographicSize = Mathf.Clamp ( originalSize + ( bodyB.transform.position - bodyA.transform.position ).magnitude * STRORS, minOrtoSize, maxOrtoSize );
     }
 }
