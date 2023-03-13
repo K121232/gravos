@@ -1874,7 +1874,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 239765330}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -45.02}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -5465,7 +5465,6 @@ MonoBehaviour:
   velocityFactor: 0.3
   strength: 1.5
   rotationStrength: 0
-  maxLength: 2
 --- !u!114 &519420034
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5516,10 +5515,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bodyA: {fileID: 954266147}
   bodyB: {fileID: 687800561004745351}
-  STRPD: 0.1
+  STRPD: 0.15
   STRORS: 0.2
+  maxDistance: 200
   minOrtoSize: 25
-  maxOrtoSize: 30
+  maxOrtoSize: 70
 --- !u!1 &521464329
 GameObject:
   m_ObjectHideFlags: 0
@@ -7939,7 +7939,7 @@ Canvas:
   serializedVersion: 3
   m_RenderMode: 1
   m_Camera: {fileID: 519420031}
-  m_PlaneDistance: 5
+  m_PlaneDistance: 100
   m_PixelPerfect: 1
   m_ReceivesEvents: 1
   m_OverrideSorting: 0

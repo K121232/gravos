@@ -13,6 +13,8 @@ public class AimHelper : MonoBehaviour {
     private Vector3         originalOffset;
     private float           originalSize;
 
+    public  float           maxDistance;
+
     public  float           minOrtoSize;
     public  float           maxOrtoSize;
 
@@ -24,7 +26,9 @@ public class AimHelper : MonoBehaviour {
     }
 
     void LateUpdate () {
-        tether.offset = originalOffset + ( bodyB.transform.position - bodyA.transform.position ) * STRPD;
+        Vector2 delta = ( bodyB.transform.position - bodyA.transform.position );
+        if ( delta.magnitude > maxDistance ) { delta = delta.normalized * maxDistance; }
+        tether.offset = originalOffset + (Vector3)delta * STRPD;
         cam.orthographicSize = Mathf.Clamp ( originalSize + ( bodyB.transform.position - bodyA.transform.position ).magnitude * STRORS, minOrtoSize, maxOrtoSize );
     }
 }
