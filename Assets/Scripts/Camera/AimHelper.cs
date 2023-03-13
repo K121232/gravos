@@ -17,6 +17,7 @@ public class AimHelper : MonoBehaviour {
 
     public  float           minOrtoSize;
     public  float           maxOrtoSize;
+    public  float           maxDist;
 
     private void Start () {
         cam = GetComponent<Camera> ();

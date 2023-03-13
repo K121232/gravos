@@ -68,8 +68,8 @@ Material:
     - _MarginSize_1: 0.1
     - _QueueControl: 0
     - _QueueOffset: 0
-    - _SANG: -0.311533
-    - _SVEL: 112.316696
+    - _SANG: 121.99185
+    - _SVEL: 159.89636
     - _VDENS: 8
     m_Colors:
     - _Color: {r: 0.40620375, g: 0, b: 1, a: 1}
