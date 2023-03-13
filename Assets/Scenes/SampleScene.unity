@@ -5462,7 +5462,7 @@ MonoBehaviour:
   target: {fileID: 954266155}
   offset: {x: 0, y: 0, z: -10}
   trackingRigidbody: {fileID: 954266147}
-  velocityFactor: 0.3
+  velocityFactor: 0.2
   strength: 1.5
   rotationStrength: 0
 --- !u!114 &519420034
@@ -5515,7 +5515,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bodyA: {fileID: 954266147}
   bodyB: {fileID: 687800561004745351}
-  STRPD: 0.15
+  STRPD: 0.125
   STRORS: 0.2
   maxDistance: 200
   minOrtoSize: 25
@@ -23096,7 +23096,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 687800561004745346}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 93a969173d01a2c4a9965b0b20b79cd4, type: 3}
   m_Name: 
