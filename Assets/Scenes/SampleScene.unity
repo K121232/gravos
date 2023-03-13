@@ -15991,12 +15991,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d33bc1d30a8236d4a9fb78e0ad894738, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tRoot: {fileID: 239765331}
   bridge: {fileID: 954266157}
   hpSlider: {fileID: 478676799}
   shieldCell: {fileID: 542776225}
   shieldSlider: {fileID: 179742038}
   corvoCell: {fileID: 382234788}
   timeSlider: {fileID: 535264280}
+  STRV: 100
+  STRV2: 0.9
 --- !u!114 &1559793001
 MonoBehaviour:
   m_ObjectHideFlags: 0
