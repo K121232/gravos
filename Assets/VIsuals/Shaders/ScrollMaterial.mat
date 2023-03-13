@@ -75,7 +75,7 @@ Material:
     - _Color: {r: 0.40620375, g: 0, b: 1, a: 1}
     - _Flip: {r: 1, g: 1, b: 1, a: 1}
     - _RendererColor: {r: 1, g: 1, b: 1, a: 1}
-    - _SRCENT: {r: -137.73767, g: 68.37463, b: 0, a: 0}
+    - _SRCENT: {r: 121.52851, g: -88.05458, b: 0, a: 0}
     - _SVEL: {r: 0, g: -5.81, b: 0, a: 0}
     - _Vector2: {r: 0.9, g: 0.9, b: 0, a: 0}
   m_BuildTextureStacks: []

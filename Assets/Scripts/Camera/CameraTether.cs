@@ -13,15 +13,14 @@ public class CameraTether : MonoBehaviour {
     private Vector3     delta;
 
     void LateUpdate() {
-        //DEBUGRange( deadRange );
-        //DEBUGRange( tpRange );
-        //Debug.DrawLine( transform.position - offset, transform.position + delta - offset );
         if ( trackingRigidbody != null ) {
             delta = ( Vector3 )target.position + ( Vector3 )trackingRigidbody.velocity * velocityFactor;
         } else {
             delta = target.position;
         }
+
         delta += offset;
+
         transform.position = Vector3.Lerp( transform.position - offset, delta, strength ) + offset;
         transform.rotation = Quaternion.Lerp ( transform.rotation, target.rotation, rotationStrength * Time.unscaledDeltaTime );
     }
