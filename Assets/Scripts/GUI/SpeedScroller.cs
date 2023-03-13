@@ -3,9 +3,14 @@ using UnityEngine;
 public class SpeedScroller : MonoBehaviour {
     public  Rigidbody2D     rgb;
     public  float           strVEL;
-    public  Material        mat;
+    public  SpriteRenderer  targetSprite;
+    private Material        mat;
 
     private float           deltaTime;
+
+    private void Start () {
+        mat = targetSprite.material;
+    }
 
     void LateUpdate() {
         deltaTime += rgb.velocity.magnitude * strVEL * Time.deltaTime;

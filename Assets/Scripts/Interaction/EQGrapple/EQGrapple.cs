@@ -33,7 +33,6 @@ public class EQGrapple : TriggerAssembly {
         //transform.rotation = Quaternion.Euler( 0, 0, Vector2.SignedAngle( Vector2.up, stwpCam.ScreenToWorldPoint( Input.mousePosition ) - transform.position ) );
 
         if ( Input.GetKey ( KeyCode.E ) || Input.GetKey ( KeyCode.K ) || Input.GetMouseButton ( 1 ) ) {
-            aimHelper.LockIn ( aimHelperTarget );
             TriggerHold ();
         } else {
             aimHelper.LockIn ( aimHelperBase );
@@ -66,6 +65,7 @@ public class EQGrapple : TriggerAssembly {
         if ( headLaunched ) {
             if ( triggerDown ) {
                 if ( !head.detached && head.gameObject.activeInHierarchy ) {
+                    aimHelper.LockIn ( aimHelperTarget );
                     Vector2 delta   = head.transform.position - transform.position;
                     if ( delta.magnitude > head.attachLength ) {
                         Vector2 deltaN  = delta.normalized;
