@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4823976640582569772}
   - component: {fileID: 4823976640582569773}
   - component: {fileID: 2963599755253607024}
-  - component: {fileID: -841570625396425226}
+  - component: {fileID: 4237400770276980706}
   m_Layer: 7
   m_Name: Tracer Rail Slug
   m_TagString: Tracer
@@ -110,7 +110,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lifespan: 10
---- !u!114 &-841570625396425226
+--- !u!114 &4237400770276980706
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

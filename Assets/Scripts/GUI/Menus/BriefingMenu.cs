@@ -9,8 +9,7 @@ public class BriefingMenu : MenuCore {
     public  Button          buttonN;
 
     public override void Incoming ( bool a ) {
-        iter = 0;
-        FlipPage ( 0 );
+        FlipPage ( -pages.Length );
         base.Incoming ( a ); 
     }
 
@@ -32,6 +31,7 @@ public class BriefingMenu : MenuCore {
     public void Update () {
         if ( Input.GetKeyDown ( KeyCode.B ) ) {
             Backflow ( !status );
+            FlipPage ( -pages.Length );
         }
     }
 }

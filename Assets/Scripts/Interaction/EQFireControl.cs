@@ -1,7 +1,6 @@
 using UnityEngine;
 
 public class EQFireControl : MonoBehaviour {
-    public  Camera          cam;
     public  Turret[]        turrets;
     public  Transform       carrot;
 
@@ -10,13 +9,6 @@ public class EQFireControl : MonoBehaviour {
             turrets [ i ].LoadTarget ( carrot.gameObject );
             turrets [ i ].fireControlOverride = true;
         }
-    }
-
-    private void LateUpdate () {
-        Vector3 delta = cam.ScreenToWorldPoint ( Input.mousePosition );
-        delta.z = 0;
-        carrot.position = delta;
-        carrot.rotation = transform.rotation;
     }
 
     void Update () {
