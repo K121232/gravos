@@ -14,6 +14,7 @@ public class TeflonPMove : TeflonMovement {
         regen       = true;
         armourLock  = false;
         base.Start ();
+        //sod.PassThrough ( 0.15f, 0.005f, 0.075f );
     }
 
     public  bool        flybywire;
@@ -22,6 +23,7 @@ public class TeflonPMove : TeflonMovement {
     public override void Update() {
         if ( regen ) {
             sod = new SOD ( f, z, r, Vector2.SignedAngle ( Vector2.up, -rgb.velocity ) );
+            Debug.Log ( sod.Outcore () );
             regen = false;
         }
 

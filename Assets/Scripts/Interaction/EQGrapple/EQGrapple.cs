@@ -30,9 +30,7 @@ public class EQGrapple : TriggerAssembly {
     }
 
     public override void Update () {
-        //transform.rotation = Quaternion.Euler( 0, 0, Vector2.SignedAngle( Vector2.up, stwpCam.ScreenToWorldPoint( Input.mousePosition ) - transform.position ) );
-
-        if ( Input.GetKey ( KeyCode.E ) || Input.GetKey ( KeyCode.K ) || Input.GetMouseButton ( 1 ) ) {
+        if ( Input.GetAxis ("Fire2") > 0 ) {
             TriggerHold ();
         } else {
             aimHelper.LockIn ( aimHelperBase );

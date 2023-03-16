@@ -8,7 +8,7 @@ public class EQTimebend : MonoBehaviour {
     private bool        pastStatus, delta;
 
     public void Update () {
-        delta = Input.GetKey ( KeyCode.Space ) && cell.Available ();
+        delta = Input.GetAxis ("Fire3") > 0 && cell.Available ();
         if ( delta ) {
             cell.VariDrain ( Time.unscaledDeltaTime );
         }

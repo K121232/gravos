@@ -15864,10 +15864,10 @@ MonoBehaviour:
   mxv: 50
   angleAcc: 720
   angleMxv: 240
-  angleDrag: 0
+  angleDrag: 3
   DEBUGOFF: {x: 0, y: 0}
   f: 5
-  z: 3
+  z: 0.5
   r: 1
   regen: 0
   armourLock: 0
@@ -30986,14 +30986,14 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1795681166}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f8e8e55ed22001745ba943440e9ec8e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   turrets:
   - {fileID: 1459109154}
-  carrot: {fileID: 0}
+  carrot: {fileID: 132878283}
 --- !u!1 &1799312943
 GameObject:
   m_ObjectHideFlags: 0

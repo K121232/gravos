@@ -4,6 +4,8 @@ public class EQFireControl : MonoBehaviour {
     public  Turret[]        turrets;
     public  Transform       carrot;
 
+    private bool            transition, delta;
+
     private void Start () {
         for ( int i = 0; i < turrets.Length; i++ ) {
             turrets [ i ].LoadTarget ( carrot.gameObject );
@@ -12,15 +14,13 @@ public class EQFireControl : MonoBehaviour {
     }
 
     void Update () {
-        if ( Input.GetMouseButtonDown( 0 ) ) {
+        delta = Input.GetAxis ( "Fire1" ) > 0;
+        if ( delta != transition ) {
             for ( int i = 0; i < turrets.Length; i++ ) {
-                turrets [ i ].TriggerHold ();
+                if ( delta ) {  turrets [ i ].TriggerHold (); }
+                else {          turrets [ i ].TriggerRelease (); }
             }
-        }
-        if ( Input.GetMouseButtonUp ( 0 ) ) {
-            for ( int i = 0; i < turrets.Length; i++ ) {
-                turrets [ i ].TriggerRelease ();
-            }
-        }
+            transition = delta;
+        }            
     }
 }
