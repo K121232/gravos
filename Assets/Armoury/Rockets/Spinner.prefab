@@ -220,7 +220,7 @@ MonoBehaviour:
   targetRGB: {fileID: 0}
   STRP: 0.9
   STRV1: 0.1
-  STRV2: 0.1
+  STRV2: 0.15
 --- !u!114 &2430949624141748646
 MonoBehaviour:
   m_ObjectHideFlags: 0

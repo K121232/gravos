@@ -233,4 +233,4 @@ MonoBehaviour:
   targetRGB: {fileID: 0}
   STRP: 0.6
   STRV1: 0.15
-  STRV2: 0.15
+  STRV2: 0.25

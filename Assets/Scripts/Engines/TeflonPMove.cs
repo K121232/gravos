@@ -31,7 +31,7 @@ public class TeflonPMove : TeflonMovement {
             deltaAngle += FilterAngle ( sod.Update ( Time.fixedDeltaTime,
                 Vector2.SignedAngle ( transform.up, cam.ScreenToWorldPoint ( Input.mousePosition ) - transform.position ),
                 Vector2.SignedAngle ( Vector2.up, cam.ScreenToWorldPoint ( Input.mousePosition ) - transform.position ), rgb.angularVelocity ) ) / Time.fixedDeltaTime;
-            delta += Input.GetAxis ( "Vertical" );
+            delta += Mathf.Max ( Input.GetAxis ( "Vertical" ), 0 );
         } else {
             Vector2 deltaI = new Vector2 ( Input.GetAxis ("Horizontal"), Input.GetAxis("Vertical") );
             if ( deltaI.magnitude >= 0.1f ) {

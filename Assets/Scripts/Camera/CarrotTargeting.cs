@@ -4,11 +4,12 @@ public class CarrotTargeting : MonoBehaviour {
     public  Camera          cam;
     public  Transform       carrot;
 
-    public  Transform       carrotStew;
+    private void OnDisable () {
+        carrot.localPosition = Vector3.zero;
+    }
 
     void LateUpdate () {
         Vector2 delta = cam.ScreenToWorldPoint ( Input.mousePosition );
-        if ( carrotStew != null ) delta = carrotStew.position;
         carrot.position = delta;
         carrot.rotation = transform.rotation;
     }

@@ -19,6 +19,7 @@ public class MenuCore : MonoBehaviour {
 
     public virtual void Start () {
         animator = GetComponent<Animator> ();
+        Backflow ( false );
     }
 
     public  virtual void Backflow ( bool a ) {
