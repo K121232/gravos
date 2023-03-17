@@ -4,7 +4,7 @@ public class GrappleHead : MonoBehaviour {
     private Rigidbody2D     rgb;
 
     private Transform       anchor;
-    private Rigidbody2D     anchorRgb;
+    private Rigidbody2D     attachedRGB;
     private float           anchorMaxRange;
 
     public  Transform       savedParent;
@@ -16,6 +16,13 @@ public class GrappleHead : MonoBehaviour {
     public  Radar       gravRadar;
 
     public  float       STRGrav;
+
+    private void        OnGrappleAttach () {
+        if ( attachedRGB != null && attachedRGB.GetComponent <HSTM>() != null ) {
+            attachedRGB.GetComponent<HSTM> ().target = null;
+            attachedRGB.gameObject.layer = anchor.gameObject.layer;
+        }
+    }
 
     public void SetAnchorParam ( Transform a, float b ) {
         anchor = a; anchorMaxRange = b;
@@ -32,7 +39,7 @@ public class GrappleHead : MonoBehaviour {
         transform.SetParent( savedParent );
         GetComponent<Rigidbody2D>().isKinematic = false;
         detached = true;
-        anchorRgb = null;
+        attachedRGB = null;
         detached = true;
     }
 
@@ -44,22 +51,6 @@ public class GrappleHead : MonoBehaviour {
         attachRadar.Clear();
     }
 
-    private Vector3     offset = Vector3.zero;
-    private void DEBUGRange( float tg ) {
-        Vector3 hand = Vector3.up * tg;
-        int segments = 30;
-        for ( int i = 0; i < segments; i++ ) {
-            Debug.DrawLine( transform.position + hand - offset, transform.position + Quaternion.Euler( 0, 0, 360 / segments ) * hand - offset );
-            hand = Quaternion.Euler( 0, 0, 360 / segments ) * hand;
-        }
-    }
-
-    private void LateUpdate() {
-        if ( !detached ) {
-            DEBUGRange( attachLength );
-        }
-    }
-
     void Update() {
         if ( detached && ( transform.position - anchor.position ).magnitude > anchorMaxRange ) {
             transform.SetParent( savedParent );
@@ -67,15 +58,17 @@ public class GrappleHead : MonoBehaviour {
         }
         if ( detached && attachRadar.collectedCount != 0 ) {
             detached = false;
-
             attachLength = Mathf.Max ( minAttachLength, ( transform.position - anchor.position ).magnitude );
-            transform.SetParent( attachRadar.collectedColliders[0].transform );
-            transform.position = attachRadar.collectedColliders[0].ClosestPoint( transform.position );
 
-            attachRadar.collectedColliders[0].transform.TryGetComponent( out anchorRgb );
+            transform.SetParent( attachRadar.collectedColliders[0].transform );
+            transform.localPosition = Vector3.zero;
+
+            attachRadar.collectedColliders[0].transform.TryGetComponent( out attachedRGB );
 
             rgb.isKinematic = true;            
             rgb.velocity = Vector2.zero;
+
+            OnGrappleAttach ();
         }
     }
 
@@ -89,26 +82,19 @@ public class GrappleHead : MonoBehaviour {
     }
 
     public void Propagate ( Vector2 force ) {
-        if ( anchorRgb != null ) {
-            anchorRgb.AddForceAtPosition( force / rgb.mass, transform.position );
+        if ( attachedRGB != null ) {
+            attachedRGB.AddForceAtPosition( force / rgb.mass, transform.position );
         }
     }
 
     public Vector2 Interogate () {
-        if ( anchorRgb != null ) {
-            return anchorRgb.velocity;
+        if ( attachedRGB != null ) {
+            return attachedRGB.velocity;
         }
         return Vector2.zero;
     }
 
-    public float InterogateMass () {
-        if ( anchorRgb != null ) {
-            return anchorRgb.mass;
-        }
-        return -1;
-    }
-
     public  Rigidbody2D GetAnchorRGB() {
-        return anchorRgb;
+        return attachedRGB;
     }
 }

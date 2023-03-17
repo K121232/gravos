@@ -16210,7 +16210,7 @@ MonoBehaviour:
   mxv: 50
   angleAcc: 720
   angleMxv: 240
-  angleDrag: 3
+  angleDrag: 5
   DEBUGOFF: {x: 0, y: 0}
   f: 5
   z: 0.5
@@ -17070,6 +17070,7 @@ MonoBehaviour:
   - {fileID: 809066354}
   - {fileID: 1850532024}
   selection: 0
+  spawnKey: 47
 --- !u!1 &1015301004
 GameObject:
   m_ObjectHideFlags: 0

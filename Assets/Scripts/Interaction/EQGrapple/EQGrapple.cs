@@ -17,8 +17,8 @@ public class EQGrapple : TriggerAssembly {
     public  float       orbitalDampeningStrength;
     public  float       orbitalDampeningPower;
 
-    private Vector3     pastTetherHeading;
     private Vector2     forceAccumulator;
+    private float       angleAccumulator;
 
     private  LineRenderer    lineRenderer;
 
@@ -82,7 +82,6 @@ public class EQGrapple : TriggerAssembly {
                         rgb.AddForce ( forceAccumulator, ForceMode2D.Impulse );
                         head.Propagate ( -forceAccumulator * rgb.mass );
                     }
-                    pastTetherHeading = delta;
                 }
             } else {
                 head.gameObject.SetActive( false );
