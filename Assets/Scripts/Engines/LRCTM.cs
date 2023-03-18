@@ -58,9 +58,10 @@ public class LRCTM : TM {
 
         if ( scanDistance == 0 ) return;
 
-        for ( float i = 0; i < scanDistance; i += resolution ) {
-            int     md = ( major + Mathf.FloorToInt ( i + minor ) * 2 ) % ( points.Length - 2 );
+        for ( float i = -scanDistance; i < scanDistance; i += resolution ) {
+            int     md = ( major + Mathf.FloorToInt ( i + minor ) * 2 + points.Length - 2 ) % ( points.Length - 2 );
             float   mi = minor + i - Mathf.Floor ( minor + i );
+            if ( mi < 0 ) mi += 1;
             deltaA = Gitmas ( md, mi );
             if ( ( target - deltaA ).sqrMagnitude < bestScore ) {
                 bestScore = ( target - deltaA ).sqrMagnitude;
@@ -77,7 +78,7 @@ public class LRCTM : TM {
 
         targetLink = Gitmas ( major, minor ) - rgb.velocity * STRApproachVCounter;
 
-                                                                Debug.DrawLine ( target, targetLink, Color.red );
+                                                                Debug.DrawLine ( transform.position, target, Color.red );
 
         base.Update ();
     }

@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class HSTM : TM {
     public  Transform   target;
-    public  Rigidbody2D targetRGB;
+    private Rigidbody2D targetRGB;
 
     public  float       STRP;
     public  float       STRV1;
@@ -16,8 +16,8 @@ public class HSTM : TM {
     }
 
     private void OnDisable () {
-        rgb     = null;
-        target  = null;
+        target      = null;
+        targetRGB   = null;
     }
 
     public void Bind ( Transform alpha ) {

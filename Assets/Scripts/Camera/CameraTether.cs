@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class CameraTether : MonoBehaviour {
     public  Transform   target;
-    public  Rigidbody2D trackingRigidbody;
+    private Rigidbody2D trackingRigidbody;
 
     public  Vector3     offset;
     public  float       velocityFactor;
@@ -11,6 +11,10 @@ public class CameraTether : MonoBehaviour {
     public  float       rotationStrength;
 
     private Vector3     delta;
+
+    private void Start () {
+        trackingRigidbody = target.GetComponent<Rigidbody2D> ();
+    }
 
     void LateUpdate() {
         if ( trackingRigidbody != null ) {

@@ -65,6 +65,6 @@ public class DebugMenu : MenuCore {
             deltaFBWS   = playerShip.flybywire;
             deltaMAS    = carrotTargeting.enabled;
             Backflow ( true );
-        } 
+        }
     }
 }
