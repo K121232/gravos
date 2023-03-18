@@ -29,7 +29,7 @@ public class ShipHUD : MonoBehaviour {
         SetScale ( shieldSlider.transform, shieldCell.resourceMax / bridge.STRShield );
         SetScale ( timeSlider.transform, corvoCell.resourceMax );
 
-        rgb = bridge.movement.GetComponent<Rigidbody2D> ();
+        rgb = bridge.GetComponent<Rigidbody2D> ();
     }
 
     void LateUpdate () {

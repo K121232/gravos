@@ -2,9 +2,9 @@ using UnityEngine;
 
 public class CameraTether : MonoBehaviour {
     public  Transform   target;
-    public  Vector3     offset;
-
     public  Rigidbody2D trackingRigidbody;
+
+    public  Vector3     offset;
     public  float       velocityFactor;
 
     public  float       strength;

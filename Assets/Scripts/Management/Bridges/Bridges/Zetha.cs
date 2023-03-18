@@ -4,7 +4,7 @@ using UnityEngine;
 public class Zetha : MonoBehaviour {
     [System.Serializable]
     public  struct HitboxWeight {
-        public  Hitbox      alpha;
+        public  ZethaMinion alpha;
         public  float       beta;
     }
     
@@ -14,15 +14,9 @@ public class Zetha : MonoBehaviour {
 
     public virtual void Start() {
         currentHealth = baseHealth;
-    }
-
-    public  int     Subscribe ( Hitbox alpha ) {
         for ( int i = 0; i < hitboxes.Count; i++ ) {
-            if ( hitboxes [ i ].alpha == alpha ) {
-                return i;
-            }
+            hitboxes [ i ].alpha.Subscribe ( this, i );
         }
-        return -1;
     }
 
     public bool CheckID ( int id ) {

@@ -4,9 +4,9 @@ public class ZethaMinion : Hitbox {
     public  Zetha   controller;
     public  int     id;
 
-    public override void Start () {
-        id = controller.Subscribe ( this );
-        base.Start ();
+    public void Subscribe ( Zetha _control, int _id ) {
+        id = _id;
+        controller = _control;
     }
 
     public override void DeltaF ( int a ) {

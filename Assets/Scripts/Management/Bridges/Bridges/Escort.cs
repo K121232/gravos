@@ -1,27 +1,45 @@
 using UnityEngine;
 
 public class Escort : Zetha {
-    private LRCTM       targetingModule;
+    public  LRCTM       guardPatternTM;
+    public  LRCTM       chasePatternTM;
+
     public  Transform   protectTarget;
 
     public  Radar       agroRadar;
     public  float       maxChaseRange;
 
-    public  bool        chasing;
+    private bool        chasing;
+
+    public void PhaseChange ( bool _chasing, Transform  _target = null ) {
+        chasing = _chasing;
+        if ( chasing ) {
+            chasePatternTM.LoadCenter ( _target );
+        }
+        if ( chasePatternTM == guardPatternTM ) return;
+        chasePatternTM.enabled = chasing;
+        guardPatternTM.enabled = !chasing;
+    }
 
     public override void Start () {
-        targetingModule = GetComponent<LRCTM> ();
+        guardPatternTM = GetComponent<LRCTM> ();
+        
+        guardPatternTM.LoadCenter ( protectTarget );
+        chasePatternTM.LoadCenter ( null );
+
+        chasing = false;
         base.Start ();
     }
 
     private void Update () {
-        if ( !chasing && agroRadar.collectedCount != 0 ) {
-            chasing = true;
-            targetingModule.LoadCenter ( agroRadar.collectedColliders [ 0 ].transform );
-        }
-        if ( chasing && ( transform.position - protectTarget.position ).magnitude > maxChaseRange ) {
-            chasing = false;
-            targetingModule.LoadCenter ( protectTarget );
+        if ( ( transform.position - protectTarget.position ).magnitude > maxChaseRange ) {
+            if ( chasing ) {
+                PhaseChange ( false );
+            }
+        } else {
+            if ( !chasing && agroRadar.collectedCount != 0 ) {
+                PhaseChange ( true, agroRadar.collectedColliders [ 0 ].transform );
+            }
         }
     }
 

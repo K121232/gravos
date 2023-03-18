@@ -12,6 +12,7 @@ public class TM : MonoBehaviour {
     public  float       r;
 
     public  bool        regen;
+    public  bool        variThrust;
 
     public virtual void Start () {
         regen = true;
@@ -35,6 +36,10 @@ public class TM : MonoBehaviour {
         Debug.DrawLine ( transform.position, transform.position + transform.up * 4, Color.blue );
         */
         float deltaAA = sod.Update ( Time.deltaTime, Vector2.SignedAngle ( transform.up, targetLink ), Vector2.SignedAngle ( Vector2.up, targetLink ), rgb.angularVelocity );
+        float deltaT = 1;
+        if ( variThrust ) {
+            deltaT = Mathf.Max ( Vector2.Dot ( transform.up, targetLink.normalized ), 0 );
+        }
 
         PROPULSION.UpdateDeltas ( 1, PROPULSION.FilterAngle ( deltaAA ) / Time.deltaTime, false );
     }

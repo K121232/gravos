@@ -6,16 +6,16 @@ public class LRCTM : TM {
 
     public  float           scanDistance;
 
-    public  int             major = 0;
-    public  float           minor = 0;
+    private int             major = 0;
+    private float           minor = 0;
 
-    public  float           STRV1;       // Pathfind velocity offset
-    public  float           STRV2;      // Targeting velocity offset
-    public  float           STRVT;      // Targeting velocity offset
+    public  float           STRTargetForwardSeek;       // Pathfind velocity offset
+    public  float           STRTargetForwardCenterCounterseek;      // Targeting velocity offset
+    public  float           STRApproachVCounter;      // Targeting velocity offset
 
     public  Transform       center;
     private Rigidbody2D     centerRGB;
-    private Vector2         offset = new Vector2 ( 0, 0 );
+    private Vector2         offset = new( 0, 0 );
 
     public  Vector2 Gitmas ( int a2, float a1 ) {
         return offset + points [ a2 ] * ( 1 - a1 ) * ( 1 - a1 ) * ( 1 - a1 ) + 3 * ( ( 1 - a1 ) * ( 1 - a1 ) * a1 * ( points [ a2 ] + points [ a2 + 1 ] * ( a2 % 4 == 0 ? 1 : -1 ) ) + ( 1 - a1 ) * a1 * a1 * ( points [ a2 + 2 ] + points [ a2 + 3 ] ) ) + a1 * a1 * a1 * points [ a2 + 2 ];
@@ -34,22 +34,29 @@ public class LRCTM : TM {
     }
 
     public  void LoadCenter ( Transform a ) {
+        if ( a == null ) { center = null; centerRGB = null; return; }
         center = a;
         centerRGB = center.GetComponent<Rigidbody2D> ();
     }
 
+    public override void Start () {
+        LoadCenter ( center );        
+        base.Start ();
+    }
+
     public override void Update () {
+        if ( center != null ) offset = center.position;
+
         DrawCourse ();
 
         float   bestScore = Mathf.Infinity;
         Vector2 deltaA, deltaB = new Vector2 ( major, minor );
-        Vector2 target = transform.position + (Vector3)rgb.velocity * STRV1;
+        Vector2 target = transform.position + (Vector3)rgb.velocity * STRTargetForwardSeek;
+        if ( centerRGB != null ) target -= centerRGB.velocity * STRTargetForwardCenterCounterseek;
 
         Vector2 DEBUGP = Vector2.zero;
 
         if ( scanDistance == 0 ) return;
-        if ( center != null ) offset = center.position;
-        if ( centerRGB != null ) offset -= centerRGB.velocity * STRV2;
 
         for ( float i = 0; i < scanDistance; i += resolution ) {
             int     md = ( major + Mathf.FloorToInt ( i + minor ) * 2 ) % ( points.Length - 2 );
@@ -68,7 +75,7 @@ public class LRCTM : TM {
         major = Mathf.RoundToInt ( deltaB.x );
         minor = deltaB.y;
 
-        targetLink = Gitmas ( major, minor ) - rgb.velocity * STRVT;
+        targetLink = Gitmas ( major, minor ) - rgb.velocity * STRApproachVCounter;
 
                                                                 Debug.DrawLine ( target, targetLink, Color.red );
 
