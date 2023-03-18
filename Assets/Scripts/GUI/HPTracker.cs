@@ -9,8 +9,8 @@ public class HPTracker : MonoBehaviour {
     [System.Serializable]
     public struct EnemyContact {
         public  Zetha           bridge;
-        public  string          displayName;
         public  Collider2D      boundingBox;
+        [HideInInspector]
         public  RectTransform   linked;
         [HideInInspector]
         public  Slider          slider;
@@ -27,12 +27,13 @@ public class HPTracker : MonoBehaviour {
         for ( int i = 0; i < tracked.Length; i++ ) {
             tracked [ i ].linked = Instantiate ( HUDObject, canvasRoot ).GetComponent<RectTransform>();
             tracked [ i ].slider = tracked [ i ].linked.GetChild ( 0 ).GetComponent<Slider> ();
-            tracked [ i ].linked.GetChild ( 1 ).GetComponent<TMP_Text> ().text = tracked [ i ].displayName;
+            
+            tracked [ i ].linked.GetChild ( 1 ).GetComponent<TMP_Text> ().text = tracked [ i ].bridge.GetComponent<Manifest> ().TryGetInfo ( Manifest.InfoType.NAME );
             SetScale ( tracked [ i ].slider.transform, tracked [ i ].bridge.baseHealth );
         }
     }
 
-    void Update () {
+    void LateUpdate () {
         for ( int i = 0; i < tracked.Length; i++ ) {
             if ( !tracked [ i ].bridge.gameObject.activeInHierarchy ) {
                 tracked [ i ].linked.gameObject.SetActive ( false );

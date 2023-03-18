@@ -2,13 +2,18 @@ using UnityEngine;
 
 public class ProtoPlayerBridge : Zetha {
     public  NoticeMenu      notice;
-    public  TeflonPMove     movement;
+    private TeflonPMove     movement;
 
     public  PowerCell       shieldCell;
     public  float           STRShield;
 
     public  float   stunTime;
     private float   deltaTime;
+
+    public override void Start () {
+        movement = GetComponent<TeflonPMove> ();
+        base.Start ();
+    }
 
     private void Update () {
         if ( deltaTime > 0 && currentHealth > 0 ) {
