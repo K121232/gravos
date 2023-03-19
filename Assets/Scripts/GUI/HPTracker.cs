@@ -43,10 +43,6 @@ public class HPTracker : MonoBehaviour {
 
             tracked [ i ].linked.position = delta;
 
-            delta += ( delta - (Vector2) tracked [ i ].bridge.transform.position ) * 5;
-
-            //dsp.rotation = Quaternion.Euler( 0, 0, 90 ) * target.rotation;
-
             tracked [ i ].slider.value = tracked [ i ].bridge.GetProcentHP () * tracked [ i ].slider.maxValue;
         }
     }

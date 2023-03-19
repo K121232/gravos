@@ -17,8 +17,14 @@ public class LRCTM : TM {
     private Rigidbody2D     centerRGB;
     private Vector2         offset = new( 0, 0 );
 
-    public  Vector2 Gitmas ( int a2, float a1 ) {
-        return offset + points [ a2 ] * ( 1 - a1 ) * ( 1 - a1 ) * ( 1 - a1 ) + 3 * ( ( 1 - a1 ) * ( 1 - a1 ) * a1 * ( points [ a2 ] + points [ a2 + 1 ] * ( a2 % 4 == 0 ? 1 : -1 ) ) + ( 1 - a1 ) * a1 * a1 * ( points [ a2 + 2 ] + points [ a2 + 3 ] ) ) + a1 * a1 * a1 * points [ a2 + 2 ];
+    public Vector2 Gitmas ( int a2, float a1 ) {
+        float ma = 1 - a1;
+        return points [ a2 ] * ma * ma * ma
+                + 3 * (
+                    ma * ma * a1 * ( points [ a2 ] + points [ a2 + 1 ] * ( ( a2 / 2 ) % 2 == 0 ? 1 : -1 ) ) +
+                    ma * a1 * a1 * ( points [ a2 + 2 ] + points [ a2 + 3 ] * ( ( a2 / 2 ) % 2 == 0 ? 1 : -1 ) )
+                )
+                + a1 * a1 * a1 * points [ a2 + 2 ];
     }
 
     private void DrawCourse () {
