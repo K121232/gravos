@@ -10,6 +10,8 @@ public class ProtoPlayerBridge : Zetha {
     public  float   stunTime;
     private float   deltaTime;
 
+    public  bool    invulnerability;
+
     public override void Start () {
         movement = GetComponent<TeflonPMove> ();
         base.Start ();
@@ -28,7 +30,7 @@ public class ProtoPlayerBridge : Zetha {
     public override void DeltaIncoming ( int id, float delta ) {
         if ( CheckID ( id ) ) {
             
-            delta *= hitboxes [ id ].beta;
+            delta *= invulnerability ? 0 : hitboxes [ id ].beta;
             delta -= shieldCell.VariDrain ( delta * STRShield ) / STRShield;
             currentHealth -= delta;
             if ( stunTime != -1 ) {

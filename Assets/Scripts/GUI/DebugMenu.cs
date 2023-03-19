@@ -3,45 +3,72 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class DebugMenu : MenuCore {
-    public  TeflonPMove     playerShip;
-    public  CarrotTargeting carrotTargeting;
-    public  CameraTether    camTether;
+    public  ProtoPlayerBridge   playerBridge;
+    public  TeflonPMove         playerShip;
+    public  CarrotTargeting     carrotTargeting;
+    public  CameraTether        camTether;
 
-    public  Slider[]        sliders;
-    public  TMP_Text []      lables;
+    public  Slider[]            sliders;
+    public  TMP_Text []         lables;
 
-    public  TMP_Text        fbwStatus;
-    private bool            deltaFBWS;
+    [System.Serializable]
+    public struct ToggleButton {
+        public  TMP_Text        statusLabel;
+        private bool            status;
+        public void Toggle () {
+            Set ( !status );
+        }
+        public void Set ( bool _status ) {
+            status = _status;
+            Redraw ();
+        }
+        public void Redraw () {
+            statusLabel.text = status ? "ON" : "OFF";
+        }
+        public bool GetStatus () {
+            return status;
+        }
+    }
 
-    public  TMP_Text        maStatus;
-    private bool            deltaMAS;
+    public  ToggleButton    FBW;
+    public  ToggleButton    MAS;
+    public  ToggleButton    INV;
 
-    public override void Start() {
+    public override void Start () {
         base.Start ();
-        sliders [ 0].SetValueWithoutNotify( playerShip.mxv );
-        sliders[1].SetValueWithoutNotify( playerShip.acc );
-        sliders[2].SetValueWithoutNotify( playerShip.angleMxv );
-        sliders[3].SetValueWithoutNotify( playerShip.angleAcc );
-        sliders[4].SetValueWithoutNotify( camTether.rotationStrength );
-        deltaFBWS   = playerShip.flybywire;
-        deltaMAS    = carrotTargeting.enabled;
+        sliders [ 0 ].SetValueWithoutNotify ( playerShip.mxv );
+        sliders [ 1 ].SetValueWithoutNotify ( playerShip.acc );
+        sliders [ 2 ].SetValueWithoutNotify ( playerShip.angleMxv );
+        sliders [ 3 ].SetValueWithoutNotify ( playerShip.angleAcc );
+        sliders [ 4 ].SetValueWithoutNotify ( camTether.rotationStrength );
+
+        FBW.Set ( playerShip.flybywire );
+        MAS.Set ( carrotTargeting.enabled );
+        INV.Set ( playerBridge.invulnerability );
+
         Redraw ();
     }
-    
+
     public void Redraw () {
         for ( int i = 0; i < 5; i++ ) {
-            lables[i].text = sliders[i].value.ToString( "0.00" );
+            lables [ i ].text = sliders [ i ].value.ToString ( "0.00" );
         }
-        fbwStatus.text  = deltaFBWS ? "ON" : "OFF";
-        maStatus.text   = deltaMAS  ? "ON" : "OFF";
+        FBW.Redraw ();
+        MAS.Redraw ();
+        INV.Redraw ();
     }
 
     public void Toggle ( int a ) {
-        if ( a == 0 ) {
-            deltaFBWS = !deltaFBWS;
-        } 
-        if ( a == 1 ) {
-            deltaMAS = !deltaMAS;
+        switch ( a ) {
+            case 0:
+                FBW.Toggle ();
+                break;
+            case 1:
+                MAS.Toggle ();
+                break;
+            case 2:
+                INV.Toggle ();
+                break;
         }
         Redraw ();
     }
@@ -53,17 +80,21 @@ public class DebugMenu : MenuCore {
         playerShip.angleAcc = sliders [ 3 ].value;
         camTether.rotationStrength = sliders [ 4 ].value;
 
-        playerShip.flybywire = deltaFBWS;
-        carrotTargeting.enabled = deltaMAS;
+        playerBridge.invulnerability = INV.GetStatus ();
+        playerShip.flybywire = FBW.GetStatus ();
+        carrotTargeting.enabled = MAS.GetStatus ();
 
         Redraw ();
         Backflow ( false );
     }
 
-    public void Update() {
-        if ( Input.GetKeyDown (KeyCode.M) ) {
-            deltaFBWS   = playerShip.flybywire;
-            deltaMAS    = carrotTargeting.enabled;
+    public void Update () {
+        if ( Input.GetKeyDown ( KeyCode.M ) ) {
+
+            FBW.Set ( playerShip.flybywire );
+            MAS.Set ( carrotTargeting.enabled );
+            INV.Set ( playerBridge.invulnerability );
+
             Backflow ( true );
         }
     }

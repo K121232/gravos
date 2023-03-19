@@ -2,11 +2,20 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class BriefingMenu : MenuCore {
-    public  GameObject[]    pages;
+    public  Transform       pagesRoot;
+    private GameObject[]    pages;
     private int             iter;
 
     public  Button          buttonP;
     public  Button          buttonN;
+
+    public override void Start () {
+        pages = new GameObject [ pagesRoot.childCount ];
+        for ( int i = 0; i < pagesRoot.childCount; i++ ) {
+            pages [ i ] = pagesRoot.GetChild ( i ).gameObject;
+        }
+        base.Start ();
+    }
 
     public override void Incoming ( bool a ) {
         FlipPage ( -pages.Length );
