@@ -1,7 +1,7 @@
 using UnityEngine;
 
 public class FireControlSystem : MonoBehaviour {
-    public  Turret[]        turrets;
+    public  TargetingRig[]  turrets;
 
     public  Radar           perimeterRadar;
 

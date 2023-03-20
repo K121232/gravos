@@ -16,20 +16,22 @@ public class TriggerAssembly : MonoBehaviour {
     public  float   clipDrain;
     protected float   deltaA;
 
+    public  bool    autoreload;
+
     public void SetRGB ( Rigidbody2D alpha ) {
         rgb = alpha;
     }
 
-    public virtual void TriggerHold() {
+    public virtual void TriggerHold () {
         triggerDown = true;
     }
 
-    public virtual void TriggerRelease() {
+    public virtual void TriggerRelease () {
         triggerDown = false;
         triggerSear = true;
     }
 
-    public virtual void Reload() {
+    public virtual void Reload () {
         if ( reserve == -1 ) {
             deltaA = clip;
             deltaC = cooldownReload;
@@ -45,17 +47,17 @@ public class TriggerAssembly : MonoBehaviour {
         }
     }
 
-    public virtual void Start() {
+    public virtual void Start () {
         deltaA = clip;
         deltaC = 0;
     }
 
-    public virtual void OnEnable() {
+    public virtual void OnEnable () {
         triggerSear = true;
         deltaC = fireRate;
     }
 
-    public virtual void Update() {
+    public virtual void Update () {
         if ( deltaC >= 0 ) {
             deltaC -= Time.deltaTime;
             if ( deltaC < 0 && canAuto ) {
@@ -70,14 +72,17 @@ public class TriggerAssembly : MonoBehaviour {
             }
             deltaC = fireRate;
             deltaA -= clipDrain;
+            if ( deltaA <= 0 && autoreload ) {
+                Reload ();
+            }
             triggerSear = false;
         }
     }
 
-    public virtual void Fire( Vector2 prv ) { }
+    public virtual GameObject Fire ( Vector2 prv ) { return null; }
 
-    public virtual float  GetAmmo() {
-        if ( clipDrain == 0 ) return 999; 
+    public virtual float GetAmmo () {
+        if ( clipDrain == 0 ) return 999;
         return deltaA / clipDrain;
     }
 

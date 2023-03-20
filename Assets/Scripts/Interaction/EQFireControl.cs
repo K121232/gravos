@@ -1,7 +1,7 @@
 using UnityEngine;
 
 public class EQFireControl : MonoBehaviour {
-    public  Turret[]        turrets;
+    public  TargetingRig[]  turrets;
     public  Transform       carrot;
 
     private bool            transition, delta;
@@ -17,8 +17,7 @@ public class EQFireControl : MonoBehaviour {
         delta = Input.GetAxis ( "Fire1" ) > 0;
         if ( delta != transition ) {
             for ( int i = 0; i < turrets.Length; i++ ) {
-                if ( delta ) {  turrets [ i ].TriggerHold (); }
-                else {          turrets [ i ].TriggerRelease (); }
+                turrets [ i ].OverrideTriggerPress ( delta );
             }
             transition = delta;
         }            

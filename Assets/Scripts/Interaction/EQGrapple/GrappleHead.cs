@@ -3,11 +3,11 @@ using UnityEngine;
 public class GrappleHead : MonoBehaviour {
     private Rigidbody2D     rgb;
 
-    private Transform       anchor;
-    private Rigidbody2D     attachedRGB;
+    public Transform       anchor;
+    public Rigidbody2D     attachedRGB;
     private float           anchorMaxRange;
 
-    public  Transform       savedParent;
+    public Transform       savedParent;
     public  bool            detached;
     public  float           attachLength;
     public  float           minAttachLength;
@@ -17,8 +17,14 @@ public class GrappleHead : MonoBehaviour {
 
     public  float       STRGrav;
 
-    private void        OnGrappleAttach () {
-        if ( attachedRGB != null && attachedRGB.GetComponent <HSTM>() != null ) {
+    private void OnGrappleAttach () {
+        Transform   deltaRF = attachRadar.collectedColliders [ 0 ].transform;
+        deltaRF.TryGetComponent ( out attachedRGB );
+        ZethaMinion deltaM = deltaRF.GetComponent<ZethaMinion> ();
+        if ( deltaM ) {
+            deltaM.controller.TryGetComponent ( out attachedRGB );
+        }
+        if ( attachedRGB != null && attachedRGB.GetComponent<HSTM> () != null ) {
             attachedRGB.GetComponent<HSTM> ().target = null;
             attachedRGB.gameObject.layer = anchor.gameObject.layer;
         }
@@ -28,63 +34,64 @@ public class GrappleHead : MonoBehaviour {
         anchor = a; anchorMaxRange = b;
     }
 
-    private void Start() {
+    private void Start () {
         savedParent = transform.parent;
-        rgb = GetComponent<Rigidbody2D>();
-        gameObject.SetActive( false );
+        rgb = GetComponent<Rigidbody2D> ();
+        gameObject.SetActive ( false );
     }
 
-    void OnEnable() {
+    void OnEnable () {
         if ( savedParent == null ) { savedParent = transform.parent; }
-        transform.SetParent( savedParent );
-        GetComponent<Rigidbody2D>().isKinematic = false;
+        GetComponent<Rigidbody2D> ().isKinematic = false;
         detached = true;
         attachedRGB = null;
         detached = true;
     }
 
-    private void OnDisable() {
+    private void OnDisable () {
         detached = true;
         rgb.isKinematic = true;
         rgb.velocity = Vector2.zero;
         attachLength = 0;
-        attachRadar.Clear();
+        attachRadar.Clear ();
     }
 
-    void Update() {
+    void Update () {
         if ( detached && ( transform.position - anchor.position ).magnitude > anchorMaxRange ) {
-            transform.SetParent( savedParent );
-            gameObject  .SetActive( false );
+            transform.SetParent ( savedParent );
+            gameObject.SetActive ( false );
         }
         if ( detached && attachRadar.collectedCount != 0 ) {
             detached = false;
             attachLength = Mathf.Max ( minAttachLength, ( transform.position - anchor.position ).magnitude );
 
-            transform.SetParent( attachRadar.collectedColliders[0].transform );
-            transform.localPosition = Vector3.zero;
+            transform.SetParent ( attachRadar.collectedColliders [ 0 ].transform );
+            transform.position = Physics2D.ClosestPoint ( transform.position, attachRadar.collectedColliders [ 0 ] );
 
-            attachRadar.collectedColliders[0].transform.TryGetComponent( out attachedRGB );
-
-            rgb.isKinematic = true;            
+            rgb.isKinematic = true;
             rgb.velocity = Vector2.zero;
 
             OnGrappleAttach ();
         }
     }
 
-    private void FixedUpdate() {
+    private void FixedUpdate () {
         if ( detached ) {
             for ( int i = 0; i < gravRadar.collectedCount; i++ ) {
                 Vector2 deltaG = ( gravRadar.collectedColliders[i].transform.position - transform.position );
-                rgb.AddForce( deltaG.normalized * deltaG.sqrMagnitude * STRGrav, ForceMode2D.Impulse );
+                rgb.AddForce ( deltaG.normalized * deltaG.sqrMagnitude * STRGrav, ForceMode2D.Impulse );
             }
         }
     }
 
     public void Propagate ( Vector2 force ) {
         if ( attachedRGB != null ) {
-            attachedRGB.AddForceAtPosition( force / rgb.mass, transform.position );
+            attachedRGB.AddForceAtPosition ( force, transform.position );
         }
+    }
+
+    public  void    ResetParent () {
+        transform.parent = savedParent;
     }
 
     public Vector2 Interogate () {
@@ -94,7 +101,7 @@ public class GrappleHead : MonoBehaviour {
         return Vector2.zero;
     }
 
-    public  Rigidbody2D GetAnchorRGB() {
+    public Rigidbody2D GetAnchorRGB () {
         return attachedRGB;
     }
 }

@@ -7,6 +7,7 @@ public class ZoneRadar : Radar {
 
     public  LayerMask   mask;
     public  string[]    maskTag;
+    public  bool        maskTagReverse;
 
     private List<Collider2D>    deltaColl;
 
@@ -35,7 +36,7 @@ public class ZoneRadar : Radar {
         }
         for ( int i = 0; i < maskTag.Length; i++ ) {
             for ( int j = 0; j < collectedColliders.Count; j++ ) {
-                if ( collectedColliders [ j ].CompareTag ( maskTag [ i ] ) ) {
+                if ( maskTagReverse != collectedColliders [ j ].CompareTag ( maskTag [ i ] ) ) {
                     collectedColliders.RemoveAt ( j );
                     j--;
                 }

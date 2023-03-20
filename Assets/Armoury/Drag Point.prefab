@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 193687748409540929}
   - component: {fileID: 193687748409540957}
   - component: {fileID: 1571068055316369287}
-  m_Layer: 6
+  m_Layer: 8
   m_Name: Drag Point
   m_TagString: Grab Point
   m_Icon: {fileID: 0}
