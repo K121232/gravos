@@ -18,7 +18,8 @@ public class ZoneSpawner : Turret {
             if ( linkBurstChance ) {
                 burstHold = true;
             }
-            base.Fire ( prv );
+            GameObject handle = base.Fire ( prv );
+            handle.transform.position = Random.insideUnitCircle.normalized * Random.Range ( minRange, maxRange );
         }
         return null;
     }

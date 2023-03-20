@@ -1,7 +1,7 @@
 using UnityEngine;
 
 public class TargetingRig : MonoBehaviour {
-    public  TriggerAssembly triggerControls;
+    private TriggerAssembly triggerControls;
 
     private Rigidbody2D rgb;    
     public  GameObject  mainHull;
@@ -71,7 +71,7 @@ public class TargetingRig : MonoBehaviour {
         }
 
         if ( !fireControlOverride ) {
-            if ( target != null && Vector2.SignedAngle ( transform.up, tgv ) < coneMaxDeviation ) {
+            if ( target != null && ( coneMaxDeviation >= 180 || Vector2.SignedAngle ( transform.up, tgv ) <= coneMaxDeviation ) ) {
                 if ( triggerControls.GetType () == typeof ( Turret ) ) {
                     ( (Turret) triggerControls ).SetTarget ( target );
                 }

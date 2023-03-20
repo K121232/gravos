@@ -685,7 +685,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64d81f765ba0c28468bc92a553e57d37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  triggerControls: {fileID: 0}
   mainHull: {fileID: 835055511}
   target: {fileID: 0}
   targetRGB: {fileID: 0}
@@ -797,8 +796,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 539782881}
+  m_Children: []
   m_Father: {fileID: 835055512}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4589,7 +4587,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64d81f765ba0c28468bc92a553e57d37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  triggerControls: {fileID: 0}
   mainHull: {fileID: 687800561004745346}
   target: {fileID: 0}
   targetRGB: {fileID: 0}
@@ -7387,59 +7384,6 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
---- !u!1 &539782880
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 539782881}
-  - component: {fileID: 539782882}
-  m_Layer: 0
-  m_Name: Drag Point Launcher
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!4 &539782881
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 539782880}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 71203828}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &539782882
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 539782880}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9c98847cfca44724494de34837af0173, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  autoLoader: {fileID: 675728146}
-  trailLoader: {fileID: 0}
-  spawnChance: 0.8
-  safeTime: 3
-  deltaTime: 0
-  maxRange: 50
-  minRange: 10
-  mxV: 0
-  mnV: 0
 --- !u!1 &541851197
 GameObject:
   m_ObjectHideFlags: 0
@@ -7817,7 +7761,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64d81f765ba0c28468bc92a553e57d37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  triggerControls: {fileID: 0}
   mainHull: {fileID: 687800561004745346}
   target: {fileID: 0}
   targetRGB: {fileID: 0}
@@ -8963,7 +8906,7 @@ GameObject:
   - component: {fileID: 687431184}
   - component: {fileID: 687431185}
   m_Layer: 0
-  m_Name: Drag Point Launcher
+  m_Name: Drag Point Spawner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8998,19 +8941,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canAuto: 0
   fireRate: 0
-  cooldownReload: 0
-  reserve: 0
-  clip: 0
-  clipDrain: 0
+  cooldownReload: 5
+  reserve: -1
+  clip: 1
+  clipDrain: 1
   autoreload: 0
-  mainHull: {fileID: 0}
-  autoloader: {fileID: 0}
-  trailLoader: {fileID: 0}
+  mainHull: {fileID: 687800561004745346}
+  autoloader: {fileID: 675728146}
+  trailLoader: {fileID: 961161168}
   target: {fileID: 0}
   minRangeOffset: 0
-  maxRange: 0
-  minRange: 0
-  chance: 0
+  maxRange: 10
+  minRange: 50
+  chance: 0.5
   linkBurstChance: 0
 --- !u!1 &691490114
 GameObject:
@@ -17104,15 +17047,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 251143474f2f5c941a2001ebb24eca76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  acc: 100
+  acc: 150
   mxv: 50
-  angleAcc: 720
-  angleMxv: 240
+  angleAcc: 1440
+  angleMxv: 360
   angleDrag: 5
   DEBUGOFF: {x: 0, y: 0}
   f: 5
   z: 0.5
-  r: 1
+  r: 2
   regen: 0
   armourLock: 0
   flybywire: 0
@@ -18074,7 +18017,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64d81f765ba0c28468bc92a553e57d37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  triggerControls: {fileID: 0}
   mainHull: {fileID: 687800561004745346}
   target: {fileID: 0}
   targetRGB: {fileID: 0}
@@ -23233,7 +23175,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64d81f765ba0c28468bc92a553e57d37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  triggerControls: {fileID: 0}
   mainHull: {fileID: 687800561004745346}
   target: {fileID: 0}
   targetRGB: {fileID: 0}
@@ -24095,7 +24036,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64d81f765ba0c28468bc92a553e57d37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  triggerControls: {fileID: 0}
   mainHull: {fileID: 954266146}
   target: {fileID: 0}
   targetRGB: {fileID: 0}
@@ -41981,7 +41921,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64d81f765ba0c28468bc92a553e57d37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  triggerControls: {fileID: 0}
   mainHull: {fileID: 687800561004745346}
   target: {fileID: 0}
   targetRGB: {fileID: 0}

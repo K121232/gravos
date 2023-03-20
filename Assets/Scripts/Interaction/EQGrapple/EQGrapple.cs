@@ -67,7 +67,7 @@ public class EQGrapple : TriggerAssembly {
                         }
 
                         rgb.AddForce ( forceAccumulator, ForceMode2D.Impulse );
-                        head.Propagate ( -forceAccumulator * rgb.mass / Time.fixedDeltaTime );
+                        head.Propagate ( -forceAccumulator * rgb.mass );
                     }
                 }
             } else {
