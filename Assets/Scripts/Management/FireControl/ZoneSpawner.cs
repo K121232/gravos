@@ -9,6 +9,8 @@ public class ZoneSpawner : Turret {
     private bool    burstHold;
 
     public override void Start () {
+        canAuto = true;
+        autoreload = true;
         TriggerHold ();
         base.Start ();
     }

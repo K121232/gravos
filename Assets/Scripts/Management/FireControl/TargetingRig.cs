@@ -31,6 +31,7 @@ public class TargetingRig : MonoBehaviour {
         if ( triggerControls == null ) {
             fireControlOverride = true;
         }
+        sod = new SOD ( f, z, r, 0 );
     }
 
     public void LoadTarget ( GameObject alpha ) {
