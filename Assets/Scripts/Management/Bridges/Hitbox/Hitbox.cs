@@ -1,30 +1,29 @@
 using UnityEngine;
 
 public class Hitbox : MonoBehaviour {
-    private ParticleSystem  ps;
-
+    public  PoolSpooler     ps;
     private void EvWrapper ( GameObject deltaOBJ, Collision2D col ) {
         Hitgen delta = deltaOBJ.GetComponent<Hitgen>();
         if ( delta != null ) {
             DeltaF ( delta.Bump () );
 
-            Vector2 deltaP;
-            Vector2 deltaN;
+            GameObject      deltaGO = ps.Request();
+            ParticleSystem  deltaPS = deltaGO.GetComponent<ParticleSystem>();
+            deltaGO.SetActive ( true );
 
-            deltaP = Physics2D.ClosestPoint ( deltaOBJ.transform.position, GetComponent<Collider2D> () ) - (Vector2) transform.position;
-            deltaN = deltaOBJ.transform.position - transform.position;
+            if ( deltaPS != null ) {
+                Vector2 deltaP;
+                Vector2 deltaN;
 
-            if ( ps != null ) {
-                var deltaShape = ps.shape;
+                deltaP = Physics2D.ClosestPoint ( deltaOBJ.transform.position, GetComponent<Collider2D> () );
+                deltaN = deltaOBJ.transform.position - transform.position;
+
+                var deltaShape = deltaPS.shape;
                 deltaShape.position = deltaP;
-                deltaShape.rotation = transform.worldToLocalMatrix * new Vector3 ( 0, 0, ( 180 - ps.shape.arc ) / 2 + Vector2.Angle ( Vector2.up, deltaN ) );
-                ps.Play ();
+                deltaShape.rotation = transform.worldToLocalMatrix * new Vector3 ( 0, 0, ( 180 - deltaPS.shape.arc ) / 2 + Vector2.Angle ( Vector2.up, deltaN ) );
+                deltaPS.Play ();
             }
         }
-    }
-
-    public virtual void Start () {
-        ps = GetComponent<ParticleSystem> ();
     }
 
     public virtual void DeltaF ( int a ) {}

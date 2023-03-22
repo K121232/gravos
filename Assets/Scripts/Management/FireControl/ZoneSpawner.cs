@@ -21,7 +21,7 @@ public class ZoneSpawner : Turret {
                 burstHold = true;
             }
             GameObject handle = base.Fire ( prv );
-            handle.transform.position = Random.insideUnitCircle.normalized * Random.Range ( minRange, maxRange );
+            handle.transform.position = transform.position + (Vector3) Random.insideUnitCircle.normalized * Random.Range ( minRange, maxRange );
         }
         return null;
     }

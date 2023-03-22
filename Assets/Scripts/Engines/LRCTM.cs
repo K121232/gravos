@@ -19,7 +19,7 @@ public class LRCTM : TM {
 
     public Vector2 Gitmas ( int a2, float a1 ) {
         float ma = 1 - a1;
-        return points [ a2 ] * ma * ma * ma
+        return offset + points [ a2 ] * ma * ma * ma
                 + 3 * (
                     ma * ma * a1 * ( points [ a2 ] + points [ a2 + 1 ] * ( ( a2 / 2 ) % 2 == 0 ? 1 : -1 ) ) +
                     ma * a1 * a1 * ( points [ a2 + 2 ] + points [ a2 + 3 ] * ( ( a2 / 2 ) % 2 == 0 ? 1 : -1 ) )

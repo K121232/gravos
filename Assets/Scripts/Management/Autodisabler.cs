@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Autodeleter : MonoBehaviour {
+public class Autodisabler : MonoBehaviour {
     public  float       lifespan;
     private  float      deltaT;
 

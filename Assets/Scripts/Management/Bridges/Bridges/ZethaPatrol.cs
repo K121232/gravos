@@ -27,8 +27,6 @@ public class ZethaPatrol : Zetha {
     }
 
     public override void Start () {
-        guardPatternTM = GetComponent<LRCTM> ();
-
         chasing = false;
         base.Start ();
     }
@@ -39,6 +37,7 @@ public class ZethaPatrol : Zetha {
                 PhaseChange ( false );
             }
         } else {
+            return;
             if ( !chasing && agroRadar.collectedCount != 0 ) {
                 PhaseChange ( true, agroRadar.collectedColliders [ 0 ].transform );
             }
