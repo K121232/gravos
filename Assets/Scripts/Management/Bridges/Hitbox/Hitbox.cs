@@ -22,22 +22,22 @@ public class Hitbox : MonoBehaviour {
         }
     }
 
-    private void EvWrapper ( GameObject deltaOBJ, Collision2D col, bool wasTrigger = false ) {
+    private void EvWrapper ( GameObject deltaOBJ, bool wasTrigger = false, Vector2 ? deltaV = null ) {
         Hitgen delta = deltaOBJ.GetComponent<Hitgen>();
         if ( delta != null ) {
             if ( wasTrigger ) TriggerHitEffect ( deltaOBJ.transform );
-            DeltaF ( delta.Bump ( gameObject ) );
+            DeltaF ( delta.Bump ( gameObject, deltaV ) );
         }
     }
 
     public virtual void DeltaF ( int a ) {}
          
-    private void OnTriggerEnter2D( Collider2D collision ) {
-        EvWrapper ( collision.gameObject, null, collision.isTrigger );
+    private void OnTriggerEnter2D( Collider2D collider ) {
+        EvWrapper ( collider.gameObject, collider.isTrigger );
     }
 
     private void OnCollisionEnter2D( Collision2D collision ) {
         TriggerHitEffect ( collision.transform );
-        EvWrapper ( collision.gameObject, collision );
+        EvWrapper ( collision.collider.gameObject );
     }
 }

@@ -7,7 +7,7 @@ public class EQGrapple : TriggerAssembly {
     public  Transform   aimHelperTarget;
     public  Transform   aimHelperBase;
 
-    public  EQGrappleHook head;
+    public  EQGrappleHook hookLink;
 
     public  float       launchSpeed;
     public  float       maxRange;
@@ -23,10 +23,11 @@ public class EQGrapple : TriggerAssembly {
 
     public override void Start () {
         SetRGB ( transform.parent.parent.GetComponent<Rigidbody2D> () );
-        head.SetAnchorParam ( transform, maxRange );
+        hookLink.SetAnchorParam ( transform, maxRange );
         lineConn.objectA = transform;
-        lineConn.objectB = head.transform;
+        lineConn.objectB = hookLink.transform;
         lineConn.enabled = false;
+        hookLink.Bind ( this );
         base.Start ();
     }
 
@@ -37,7 +38,7 @@ public class EQGrapple : TriggerAssembly {
             aimHelper.LockIn ( aimHelperBase );
             TriggerRelease ();
         }
-        lineConn.enabled = triggerDown && headLaunched && head.gameObject.activeInHierarchy;
+        lineConn.enabled = triggerDown && headLaunched && hookLink.gameObject.activeInHierarchy;
 
         if ( deltaA == 0 ) Reload ();
 
@@ -47,27 +48,26 @@ public class EQGrapple : TriggerAssembly {
     private void FixedUpdate () {
         if ( headLaunched ) {
             if ( triggerDown ) {
-                if ( !head.detached && head.gameObject.activeInHierarchy ) {
-                    lineConn.attachLength = head.attachLength;
+                if ( !hookLink.detached && hookLink.gameObject.activeInHierarchy ) {
                     aimHelper.LockIn ( aimHelperTarget );
 
-                    Vector2 delta   = head.transform.position - transform.position;
-                    if ( delta.magnitude > head.attachLength ) {
+                    Vector2 delta   = hookLink.transform.position - transform.position;
+                    if ( delta.magnitude > hookLink.attachLength ) {
                         Vector2 deltaDir    = delta.normalized;
-                        Vector2 deltaV      = rgb.velocity - head.Interogate();
+                        Vector2 deltaV      = rgb.velocity - hookLink.Interogate();
                         Vector2 deltaVT     = Vector3.Project( deltaV, Quaternion.Euler( 0, 0, 90 ) * deltaDir );
                         float   deltaS      = Vector3.Dot ( deltaV, deltaDir );
 
-                        forceAccumulator = deltaDir * ( ( delta.magnitude - head.attachLength ) * linearSpringStrength - velocityDampeningStrength * deltaS ) * Time.fixedDeltaTime;
+                        forceAccumulator = deltaDir * ( ( delta.magnitude - hookLink.attachLength ) * linearSpringStrength - velocityDampeningStrength * deltaS ) * Time.fixedDeltaTime;
                         forceAccumulator -= deltaVT.normalized * Mathf.Pow ( deltaVT.magnitude, orbitalDampeningPower ) * orbitalDampeningStrength;
 
-                        if ( Vector2.Dot ( forceAccumulator, transform.position - head.transform.position ) > 0 ) {
-                            forceAccumulator -= (Vector2) Vector3.Project ( forceAccumulator, transform.position - head.transform.position );
+                        if ( Vector2.Dot ( forceAccumulator, transform.position - hookLink.transform.position ) > 0 ) {
+                            forceAccumulator -= (Vector2) Vector3.Project ( forceAccumulator, transform.position - hookLink.transform.position );
                             forceAccumulator = Vector3.zero;
                         }
 
                         rgb.AddForce ( forceAccumulator, ForceMode2D.Impulse );
-                        head.Propagate ( -forceAccumulator * rgb.mass );
+                        hookLink.Propagate ( -forceAccumulator * rgb.mass );
                     }
                 }
             }
@@ -77,16 +77,16 @@ public class EQGrapple : TriggerAssembly {
 
     public override GameObject Fire ( Vector2 prv ) {
         headLaunched = true;
-        head.transform.position = transform.position + transform.up * 2;
-        head.transform.rotation = transform.rotation;
-        head.gameObject.SetActive ( true );
-        head.GetComponent<Rigidbody2D> ().velocity = (Vector3) prv + transform.up * launchSpeed;
+        hookLink.transform.position = transform.position + transform.up * 2;
+        hookLink.transform.rotation = transform.rotation;
+        hookLink.gameObject.SetActive ( true );
+        hookLink.GetComponent<Rigidbody2D> ().velocity = (Vector3) prv + transform.up * launchSpeed;
         return null;
     }
 
     public override void TriggerRelease () {
-        head.ResetParent ();
-        head.gameObject.SetActive ( false );
+        hookLink.ResetParent ();
+        hookLink.gameObject.SetActive ( false );
         headLaunched = false;
         lineConn.attachLength = 0;
         lineConn.enabled = false;
@@ -96,5 +96,10 @@ public class EQGrapple : TriggerAssembly {
 
     private void OnDisable () {
         TriggerRelease ();
+    }
+
+    public  void    HookAttach () {
+        lineConn.attachLength = hookLink.attachLength;
+        lineConn.enabled = true;
     }
 }

@@ -32,7 +32,7 @@ public class LineConnector : MonoBehaviour {
 
         Vector2 delta   = objectA.position - objectB.position;
         float deltaR;
-        if ( attachLength == 0 ) {
+        if ( attachLength != 0 ) {
             deltaR  = ( delta.magnitude / attachLength );
         } else {
             deltaR = 1;

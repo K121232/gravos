@@ -8,18 +8,22 @@ public class PoolSpooler : MonoBehaviour {
 
     private List<GameObject>  pool;
 
-    void Start() {
+    public virtual void ItemOnStart ( GameObject alpha ) {
+        alpha.transform.SetParent ( transform );
+        alpha.SetActive ( false );
+    }
+
+    public virtual void Start() {
         pool = new List<GameObject>( expected );
         for ( int i = 0; i < expected; i++ ) {
             GameObject delta = Instantiate( generator );
-            delta.transform.SetParent( transform );
-            delta.SetActive( false );
-            pool.Add( delta );
+            ItemOnStart ( delta );
+            pool.Add ( delta );
         }
         pos = 0;
     }
 
-    public GameObject Request () {
+    public virtual GameObject Request () {
         int delta = pos;
         pos = ( pos + 1 ) % expected;
         pool [ delta ].SetActive ( false );

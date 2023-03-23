@@ -1,6 +1,7 @@
 using UnityEngine;
 
 public class EQGrappleHook : MonoBehaviour {
+    private EQGrapple       grappleCore;
     private Rigidbody2D     rgb;
 
     public Transform       anchor;
@@ -17,6 +18,10 @@ public class EQGrappleHook : MonoBehaviour {
 
     public  float       STRGrav;
 
+    public  void    Bind ( EQGrapple _core ) {
+        grappleCore = _core;
+    }
+
     private void OnGrappleAttach () {
         Transform   deltaRF = attachRadar.collectedColliders [ 0 ].transform;
         deltaRF.TryGetComponent ( out attachedRGB );
@@ -31,7 +36,7 @@ public class EQGrappleHook : MonoBehaviour {
         }
         if ( attachedRGB != null ) {
             HSTM deltaHT;
-            if ( attachedRGB.TryGetComponent( out deltaHT) ) {
+            if ( attachedRGB.TryGetComponent( out deltaHT ) ) {
                 deltaHT.Bind ( null );
             }
             EQGrappleAP deltaAP;
@@ -39,6 +44,9 @@ public class EQGrappleHook : MonoBehaviour {
                 transform.localPosition = deltaAP.GetPoint ();
             }
             attachedRGB.gameObject.layer = anchor.gameObject.layer;
+        }
+        if ( grappleCore != null ) {
+            grappleCore.HookAttach ();
         }
     }
 
@@ -103,7 +111,9 @@ public class EQGrappleHook : MonoBehaviour {
     }
 
     public  void    ResetParent () {
-        transform.parent = savedParent;
+        if ( transform != null && savedParent != null ) {
+            transform.parent = savedParent;
+        }
     }
 
     public Vector2 Interogate () {

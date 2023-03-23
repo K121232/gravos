@@ -24,7 +24,7 @@ public class BladeHitgen : Hitgen {
         }
     }
 
-    public override int Bump ( GameObject who = null ) {
+    public override int Bump ( GameObject who = null, Vector2? _deltaV = null ) {
         if ( who != null ) {
             if ( safeguard.Contains ( who ) ) {
                 return 0;
@@ -35,13 +35,20 @@ public class BladeHitgen : Hitgen {
         }
         Rigidbody2D deltaRGBIN;
         Vector2 deltaV = Vector2.zero;
-        if ( rgb ) {
-            deltaV += rgb.velocity;
-        }
-        if ( who.TryGetComponent ( out deltaRGBIN ) ) {
-            deltaV -= deltaRGBIN.velocity;
+        if ( _deltaV != null ) {
+            deltaV = _deltaV.Value;
+        } else {
+            if ( who.TryGetComponent ( out deltaRGBIN ) ) {
+                if ( deltaV.magnitude < deltaRGBIN.velocity.magnitude ) {
+                    deltaV = -deltaRGBIN.velocity;
+                }
+            }
+            if ( rgb ) {
+                deltaV += rgb.velocity;
+            }
         }
 
+        Debug.Log ( Mathf.FloorToInt ( deltaV.magnitude * velocityScalingSTR ) );
         return base.Bump () + Mathf.FloorToInt ( deltaV.magnitude * velocityScalingSTR );
     }
 

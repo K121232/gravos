@@ -15,10 +15,10 @@ public class DirectionIndicator : MonoBehaviour {
     }
 
     void LateUpdate () {
-        bool delta = eqMain.headLaunched && !eqMain.head.detached;
+        bool delta = eqMain.headLaunched && !eqMain.hookLink.detached;
         if ( delta != deltaC ) {
             if ( delta ) {
-                headRGB = eqMain.head.GetAnchorRGB ();
+                headRGB = eqMain.hookLink.GetAnchorRGB ();
             } else {
                 headRGB = null;
             }

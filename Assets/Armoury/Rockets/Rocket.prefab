@@ -100,6 +100,8 @@ GameObject:
   - component: {fileID: 6938031529853935775}
   - component: {fileID: 7781164887404175965}
   - component: {fileID: 1202288943888136629}
+  - component: {fileID: 4844953551086441954}
+  - component: {fileID: 4226958041508042403}
   m_Layer: 0
   m_Name: Rocket
   m_TagString: Missile
@@ -249,3 +251,36 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetInertia: 3000
   paramCenterOfMass: {fileID: 0}
+--- !u!114 &4844953551086441954
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 687800561341309174}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d5ce300434fc67479eea9f89bf98a7e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hitboxes:
+  - alpha: {fileID: 4226958041508042403}
+    beta: 3
+  baseHealth: 3
+  currentHealth: 0
+  deathPs: {fileID: 0}
+--- !u!114 &4226958041508042403
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 687800561341309174}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73c42b442eecd8d45945cc02076d2d2b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ps: {fileID: 0}
+  controller: {fileID: 4844953551086441954}
+  id: 0
