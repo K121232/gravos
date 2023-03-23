@@ -99,6 +99,7 @@ GameObject:
   - component: {fileID: 687800561341309169}
   - component: {fileID: 6938031529853935775}
   - component: {fileID: 7781164887404175965}
+  - component: {fileID: 1202288943888136629}
   m_Layer: 0
   m_Name: Rocket
   m_TagString: Missile
@@ -231,6 +232,20 @@ MonoBehaviour:
   regen: 0
   variThrust: 0
   target: {fileID: 0}
-  STRP: 0.9
+  STRP: 0.95
   STRV1: 0.1
   STRV2: 0.2
+--- !u!114 &1202288943888136629
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 687800561341309174}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a86318d1221bc4142b90a7aabe018d96, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetInertia: 3000
+  paramCenterOfMass: {fileID: 0}

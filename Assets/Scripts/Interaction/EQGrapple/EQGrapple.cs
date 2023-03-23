@@ -7,7 +7,7 @@ public class EQGrapple : TriggerAssembly {
     public  Transform   aimHelperTarget;
     public  Transform   aimHelperBase;
 
-    public  GrappleHead head;
+    public  EQGrappleHook head;
 
     public  float       launchSpeed;
     public  float       maxRange;
@@ -70,11 +70,6 @@ public class EQGrapple : TriggerAssembly {
                         head.Propagate ( -forceAccumulator * rgb.mass );
                     }
                 }
-            } else {
-                head.ResetParent ();
-                head.gameObject.SetActive ( false );
-                headLaunched = false;
-                lineConn.attachLength = 0;
             }
             forceAccumulator = Vector3.zero;
         }
@@ -87,5 +82,19 @@ public class EQGrapple : TriggerAssembly {
         head.gameObject.SetActive ( true );
         head.GetComponent<Rigidbody2D> ().velocity = (Vector3) prv + transform.up * launchSpeed;
         return null;
+    }
+
+    public override void TriggerRelease () {
+        head.ResetParent ();
+        head.gameObject.SetActive ( false );
+        headLaunched = false;
+        lineConn.attachLength = 0;
+        lineConn.enabled = false;
+
+        base.TriggerRelease ();
+    }
+
+    private void OnDisable () {
+        TriggerRelease ();
     }
 }

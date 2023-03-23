@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class GrappleHead : MonoBehaviour {
+public class EQGrappleHook : MonoBehaviour {
     private Rigidbody2D     rgb;
 
     public Transform       anchor;
@@ -21,20 +21,24 @@ public class GrappleHead : MonoBehaviour {
         Transform   deltaRF = attachRadar.collectedColliders [ 0 ].transform;
         deltaRF.TryGetComponent ( out attachedRGB );
         if ( attachedRGB == null ) {
-            attachedRGB = deltaRF.GetComponentInParent <Rigidbody2D> ();
-        }
-        if ( attachedRGB != null ) {
-            attachedRGB.gameObject.layer = anchor.gameObject.layer;
+            if ( !deltaRF.TryGetComponent ( out attachedRGB ) ) {
+                attachedRGB = deltaRF.GetComponentInParent<Rigidbody2D> ();
+            }
         }
         ZethaMinion deltaM = deltaRF.GetComponent<ZethaMinion> ();
         if ( deltaM ) {
             deltaM.controller.TryGetComponent ( out attachedRGB );
         }
-        if ( attachedRGB != null && attachedRGB.GetComponent<HSTM> () != null ) {
-            attachedRGB.GetComponent<HSTM> ().target = null;
+        if ( attachedRGB != null ) {
+            HSTM deltaHT;
+            if ( attachedRGB.TryGetComponent( out deltaHT) ) {
+                deltaHT.Bind ( null );
+            }
+            EQGrappleAP deltaAP;
+            if ( deltaRF.TryGetComponent ( out deltaAP ) ) {
+                transform.localPosition = deltaAP.GetPoint ();
+            }
             attachedRGB.gameObject.layer = anchor.gameObject.layer;
-            attachedRGB.inertia *= 4;
-            attachedRGB.useAutoMass = false;
         }
     }
 
@@ -43,7 +47,7 @@ public class GrappleHead : MonoBehaviour {
     }
 
     private void Start () {
-        savedParent = transform.parent;
+        savedParent = transform.parent; 
         rgb = GetComponent<Rigidbody2D> ();
         gameObject.SetActive ( false );
     }

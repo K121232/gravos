@@ -2,6 +2,9 @@ using UnityEngine;
 using System.Collections.Generic;
 
 public class BladeHitgen : Hitgen {
+    private Rigidbody2D         rgb;
+    public  float               velocityScalingSTR;
+
     public  float               invTime;
     private List<GameObject>    safeguard;
     private List<float>         timings;
@@ -9,6 +12,9 @@ public class BladeHitgen : Hitgen {
     private void Start () {
         safeguard = new List<GameObject> (0);
         timings = new List<float> ( 0 );
+        if ( !TryGetComponent ( out rgb ) ) {
+            rgb = GetComponentInParent<Rigidbody2D> ();
+        }
     }
 
     private void Update () {
@@ -27,7 +33,16 @@ public class BladeHitgen : Hitgen {
                 timings     .Add ( Time.time + invTime );
             }
         }
-        return base.Bump ();
+        Rigidbody2D deltaRGBIN;
+        Vector2 deltaV = Vector2.zero;
+        if ( rgb ) {
+            deltaV += rgb.velocity;
+        }
+        if ( who.TryGetComponent ( out deltaRGBIN ) ) {
+            deltaV -= deltaRGBIN.velocity;
+        }
+
+        return base.Bump () + Mathf.FloorToInt ( deltaV.magnitude * velocityScalingSTR );
     }
 
 }

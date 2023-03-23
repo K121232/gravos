@@ -23,7 +23,7 @@ public class TeflonPMove : TeflonMovement {
     public override void Update() {
         if ( regen ) {
             sod = new SOD ( f, z, r, Vector2.SignedAngle ( Vector2.up, -rgb.velocity ) );
-            Debug.Log ( sod.Outcore () );
+            //Debug.Log ( sod.Outcore () );
             regen = false;
         }
 
