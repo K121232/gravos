@@ -19,24 +19,30 @@ public class Turret : TriggerAssembly {
 
     public override GameObject Fire ( Vector2 prv ) {
         GameObject instPayload  = autoloader.Request();
-        GameObject instTrail    = trailLoader.Request();
         instPayload.layer = gameObject.layer;
 
-        instTrail.GetComponent<TrailAddon> ().Bind ( instPayload.transform );
-        Vector3 minHullClearance = transform.position + transform.up * minRangeOffset;
+        instPayload.transform.SetPositionAndRotation ( transform.position + transform.up * minRangeOffset, transform.rotation );
 
         if ( instPayload.GetComponent<InertialImpactor> () != null ) {
-            instPayload.GetComponent<InertialImpactor> ().Prime ( rgb );
+            instPayload.GetComponent<InertialImpactor> ().Prime ( prv );
         }
 
         if ( instPayload.GetComponent<HSTM> () != null ) {
             instPayload.GetComponent<HSTM> ().Bind ( target );
         }
 
-        instPayload.transform.SetPositionAndRotation ( minHullClearance, transform.rotation );
+        if ( instPayload.GetComponent<TMFuse> () != null ) {
+            instPayload.GetComponent<TMFuse> ().Bind ( mainHull ? mainHull.transform : transform, prv );
+        }
+
 
         instPayload.SetActive ( true );
-        instTrail.SetActive ( true );
+
+        if ( trailLoader != null ) {
+            GameObject instTrail    = trailLoader.Request();
+            instTrail.GetComponent<TrailAddon> ().Bind ( instPayload.transform );
+            instTrail.SetActive ( true );
+        }
 
         return instPayload;
     }

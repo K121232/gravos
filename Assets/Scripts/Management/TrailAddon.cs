@@ -15,10 +15,13 @@ public class TrailAddon : Autodisabler {
         transform.position = alpha.position;
     }
 
-    public override void OnEnable () {
-        tr = GetComponent<TrailRenderer>();
-        base.OnEnable ();
+    private void OnDisable () {
+        if ( tr != null ) {
+            tr = GetComponent<TrailRenderer> ();
+        }
+        tr.Clear ();
     }
+
     void LateUpdate () {
         transform.position = target.position;
     }

@@ -389,7 +389,7 @@ TextureImporter:
         width: 239
         height: 937
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -397,6 +397,48 @@ TextureImporter:
       bones: []
       spriteID: 3dd33a1803720484da139b53c10a3898
       internalID: -1001058137
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Shipverse_11
+      rect:
+        serializedVersion: 2
+        x: 536
+        y: 787
+        width: 269
+        height: 251
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 067f2fea9c43cf442868f54382e0f0ef
+      internalID: -1307835388
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Shipverse_13
+      rect:
+        serializedVersion: 2
+        x: 283
+        y: 476
+        width: 61
+        height: 475
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4ebecfe1182e37a41a84c2c11a58d20b
+      internalID: -1455914437
       vertices: []
       indices: 
       edges: []

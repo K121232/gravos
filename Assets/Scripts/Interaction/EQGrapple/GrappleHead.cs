@@ -20,6 +20,12 @@ public class GrappleHead : MonoBehaviour {
     private void OnGrappleAttach () {
         Transform   deltaRF = attachRadar.collectedColliders [ 0 ].transform;
         deltaRF.TryGetComponent ( out attachedRGB );
+        if ( attachedRGB == null ) {
+            attachedRGB = deltaRF.GetComponentInParent <Rigidbody2D> ();
+        }
+        if ( attachedRGB != null ) {
+            attachedRGB.gameObject.layer = anchor.gameObject.layer;
+        }
         ZethaMinion deltaM = deltaRF.GetComponent<ZethaMinion> ();
         if ( deltaM ) {
             deltaM.controller.TryGetComponent ( out attachedRGB );
@@ -27,6 +33,8 @@ public class GrappleHead : MonoBehaviour {
         if ( attachedRGB != null && attachedRGB.GetComponent<HSTM> () != null ) {
             attachedRGB.GetComponent<HSTM> ().target = null;
             attachedRGB.gameObject.layer = anchor.gameObject.layer;
+            attachedRGB.inertia *= 4;
+            attachedRGB.useAutoMass = false;
         }
     }
 

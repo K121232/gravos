@@ -100,7 +100,7 @@ GameObject:
   - component: {fileID: 6938031529853935775}
   - component: {fileID: 7781164887404175965}
   m_Layer: 0
-  m_Name: Rockit
+  m_Name: Rocket
   m_TagString: Missile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -229,8 +229,8 @@ MonoBehaviour:
   z: 1
   r: 1
   regen: 0
+  variThrust: 0
   target: {fileID: 0}
-  targetRGB: {fileID: 0}
-  STRP: 0.6
-  STRV1: 0.15
-  STRV2: 0.25
+  STRP: 0.9
+  STRV1: 0.1
+  STRV2: 0.2

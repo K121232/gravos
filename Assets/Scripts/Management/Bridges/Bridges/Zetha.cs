@@ -10,7 +10,9 @@ public class Zetha : MonoBehaviour {
     
     public  List<HitboxWeight>    hitboxes;
     public  float           baseHealth;
-    public  float           currentHealth;   
+    public  float           currentHealth;
+
+    public  PoolSpooler     deathPs;
 
     public virtual void Start() {
         currentHealth = baseHealth;
@@ -36,6 +38,14 @@ public class Zetha : MonoBehaviour {
         if ( currentHealth <= 0 ) {
             currentHealth = baseHealth;
             gameObject.SetActive ( false );
+            GameObject psfxo = deathPs.Request ();
+            ParticleSystem pfx = psfxo.GetComponent<ParticleSystem>();
+            psfxo.SetActive ( true );
+            if ( pfx != null ) {
+                var deltaShape = pfx.shape;
+                deltaShape.position = transform.position;
+                pfx.Play ();
+            }
         }
     }
 

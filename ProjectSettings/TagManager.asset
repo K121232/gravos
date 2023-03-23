@@ -8,6 +8,8 @@ TagManager:
   - Tracer
   - Ship
   - Grab Point
+  - Structure
+  - Item
   layers:
   - Default
   - TransparentFX

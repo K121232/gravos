@@ -8,11 +8,6 @@ public class Autodisabler : MonoBehaviour {
         deltaT = lifespan;
     }
 
-    public virtual void OnDisable() {
-        TrailRenderer tr = GetComponentInChildren<TrailRenderer>();
-        if ( tr != null ) { tr.Clear(); }
-    }
-
     public virtual void Update () {
         if ( deltaT > 0 ) {
             deltaT -= Time.deltaTime;

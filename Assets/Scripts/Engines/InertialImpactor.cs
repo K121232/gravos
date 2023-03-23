@@ -10,9 +10,7 @@ public class InertialImpactor : MonoBehaviour {
         v0 = Vector3.zero;
     }
 
-    public void Prime ( Rigidbody2D rgb ) {
-        if ( rgb != null ) {
-            v0 = rgb.velocity;
-        }
+    public void Prime ( Vector2 _v0 ) {
+        v0 = _v0;
     }
 }
