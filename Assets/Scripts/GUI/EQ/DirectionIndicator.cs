@@ -18,7 +18,7 @@ public class DirectionIndicator : MonoBehaviour {
         bool delta = eqMain.headLaunched && !eqMain.hookLink.detached;
         if ( delta != deltaC ) {
             if ( delta ) {
-                headRGB = eqMain.hookLink.GetAnchorRGB ();
+                //headRGB = eqMain.hookLink.GetAnchorRGB ();
             } else {
                 headRGB = null;
             }

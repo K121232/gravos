@@ -8,6 +8,12 @@ public class LineConnector : MonoBehaviour {
 
     public  float           attachLength;
 
+    public  void    BaseInit ( Transform a, Transform b ) {
+        objectA = a;
+        objectB = b;
+        enabled = false;
+    }
+
     private void Start () {
         lineRenderer = GetComponent<LineRenderer> ();
     }
@@ -20,6 +26,7 @@ public class LineConnector : MonoBehaviour {
     private void OnDisable () {
         if ( lineRenderer != null )
             lineRenderer.enabled = enabled;
+        attachLength = 0;
     }
 
     public void LoadAsDelta ( Transform alpha ) {

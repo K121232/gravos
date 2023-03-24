@@ -22,7 +22,11 @@ public class HSTM : TM {
 
     public void Bind ( Transform alpha ) {
         target = alpha;
-        alpha.TryGetComponent ( out targetRGB );
+        if ( target != null ) {
+            target.TryGetComponent ( out targetRGB );
+        } else {
+            targetRGB = null;
+        }
     }
 
     public override void Update () {

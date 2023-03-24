@@ -48,7 +48,7 @@ public class BladeHitgen : Hitgen {
             }
         }
 
-        Debug.Log ( Mathf.FloorToInt ( deltaV.magnitude * velocityScalingSTR ) );
+        //Debug.Log ( Mathf.FloorToInt ( deltaV.magnitude * velocityScalingSTR ) );
         return base.Bump () + Mathf.FloorToInt ( deltaV.magnitude * velocityScalingSTR );
     }
 
