@@ -9,7 +9,7 @@ public class BladeHitgen : Hitgen {
     private List<GameObject>    safeguard;
     private List<float>         timings;
 
-    private void Start () {
+    public virtual void Start () {
         safeguard = new List<GameObject> (0);
         timings = new List<float> ( 0 );
         if ( !TryGetComponent ( out rgb ) ) {
@@ -17,7 +17,7 @@ public class BladeHitgen : Hitgen {
         }
     }
 
-    private void Update () {
+    public virtual void Update () {
         while ( timings.Count > 0 && timings [ 0 ] <= Time.time ) {
             timings.RemoveAt ( 0 );
             safeguard.RemoveAt ( 0 );
@@ -43,9 +43,9 @@ public class BladeHitgen : Hitgen {
                     deltaV = -deltaRGBIN.velocity;
                 }
             }
-            if ( rgb ) {
-                deltaV += rgb.velocity;
-            }
+        }
+        if ( rgb ) {
+            deltaV += rgb.velocity;
         }
 
         //Debug.Log ( Mathf.FloorToInt ( deltaV.magnitude * velocityScalingSTR ) );

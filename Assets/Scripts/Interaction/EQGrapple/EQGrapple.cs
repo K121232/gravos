@@ -12,7 +12,7 @@ public class EQGrapple : TriggerAssembly {
     public  float       launchSpeed;
     public  float       maxRange;
     public  float       minAttachRange;
-    public  bool        headLaunched;
+    public  bool        hookLaunched;
 
 
     public override void Start () {
@@ -22,6 +22,8 @@ public class EQGrapple : TriggerAssembly {
         lineConn.BaseInit ( transform, hookLink.transform );
         lineTeth.BaseInit ( rgb, rgb.transform );
 
+        hookLaunched = true;
+        
         base.Start ();
     }
 
@@ -31,12 +33,12 @@ public class EQGrapple : TriggerAssembly {
         } else {
             TriggerRelease ();
         }
-        lineConn.enabled = headLaunched && hookLink.isActiveAndEnabled;
+        lineConn.enabled = hookLaunched && hookLink.isActiveAndEnabled;
         base.Update ();
     }
 
     public override GameObject Fire ( Vector2 prv ) {
-        headLaunched = true;
+        hookLaunched = true;
         hookLink.transform.position = transform.position + transform.up * 2;
         hookLink.transform.rotation = transform.rotation;
         hookLink.gameObject.SetActive ( true );
@@ -45,7 +47,12 @@ public class EQGrapple : TriggerAssembly {
     }
 
     public override void TriggerRelease () {
-        HookDetach ();
+        if ( hookLaunched ) {
+            HookDetach ();
+            aimHelper.LockIn ( aimHelperBase );
+        }
+        lineTeth.enabled = false;
+        lineConn.enabled = false;
         base.TriggerRelease ();
     }
 
@@ -60,13 +67,16 @@ public class EQGrapple : TriggerAssembly {
         lineTeth.enabled = true;
 
         lineTeth.LoadBL ( objectHooked, hookLink.transform, hookLink.attachLength );
+        aimHelper.LockIn ( aimHelperTarget );
     }
 
-    public void HookDetach () {
-        hookLink.ResetParent ();
-        hookLink.gameObject.SetActive ( false );
+    public void HookDetach ( bool hookDoReset = true ) {
+        if ( hookDoReset ) {
+            hookLink.ResetParent ();
+            hookLink.gameObject.SetActive ( false );
+        }
 
-        headLaunched = false;
+        hookLaunched = false;
 
         lineConn.enabled = false;
         lineTeth.enabled = false;

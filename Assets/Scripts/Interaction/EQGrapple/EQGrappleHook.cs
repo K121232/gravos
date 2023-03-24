@@ -37,7 +37,7 @@ public class EQGrappleHook : MonoBehaviour {
             if ( attachedRGB.TryGetComponent ( out deltaHT ) ) {
                 deltaHT.Bind ( null );
             }
-            EQGrappleAP deltaAP; 
+            EQGrappleAP deltaAP;  
             if ( attachedTransform.TryGetComponent ( out deltaAP ) ) {
                 transform.localPosition = deltaAP.GetPoint ();
             }
@@ -53,7 +53,10 @@ public class EQGrappleHook : MonoBehaviour {
     private void Start () {
         savedParent = transform.parent;
         rgb = GetComponent<Rigidbody2D> ();
-        gameObject.SetActive ( false );
+        detached = false;
+        if ( gameObject.activeInHierarchy ) {
+            gameObject.SetActive ( false );
+        }
     }
 
     void OnEnable () {
@@ -64,13 +67,20 @@ public class EQGrappleHook : MonoBehaviour {
     }
 
     private void OnDisable () {
-        rgb.isKinematic = true;
-        rgb.velocity = Vector2.zero;
+        detached = false;
+        if ( rgb ) {
+            rgb.isKinematic = true;
+            rgb.velocity = Vector2.zero;
+        }
         attachLength = 0;
+
         attachRadar.Clear ();
         gravRadar.Clear ();
+
         attachedTransform = null;
-        grappleCore.HookDetach ();
+        if ( grappleCore != null ) {
+            grappleCore.HookDetach ( false );
+        }
     }
 
     void Update () {
@@ -103,8 +113,8 @@ public class EQGrappleHook : MonoBehaviour {
     }
 
     public void ResetParent () {
-        if ( transform != null && savedParent != null ) {
-            transform.parent = savedParent;
+        if ( enabled && transform != null && savedParent != null ) {
+            transform.SetParent ( savedParent );
         }
     }
 }

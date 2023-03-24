@@ -7,7 +7,8 @@ public class ForceTether : MonoBehaviour {
     public  Transform           attachPointB;
 
     public  float       velocityDampeningStrength;
-    public  float       linearSpringStrength;
+    public  float       springStrength;
+    public  float       springScalePower;
 
     public  float       orbitalDampeningStrength;
     public  float       orbitalDampeningPower;
@@ -15,7 +16,8 @@ public class ForceTether : MonoBehaviour {
     private Vector2     forceAccumulator;
     private float       attachLength;
 
-    public  float       distribution = 0.5f;
+    public  float       powerA = 1;
+    public  float       powerB = 1;
 
     public  bool        backflow = false;
 
@@ -53,7 +55,7 @@ public class ForceTether : MonoBehaviour {
             Vector2 deltaVT     = Vector3.Project( deltaV, Quaternion.Euler( 0, 0, 90 ) * deltaDir );
             float   deltaS      = Vector3.Dot ( deltaV, deltaDir );
 
-            forceAccumulator = deltaDir * ( delta.magnitude - attachLength ) * linearSpringStrength;
+            forceAccumulator = deltaDir * Mathf.Pow ( delta.magnitude - attachLength, springScalePower ) * springStrength;
             forceAccumulator -= deltaDir * velocityDampeningStrength * deltaS;
             forceAccumulator -= deltaVT.normalized * Mathf.Pow ( deltaVT.magnitude, orbitalDampeningPower ) * orbitalDampeningStrength;
 
@@ -62,10 +64,10 @@ public class ForceTether : MonoBehaviour {
             }
 
             if ( objectA != null ) {
-                objectA.AddForceAtPosition ( forceAccumulator * distribution * 2, attachPointA.position );
+                objectA.AddForceAtPosition ( forceAccumulator * powerA, attachPointA.position );
             }
             if ( objectB != null ) {
-                objectB.AddForceAtPosition ( -forceAccumulator * ( 1 - distribution ) * 2, attachPointB.position );
+                objectB.AddForceAtPosition ( -forceAccumulator * powerB, attachPointB.position );
             }
         }
     }
