@@ -6155,6 +6155,7 @@ MonoBehaviour:
     beta: 1
   baseHealth: 25
   currentHealth: 0
+  deathPs: {fileID: 0}
   guardPatternTM: {fileID: 835055514}
   chasePatternTM: {fileID: 835055519}
   agroRadar: {fileID: 1083223690}
@@ -6627,7 +6628,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1261359305}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 40, z: 0}
+  m_LocalPosition: {x: -84.6, y: 81.2, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -6660,7 +6661,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1273510777}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 55, y: 40, z: 0}
+  m_LocalPosition: {x: 75.3, y: 131.4, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -6851,12 +6852,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   handlesRoot: {fileID: 1575439283}
   points:
-  - {x: 0, y: 40}
-  - {x: 55, y: 0}
-  - {x: 0, y: -40}
-  - {x: 55, y: 0}
-  - {x: 0, y: 40}
-  - {x: 55, y: 0}
+  - {x: -84.6, y: 81.2}
+  - {x: 159.9, y: 50.199997}
+  - {x: 104.6, y: -35.2}
+  - {x: -142.9, y: -23.5}
+  - {x: -84.6, y: 81.2}
+  - {x: 159.9, y: 50.199997}
   resolution: 0.001
   scale: 1
 --- !u!1 &1350020895
@@ -7089,7 +7090,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1505180929}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -40, z: 0}
+  m_LocalPosition: {x: 104.6, y: -35.2, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -7205,7 +7206,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1698485031}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 55, y: -40, z: 0}
+  m_LocalPosition: {x: -38.3, y: -58.7, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -12796,6 +12797,7 @@ MonoBehaviour:
     beta: 1
   baseHealth: 100
   currentHealth: 0
+  deathPs: {fileID: 0}
 --- !u!114 &7781164887604416555
 MonoBehaviour:
   m_ObjectHideFlags: 0

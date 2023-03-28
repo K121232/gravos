@@ -21,7 +21,9 @@ public class TeleportLeash : MonoBehaviour {
             if ( anchorRgb != null ) {
                 rgb.velocity = Vector3.Project ( rgb.velocity, anchorRgb.velocity );
                 rgb.velocity += anchorRgb.velocity;
+                rgb.velocity = anchorRgb.velocity;
             }
+            return;
             if ( rgb.velocity.magnitude > respawnMaxSpeed ) {
                 rgb.velocity = rgb.velocity.normalized * respawnMaxSpeed;
             }

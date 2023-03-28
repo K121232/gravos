@@ -29,8 +29,8 @@ public class LRCTM : TM {
 
     private void DrawCourse () {
         Vector2 delta = points [ 0 ], delta2;
-        for ( int i = 0; i < points.Length - 3; i += 2 ) {
-            if ( resolution <= 0 ) return;
+        if ( resolution <= 0 ) return;
+        for ( int i = 0; i < points.Length - 2; i += 2 ) {
             for ( float j = 0; j <= 1; j += resolution ) {
                 delta2 = Gitmas ( i, j );
                 Debug.DrawLine ( delta, delta2 );
@@ -62,7 +62,7 @@ public class LRCTM : TM {
 
         Vector2 DEBUGP = Vector2.zero;
 
-        if ( scanDistance == 0 ) return;
+        if ( scanDistance == 0 || resolution == 0 ) return;
 
         for ( float i = -scanDistance; i < scanDistance; i += resolution ) {
             int     md = ( major + Mathf.FloorToInt ( i + minor ) * 2 + points.Length - 2 ) % ( points.Length - 2 );
@@ -73,7 +73,7 @@ public class LRCTM : TM {
                 bestScore = ( target - deltaA ).sqrMagnitude;
                 deltaB = new Vector2 ( md, mi );
             } 
-            if ( i != 0 ) {
+            if ( i != -scanDistance ) {
                                                                 Debug.DrawLine ( DEBUGP, deltaA, Color.magenta );
             }
             DEBUGP = deltaA;

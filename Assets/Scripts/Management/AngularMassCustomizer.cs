@@ -6,7 +6,7 @@ public class AngularMassCustomizer : MonoBehaviour {
     private void Start () {
         GetComponent<Rigidbody2D> ().inertia = targetInertia;
         if ( paramCenterOfMass != null ) {
-            GetComponent<Rigidbody2D> ().centerOfMass = transform.worldToLocalMatrix * paramCenterOfMass.position;
+            GetComponent<Rigidbody2D> ().centerOfMass = paramCenterOfMass.localPosition;
         }
     }
 }
