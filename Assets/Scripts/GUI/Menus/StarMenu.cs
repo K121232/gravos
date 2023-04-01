@@ -26,9 +26,10 @@ public class StarMenu : MenuCore {
         }
     }
 
-    public void Update () {
+    public override void Update () {
         if ( Input.GetKeyDown ( KeyCode.X ) ) {
             Backflow ( !status );
         }
+        base.Update ();
     }
 }

@@ -1,7 +1,7 @@
 using UnityEngine;
 
 public class AimHelper : MonoBehaviour {
-    private CameraTether    tether;
+    private SmoothTracker    tether;
     private Camera          cam;
     
     public  Transform       bodyA;
@@ -24,7 +24,7 @@ public class AimHelper : MonoBehaviour {
 
     private void Start () {
         cam = GetComponent<Camera> ();
-        tether = GetComponent<CameraTether> ();
+        tether = GetComponent<SmoothTracker> ();
         originalOffset = tether.offset;
         originalSize = cam.orthographicSize;
         lockout = true;

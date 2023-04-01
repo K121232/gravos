@@ -3,6 +3,10 @@ using System.Collections.Generic;
 
 public class BladeHitgen : Hitgen {
     private Rigidbody2D         rgb;
+    
+    private Vector3             pastPosition;
+    private Vector3             pastV;
+
     public  float               velocityScalingSTR;
 
     public  float               invTime;
@@ -15,12 +19,20 @@ public class BladeHitgen : Hitgen {
         if ( !TryGetComponent ( out rgb ) ) {
             rgb = GetComponentInParent<Rigidbody2D> ();
         }
+        pastPosition = transform.position;
     }
 
     public virtual void Update () {
         while ( timings.Count > 0 && timings [ 0 ] <= Time.time ) {
             timings.RemoveAt ( 0 );
             safeguard.RemoveAt ( 0 );
+        }
+    }
+
+    private void LateUpdate () {
+        if ( rgb == null ) {
+            pastV = ( transform.position - pastPosition );
+            pastPosition = transform.position;
         }
     }
 
@@ -44,8 +56,11 @@ public class BladeHitgen : Hitgen {
                 }
             }
         }
-        if ( rgb ) {
+        if ( rgb && !rgb.isKinematic ) {
             deltaV += rgb.velocity;
+        } else {
+            //Debug.Log ( pastV );
+            deltaV += (Vector2)( pastV ) / Time.deltaTime;
         }
 
         //Debug.Log ( Mathf.FloorToInt ( deltaV.magnitude * velocityScalingSTR ) );

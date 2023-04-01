@@ -27,4 +27,10 @@ public class MenuCore : MonoBehaviour {
             manager.MenuRequest ( selfID, a );
         }
     }
+
+    public  virtual void Update  () {
+        if ( Input.GetKey ( KeyCode.Escape ) ) {
+            Backflow ( false );
+        }
+    }
 }

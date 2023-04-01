@@ -6,7 +6,7 @@ public class DebugMenu : MenuCore {
     public  ProtoPlayerBridge   playerBridge;
     public  TeflonPMove         playerShip;
     public  CarrotTargeting     carrotTargeting;
-    public  CameraTether        camTether;
+    public  SmoothTracker        camTether;
 
     public  Slider[]            sliders;
     public  TMP_Text []         lables;
@@ -34,6 +34,14 @@ public class DebugMenu : MenuCore {
     public  ToggleButton    MAS;
     public  ToggleButton    INV;
 
+    public  void SyncTGwS ( ToggleButton a, string b ) {      // Sync ToGgle with Settings
+        a.Set ( PlayerPrefs.GetInt ( b, FBW.GetStatus () ? 1 : 0 ) == 1 ? true : false );
+    }
+
+    public void SyncSwTG ( ToggleButton a, string b ) {
+        PlayerPrefs.SetInt ( b, a.GetStatus () ? 1 : 0 );
+    }
+
     public override void Start () {
         base.Start ();
         sliders [ 0 ].SetValueWithoutNotify ( playerShip.mxv );
@@ -42,11 +50,11 @@ public class DebugMenu : MenuCore {
         sliders [ 3 ].SetValueWithoutNotify ( playerShip.angleAcc );
         sliders [ 4 ].SetValueWithoutNotify ( camTether.rotationStrength );
 
-        FBW.Set ( playerShip.flybywire );
-        MAS.Set ( carrotTargeting.enabled );
-        INV.Set ( playerBridge.invulnerability );
+        SyncTGwS ( FBW, "_DEB_FBW" );
+        SyncTGwS ( MAS, "_DEB_MAS" );
+        SyncTGwS ( INV, "_DEB_INV" );
 
-        Redraw ();
+        OnSaveMenu ();
     }
 
     public void Redraw () {
@@ -84,11 +92,15 @@ public class DebugMenu : MenuCore {
         playerShip.flybywire = FBW.GetStatus ();
         carrotTargeting.enabled = MAS.GetStatus ();
 
+        SyncSwTG ( FBW, "_DEB_FBW" );
+        SyncSwTG ( MAS, "_DEB_MAS" );
+        SyncSwTG ( INV, "_DEB_INV" );
+
         Redraw ();
         Backflow ( false );
     }
 
-    public void Update () {
+    public override void Update () {
         if ( Input.GetKeyDown ( KeyCode.M ) ) {
 
             FBW.Set ( playerShip.flybywire );

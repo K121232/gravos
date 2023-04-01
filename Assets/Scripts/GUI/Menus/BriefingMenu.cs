@@ -13,6 +13,7 @@ public class BriefingMenu : MenuCore {
         pages = new GameObject [ pagesRoot.childCount ];
         for ( int i = 0; i < pagesRoot.childCount; i++ ) {
             pages [ i ] = pagesRoot.GetChild ( i ).gameObject;
+            
         }
         base.Start ();
     }
@@ -37,10 +38,11 @@ public class BriefingMenu : MenuCore {
         pages [ iter ].SetActive ( true );
     }
 
-    public void Update () {
+    public override void Update () {
         if ( Input.GetKeyDown ( KeyCode.B ) ) {
             Backflow ( !status );
             FlipPage ( -pages.Length );
         }
+        base.Update ();
     }
 }

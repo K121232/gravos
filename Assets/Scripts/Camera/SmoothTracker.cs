@@ -1,8 +1,8 @@
 using UnityEngine;
 
-public class CameraTether : MonoBehaviour {
+public class SmoothTracker : MonoBehaviour {
     public  Transform   target;
-    private Rigidbody2D trackingRigidbody;
+    public  Rigidbody2D trackingRigidbody;
 
     public  Vector3     offset;
     public  float       velocityFactor;
@@ -12,11 +12,13 @@ public class CameraTether : MonoBehaviour {
 
     private Vector3     delta;
 
-    private void Start () {
-        trackingRigidbody = target.GetComponent<Rigidbody2D> ();
+    public virtual void Start () {
+        if ( trackingRigidbody == null ) {
+            trackingRigidbody = target.GetComponent<Rigidbody2D> ();
+        }
     }
 
-    void LateUpdate() {
+    public virtual void LateUpdate() {
         if ( trackingRigidbody != null ) {
             delta = ( Vector3 )target.position + ( Vector3 )trackingRigidbody.velocity * velocityFactor;
         } else {

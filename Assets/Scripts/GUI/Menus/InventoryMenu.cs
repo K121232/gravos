@@ -1,9 +1,16 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class InventoryMenu : MenuCore {
-    void Update () {
+
+    public  Transform           equipmentRoot;
+
+    public  List<ItemHandle>    stores;
+
+    public override void Update () {
         if ( Input.GetKeyDown ( KeyCode.P ) ) {
-            Incoming ( !animator.GetBool ( "Dispatch" ) );
+            Backflow ( !status );
         }
+        base.Update ();
     }
 }

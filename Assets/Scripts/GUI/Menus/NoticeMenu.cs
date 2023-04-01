@@ -17,9 +17,10 @@ public class NoticeMenu : MenuCore {
         SceneManager.LoadScene ( 0 );
     }
 
-    public void Update () {
+    public override void Update () {
         if ( Input.GetKeyDown ( KeyCode.N ) ) {
             Backflow ( !status );
         }
+        base.Update ();
     }
 }

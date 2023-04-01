@@ -28,10 +28,18 @@ public class TeflonPMove : TeflonMovement {
         }
 
         if ( flybywire ) {
+            Vector2 targetDir = cam.ScreenToWorldPoint ( Input.mousePosition ) - transform.position;
+            if ( Input.GetAxis ( "Vertical" ) >= 0 ) {
+                delta += Mathf.Max ( Input.GetAxis ( "Vertical" ), 0 );
+            } else {
+                if ( rgb.velocity.magnitude > 2.5f ) {
+                    targetDir = -rgb.velocity;
+                    delta += Mathf.Max ( Vector2.Dot ( -rgb.velocity.normalized, transform.up ), 0 );
+                }
+            }
             deltaAngle += FilterAngle ( sod.Update ( Time.fixedDeltaTime,
-                Vector2.SignedAngle ( transform.up, cam.ScreenToWorldPoint ( Input.mousePosition ) - transform.position ),
-                Vector2.SignedAngle ( Vector2.up, cam.ScreenToWorldPoint ( Input.mousePosition ) - transform.position ), rgb.angularVelocity ) ) / Time.fixedDeltaTime;
-            delta += Mathf.Max ( Input.GetAxis ( "Vertical" ), 0 );
+                Vector2.SignedAngle ( transform.up, targetDir ),
+                Vector2.SignedAngle ( Vector2.up, targetDir ), rgb.angularVelocity ) ) / Time.fixedDeltaTime;
         } else {
             Vector2 deltaI = new Vector2 ( Input.GetAxis ("Horizontal"), Input.GetAxis("Vertical") );
             if ( deltaI.magnitude >= 0.1f ) {

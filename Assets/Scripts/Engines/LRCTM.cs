@@ -28,7 +28,7 @@ public class LRCTM : TM {
     }
 
     private void DrawCourse () {
-        Vector2 delta = points [ 0 ], delta2;
+        Vector2 delta = Gitmas ( 0, 0 ), delta2;
         if ( resolution <= 0 ) return;
         for ( int i = 0; i < points.Length - 2; i += 2 ) {
             for ( float j = 0; j <= 1; j += resolution ) {

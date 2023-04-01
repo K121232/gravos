@@ -1,7 +1,6 @@
 using UnityEngine;
 
 public class TM : MonoBehaviour {
-    // Oh its Heat seeking targeting module ( dumb name )
     protected TeflonMovement      PROPULSION;
     protected Rigidbody2D         rgb;
 
@@ -14,13 +13,17 @@ public class TM : MonoBehaviour {
     public  bool        regen;
     public  bool        variThrust;
 
+    protected   bool        thrustBypass;
+
     public virtual void Start () {
         regen = true;
         PROPULSION = GetComponent<TeflonMovement> ();
         rgb = GetComponent<Rigidbody2D> ();
+        thrustBypass = false;
     }
 
     protected   Vector2 targetLink;
+    protected   float   thurstLink;
     public virtual void Update () {
         Debug.DrawLine ( transform.position, targetLink, Color.yellow );
 
@@ -36,11 +39,15 @@ public class TM : MonoBehaviour {
         Debug.DrawLine ( transform.position, transform.position + transform.up * 4, Color.blue );
         */
         float deltaAA = sod.Update ( Time.deltaTime, Vector2.SignedAngle ( transform.up, targetLink ), Vector2.SignedAngle ( Vector2.up, targetLink ), rgb.angularVelocity );
-        float deltaT = 1;
-        if ( variThrust ) {
-            deltaT = Mathf.Max ( Vector2.Dot ( transform.up, targetLink.normalized ), 0 );
+        if ( !thrustBypass ) {
+            if ( variThrust ) {
+                thurstLink = Mathf.Max ( Vector2.Dot ( transform.up, targetLink.normalized ), 0 );
+            } else {
+                thurstLink = 1;
+            }
         }
+        thrustBypass = false;
 
-        PROPULSION.UpdateDeltas ( 1, PROPULSION.FilterAngle ( deltaAA ) / Time.deltaTime, false );
+        PROPULSION.UpdateDeltas ( thurstLink, PROPULSION.FilterAngle ( deltaAA ) / Time.deltaTime, false );
     }
 }
