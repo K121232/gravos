@@ -71,7 +71,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 25b3bf7fe959f3544b9b243d9202fa22, type: 2}
+  m_Motion: {fileID: 7400000, guid: 43b5c9b0e6bcc4e46a567a7d4b2a7d15, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -83,7 +83,7 @@ AnimatorController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: GUIMenu
+  m_Name: GUI Decision
   serializedVersion: 5
   m_AnimatorParameters:
   - m_Name: Dispatch
@@ -151,7 +151,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: fdda4a9d53b76d342a50b9a9dd59e1bc, type: 2}
+  m_Motion: {fileID: 7400000, guid: 52d767399df2c884da180fdbcb737822, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 

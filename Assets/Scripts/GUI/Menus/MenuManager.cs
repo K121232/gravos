@@ -1,4 +1,5 @@
 using UnityEngine;
+using System;
 
 public class MenuManager : MonoBehaviour {
     [System.Serializable]
@@ -13,6 +14,10 @@ public class MenuManager : MonoBehaviour {
     public bool menuLock { get; private set; }
     public  MenuEntry[]     menus;
 
+    public  OptionMenu      optionMenu;
+    public  Action<int>     reqCallback;
+    public  bool            inDecision;
+
     private void Start () {
         for ( int i = 0; i < menus.Length; i++ ) {
             menus [ i ].menuHandle.Handshake ( this, i );
@@ -24,8 +29,10 @@ public class MenuManager : MonoBehaviour {
 
     private bool delta;
 
-    public void MenuRequest ( int id, bool target ) {
-        if ( target && currentPrio > menus [ id ].prio ) {
+    public void MenuRequest ( int id, bool target, int specPrio = -1 ) {
+        if ( inDecision ) { return; }
+        if ( specPrio == -1 ) { specPrio = menus [ id ].prio; }
+        if ( target && currentPrio > specPrio ) {
             return;
         }
         Time.timeScale = 1;
@@ -43,4 +50,18 @@ public class MenuManager : MonoBehaviour {
         }
     }
 
+    // Decision will not deal with timescales, as the menus that call it should be paused or not already
+    public  void    CallbackWrapper ( int a ) {
+        inDecision = false;
+        optionMenu.Incoming ( false );
+        reqCallback ( a );
+    }
+    
+    public void RequestDecision ( Action<int> _callback, string OA, string OB, string title = "OPTIONS" ) {
+        // Im mad that this is duplicated code ... >:(
+        inDecision = true;
+        reqCallback = _callback;
+        optionMenu.Incoming ( true );
+        optionMenu.Initiate ( CallbackWrapper, OA, OB, title );
+    }
 }

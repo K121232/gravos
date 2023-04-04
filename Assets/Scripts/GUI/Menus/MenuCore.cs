@@ -22,9 +22,9 @@ public class MenuCore : MonoBehaviour {
         Backflow ( false );
     }
 
-    public  virtual void Backflow ( bool a ) {
+    public  virtual void Backflow ( bool a, int specPrio = -1 ) {
         if ( manager != null && selfID != -1 ) {
-            manager.MenuRequest ( selfID, a );
+            manager.MenuRequest ( selfID, a, specPrio );
         }
     }
 
