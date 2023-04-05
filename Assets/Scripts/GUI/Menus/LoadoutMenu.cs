@@ -5,7 +5,7 @@ using System.Collections.Generic;
 public class LoadoutMenu : MenuCore {
     public  InventoryMenu   ivm;
 
-    public  Transform       eqRoot;
+    public  Transform       hardpointsRoot;
 
     public  Multihelper[]       iHandles;
 

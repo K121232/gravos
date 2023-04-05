@@ -14,7 +14,7 @@ public class ItemHandle : MonoBehaviour {
         Debug.Log ( "Detach" );
     }
 
-    public virtual void Attach () {
+    public virtual void Attach ( GameObject mainHull ) {
         Debug.Log ( "Attach" );
     }
 

@@ -3,9 +3,11 @@ using UnityEngine;
 using TMPro;
 
 public class InventoryMenu : MenuCore {
+    public  ItemPorts           ports;
     public  LoadoutMenu         ldm;
 
     public  List<ItemHandle>    stores;
+    public  Transform           storesRoot;
     public  int                 contextId = -1;
 
     public  Transform           listRoot;
@@ -31,15 +33,23 @@ public class InventoryMenu : MenuCore {
     }
 
     public  void    PopulateList () {
+        stores.Clear ();
+        ItemHandle  deltaH;
+        for ( int i = 0; i < storesRoot.childCount; i++ ) {
+            deltaH = storesRoot.GetChild ( i ).GetComponent<ItemHandle> ();
+            if ( deltaH != null && deltaH.enabled ) {
+                stores.Add ( deltaH );
+            }
+        }
         for ( int i = stores.Count; i < listRoot.childCount; i++ ) {
-            Destroy ( listRoot.GetChild ( i ) );
+            Destroy ( listRoot.GetChild ( i ).gameObject );
         }
         GameObject delta;
         for ( int i = 0; i < stores.Count; i++ ) {
             if ( i >= listRoot.childCount ) {
                 Debug.Log ( "Made new item" );
                 delta = Instantiate ( listItemPrefab, listRoot );
-                //delta.GetComponent<RectTransform> ().Translate ( 0, - 60 - 125 * i, 0 );
+                delta.GetComponent<RectTransform> ().Translate ( 0, -6 * i, 0, Space.Self );
             }
             // TESTING FOR ONCLICK LISTENERS
             listRoot.GetChild ( i ).GetComponent<Multihelper> ().Init ( i );
@@ -75,7 +85,9 @@ public class InventoryMenu : MenuCore {
         switch ( decisionType ) {
             case 0:
                 if ( outcome == 1 ) {
+                    ports.Jettison ( contextId );
                     Debug.Log ( "ITEM " + contextId + " HAS BEEN DISCARDED" );
+                    PopulateList ();
                 }
                 if ( outcome == -1 ) {
                     Debug.Log ( "ITEM " + contextId + " HAS NOT BEEN DISCARDED" );
@@ -89,6 +101,9 @@ public class InventoryMenu : MenuCore {
             ldm.InitLeftSide ( stores [ contextId ] );
             ldm.Backflow ( true );
         }
+    }
+
+    public  void    SwapCallback ( int id ) {
     }
 
     public override void Incoming ( bool a ) {

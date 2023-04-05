@@ -11,6 +11,7 @@ public class SmoothTracker : MonoBehaviour {
     public  float       rotationStrength;
 
     private Vector3     delta;
+    public  bool        scaledTime = false;
 
     public virtual void Start () {
         if ( trackingRigidbody == null ) {
@@ -28,6 +29,6 @@ public class SmoothTracker : MonoBehaviour {
         delta += offset;
 
         transform.position = Vector3.Lerp( transform.position - offset, delta, strength ) + offset;
-        transform.rotation = Quaternion.Lerp ( transform.rotation, target.rotation, rotationStrength * Time.unscaledDeltaTime );
+        transform.rotation = Quaternion.Lerp ( transform.rotation, target.rotation, rotationStrength * ( scaledTime ? Time.deltaTime : Time.unscaledDeltaTime ) );
     }
 }
