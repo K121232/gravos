@@ -54,7 +54,9 @@ public class MenuManager : MonoBehaviour {
     public  void    CallbackWrapper ( int a ) {
         inDecision = false;
         optionMenu.Incoming ( false );
-        reqCallback ( a );
+        if ( reqCallback != null ) {
+            reqCallback ( a );
+        }
     }
     
     public void RequestDecision ( Action<int> _callback, string OA, string OB, string title = "OPTIONS" ) {
@@ -63,5 +65,11 @@ public class MenuManager : MonoBehaviour {
         reqCallback = _callback;
         optionMenu.Incoming ( true );
         optionMenu.Initiate ( CallbackWrapper, OA, OB, title );
+    }
+
+    public void CancelDecision () {
+        if ( inDecision ) {
+            CallbackWrapper ( 0 );
+        }
     }
 }

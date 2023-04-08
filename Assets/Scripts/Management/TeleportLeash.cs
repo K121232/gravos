@@ -23,10 +23,11 @@ public class TeleportLeash : MonoBehaviour {
                 rgb.velocity += anchorRgb.velocity;
                 rgb.velocity = anchorRgb.velocity;
             }
-            return;
+            /*
             if ( rgb.velocity.magnitude > respawnMaxSpeed ) {
                 rgb.velocity = rgb.velocity.normalized * respawnMaxSpeed;
             }
+            */
             // What to do when the respawn happens
         }
     }

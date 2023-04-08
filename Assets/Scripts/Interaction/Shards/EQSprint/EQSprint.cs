@@ -1,7 +1,7 @@
 using UnityEngine;
 
-public class EQSprint : MonoBehaviour {
-    public  Rigidbody2D     rgb;
+public class EQSprint : EQBase {
+    [Header ( "EQ Sprint" )]
 
     public  float           sprintSTR;
     public  PowerCell       sprintCell;
@@ -10,6 +10,11 @@ public class EQSprint : MonoBehaviour {
     public  float           drainCont;
 
     public  bool            isSprinting;
+
+    public override void MainInit ( ItemPort port ) {
+        base.MainInit ( port );
+        sprintCell = port.batteryLink.GetChild ( 2 ).GetComponent<PowerCell> ();
+    }
 
     void Update () {
         if ( Input.GetAxis ( "Fire2" ) > 0 && sprintCell.Available() ) {

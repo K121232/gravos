@@ -27,13 +27,11 @@ public class Multihelper : MonoBehaviour {
     }
 
     public void CallbackEntryPoint ( int selector ) {
-        Debug.Log ( "CALLBACK ENTRY POINT TRIGGERED BY " + name );
         Action<int> deltaC = null;
         if ( selector >= 0 && selector < callbacks.Length ) {
             deltaC = callbacks [ selector ];
         }
         if ( deltaC != null && callID != -1 ) {
-            Debug.Log ( "CALLBACK HAS BEEN CALLED" );
             deltaC ( callID );
         }
     }

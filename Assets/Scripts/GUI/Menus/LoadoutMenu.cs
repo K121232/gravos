@@ -5,97 +5,97 @@ using System.Collections.Generic;
 public class LoadoutMenu : MenuCore {
     public  InventoryMenu   ivm;
 
-    public  Transform       hardpointsRoot;
+    public  List<ItemPort>      store;
+    public  List<Multihelper>   helpers;
 
+    public  Transform           hardpointsRoot;
     public  Multihelper[]       iHandles;
-
-    public  List<ItemHandle>    storeW;
-    public  List<ItemHandle>    storeE;
-
-    public  List<Multihelper>   helpersW;
-    public  List<Multihelper>   helpersE;
-
-    private ItemHandle          objA, objB;
 
     public  Button              swapButton;
 
+    public  ItemPort portA, portB;
+
     public override void Start () {
-        //storeW = new List<ItemHandle> ();
-        //storeE = new List<ItemHandle> ();
-        objA = null;
-        objB = null;
         base.Start ();
     }
 
-    public  void    InitLeftSide ( ItemHandle a ) {
-        LoadInspect ( a.isWeapon ? "W" : "E", a, 0 );
+    public void InitLeftSide ( ItemPort a ) {
+        LoadInspect ( 0, a.item.GetTagName (), a );
     }
-    public  void    InitCallbacks () {
-        for ( int i = 0; i < storeW.Count; i++ ) {
-            helpersW [ i ].Init ( i );
-            helpersW [ i ].SetCallback ( 0, DisplayCallback );
+    public void InitCallbacks () {
+        for ( int i = 0; i < helpers.Count; i++ ) {
+            helpers [ i ].Init ( i );
+            helpers [ i ].SetCallback ( 0, DisplayCallback );
         }
     }
+
+    private bool CheckSwapPossibility () {
+        return portA != null && portB != null && portB.Compatible ( portA );
+    }
+
     public void Draw () {
-        for ( int i = 0; i < storeW.Count; i++ ) {
-            helpersW [ i ].anchors [ 0 ].GetComponent<Image> ().sprite = storeW [ i ].insignia;
+        for ( int i = 0; i < helpers.Count; i++ ) {
+            if ( CheckID ( i, store ) && store [ i ].item != null ) {
+                helpers [ i ].anchors [ 0 ].GetComponent<Image> ().sprite = store [ i ].item.insignia;
+            } else {
+                helpers [ i ].anchors [ 0 ].GetComponent<Image> ().sprite = null;
+            }
         }
-        swapButton.interactable = objA != null && objB != null && objA.Compatible ( objB );
+        swapButton.interactable = CheckSwapPossibility ();
+    }
+
+    private bool CheckID<T> ( int a, List<T> b ) {
+        return a >= 0 && a < b.Count;
     }
 
     public void DisplayCallback ( int id ) {
-        if ( id == -1 ) {
-            LoadInspect ( "X", null, 1 );
-            return;
-        }
-        if ( id >= helpersW.Count ) {
-            id -= helpersW.Count;
-            LoadInspect ( "E" + ( id + 1 ).ToString (), storeE [ id ], 1 );
+        if ( CheckID ( id, store ) && helpers [ id ] != null ) {
+            LoadInspect ( 1, store [ id ].GetTagName () + ( id + 1 ).ToString (), store [ id ] );
         } else {
-            LoadInspect ( "W" + ( id + 1 ).ToString (), storeW [ id ], 1 );
+            LoadInspect ( 1 );
         }
         Draw ();
     }
-    public  void    LoadInspect ( string pos, ItemHandle a, int target ) {
+    public  void    LoadInspect ( int target = 0, string pos = "X", ItemPort a = null ) {
         iHandles [ target ].SetLabel ( 0, pos );
+        ItemHandle deltaIH = null;
         if ( a != null ) {
-            iHandles [ target ].SetLabel ( 1, a.itemName );
-            iHandles [ target ].SetLabel ( 2, a.description );
-            iHandles [ target ].anchors [ 0 ].GetComponent<Image> ().sprite = a.insignia;
+            deltaIH = a.item;
+            if ( target == 0 ) portA = a; else portB = a;
+        }
+        if ( deltaIH != null ) {
+            iHandles [ target ].SetLabel ( 1, deltaIH.itemName );
+            iHandles [ target ].SetLabel ( 2, deltaIH.description );
+            iHandles [ target ].anchors [ 0 ].GetComponent<Image> ().sprite = deltaIH.insignia;
         } else {
             iHandles [ target ].SetLabel ( 1, " \\ NOTHING // " );
             iHandles [ target ].SetLabel ( 2, ">_" );
-            // Have a default insignia sprite
             iHandles [ target ].anchors [ 0 ].GetComponent<Image> ().sprite = null;
-        }
-        if ( target == 0 ) {
-            objA = a;
-        } else {
-            objB = a;
         }
     }
 
     public  void    InitiateSwap () {
-        if ( objA != null && objB != null && objA.Compatible ( objB ) ) {
+        if ( CheckSwapPossibility() ) {
             manager.RequestDecision ( SwapOptionCallback, "CANCEL", "SWAP" );
         }
     }
 
     public  void    SwapOptionCallback ( int a ) {
         if ( a == 1 ) {
-            Debug.Log ( "HERE WE SWAP" );
+            portB.Swap ( portA );
             ivm.Backflow ( true, 99 );
         }
     }
     
-
     public override void Incoming ( bool a ) {
-        if ( !a ) {
-            objA = null; objB = null;
-        } else {
+        if ( a ) {
+            portB = null;
             InitCallbacks ();
             Draw ();
-            LoadInspect ( "X", null, 1 );
+            LoadInspect ( 1 );
+            if ( helpers.Count > 0 ) {
+                helpers [ 0 ].GetComponent<Button> ().Select ();
+            }
         }
         base.Incoming ( a );
     }

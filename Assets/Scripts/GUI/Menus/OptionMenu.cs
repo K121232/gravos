@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 using System;
 using TMPro;
 
@@ -13,7 +14,7 @@ public class OptionMenu : MenuCore {
         labelA.text = OA;
         labelB.text = OB;
         labelT.text = title;
-        Backflow ( true );
+        labelA.transform.parent.GetComponent<Button> ().Select ();
     }
 
     public  void    OptionSelected ( int a ) {
@@ -26,7 +27,6 @@ public class OptionMenu : MenuCore {
     public override void Update () {
         if ( Input.GetKey ( KeyCode.Escape ) ) {
             OptionSelected ( 0 );
-            Backflow ( false );
         }
     }
 }

@@ -38,9 +38,11 @@ public class ZethaPatrol : Zetha {
             }
         } else {
             return;
+            /*
             if ( !chasing && agroRadar.collectedCount != 0 ) {
                 PhaseChange ( true, agroRadar.collectedColliders [ 0 ].transform );
             }
+            */
         }
     }
 

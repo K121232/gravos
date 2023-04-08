@@ -1,10 +1,10 @@
 using UnityEngine;
 
 public class TargetingRig : MonoBehaviour {
-    private TriggerAssembly triggerControls;
+    public  int         fireControlId = -1;
 
+    private TriggerAssembly triggerControls;
     private Rigidbody2D rgb;    
-    public  GameObject  mainHull;
 
     public  Transform   target;
     public  Rigidbody2D targetRGB;
@@ -22,16 +22,21 @@ public class TargetingRig : MonoBehaviour {
     public  bool        fireControlOverride = false;
 
     public void Start () {
-        if ( rgb == null ) {
-            rgb = mainHull.GetComponent<Rigidbody2D> ();
+        if ( GetComponent<ItemHandle> () ) {
+            GetComponent<ItemHandle> ().onDeltaCallback = MainInit;
         }
-        if ( triggerControls == null ) {
-            triggerControls = GetComponent<TriggerAssembly> ();
-        }
+        MainInit ( GetComponent<ItemHandle>().host );
+        sod = new SOD ( f, z, r, 0 );
+        triggerControls = GetComponent<TriggerAssembly> ();
         if ( triggerControls == null ) {
             fireControlOverride = true;
         }
-        sod = new SOD ( f, z, r, 0 );
+    }
+
+    public void MainInit ( ItemPort port ) {
+        if ( port == null ) return;
+        enabled = port.bungholio;
+        rgb = port.hullLink.GetComponent<Rigidbody2D> ();
     }
 
     public void LoadTarget ( GameObject alpha ) {
@@ -44,10 +49,12 @@ public class TargetingRig : MonoBehaviour {
     }
 
     public  void    OverrideTriggerPress ( bool _press ) {
-        if ( _press ) {
-            triggerControls.TriggerHold ();
-        } else {
-            triggerControls.TriggerRelease ();
+        if ( triggerControls != null ) {
+            if ( _press ) {
+                triggerControls.TriggerHold ();
+            } else {
+                triggerControls.TriggerRelease ();
+            }
         }
     }
 

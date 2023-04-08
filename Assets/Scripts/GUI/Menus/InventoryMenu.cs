@@ -1,24 +1,55 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 
 public class InventoryMenu : MenuCore {
-    public  ItemPorts           ports;
     public  LoadoutMenu         ldm;
 
-    public  List<ItemHandle>    stores;
-    public  Transform           storesRoot;
+    public  List<ItemPort>      stores;
+
     public  int                 contextId = -1;
+    public  int                 swapContextId = -1;
 
     public  Transform           listRoot;
     public  GameObject          listItemPrefab;
 
     public  TMP_Text            contextTitle;
     public  TMP_Text            contextDescription;
+
     public  GameObject          contextButtonRoot;
     public  GameObject          contextEquipButton;
 
-    public  void    ContextButton ( int buttonType ) {
+    public  int     decisionType = 0;
+
+    public void Redraw () {
+        GameObject delta;
+        for ( int i = 0; i < stores.Count; i++ ) {
+                if ( i >= listRoot.childCount ) {
+                    delta = Instantiate ( listItemPrefab, listRoot );
+                    delta.GetComponent<RectTransform> ().Translate ( 0, -6 * i, 0, Space.Self );
+                }
+                // TESTING FOR ONCLICK LISTENERS
+                listRoot.GetChild ( i ).GetComponent<Multihelper> ().Init ( i );
+                listRoot.GetChild ( i ).GetComponent<Multihelper> ().SetCallback ( 0, ContextButtonOpenInfo );
+
+            string labelN = "NO ITEM", labelQ = "X";
+            if ( stores [ i ].item != null ) {
+                labelN = stores [ i ].item.itemName;
+                labelQ = stores [ i ].item.itemQuantity.ToString ();
+            }
+            listRoot.GetChild ( i ).GetComponent<Multihelper> ().SetLabel ( 0, labelN );
+            listRoot.GetChild ( i ).GetComponent<Multihelper> ().SetLabel ( 1, labelQ );
+        }
+        if ( stores.Count > 0 ) {
+            listRoot.GetChild ( 0 ).GetChild ( 1 ).GetComponent<Button> ().Select ();
+        }
+    }
+
+    // CONTEXT BUTTON
+
+    public void ContextButton ( int buttonType ) {
+        swapContextId = -1;
         if ( contextId == -1 ) return;
         switch ( buttonType ) {
             case 0:             // DISCARD
@@ -27,91 +58,71 @@ public class InventoryMenu : MenuCore {
                 break;
             case 1:             // EQUIP
                 // Pull up the equip menu
-                InitiateSwap ();
+                ContextButtonInitiateSwap ();
                 break;
         }
     }
 
-    public  void    PopulateList () {
-        stores.Clear ();
-        ItemHandle  deltaH;
-        for ( int i = 0; i < storesRoot.childCount; i++ ) {
-            deltaH = storesRoot.GetChild ( i ).GetComponent<ItemHandle> ();
-            if ( deltaH != null && deltaH.enabled ) {
-                stores.Add ( deltaH );
-            }
-        }
-        for ( int i = stores.Count; i < listRoot.childCount; i++ ) {
-            Destroy ( listRoot.GetChild ( i ).gameObject );
-        }
-        GameObject delta;
-        for ( int i = 0; i < stores.Count; i++ ) {
-            if ( i >= listRoot.childCount ) {
-                Debug.Log ( "Made new item" );
-                delta = Instantiate ( listItemPrefab, listRoot );
-                delta.GetComponent<RectTransform> ().Translate ( 0, -6 * i, 0, Space.Self );
-            }
-            // TESTING FOR ONCLICK LISTENERS
-            listRoot.GetChild ( i ).GetComponent<Multihelper> ().Init ( i );
-            listRoot.GetChild ( i ).GetComponent<Multihelper> ().SetLabel ( 0, stores [ i ].name );
-            listRoot.GetChild ( i ).GetComponent<Multihelper> ().SetLabel ( 1, stores [ i ].itemQuantity.ToString() );
-            listRoot.GetChild ( i ).GetComponent<Multihelper> ().SetCallback ( 0, OpenContext );
-
-        }
-    }
-
-    public  void    OpenContext ( int id ) {
-        Debug.Log ( "OPEN CONTEXT ID : " + id );
-        if ( id < 0 || id > stores.Count ) {
+    public void ContextButtonOpenInfo ( int id ) {
+        manager.CancelDecision ();
+        if ( id < 0 || id > stores.Count || stores [ id ].item == null ) {
+            contextButtonRoot.SetActive ( false );
             contextId = -1;
             contextTitle.text = "NOTHING SELECTED";
             contextDescription.text = " ┌───┐ \n │    X    │ \n └───┘";
-            contextButtonRoot.SetActive ( false );
-            return;
+        } else {
+            contextButtonRoot.SetActive ( true );
+            contextId = id;
+            contextTitle.text = stores [ id ].item.itemName;
+            contextDescription.text = stores [ id ].item.description;
+
+            contextEquipButton.SetActive ( stores [ id ].item.polarity != ItemPolarity.Item );
+            contextButtonRoot.transform.GetChild ( 0 ).GetComponent<Button> ().Select ();
         }
-        contextButtonRoot.SetActive ( true );
-        contextId = id;
-        contextTitle.text       = stores [ id ].itemName;
-        contextDescription.text = stores [ id ].description;
-        // Enable buttons based on what the item can do
-        contextEquipButton.SetActive ( stores [ id ].isWeapon );
     }
 
-    public  int     decisionType = 0;
-    public  void    DecisionCallback ( int outcome ) {
+    public void ContextButtonInitiateSwap () {
+        if ( contextId != -1 ) {
+            swapContextId = contextId;
+            ldm.InitLeftSide ( stores [ contextId ] );
+            ldm.Backflow ( true );
+        }
+    }
+    
+    // CALLBACKS 
+
+    public void DecisionCallback ( int outcome ) {
         if ( contextId == -1 ) return;
         // Depends on what kind of decision was called
         // 0 is for discard
         switch ( decisionType ) {
             case 0:
-                if ( outcome == 1 ) {
-                    ports.Jettison ( contextId );
-                    Debug.Log ( "ITEM " + contextId + " HAS BEEN DISCARDED" );
-                    PopulateList ();
-                }
-                if ( outcome == -1 ) {
-                    Debug.Log ( "ITEM " + contextId + " HAS NOT BEEN DISCARDED" );
-                }
+                DiscardCallback ( outcome );
                 break;
         }
+        Redraw ();
     }
 
-    public  void    InitiateSwap () {
-        if ( contextId != -1 ) {
-            ldm.InitLeftSide ( stores [ contextId ] );
-            ldm.Backflow ( true );
+    public void DiscardCallback ( int a ) {
+
+    }
+
+    public void SwapCallback ( ItemPort other, int cid ) {
+        if ( other != null && swapContextId != -1 ) {
+            Debug.Log ( swapContextId + " " + other.name );
+
         }
+        contextId = -1;
     }
 
-    public  void    SwapCallback ( int id ) {
-    }
+    // OVERRIDES
 
     public override void Incoming ( bool a ) {
         if ( a ) {
-            OpenContext ( -1 );     // Clear the context window
-            PopulateList ();
+            ContextButtonOpenInfo ( -1 );     // Clear the context window
+            Redraw ();
         } else {
-            OpenContext ( -1 );
+            ContextButtonOpenInfo ( -1 );
         }
         base.Incoming ( a );
     }

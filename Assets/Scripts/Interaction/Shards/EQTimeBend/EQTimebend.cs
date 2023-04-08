@@ -1,11 +1,19 @@
 using UnityEngine;
 
-public class EQTimebend : MonoBehaviour {
+public class EQTimebend : EQBase {
+    [Header ( "EQ Time Bend" )]
     public  float       bendSTR;
     public  PowerCell   cell;
 
     private float       pastScale;
     private bool        pastStatus, delta;
+
+    public override void MainInit ( ItemPort port ) {
+        if ( port == null ) return;
+        base.MainInit ( port );
+        Debug.Log ( "SKREEEEEEEEE" );
+        cell = port.batteryLink.GetChild ( 1 ).GetComponent<PowerCell> ();
+    }
 
     public void Update () {
         delta = Input.GetAxis ("Fire3") > 0 && cell.Available ();

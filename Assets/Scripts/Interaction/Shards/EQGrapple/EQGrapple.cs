@@ -1,6 +1,7 @@
 using UnityEngine;
 
 public class EQGrapple : TriggerAssembly {
+    [Header ( "EQ Grapple" )]
     public  EQGrappleHook   hookLink;
     public  LineConnector   lineConn;
     public  ForceTether     lineTeth;
@@ -13,7 +14,6 @@ public class EQGrapple : TriggerAssembly {
     public  float       maxRange;
     public  float       minAttachRange;
     public  bool        hookLaunched;
-
 
     public override void Start () {
         SetRGB ( transform.parent.parent.GetComponent<Rigidbody2D> () );
