@@ -11,8 +11,11 @@ public class EQTimebend : EQBase {
     public override void MainInit ( ItemPort port ) {
         if ( port == null ) return;
         base.MainInit ( port );
-        Debug.Log ( "SKREEEEEEEEE" );
-        cell = port.batteryLink.GetChild ( 1 ).GetComponent<PowerCell> ();
+        if ( enabled ) {
+            cell = port.batteryLink.GetChild ( 1 ).GetComponent<PowerCell> ();
+        } else {
+            cell = null;
+        }
     }
 
     public void Update () {

@@ -12,9 +12,11 @@ GameObject:
   - component: {fileID: 6088086387421162109}
   - component: {fileID: 6088086387421162108}
   - component: {fileID: 6088086387421162111}
-  m_Layer: 0
+  - component: {fileID: -4445772493945820086}
+  - component: {fileID: -1399905096693412666}
+  m_Layer: 8
   m_Name: Cargo Pod
-  m_TagString: Untagged
+  m_TagString: Item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -134,6 +136,36 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2.5, y: 0.75}
   m_EdgeRadius: 0
+--- !u!114 &-4445772493945820086
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6088086387421162107}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c758bc6a363b73b46b33bf8bd890a650, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hullLink: {fileID: 6088086387421162106}
+  batteryLink: {fileID: 0}
+  polarity: 0
+  item: {fileID: 0}
+  bungholio: 0
+--- !u!114 &-1399905096693412666
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6088086387421162107}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40fd2dd24a702ed439cbc45fe2ea6e53, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  velocity: 10
 --- !u!1 &6088086388000620154
 GameObject:
   m_ObjectHideFlags: 0
@@ -144,7 +176,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6088086388000620157}
   - component: {fileID: 6088086388000620156}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: The Item
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -178,10 +210,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23f5a962dd76f18478def70ef28e0814, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  host: {fileID: 0}
   itemName: Just cargo ...
   description: 'Just a bunch of inconspicuous cargo...\nPrice : 500 vBucks'
   itemQuantity: 25
   weight: 100
-  isWeapon: 0
-  isEquipment: 0
+  polarity: 0
   insignia: {fileID: -1307835388, guid: 920ce87f941f0614aa7196468f5c20ca, type: 3}

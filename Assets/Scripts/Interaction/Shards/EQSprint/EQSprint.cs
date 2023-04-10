@@ -12,8 +12,13 @@ public class EQSprint : EQBase {
     public  bool            isSprinting;
 
     public override void MainInit ( ItemPort port ) {
+        if ( port == null ) return;
         base.MainInit ( port );
-        sprintCell = port.batteryLink.GetChild ( 2 ).GetComponent<PowerCell> ();
+        if ( enabled ) {
+            sprintCell = port.batteryLink.GetChild ( 2 ).GetComponent<PowerCell> ();
+        } else {
+            sprintCell = null;
+        }
     }
 
     void Update () {

@@ -12,17 +12,16 @@ public class EQFireControl : MonoBehaviour {
             weaponPorts [ i ].onDeltaCallback = RefreshTurretList;
         }
         RefreshTurretList ();
-        LoadTargets ();
     }
 
     public  void    RefreshTurretList () {
-        Debug.Log ( "REFRESH THE TURRET LIST" );
         if ( turrets.Length != 0 && weaponPorts.Length == 0 ) { return; }
         turrets = new TargetingRig [ weaponPorts.Length ];
         for ( int i = 0; i < weaponPorts.Length; i++ ) {
             if ( turrets [ i ] != null ) turrets [ i ].OverrideTriggerPress ( false );
-            turrets [ i ] = weaponPorts [ i ].transform.GetChild(0).GetComponent<TargetingRig> ();
+            turrets [ i ] = weaponPorts [ i ].item.GetComponent<TargetingRig> ();
         }
+        LoadTargets ();
     }
 
     void Update () {

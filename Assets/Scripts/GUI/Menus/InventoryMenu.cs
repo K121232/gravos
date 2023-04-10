@@ -5,6 +5,7 @@ using TMPro;
 
 public class InventoryMenu : MenuCore {
     public  LoadoutMenu         ldm;
+    public  ItemEjector         itemEjector;
 
     public  List<ItemPort>      stores;
 
@@ -104,7 +105,11 @@ public class InventoryMenu : MenuCore {
     }
 
     public void DiscardCallback ( int a ) {
-
+        if ( a == 1 ) {
+            if ( contextId == -1 || contextId < 0 || contextId >= stores.Count ) return;
+            itemEjector.Eject ( contextId );
+            Backflow ( false );
+        }
     }
 
     public void SwapCallback ( ItemPort other, int cid ) {

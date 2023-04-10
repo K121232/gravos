@@ -33,10 +33,13 @@ public class ItemHandle : MonoBehaviour {
         host.item = this;
 
         transform.SetParent ( host.transform );
-        host.OnDelta ();
+
+        transform.localPosition = Vector3.zero;
+        transform.localRotation = Quaternion.identity;
 
         if ( onDeltaCallback != null ) {
             onDeltaCallback ( host );
         }
+        host.OnDelta ();
     }
 }

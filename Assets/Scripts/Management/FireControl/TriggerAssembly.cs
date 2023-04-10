@@ -11,12 +11,13 @@ public class TriggerAssembly : MonoBehaviour {
     public  float   cooldownReload;
     private float   deltaC;
 
-    public  float   reserve;
+    public  float   reserve = -1;
     public  float   clip;
     public  float   clipDrain;
     protected float   deltaA;
 
     public  bool    autoreload;
+    public  bool    inheritLayer = true;
 
     public void SetRGB ( Rigidbody2D alpha ) {
         rgb = alpha;

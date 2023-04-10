@@ -19,7 +19,9 @@ public class Turret : TriggerAssembly {
 
     public override GameObject Fire ( Vector2 prv ) {
         GameObject instPayload  = autoloader.Request();
-        instPayload.layer = gameObject.layer;
+        if ( inheritLayer ) {
+            instPayload.layer = gameObject.layer;
+        }
 
         instPayload.transform.SetPositionAndRotation ( transform.position + transform.up * minRangeOffset, transform.rotation );
 
@@ -34,7 +36,6 @@ public class Turret : TriggerAssembly {
         if ( instPayload.GetComponent<TMFuse> () != null ) {
             instPayload.GetComponent<TMFuse> ().Bind ( mainHull ? mainHull.transform : transform, prv );
         }
-
 
         instPayload.SetActive ( true );
 

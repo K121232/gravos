@@ -24,8 +24,8 @@ public class TargetingRig : MonoBehaviour {
     public void Start () {
         if ( GetComponent<ItemHandle> () ) {
             GetComponent<ItemHandle> ().onDeltaCallback = MainInit;
+            MainInit ( GetComponent<ItemHandle> ().host );
         }
-        MainInit ( GetComponent<ItemHandle>().host );
         sod = new SOD ( f, z, r, 0 );
         triggerControls = GetComponent<TriggerAssembly> ();
         if ( triggerControls == null ) {
@@ -89,5 +89,4 @@ public class TargetingRig : MonoBehaviour {
             }
         }
     }
-
 }
