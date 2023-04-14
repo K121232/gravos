@@ -36,7 +36,7 @@ public class LoadoutMenu : MenuCore {
     public void Draw () {
         for ( int i = 0; i < helpers.Count; i++ ) {
             if ( CheckID ( i, store ) && store [ i ].item != null ) {
-                helpers [ i ].anchors [ 0 ].GetComponent<Image> ().sprite = store [ i ].item.insignia;
+                helpers [ i ].anchors [ 0 ].GetComponent<Image> ().sprite = store [ i ].item.icon;
             } else {
                 helpers [ i ].anchors [ 0 ].GetComponent<Image> ().sprite = null;
             }
@@ -66,7 +66,7 @@ public class LoadoutMenu : MenuCore {
         if ( deltaIH != null ) {
             iHandles [ target ].SetLabel ( 1, deltaIH.itemName );
             iHandles [ target ].SetLabel ( 2, deltaIH.description );
-            iHandles [ target ].anchors [ 0 ].GetComponent<Image> ().sprite = deltaIH.insignia;
+            iHandles [ target ].anchors [ 0 ].GetComponent<Image> ().sprite = deltaIH.icon;
         } else {
             iHandles [ target ].SetLabel ( 1, " \\ NOTHING // " );
             iHandles [ target ].SetLabel ( 2, ">_" );

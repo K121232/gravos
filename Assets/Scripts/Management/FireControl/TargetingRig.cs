@@ -3,7 +3,7 @@ using UnityEngine;
 public class TargetingRig : MonoBehaviour {
     public  int         fireControlId = -1;
 
-    private TriggerAssembly triggerControls;
+    private FCM triggerControls;
     private Rigidbody2D rgb;    
 
     public  Transform   target;
@@ -14,20 +14,17 @@ public class TargetingRig : MonoBehaviour {
 
     public  float       coneMaxDeviation;
 
-    private SOD         sod;
-    public  float       f;
-    public  float       z;
-    public  float       r;
+    private Konig         sod;
 
     public  bool        fireControlOverride = false;
 
     public void Start () {
+        sod = GetComponent<Konig> ();
         if ( GetComponent<ItemHandle> () ) {
-            GetComponent<ItemHandle> ().onDeltaCallback = MainInit;
+            GetComponent<ItemHandle> ().attachCallback = MainInit;
             MainInit ( GetComponent<ItemHandle> ().host );
         }
-        sod = new SOD ( f, z, r, 0 );
-        triggerControls = GetComponent<TriggerAssembly> ();
+        triggerControls = GetComponent<FCM> ();
         if ( triggerControls == null ) {
             fireControlOverride = true;
         }
@@ -73,15 +70,15 @@ public class TargetingRig : MonoBehaviour {
 
         float delta = Vector2.SignedAngle ( transform.up, tgv );
         if ( traversalSpeed != 0 ) {
-            delta = sod.Update ( Time.deltaTime, delta, Vector2.SignedAngle ( Vector2.up, tgv ), rgb != null ? rgb.angularVelocity : 0 );
+            delta = sod.NextFrame ( Time.deltaTime, delta, Vector2.SignedAngle ( Vector2.up, tgv ), rgb != null ? rgb.angularVelocity : 0 );
             delta = Mathf.Clamp ( delta, -traversalSpeed, traversalSpeed ) * Time.deltaTime;
             transform.Rotate ( Vector3.forward, delta );
         }
 
         if ( !fireControlOverride ) {
             if ( target != null && ( coneMaxDeviation >= 180 || Vector2.SignedAngle ( transform.up, tgv ) <= coneMaxDeviation ) ) {
-                if ( triggerControls.GetType () == typeof ( Turret ) ) {
-                    ( (Turret) triggerControls ).SetTarget ( target );
+                if ( GetComponent<Turret>() != null ) {
+                    GetComponent<Turret> ().SetTarget ( target );
                 }
                 triggerControls.TriggerHold ();
             } else {

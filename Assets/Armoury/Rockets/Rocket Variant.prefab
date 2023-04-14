@@ -73,7 +73,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 687800561341309174, guid: f6ceaef7ad17ca64d9b6b0fc0d7e8dca, type: 3}
       propertyPath: m_Name
-      value: Rocket
+      value: Rocket Variant
       objectReference: {fileID: 0}
     - target: {fileID: 4084763166377000118, guid: f6ceaef7ad17ca64d9b6b0fc0d7e8dca, type: 3}
       propertyPath: damageBase
@@ -104,6 +104,10 @@ PrefabInstance:
       value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 7781164887404175965, guid: f6ceaef7ad17ca64d9b6b0fc0d7e8dca, type: 3}
+      propertyPath: sod
+      value: 
+      objectReference: {fileID: -1154642446060059609, guid: f6ceaef7ad17ca64d9b6b0fc0d7e8dca, type: 3}
+    - target: {fileID: 7781164887404175965, guid: f6ceaef7ad17ca64d9b6b0fc0d7e8dca, type: 3}
       propertyPath: STRP
       value: 0.9
       objectReference: {fileID: 0}
@@ -113,3 +117,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f6ceaef7ad17ca64d9b6b0fc0d7e8dca, type: 3}
+--- !u!1 &9072010745275436823 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 687800561341309174, guid: f6ceaef7ad17ca64d9b6b0fc0d7e8dca, type: 3}
+  m_PrefabInstance: {fileID: 8389589565009784801}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &7408984286300485139
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9072010745275436823}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 605e62bee47d4bd429eec15f4c6dddc0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  f: 5
+  z: 1
+  r: 0

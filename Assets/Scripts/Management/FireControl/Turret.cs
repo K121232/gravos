@@ -1,6 +1,8 @@
 using UnityEngine;
 
-public class Turret : TriggerAssembly {
+public class Turret : MonoBehaviour {
+    private Rigidbody2D rgb;
+
     public  GameObject  mainHull;
     public  PoolSpooler autoloader;
     public  PoolSpooler trailLoader;
@@ -8,16 +10,28 @@ public class Turret : TriggerAssembly {
     public  Transform   target;
     public  float       minRangeOffset;
 
+    public  bool        inheritLayer;
+    public FCM          fcm;
+
+    public virtual void Start () {
+        rgb = GetComponent<Rigidbody2D> ();
+        if ( fcm == null ) {
+            fcm = GetComponent<FCM> ();
+        }
+        if ( fcm != null ) {
+            fcm.burialHelper = FireWrapper;
+        }
+    }
+
+    protected Vector2 GetV () {
+        if ( rgb != null ) return rgb.velocity; return Vector2.zero;
+    }
+
     public  void    SetTarget ( Transform _target ) {
         target = _target;
     }
 
-    public override void TriggerRelease () {
-        target = null;
-        base.TriggerRelease ();
-    }
-
-    public override GameObject Fire ( Vector2 prv ) {
+    public virtual GameObject Fire () {
         GameObject instPayload  = autoloader.Request();
         if ( inheritLayer ) {
             instPayload.layer = gameObject.layer;
@@ -25,8 +39,8 @@ public class Turret : TriggerAssembly {
 
         instPayload.transform.SetPositionAndRotation ( transform.position + transform.up * minRangeOffset, transform.rotation );
 
-        if ( instPayload.GetComponent<InertialImpactor> () != null ) {
-            instPayload.GetComponent<InertialImpactor> ().Prime ( prv );
+        if ( instPayload.GetComponent<IMP> () != null ) {
+            instPayload.GetComponent<IMP> ().Prime ( GetV () );
         }
 
         if ( instPayload.GetComponent<HSTM> () != null ) {
@@ -34,7 +48,7 @@ public class Turret : TriggerAssembly {
         }
 
         if ( instPayload.GetComponent<TMFuse> () != null ) {
-            instPayload.GetComponent<TMFuse> ().Bind ( mainHull ? mainHull.transform : transform, prv );
+            instPayload.GetComponent<TMFuse> ().Bind ( GetV(), transform.up );
         }
 
         instPayload.SetActive ( true );
@@ -46,5 +60,9 @@ public class Turret : TriggerAssembly {
         }
 
         return instPayload;
+    }
+
+    public void FireWrapper () {
+        Fire ();
     }
 }
