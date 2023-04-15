@@ -10,6 +10,7 @@ TagManager:
   - Structure
   - Item
   - Blade
+  - Grab Point
   layers:
   - Default
   - TransparentFX
@@ -21,7 +22,7 @@ TagManager:
   - Faction2
   - Neutral
   - Post Processing
-  - 
+  - SpeedLines
   - 
   - 
   - 
