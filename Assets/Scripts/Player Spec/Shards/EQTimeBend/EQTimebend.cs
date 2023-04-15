@@ -3,10 +3,7 @@ using UnityEngine;
 public class EQTimebend : EQBase {
     [Header ( "EQ Time Bend" )]
     public  float       bendSTR;
-    public  PowerCell   cell;
-
     private float       pastScale;
-    private bool        pastStatus, delta;
 
     public override void MainInit ( ItemPort port ) {
         if ( port == null ) return;
@@ -18,16 +15,29 @@ public class EQTimebend : EQBase {
         }
     }
 
-    public void Update () {
-        delta = Input.GetAxis ("Fire3") > 0 && cell.Available ();
-        if ( delta ) {
-            cell.VariDrain ( Time.unscaledDeltaTime );
-        }
-        if ( delta != pastStatus ) {
-            if ( !pastStatus ) pastScale = Time.timeScale;
-            Time.timeScale = delta ? bendSTR : pastScale;
-        }
-        pastStatus = delta;
+    public override void Update () {
+        base.Update ();
     }
 
+    public override void TriggerHold () {
+        if ( !triggerDown ) {
+            pastScale = Time.timeScale;
+        }
+        base.TriggerHold ();
+    }
+
+    public override void TriggerRelease () {
+        if ( triggerDown ) {
+            Time.timeScale = pastScale;
+        }
+        base.TriggerRelease ();
+    }
+
+    public override GameObject Fire () {
+        if ( bendSTR != Time.timeScale ) {
+            pastScale = Time.timeScale;
+            Time.timeScale = bendSTR;
+        }
+        return base.Fire ();
+    }
 }

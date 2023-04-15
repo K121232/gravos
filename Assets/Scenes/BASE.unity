@@ -10163,11 +10163,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31138e81e1e3b7e418588f33bef10501, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canAuto: 1
+  fireRate: 0
+  cell: {fileID: 0}
+  drainRate: 1
+  drainInitial: 0
+  control: 1
   sprintSTR: 750
-  sprintCell: {fileID: 0}
-  drainInit: 30
-  drainCont: 10
-  isSprinting: 0
 --- !u!114 &740886302
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17294,11 +17296,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31138e81e1e3b7e418588f33bef10501, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canAuto: 1
+  fireRate: 0
+  cell: {fileID: 0}
+  drainRate: 1
+  drainInitial: 0
+  control: 1
   sprintSTR: 1500
-  sprintCell: {fileID: 0}
-  drainInit: 30
-  drainCont: 10
-  isSprinting: 0
 --- !u!1 &1238600275
 GameObject:
   m_ObjectHideFlags: 0
@@ -17615,8 +17619,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a29bb99830e9baf48bd81e9fa96929c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bendSTR: 0.5
+  canAuto: 1
+  fireRate: 0
   cell: {fileID: 0}
+  drainRate: 1
+  drainInitial: 0
+  control: 0
+  bendSTR: 0.5
 --- !u!114 &1321052070
 MonoBehaviour:
   m_ObjectHideFlags: 0
