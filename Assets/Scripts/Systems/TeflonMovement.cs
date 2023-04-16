@@ -29,11 +29,6 @@ public class TeflonMovement : MonoBehaviour {
         delta += Mathf.Clamp ( alphaAcc, 0, 1 );
     }
 
-    public void DEBUGANG ( float a, Color b ) {
-        Vector3 offset = new Vector2( 5, 5 );
-        Debug.DrawLine ( offset + Quaternion.Euler ( 0, 0, a ) * Vector2.up, offset, b );
-    }
-
     public static float VClip( float a, float b, float m ) {
         if ( Mathf.Abs( b + a ) >= m ) {
             if ( Mathf.Sign( a ) != Mathf.Sign( b ) ) { return Mathf.Sign( a ) * Mathf.Min( m, Mathf.Abs( a ) ); }
@@ -54,13 +49,16 @@ public class TeflonMovement : MonoBehaviour {
     }
 
     public void AddAngle ( float a ) {
-        if ( angleAcc == 0 ) return;
         deltaAngle += FilterAngle ( a );
     }
     
     public float FilterAngle ( float a ) {
         if ( angleAcc == 0 ) return 0;
         return Mathf.Clamp ( a, -angleAcc, angleAcc ) / angleAcc;
+    }
+
+    virtual public void AddV ( float a ) {
+        delta += a;
     }
 
     virtual public void Start() {

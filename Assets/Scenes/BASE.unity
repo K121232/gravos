@@ -3036,7 +3036,7 @@ ParticleSystem:
   emitterVelocityMode: 1
   looping: 1
   prewarm: 0
-  playOnAwake: 1
+  playOnAwake: 0
   useUnscaledTime: 0
   autoRandomSeed: 1
   startDelay:
@@ -3155,7 +3155,7 @@ ParticleSystem:
     startSpeed:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 50
+      scalar: 100
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -3734,7 +3734,7 @@ ParticleSystem:
     sphericalDirectionAmount: 1
     randomPositionAmount: 0
     radius:
-      value: 60
+      value: 55
       mode: 0
       spread: 0
       speed:
@@ -12903,6 +12903,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canAuto: 1
   fireRate: 0
+  isFiring: 0
 --- !u!1 &616750447
 GameObject:
   m_ObjectHideFlags: 0
@@ -14978,11 +14979,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canAuto: 1
   fireRate: 0
+  isFiring: 0
   cell: {fileID: 0}
   drainRate: 1
   drainInitial: 0
-  control: 1
-  sprintSTR: 750
+  control: 0
+  speedlines: {fileID: 256984552}
+  movementCore: {fileID: 954266156}
+  sprintSTR: 60
 --- !u!114 &740886302
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18171,8 +18175,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 251143474f2f5c941a2001ebb24eca76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  acc: 150
-  mxv: 50
+  acc: 45
+  mxv: 30
   angleAcc: 720
   angleMxv: 360
   angleDrag: 5
@@ -22111,11 +22115,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canAuto: 1
   fireRate: 0
+  isFiring: 0
   cell: {fileID: 0}
   drainRate: 1
   drainInitial: 0
-  control: 1
-  sprintSTR: 1500
+  control: 0
+  speedlines: {fileID: 256984552}
+  movementCore: {fileID: 954266156}
+  sprintSTR: 70
 --- !u!1 &1238600275
 GameObject:
   m_ObjectHideFlags: 0
@@ -22432,8 +22439,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a29bb99830e9baf48bd81e9fa96929c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canAuto: 1
+  canAuto: 0
   fireRate: 0
+  isFiring: 0
   cell: {fileID: 0}
   drainRate: 1
   drainInitial: 0
@@ -22965,6 +22973,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canAuto: 1
   fireRate: 0.05
+  isFiring: 0
   cooldownReload: 1
   autoreload: 1
   reserve: -1
@@ -24841,6 +24850,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canAuto: 1
   fireRate: 0.15
+  isFiring: 0
 --- !u!1 &1477007615
 GameObject:
   m_ObjectHideFlags: 0

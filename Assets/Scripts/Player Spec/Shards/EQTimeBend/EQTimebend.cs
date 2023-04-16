@@ -19,18 +19,12 @@ public class EQTimebend : EQBase {
         base.Update ();
     }
 
-    public override void TriggerHold () {
-        if ( !triggerDown ) {
-            pastScale = Time.timeScale;
-        }
-        base.TriggerHold ();
+    public override void OnStartFire () {
+        pastScale = Time.timeScale;
     }
 
-    public override void TriggerRelease () {
-        if ( triggerDown ) {
-            Time.timeScale = pastScale;
-        }
-        base.TriggerRelease ();
+    public override void OnStopFire () {
+        Time.timeScale = pastScale;
     }
 
     public override GameObject Fire () {

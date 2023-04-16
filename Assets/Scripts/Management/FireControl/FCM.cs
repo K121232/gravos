@@ -11,6 +11,7 @@ public class FCM : MonoBehaviour {
     protected float   deltaC;
 
     public  Action  burialHelper = null;
+    public  bool    isFiring;
 
     public virtual void TriggerHold () {
         triggerDown = true;
@@ -24,6 +25,7 @@ public class FCM : MonoBehaviour {
     public virtual void Reload () {}
 
     public virtual void Start () {
+        isFiring = false;
         deltaC = 0;
     }
 
@@ -42,11 +44,23 @@ public class FCM : MonoBehaviour {
             }
         }
         if ( deltaC <= 0 && triggerDown && triggerSear && AmmoCheck() ) {
-            Fire ();
             deltaC = fireRate;
             triggerSear = false;
+            if ( !isFiring ) {
+                OnStartFire ();
+            }
+            isFiring = true;
+            Fire ();
+        } else {
+            if ( isFiring ) {
+                OnStopFire ();
+            }
+            isFiring = false;
         }
     }
+
+    public virtual void OnStartFire () {}
+    public virtual void OnStopFire () {}
 
     public virtual GameObject Fire () { if ( burialHelper != null ) { burialHelper (); } return null; }
 }
