@@ -15164,7 +15164,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &724142528
 Transform:
   m_ObjectHideFlags: 0
@@ -15311,7 +15311,7 @@ MonoBehaviour:
   drainInitial: 0
   control: 0
   speedlines: {fileID: 256984552}
-  movementCore: {fileID: 954266156}
+  movementCore: {fileID: 0}
   sprintSTR: 60
 --- !u!114 &740886302
 MonoBehaviour:
@@ -18535,12 +18535,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   acc: 45
   mxv: 30
-  angleAcc: 720
-  angleMxv: 360
-  angleDrag: 1
   hasParticles: 0
   particleSTR: 0
-  DEBUGOFF: {x: 0, y: 0}
   sod: {fileID: 954266159}
   armourLock: 0
   flybywire: 1
@@ -22497,7 +22493,7 @@ MonoBehaviour:
   drainInitial: 0
   control: 0
   speedlines: {fileID: 256984552}
-  movementCore: {fileID: 954266156}
+  movementCore: {fileID: 0}
   sprintSTR: 70
 --- !u!1 &1238600275
 GameObject:

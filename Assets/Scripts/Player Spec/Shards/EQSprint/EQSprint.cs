@@ -3,7 +3,7 @@ using UnityEngine;
 public class EQSprint : EQBase {
     [Header ( "EQ Sprint" )]
     public  ParticleSystem  speedlines;
-    public  TeflonMovement  movementCore;
+    public  Movement        movementCore;
 
     public  float           sprintSTR;
     private float           pastMax;
@@ -12,6 +12,7 @@ public class EQSprint : EQBase {
         if ( port == null ) return;
         base.MainInit ( port );
         if ( enabled ) {
+            movementCore = port.hullLink.GetComponent<TeflonPMove> ();
             cell = port.batteryLink.GetChild ( 2 ).GetComponent<PowerCell> ();
         } else {
             cell = null;

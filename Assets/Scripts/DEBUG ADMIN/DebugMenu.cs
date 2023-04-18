@@ -46,8 +46,8 @@ public class DebugMenu : MenuCore {
         base.Start ();
         sliders [ 0 ].SetValueWithoutNotify ( playerShip.mxv );
         sliders [ 1 ].SetValueWithoutNotify ( playerShip.acc );
-        sliders [ 2 ].SetValueWithoutNotify ( playerShip.angleMxv );
-        sliders [ 3 ].SetValueWithoutNotify ( playerShip.angleAcc );
+        //sliders [ 2 ].SetValueWithoutNotify ( playerShip.angleMxv );
+        //sliders [ 3 ].SetValueWithoutNotify ( playerShip.angleAcc );
         sliders [ 4 ].SetValueWithoutNotify ( camTether.rotationStrength );
 
         SyncTGwS ( FBW, "_DEB_FBW" );
@@ -84,8 +84,8 @@ public class DebugMenu : MenuCore {
     public void OnSaveMenu () {
         playerShip.mxv = sliders [ 0 ].value;
         playerShip.acc = sliders [ 1 ].value;
-        playerShip.angleMxv = sliders [ 2 ].value;
-        playerShip.angleAcc = sliders [ 3 ].value;
+        //playerShip.angleMxv = sliders [ 2 ].value;
+        //playerShip.angleAcc = sliders [ 3 ].value;
         camTether.rotationStrength = sliders [ 4 ].value;
 
         playerBridge.invulnerability = INV.GetStatus ();
