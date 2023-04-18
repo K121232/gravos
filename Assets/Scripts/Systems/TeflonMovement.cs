@@ -91,8 +91,8 @@ public class TeflonMovement : MonoBehaviour {
     }
 
     virtual public void FixedUpdate() {
-        if ( ticks == 0 ) { delta = backupDelta; deltaAngle = backupDeltaAngle; } else { deltaAngle /= ticks; delta /= ticks; backupDeltaAngle = deltaAngle; backupDelta = delta; }
-        if ( vLock ) delta = backupDelta;
+        if ( ticks == 0 ) { deltaAngle = backupDeltaAngle; } else { deltaAngle /= ticks; backupDeltaAngle = deltaAngle; }
+        if ( ticks == 0 || vLock ) { delta = backupDelta; } else { delta /= ticks; backupDelta = delta; }
         vLock = false;
 
         DEBUG1 [ DEBUG2++ ] = ( rgb.velocity.magnitude / mxv ) * DEBUGSY;
