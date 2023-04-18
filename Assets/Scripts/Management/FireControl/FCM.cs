@@ -61,6 +61,10 @@ public class FCM : MonoBehaviour {
 
     public virtual void OnStartFire () {}
     public virtual void OnStopFire () {}
-
     public virtual GameObject Fire () { if ( burialHelper != null ) { burialHelper (); } return null; }
+
+    public  float   GetCooldownProgress () {
+        if ( fireRate == 0 || deltaC <= 0 ) return 1;
+        return ( fireRate - deltaC ) / fireRate;
+    }
 }

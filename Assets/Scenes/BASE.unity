@@ -419,6 +419,7 @@ GameObject:
   - component: {fileID: 33586275}
   - component: {fileID: 33586274}
   - component: {fileID: 33586276}
+  - component: {fileID: 33586277}
   m_Layer: 7
   m_Name: Turret Bow
   m_TagString: Untagged
@@ -494,6 +495,21 @@ MonoBehaviour:
   f: 5
   z: 1
   r: 0
+--- !u!114 &33586277
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 33586272}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca14aa7ea55add742b12667fda2716c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canAuto: 1
+  fireRate: 4
+  isFiring: 0
 --- !u!1 &64428463
 GameObject:
   m_ObjectHideFlags: 0
@@ -942,7 +958,6 @@ Transform:
   m_Children:
   - {fileID: 1324552706}
   - {fileID: 1598730224}
-  - {fileID: 490457972}
   - {fileID: 1796726860}
   m_Father: {fileID: 954266155}
   m_RootOrder: 1
@@ -10728,78 +10743,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 483728282}
   m_CullTransparentMesh: 1
---- !u!1 &490457971
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 490457972}
-  - component: {fileID: 490457974}
-  - component: {fileID: 490457973}
-  m_Layer: 8
-  m_Name: Zone Radar G
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &490457972
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 490457971}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 94477011}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!58 &490457973
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 490457971}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 200
---- !u!114 &490457974
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 490457971}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 142e859016d9da645b2402e2da5c6b95, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  collectedColliders: []
-  collectedCount: 0
-  angleOffset: 0
-  angle: 180
-  mask:
-    serializedVersion: 2
-    m_Bits: 256
-  maskTag:
-  - Grab Point
-  maskTagReverse: 1
-  coll: {fileID: 490457973}
 --- !u!1 &494004763
 GameObject:
   m_ObjectHideFlags: 0
@@ -17346,7 +17289,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 835055511}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e9faaf7a7e4faaa4bb72901fd9c10e2f, type: 3}
   m_Name: 
@@ -22985,7 +22928,7 @@ GameObject:
   - component: {fileID: 1324552708}
   - component: {fileID: 1324552707}
   m_Layer: 6
-  m_Name: Zone Radar
+  m_Name: F2 Ship Radar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -26084,6 +26027,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1559792998}
   - component: {fileID: 1559793000}
+  - component: {fileID: 1559793001}
   m_Layer: 6
   m_Name: Visual
   m_TagString: Untagged
@@ -26101,7 +26045,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 1872742377}
   - {fileID: 1201073516}
@@ -26116,7 +26060,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1559792997}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d33bc1d30a8236d4a9fb78e0ad894738, type: 3}
   m_Name: 
@@ -26135,6 +26079,23 @@ MonoBehaviour:
   - 4
   - 5
   - 4
+--- !u!114 &1559793001
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1559792997}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e29d2ac0cb825047b682d17496faef9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  foeRadar: {fileID: 1324552708}
+  warningRoot: {fileID: 1302751189}
+  warningPrefab: {fileID: 3556186575011751995, guid: 1c3687132d67feb408b00a2a4af371f5, type: 3}
+  warningCircleRange: 20
+  warningActivationThreshold: 0.9
 --- !u!1 &1573537217
 GameObject:
   m_ObjectHideFlags: 0
@@ -28307,7 +28268,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 94477011}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!58 &1796726861
 CircleCollider2D:
@@ -33114,7 +33075,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!50 &687800561004745351
 Rigidbody2D:
   serializedVersion: 4

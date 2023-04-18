@@ -23,4 +23,8 @@ public class FireControlSystem : MonoBehaviour {
         }
         trackedTarget = null;
     }
+
+    public  bool    IsTracking () {
+        return delta != null;
+    }
 }

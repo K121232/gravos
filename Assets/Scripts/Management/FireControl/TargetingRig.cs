@@ -15,6 +15,7 @@ public class TargetingRig : MonoBehaviour {
     private Konig         sod;
 
     public  bool        fireControlOverride = false;
+    private float       pastDeviation;
 
     public void Start () {
         sod = GetComponent<Konig> ();
@@ -41,6 +42,7 @@ public class TargetingRig : MonoBehaviour {
         if ( target.GetComponent<Collider2D> () != null ) {
             targetRGB = target.GetComponent<Collider2D> ().attachedRigidbody;
         }
+        pastDeviation = 0;
     }
 
     public  void    OverrideTriggerPress ( bool _press ) {
@@ -83,5 +85,9 @@ public class TargetingRig : MonoBehaviour {
                 triggerControls.TriggerRelease ();
             }
         }
+    }
+
+    public  float   GetFiringProgress () {
+        return triggerControls.GetCooldownProgress();
     }
 }
