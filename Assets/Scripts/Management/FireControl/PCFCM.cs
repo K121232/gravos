@@ -13,7 +13,7 @@ public class PCFCM : FCM {
     }
 
     public override bool AmmoCheck () {
-        return cell.GetAvailableLoad () >= ( isRefiring ? drainRate : drainInitial ) * Time.deltaTime;
+        return cell.GetLoad () != 0;
     }
 
     public override void TriggerRelease () {
@@ -22,7 +22,7 @@ public class PCFCM : FCM {
     }
 
     public override GameObject Fire () {
-        cell.VariDrain ( ( isRefiring ? drainRate : drainInitial ) * Time.deltaTime );
+        cell.VariDrain ( ( isRefiring ? drainRate : drainInitial ) * Time.unscaledDeltaTime );
         isRefiring = true;
         return base.Fire ();
     }

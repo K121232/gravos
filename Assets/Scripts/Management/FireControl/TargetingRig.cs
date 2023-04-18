@@ -1,8 +1,6 @@
 using UnityEngine;
 
 public class TargetingRig : MonoBehaviour {
-    public  int         fireControlId = -1;
-
     private FCM triggerControls;
     private Rigidbody2D rgb;    
 

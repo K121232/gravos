@@ -5,11 +5,9 @@ public class ShipHUD : MonoBehaviour {
     public  ProtoPlayerBridge   bridge;
     public  Slider              hpSlider;
 
-    public  PowerCell           shieldCell;
-    public  Slider              shieldSlider;
-
-    public  PowerCell           corvoCell;
-    public  Slider              timeSlider;
+    public  PowerCell[]         cells;
+    public  Slider[]            sliders;
+    public  float[]             scales;
 
     private void SetScale ( Transform sliderRoot, float aScale ) {
         sliderRoot.GetChild ( 1 ).GetChild ( 0 ).GetComponent<Image> ().pixelsPerUnitMultiplier = aScale * 0.44f;
@@ -17,13 +15,15 @@ public class ShipHUD : MonoBehaviour {
 
     private void Start () {
         SetScale ( hpSlider.transform, bridge.baseHealth );
-        SetScale ( shieldSlider.transform, shieldCell.resourceMax / bridge.STRShield );
-        SetScale ( timeSlider.transform, corvoCell.resourceMax );
+        for ( int i = 0; i < cells.Length; i++ ) {
+            SetScale ( sliders [ i ].transform, scales [ i ] );
+        }
     }
 
     void LateUpdate () {
         hpSlider.value      = bridge.GetProcentHP () * hpSlider.maxValue;
-        shieldSlider.value  = shieldCell.GetAvailableLoad () * shieldSlider.maxValue;
-        timeSlider.value    = corvoCell.GetAvailableLoad () * timeSlider.maxValue;
+        for ( int i = 0; i < cells.Length; i++ ) {
+            sliders [ i ].value = cells [ i ].GetAvailableLoad () * sliders [ i ].maxValue;
+        }
     }
 }

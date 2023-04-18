@@ -33,7 +33,7 @@ public class EQSprint : EQBase {
             pastMax = movementCore.mxv;
             movementCore.mxv = sprintSTR;
         }
-        movementCore.AddV ( 1 );
+        movementCore.SetV ( 1 );
         return base.Fire ();
     }
 }

@@ -5,7 +5,7 @@ public class FCM : MonoBehaviour {
     // FIRE CONTROL MECHANISM
     protected bool  triggerDown;
     private bool    triggerSear;
-    public  bool    canAuto;
+    public  bool    canAuto = true;
 
     public  float   fireRate;
     protected float   deltaC;

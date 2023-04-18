@@ -212,7 +212,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   acc: 360
-  mxv: 60
+  mxv: 45
   angleAcc: 180
   angleMxv: 90
   angleDrag: 0

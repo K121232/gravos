@@ -73,8 +73,13 @@ public class PowerCell : MonoBehaviour {
         return amount;
     }
 
+    public  float   GetLoad () {
+        if ( recovering ) return 0;
+        return resourceCurrent;
+    }
+
     public  float   GetAvailableLoad () {
-        if ( recovering || resourceMax == 0 ) return 0;
-        return resourceCurrent / resourceMax;
+        if ( resourceMax == 0 ) return 0;
+        return GetLoad() / resourceMax;
     }
 }
