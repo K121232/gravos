@@ -5,6 +5,7 @@ public class ShotRadar : MonoBehaviour {
 
     public  Transform   warningRoot;
     public  GameObject  warningPrefab;
+    public  RectTransform[]   warningHandles;
     public  float       warningCircleRange;
 
     public  float       warningActivationThreshold;
@@ -12,8 +13,9 @@ public class ShotRadar : MonoBehaviour {
     private int         mxw = 10;
 
     private void Start () {
+        warningHandles = new RectTransform [ mxw ];
         for ( int i = 0; i < mxw; i++ ) {
-            Instantiate ( warningPrefab, warningRoot );
+            warningHandles [ i ] = Instantiate ( warningPrefab, warningRoot ).GetComponent<RectTransform>();
         }
     }
 
@@ -28,9 +30,9 @@ public class ShotRadar : MonoBehaviour {
                         for ( int k = 0; k < list [ j ].turrets.Length; k++ ) {
                             if ( list [ j ].turrets [ k ].GetFiringProgress () >= warningActivationThreshold ) {
                                 if ( progress < mxw ) {
-                                    warningRoot.GetChild ( progress ).gameObject.SetActive ( true );
+                                    warningHandles[ progress ].gameObject.SetActive ( true );
                                     Vector3 delta = transform.position + ( list [ j ].turrets [ k ].transform.position - transform.position ).normalized * warningCircleRange;
-                                    warningRoot.GetChild ( progress ).GetComponent<RectTransform> ().position = delta;
+                                    warningHandles [ progress ].position = delta;
                                     progress++;
                                 }
                             }
@@ -40,7 +42,7 @@ public class ShotRadar : MonoBehaviour {
             }
         }
         for ( int i = progress; i < mxw; i++ ) {
-            warningRoot.GetChild ( i ).gameObject.SetActive ( false );
+            warningHandles [ i ].gameObject.SetActive ( false );
         }
     }
 }

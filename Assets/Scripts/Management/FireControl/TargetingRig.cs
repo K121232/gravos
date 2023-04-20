@@ -42,7 +42,6 @@ public class TargetingRig : MonoBehaviour {
         if ( target.GetComponent<Collider2D> () != null ) {
             targetRGB = target.GetComponent<Collider2D> ().attachedRigidbody;
         }
-        pastDeviation = 0;
     }
 
     public  void    OverrideTriggerPress ( bool _press ) {
@@ -69,6 +68,7 @@ public class TargetingRig : MonoBehaviour {
         }
 
         float delta = Vector2.SignedAngle ( transform.up, tgv );
+        pastDeviation = delta;
         if ( traversalSpeed != 0 ) {
             delta = sod.NextFrame ( Time.deltaTime, delta, Vector2.SignedAngle ( Vector2.up, tgv ), rgb != null ? rgb.angularVelocity : 0 );
             delta = Mathf.Clamp ( delta, -traversalSpeed, traversalSpeed ) * Time.deltaTime;
@@ -76,7 +76,7 @@ public class TargetingRig : MonoBehaviour {
         }
 
         if ( !fireControlOverride ) {
-            if ( target != null && ( coneMaxDeviation >= 180 || Vector2.SignedAngle ( transform.up, tgv ) <= coneMaxDeviation ) ) {
+            if ( target != null && ( coneMaxDeviation >= 180 || Vector2.Angle ( transform.up, tgv ) <= coneMaxDeviation ) ) {
                 if ( GetComponent<Turret>() != null ) {
                     GetComponent<Turret> ().SetTarget ( target );
                 }
@@ -88,6 +88,16 @@ public class TargetingRig : MonoBehaviour {
     }
 
     public  float   GetFiringProgress () {
-        return triggerControls.GetCooldownProgress();
+        float deltaTD = 1;
+        if ( traversalSpeed != 0 && coneMaxDeviation != 0 ) {
+            if ( Mathf.Abs ( pastDeviation ) < coneMaxDeviation ) {
+                deltaTD = 1;
+            } else {
+                deltaTD = Mathf.Clamp ( 2 - pastDeviation / coneMaxDeviation, 0, 1 );
+            }
+        }
+        float deltaFC = triggerControls.GetCooldownProgress();
+        if ( triggerControls.fireRate < 0.25f ) deltaFC = 1;
+        return deltaFC / 2 + deltaTD / 2;
     }
 }

@@ -9089,7 +9089,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 50
+  m_Radius: 25
 --- !u!114 &392353657
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18442,7 +18442,7 @@ Rigidbody2D:
   m_Interpolate: 1
   m_SleepingMode: 0
   m_CollisionDetection: 1
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!4 &954266155
 Transform:
   m_ObjectHideFlags: 0
@@ -18486,7 +18486,7 @@ MonoBehaviour:
   cam: {fileID: 519420031}
   innerHeading: {x: 0, y: 0}
   trimSTR: 10
-  DEBUGSAVE: {x: 0, y: 0}
+  visual: {fileID: 1559792998}
 --- !u!114 &954266157
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26060,7 +26060,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1559792997}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d33bc1d30a8236d4a9fb78e0ad894738, type: 3}
   m_Name: 
@@ -26094,8 +26094,9 @@ MonoBehaviour:
   foeRadar: {fileID: 1324552708}
   warningRoot: {fileID: 1302751189}
   warningPrefab: {fileID: 3556186575011751995, guid: 1c3687132d67feb408b00a2a4af371f5, type: 3}
-  warningCircleRange: 20
-  warningActivationThreshold: 0.9
+  warningHandles: []
+  warningCircleRange: 10
+  warningActivationThreshold: 0.75
 --- !u!1 &1573537217
 GameObject:
   m_ObjectHideFlags: 0
@@ -33075,7 +33076,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!50 &687800561004745351
 Rigidbody2D:
   serializedVersion: 4

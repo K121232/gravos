@@ -149,6 +149,48 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: Fusili_1
+      rect:
+        serializedVersion: 2
+        x: 304
+        y: 1377
+        width: 385
+        height: 344
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 697370fd047fede408318724ed4c7760
+      internalID: -890238760
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Fusili_2
+      rect:
+        serializedVersion: 2
+        x: 810
+        y: 1448
+        width: 25
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3465a801a7c7250479345188ad62fa2b
+      internalID: -1906430836
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -163,6 +205,9 @@ TextureImporter:
       Fusili_0: -1986604662
       Fusili_1: -890238760
       Fusili_2: -1906430836
+      Fusili_3: 1952554735
+      Fusili_4: -1245462293
+      Fusili_5: 285035781
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
