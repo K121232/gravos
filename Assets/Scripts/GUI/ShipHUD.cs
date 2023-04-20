@@ -1,5 +1,6 @@
-using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine;
+
 
 public class ShipHUD : MonoBehaviour {
     public  ProtoPlayerBridge   bridge;
@@ -8,6 +9,11 @@ public class ShipHUD : MonoBehaviour {
     public  PowerCell[]         cells;
     public  Slider[]            sliders;
     public  float[]             scales;
+
+    public  ItemPickup          itemPickup;
+    private bool                deltaIPS;
+
+    public  LabelNotification   ntp;    // Notification Panel
 
     private void SetScale ( Transform sliderRoot, float aScale ) {
         sliderRoot.GetChild ( 1 ).GetChild ( 0 ).GetComponent<Image> ().pixelsPerUnitMultiplier = aScale * 0.44f;
@@ -18,12 +24,22 @@ public class ShipHUD : MonoBehaviour {
         for ( int i = 0; i < cells.Length; i++ ) {
             SetScale ( sliders [ i ].transform, scales [ i ] );
         }
+        ntp.AddMessage ( new DataLinkNTF ( "Press B to open the briefing menu", 5 ) );
+        deltaIPS = false;
     }
 
     void LateUpdate () {
         hpSlider.value      = bridge.GetProcentHP () * hpSlider.maxValue;
         for ( int i = 0; i < cells.Length; i++ ) {
             sliders [ i ].value = cells [ i ].GetAvailableLoad () * sliders [ i ].maxValue;
+        }
+        if ( deltaIPS != itemPickup.canPickup ) {
+            deltaIPS = itemPickup.canPickup;
+            if ( deltaIPS ) {
+                ntp.AddMessage ( new DataLinkNTF ( "Press Q to collect the item", -1, 2 ) );
+            } else {
+                ntp.RemoveMessage ( "Press Q to collect the item" );
+            }
         }
     }
 }

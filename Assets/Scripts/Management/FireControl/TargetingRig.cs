@@ -93,11 +93,11 @@ public class TargetingRig : MonoBehaviour {
             if ( Mathf.Abs ( pastDeviation ) < coneMaxDeviation ) {
                 deltaTD = 1;
             } else {
-                deltaTD = Mathf.Clamp ( 2 - pastDeviation / coneMaxDeviation, 0, 1 );
+                deltaTD = Mathf.Clamp ( 2 - ( Mathf.Abs ( pastDeviation ) / traversalSpeed ), 0, 1 );
             }
         }
         float deltaFC = triggerControls.GetCooldownProgress();
         if ( triggerControls.fireRate < 0.25f ) deltaFC = 1;
-        return deltaFC / 2 + deltaTD / 2;
+        return ( deltaFC + deltaTD ) / 2;
     }
 }

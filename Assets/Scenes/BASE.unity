@@ -2628,7 +2628,6 @@ GameObject:
   - component: {fileID: 233474825}
   - component: {fileID: 233474827}
   - component: {fileID: 233474826}
-  - component: {fileID: 233474828}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -2753,19 +2752,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 233474824}
   m_CullTransparentMesh: 1
---- !u!114 &233474828
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 233474824}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 838565ead8fd1af4b88abe7cbdf64ffc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  lifespan: 10
 --- !u!1 &236369104
 GameObject:
   m_ObjectHideFlags: 0
@@ -2912,6 +2898,7 @@ GameObject:
   - component: {fileID: 239765331}
   - component: {fileID: 239765333}
   - component: {fileID: 239765332}
+  - component: {fileID: 239765334}
   m_Layer: 5
   m_Name: HUD
   m_TagString: Untagged
@@ -2982,6 +2969,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 239765330}
   m_CullTransparentMesh: 1
+--- !u!114 &239765334
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 239765330}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa52db59516a0f747802567306c4e2b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  notificationLabel: {fileID: 233474826}
 --- !u!1 &256984549
 GameObject:
   m_ObjectHideFlags: 0
@@ -8576,7 +8576,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &340051850
 Transform:
   m_ObjectHideFlags: 0
@@ -11706,14 +11706,14 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a63d7617e45e70c4e92dc5ed80ab59cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   bodyA: {fileID: 954266155}
   bodyB: {fileID: 1809437841}
-  STRD: 3
+  STRD: 1
   STRPD: 0.3
   STRORS: 0.4
   maxDistance: 25
@@ -12941,6 +12941,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 614992730}
+  - component: {fileID: 614992733}
   - component: {fileID: 614992731}
   - component: {fileID: 614992732}
   m_Layer: 6
@@ -13006,6 +13007,25 @@ MonoBehaviour:
   canAuto: 1
   fireRate: 0
   isFiring: 0
+--- !u!114 &614992733
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 614992729}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f15c9f509cf02848b14854eb6eab179, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ports:
+  - {fileID: 1039756491}
+  - {fileID: 989265435}
+  - {fileID: 1769179369}
+  - {fileID: 1667460020}
+  pickupRadar: {fileID: 1796726862}
+  canPickup: 0
 --- !u!1 &616750447
 GameObject:
   m_ObjectHideFlags: 0
@@ -22066,6 +22086,7 @@ MonoBehaviour:
   turrets:
   - {fileID: 33586275}
   perimeterRadar: {fileID: 800813356}
+  launchIsDetectable: 1
 --- !u!1 &1211655864
 GameObject:
   m_ObjectHideFlags: 0
@@ -23850,6 +23871,7 @@ MonoBehaviour:
   - {fileID: 1019172816}
   - {fileID: 404197988}
   perimeterRadar: {fileID: 392353657}
+  launchIsDetectable: 1
 --- !u!114 &1390872751
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23865,6 +23887,7 @@ MonoBehaviour:
   turrets:
   - {fileID: 1412836198}
   perimeterRadar: {fileID: 1517623859}
+  launchIsDetectable: 1
 --- !u!114 &1390872752
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23881,6 +23904,7 @@ MonoBehaviour:
   - {fileID: 2071131213}
   - {fileID: 574143168}
   perimeterRadar: {fileID: 500246549}
+  launchIsDetectable: 0
 --- !u!1 &1394324607
 GameObject:
   m_ObjectHideFlags: 0
@@ -24364,10 +24388,13 @@ MonoBehaviour:
   - {fileID: 1196772716}
   FBW:
     statusLabel: {fileID: 1739631535}
+    prefsLink: FBWStatus
   MAS:
     statusLabel: {fileID: 1439890021}
+    prefsLink: MASStatus
   INV:
     statusLabel: {fileID: 524240213}
+    prefsLink: INVStatus
 --- !u!1 &1415852136
 GameObject:
   m_ObjectHideFlags: 0
@@ -26079,6 +26106,8 @@ MonoBehaviour:
   - 4
   - 5
   - 4
+  itemPickup: {fileID: 614992733}
+  ntp: {fileID: 239765334}
 --- !u!114 &1559793001
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -28248,7 +28277,6 @@ GameObject:
   - component: {fileID: 1796726860}
   - component: {fileID: 1796726861}
   - component: {fileID: 1796726862}
-  - component: {fileID: 1796726863}
   m_Layer: 6
   m_Name: PickupRadar
   m_TagString: Untagged
@@ -28303,24 +28331,6 @@ MonoBehaviour:
   collectedCount: 0
   maskTag: []
   invertMaskTag: 0
---- !u!114 &1796726863
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1796726859}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4f15c9f509cf02848b14854eb6eab179, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ports:
-  - {fileID: 1039756491}
-  - {fileID: 989265435}
-  - {fileID: 1769179369}
-  - {fileID: 1667460020}
-  pickupRadar: {fileID: 1796726862}
 --- !u!1 &1799312943
 GameObject:
   m_ObjectHideFlags: 0

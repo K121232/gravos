@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class ShotRadar : MonoBehaviour {
+public class WarningDisplay : MonoBehaviour {
     public  Radar       foeRadar;
 
     public  Transform   warningRoot;
@@ -26,13 +26,17 @@ public class ShotRadar : MonoBehaviour {
                 Transform deltaHPR = foeRadar.collectedColliders [ i ].transform.parent.parent.GetChild(2);
                 FireControlSystem[]   list = deltaHPR.GetComponents<FireControlSystem>();
                 for ( int j = 0; j < list.Length; j++ ) {
-                    if ( list [ j ].IsTracking () ) {
+                    if ( list [ j ].IsTracking () && list [ j ].launchIsDetectable ) {
                         for ( int k = 0; k < list [ j ].turrets.Length; k++ ) {
-                            if ( list [ j ].turrets [ k ].GetFiringProgress () >= warningActivationThreshold ) {
+                            float urubega = list [ j ].turrets [ k ].GetFiringProgress ();
+                            if ( urubega >= warningActivationThreshold ) {
                                 if ( progress < mxw ) {
-                                    warningHandles[ progress ].gameObject.SetActive ( true );
+                                    warningHandles [ progress ].gameObject.SetActive ( true );
                                     Vector3 delta = transform.position + ( list [ j ].turrets [ k ].transform.position - transform.position ).normalized * warningCircleRange;
                                     warningHandles [ progress ].position = delta;
+                                    for ( int n = 0; n < 3; n++ ) {
+                                        warningHandles [ progress ].GetComponent<Multihelper> ().anchors [ 1 + n ].gameObject.SetActive ( ! ( ( 1 - warningActivationThreshold ) * n / 3 >= urubega - warningActivationThreshold ) );
+                                    }
                                     progress++;
                                 }
                             }

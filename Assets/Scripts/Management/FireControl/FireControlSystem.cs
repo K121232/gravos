@@ -8,6 +8,8 @@ public class FireControlSystem : MonoBehaviour {
     private GameObject      trackedTarget;
     private GameObject      delta;
 
+    public  bool            launchIsDetectable = true;
+
     void Update () {
         for ( int i = 0; i < perimeterRadar.collectedCount; i++ ) {
             if ( perimeterRadar.collectedColliders [ i ].gameObject == trackedTarget ) {

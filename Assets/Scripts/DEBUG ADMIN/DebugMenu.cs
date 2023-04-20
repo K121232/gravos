@@ -14,12 +14,14 @@ public class DebugMenu : MenuCore {
     [System.Serializable]
     public struct ToggleButton {
         public  TMP_Text        statusLabel;
+        public  string          prefsLink;
         private bool            status;
         public void Toggle () {
             Set ( !status );
         }
         public void Set ( bool _status ) {
             status = _status;
+            PlayerPrefs.SetInt ( prefsLink, status ? 1 : -1 );
             Redraw ();
         }
         public void Redraw () {
@@ -28,6 +30,9 @@ public class DebugMenu : MenuCore {
         public bool GetStatus () {
             return status;
         }
+        public  void    SyncFromPrefs () {
+            status = PlayerPrefs.GetInt ( prefsLink, status ? 1 : -1 ) == 1;
+        }
     }
 
     public  ToggleButton    FBW;
@@ -35,24 +40,18 @@ public class DebugMenu : MenuCore {
     public  ToggleButton    INV;
 
     public  void SyncTGwS ( ToggleButton a, string b ) {      // Sync ToGgle with Settings
-        a.Set ( PlayerPrefs.GetInt ( b, FBW.GetStatus () ? 1 : 0 ) == 1 ? true : false );
-    }
-
-    public void SyncSwTG ( ToggleButton a, string b ) {
-        PlayerPrefs.SetInt ( b, a.GetStatus () ? 1 : 0 );
+        a.Set ( PlayerPrefs.GetInt ( b, a.GetStatus () ? 1 : 0 ) == 1 ? true : false );
     }
 
     public override void Start () {
         base.Start ();
         sliders [ 0 ].SetValueWithoutNotify ( playerShip.mxv );
         sliders [ 1 ].SetValueWithoutNotify ( playerShip.acc );
-        //sliders [ 2 ].SetValueWithoutNotify ( playerShip.angleMxv );
-        //sliders [ 3 ].SetValueWithoutNotify ( playerShip.angleAcc );
         sliders [ 4 ].SetValueWithoutNotify ( camTether.rotationStrength );
 
-        SyncTGwS ( FBW, "_DEB_FBW" );
-        SyncTGwS ( MAS, "_DEB_MAS" );
-        SyncTGwS ( INV, "_DEB_INV" );
+        FBW.SyncFromPrefs ();
+        MAS.SyncFromPrefs ();
+        INV.SyncFromPrefs ();
 
         OnSaveMenu ();
     }
@@ -84,17 +83,11 @@ public class DebugMenu : MenuCore {
     public void OnSaveMenu () {
         playerShip.mxv = sliders [ 0 ].value;
         playerShip.acc = sliders [ 1 ].value;
-        //playerShip.angleMxv = sliders [ 2 ].value;
-        //playerShip.angleAcc = sliders [ 3 ].value;
         camTether.rotationStrength = sliders [ 4 ].value;
 
         playerBridge.invulnerability = INV.GetStatus ();
         playerShip.flybywire = FBW.GetStatus ();
         carrotTargeting.enabled = MAS.GetStatus ();
-
-        SyncSwTG ( FBW, "_DEB_FBW" );
-        SyncSwTG ( MAS, "_DEB_MAS" );
-        SyncSwTG ( INV, "_DEB_INV" );
 
         Redraw ();
         Backflow ( false );

@@ -43,7 +43,7 @@ public class TeflonPMove : Movement {
         if ( armourLock ) {
             delta       = Vector2.zero;
         }
-        transform.rotation = Quaternion.FromToRotation ( Vector2.up, innerHeading );
+        transform.rotation = Quaternion.Euler ( 0,0, Vector2.SignedAngle ( Vector2.up, innerHeading ) );
         base.FixedUpdate();
     }
 
