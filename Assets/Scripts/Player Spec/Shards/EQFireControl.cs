@@ -22,7 +22,9 @@ public class EQFireControl : MonoBehaviour {
             // Make sure the weapons leave clean
             if ( turrets [ i ] != null ) turrets [ i ].OverrideTriggerPress ( false );
             weaponPorts [ i ].Autoload ();
-            turrets [ i ] = weaponPorts [ i ].item.GetComponent<TargetingRig> ();
+            if ( weaponPorts [ i ].item != null ) {
+                turrets [ i ] = weaponPorts [ i ].item.GetComponent<TargetingRig> ();
+            }
         }
         LoadTargets ();
     }
@@ -41,8 +43,10 @@ public class EQFireControl : MonoBehaviour {
 
     private void LoadTargets () {
         for ( int i = 0; i < turrets.Length; i++ ) {
-            turrets [ i ].LoadTarget ( carrot.gameObject );
-            turrets [ i ].fireControlOverride = true;
+            if ( turrets [ i ] != null ) {
+                turrets [ i ].LoadTarget ( carrot.gameObject );
+                turrets [ i ].fireControlOverride = true;
+            }
         }
     }
 }

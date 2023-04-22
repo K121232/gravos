@@ -6,20 +6,27 @@ public class ItemEjector : Turret {
 
     public override void Start () {
         base.Start ();
-        Eject ( 0 );
     }
 
     public void Eject ( int target ) {
-        lastItem = target;
-        fcm.TriggerHold ();
+        if ( ports [ target ] != null && ports [ target ].item != null ) {
+            lastItem = target;
+            Fire ();
+        }
     }
 
     public override GameObject Fire () {
         if ( lastItem == -1 || ports [ lastItem ].item == null ) return null;
-        transform.rotation = Quaternion.Euler ( 0, 0, Random.Range ( -180, 180 ) );
         GameObject delta = base.Fire ();
+        if ( delta == null ) return null;
         ports [ lastItem ].item.Attach ( delta.GetComponent<ItemPort> () );
         lastItem = -1;
         return delta;
+    }
+
+    private void OnDisable () {
+        for ( int i = 0; i < ports.Length; i++ ) {
+            Eject ( i );
+        }
     }
 }

@@ -11,6 +11,7 @@ public class ProtoPlayerBridge : Zetha {
     private float   deltaTime;
 
     public  bool    invulnerability;
+    public  LabelNotification   ntf;
 
     public override void Start () {
         movement = GetComponent<TeflonPMove> ();
@@ -31,7 +32,13 @@ public class ProtoPlayerBridge : Zetha {
         if ( CheckID ( id ) ) {
             
             delta *= invulnerability ? 0 : hitboxes [ id ].beta;
+
+            if ( delta != 0 ) {
+                ntf.AddMessage ( new DataLinkNTF ( "Hit for " + delta + " damage", 2 ) );
+            }
+            
             delta -= shieldCell.VariDrain ( delta * STRShield ) / STRShield;
+
             currentHealth -= delta;
             if ( stunTime != -1 ) {
                 movement.SetLock ( true );

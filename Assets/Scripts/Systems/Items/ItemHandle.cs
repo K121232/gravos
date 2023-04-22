@@ -10,9 +10,9 @@ public class ItemHandle : MonoBehaviour {
 
     public  string      itemName;
     public  string      description;
-    public  int         itemQuantity;
+    public  int         itemQuantity = 1;
 
-    public  float           weight;
+    public  float           weight = 1;
     public  ItemPolarity    polarity;
 
     public  Sprite      icon;

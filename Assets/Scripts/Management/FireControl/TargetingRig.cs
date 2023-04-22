@@ -15,7 +15,7 @@ public class TargetingRig : MonoBehaviour {
     private Konig         sod;
 
     public  bool        fireControlOverride = false;
-    private float       pastDeviation;
+    public  float       pastDeviation;
 
     public void Start () {
         sod = GetComponent<Konig> ();

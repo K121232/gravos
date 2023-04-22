@@ -25,10 +25,15 @@ public class DataLinkNTF : IComparable {
 
 public class LabelNotification : MonoBehaviour {
     public  TMP_Text            notificationLabel;
+    public  TMP_Text            notificationLabelSec;
     public  List<DataLinkNTF>  ntfQ;
 
     void Start () {
         ntfQ = new List<DataLinkNTF> ( 5 );
+    }
+
+    string Filter ( string a ) {
+        return "[ " + a + " ]"; 
     }
 
     void LateUpdate () {
@@ -43,13 +48,20 @@ public class LabelNotification : MonoBehaviour {
             }
         }
         if ( ntfQ.Count != 0 ) {
-            notificationLabel.text = ntfQ [ 0 ].content;
+            notificationLabel.text = Filter ( ntfQ [ 0 ].content );
         } else {
             notificationLabel.text = "";
+        }
+
+        if ( ntfQ.Count >= 2 ) {
+            notificationLabelSec.text = Filter ( ntfQ [ 1 ].content );
+        } else {
+            notificationLabelSec.text = "";
         }
     }
 
     public  void    AddMessage ( DataLinkNTF a ) {
+        if ( ntfQ == null ) { Start (); }
         ntfQ.Add ( a );
         ntfQ.Sort ();
     }

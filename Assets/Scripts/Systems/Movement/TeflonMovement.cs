@@ -74,29 +74,12 @@ public class TeflonMovement : MonoBehaviour {
 
     virtual public void Update() {
         ticks++;
-        Debug.DrawLine ( transform.position + new Vector3 ( 3, 0 ), transform.position + new Vector3 ( 3, 0 ) + Quaternion.Euler ( 0, 0, rgb.angularVelocity ) * Vector2.up, Color.cyan );
-    }
-
-    private float[] DEBUG1 = new float[ 200 ];
-    private int     DEBUG2;
-    private float   DEBUGS = 0.1f;         // horizontal offset per unit
-    private float   DEBUGSY = 5;        // vertical max
-    public  Vector2 DEBUGOFF;
-
-    private void LateUpdate () {
-        for ( int i = 0; i < 199; i++ ) {
-            Debug.DrawLine ( (Vector2) transform.position + DEBUGOFF + new Vector2 ( i * DEBUGS, DEBUG1 [ i ] ), (Vector2) transform.position + DEBUGOFF + new Vector2 ( ( i + 1 ) * DEBUGS, DEBUG1 [ i + 1 ] ) );
-        }
-        Debug.DrawLine ( (Vector2) transform.position + DEBUGOFF + new Vector2 ( 0, DEBUGSY ), (Vector2) transform.position + DEBUGOFF + new Vector2 ( 200 * DEBUGS, DEBUGSY ), Color.red );
     }
 
     virtual public void FixedUpdate() {
         if ( ticks == 0 ) { deltaAngle = backupDeltaAngle; } else { deltaAngle /= ticks; backupDeltaAngle = deltaAngle; }
         if ( ticks == 0 || vLock ) { delta = backupDelta; } else { delta /= ticks; backupDelta = delta; }
         vLock = false;
-
-        DEBUG1 [ DEBUG2++ ] = ( rgb.velocity.magnitude / mxv ) * DEBUGSY;
-        DEBUG2 %= 200;
 
         deltaAngle = VClip( deltaAngle * angleAcc * Time.fixedDeltaTime, rgb.angularVelocity, angleMxv );
 

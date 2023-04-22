@@ -1,36 +1,56 @@
 using UnityEngine;
 
 public class ItemPickup : MonoBehaviour {
-    public  ItemPort[]      ports;
+    public  ItemEjector     ejector;
     public  Radar           pickupRadar;
+    public  int             fillCount = 0;
 
     public  bool            canPickup;
 
     // Get some way to display the option to pick up an item
 
-    public void Update () {
-        canPickup = false;
-        if ( pickupRadar.collectedCount != 0 ) {
-            for ( int i = 0; i < pickupRadar.collectedCount; i++ ) {
-                if ( pickupRadar.collectedColliders [ i ].GetComponent<ItemPort> () != null ) {
-                    canPickup = true;
-                    if ( Input.GetKeyDown ( KeyCode.Q ) ) {
-                        AddItem ( pickupRadar.collectedColliders [ i ].GetComponent<ItemPort> () );
-                        pickupRadar.collectedColliders [ i ].gameObject.SetActive ( false );
-                        canPickup = false;
-                        return;
-                    }
-                }
+    public  void    RecalculateFill () {
+        fillCount = 0;
+        for ( int i = 0; i < ejector.ports.Length; i++ ) {
+            if ( ejector.ports [ i ].item != null ) {
+                fillCount++;
             }
         }
     }
 
-    public void AddItem ( ItemPort alpha ) {
-        for ( int i = 0; i < ports.Length; i++ ) {
-            if ( ports [ i ].item == null ) {
-                alpha.item.Attach ( ports [ i ] );
-                return;
+    private void Start () {
+        RecalculateFill ();
+    }
+
+    public void Update () {
+        canPickup = false;
+        int deltaI = 0;
+        if ( pickupRadar.collectedCount != 0 && fillCount != ejector.ports.Length ) {
+            for ( int i = 0; i < pickupRadar.collectedCount; i++ ) {
+                if ( pickupRadar.collectedColliders [ i ].GetComponent<ItemPort> () != null ) {
+                    canPickup = true;
+                    deltaI = i;
+                    break;
+                    
+                }
             }
         }
+        if ( canPickup && Input.GetKeyDown ( KeyCode.Q ) ) {
+            if ( AddItem ( pickupRadar.collectedColliders [ deltaI ].GetComponent<ItemPort> () ) ) {
+                pickupRadar.collectedColliders [ deltaI ].gameObject.SetActive ( false );
+            }
+            RecalculateFill ();
+            canPickup = false;
+        }
+    }
+
+    public bool AddItem ( ItemPort alpha ) {
+        for ( int i = 0; i < ejector.ports.Length; i++ ) {
+            if ( ejector.ports [ i ].item == null ) {
+                alpha.item.Attach ( ejector.ports [ i ] );
+                return true;
+            }
+        }
+        return false;
     }
 }

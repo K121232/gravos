@@ -4,7 +4,7 @@ using System.Collections.Generic;
 public class PoolSpooler : MonoBehaviour {
     public GameObject   generator;
     public int          expected;
-    public  int         pos;
+    public  int         pos = -1;
 
     private List<GameObject>  pool;
 
@@ -24,6 +24,7 @@ public class PoolSpooler : MonoBehaviour {
     }
 
     public virtual GameObject Request () {
+        if ( pos == -1 || pool [ pos ] == null ) return null;
         int delta = pos;
         pos = ( pos + 1 ) % expected;
         pool [ delta ].SetActive ( false );

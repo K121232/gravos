@@ -33,6 +33,7 @@ public class Turret : MonoBehaviour {
 
     public virtual GameObject Fire () {
         GameObject instPayload  = autoloader.Request();
+        if ( instPayload == null ) return null;
         if ( inheritLayer ) {
             instPayload.layer = gameObject.layer;
         }

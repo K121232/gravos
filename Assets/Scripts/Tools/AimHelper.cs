@@ -53,7 +53,7 @@ public class AimHelper : MonoBehaviour {
             delta.y /= filter.y;
         }
 
-        tether.offset = Vector3.Lerp ( tether.offset, originalOffset + (Vector3)delta, STRD * Time.deltaTime );
-        cam.orthographicSize = Mathf.Lerp ( cam.orthographicSize, Mathf.Clamp ( originalSize + deltaS, minOrtoSize, maxOrtoSize ), STRD * Time.deltaTime );
+        tether.offset = Vector3.Lerp ( tether.offset, originalOffset + (Vector3)delta, STRD * Time.smoothDeltaTime );
+        cam.orthographicSize = Mathf.Lerp ( cam.orthographicSize, Mathf.Clamp ( originalSize + deltaS, minOrtoSize, maxOrtoSize ), STRD * Time.smoothDeltaTime );
     }
 }

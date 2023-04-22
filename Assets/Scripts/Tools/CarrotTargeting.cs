@@ -5,7 +5,9 @@ public class CarrotTargeting : MonoBehaviour {
     public  Transform       carrot;
 
     private void OnDisable () {
-        carrot.localPosition = Vector3.zero;
+        if ( carrot != null ) {
+            carrot.localPosition = Vector3.zero;
+        }
     }
 
     void LateUpdate () {
