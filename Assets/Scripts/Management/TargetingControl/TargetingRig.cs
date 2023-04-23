@@ -35,12 +35,13 @@ public class TargetingRig : MonoBehaviour {
         rgb = port.hullLink.GetComponent<Rigidbody2D> ();
     }
 
-    public void LoadTarget ( GameObject alpha ) {
-        if ( target == alpha ) return;
-        if ( alpha == null ) { target = null; targetRGB = null; return; }
-        target = alpha.transform;
-        if ( target.GetComponent<Collider2D> () != null ) {
+    public void LoadTarget ( Transform alpha ) {
+        if ( alpha == target) return;
+        target = alpha;
+        if ( target != null && target.GetComponent<Collider2D> () != null ) {
             targetRGB = target.GetComponent<Collider2D> ().attachedRigidbody;
+        } else {
+            targetRGB = null;
         }
     }
 

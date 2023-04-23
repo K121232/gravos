@@ -1,8 +1,7 @@
 using UnityEngine;
 
-public class EQFireControl : MonoBehaviour {
+public class TargetControlP : TargetControlCore {
     public  ItemPort[]      weaponPorts;
-    public  TargetingRig[]  turrets;
     public  Transform       carrot;
 
     private bool            transition, delta;
@@ -19,18 +18,19 @@ public class EQFireControl : MonoBehaviour {
         if ( turrets.Length != 0 && weaponPorts.Length == 0 ) { return; }
         turrets = new TargetingRig [ weaponPorts.Length ];
         for ( int i = 0; i < weaponPorts.Length; i++ ) {
-            // Make sure the weapons leave clean
             if ( turrets [ i ] != null ) turrets [ i ].OverrideTriggerPress ( false );
-            weaponPorts [ i ].Autoload ();
             if ( weaponPorts [ i ].item != null ) {
                 turrets [ i ] = weaponPorts [ i ].item.GetComponent<TargetingRig> ();
             }
         }
-        LoadTargets ();
+        ModifyTarget ( carrot );
     }
 
     void Update () {
         delta = Input.GetAxis ( "Fire1" ) > 0;
+        if ( firingLock ) {
+            delta = false;
+        }
         if ( delta != transition ) {
             for ( int i = 0; i < turrets.Length; i++ ) {
                 if ( turrets [ i ] != null ) {
@@ -41,12 +41,12 @@ public class EQFireControl : MonoBehaviour {
         }            
     }
 
-    private void LoadTargets () {
-        for ( int i = 0; i < turrets.Length; i++ ) {
-            if ( turrets [ i ] != null ) {
-                turrets [ i ].LoadTarget ( carrot.gameObject );
-                turrets [ i ].fireControlOverride = true;
-            }
-        }
+    public override void ModifyLock ( bool alpha ) {
+        firingLock = alpha;
+    }
+
+    public override void ModifyTurretOp ( TargetingRig alpha ) {
+        alpha.fireControlOverride = true;
+        base.ModifyTurretOp ( alpha );
     }
 }

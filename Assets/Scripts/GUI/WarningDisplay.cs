@@ -24,7 +24,7 @@ public class WarningDisplay : MonoBehaviour {
         if ( foeRadar.collectedCount != 0 ) {
             for ( int i = 0; i < foeRadar.collectedCount; i++ ) {
                 Transform deltaHPR = foeRadar.collectedColliders [ i ].transform.parent.parent.GetChild(2);
-                FireControlSystem[]   list = deltaHPR.GetComponents<FireControlSystem>();
+                TargetControlRadar[]   list = deltaHPR.GetComponents<TargetControlRadar>();
                 for ( int j = 0; j < list.Length; j++ ) {
                     if ( list [ j ].IsTracking () && list [ j ].launchIsDetectable ) {
                         for ( int k = 0; k < list [ j ].turrets.Length; k++ ) {

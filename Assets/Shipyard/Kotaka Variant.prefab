@@ -1770,8 +1770,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   turrets:
   - {fileID: 997272692266440301}
-  perimeterRadar: {fileID: 1517623859}
   launchIsDetectable: 1
+  firingLock: 0
+  radar: {fileID: 1517623859}
 --- !u!114 &1720494292
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1787,8 +1788,9 @@ MonoBehaviour:
   turrets:
   - {fileID: 6834990662104676687}
   - {fileID: 574143168}
-  perimeterRadar: {fileID: 500246549}
   launchIsDetectable: 0
+  firingLock: 0
+  radar: {fileID: 500246549}
 --- !u!114 &1720494293
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1804,8 +1806,9 @@ MonoBehaviour:
   turrets:
   - {fileID: 3902092308678312695}
   - {fileID: 404197988}
-  perimeterRadar: {fileID: 392353657}
   launchIsDetectable: 1
+  firingLock: 0
+  radar: {fileID: 392353657}
 --- !u!4 &6816875653710090481 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5217752661276924954, guid: d60a5bfe7b0116d4abc2d58e3fb1f9da, type: 3}

@@ -11,6 +11,7 @@ TagManager:
   - Item
   - Blade
   - Grab Point
+  - Effect
   layers:
   - Default
   - TransparentFX

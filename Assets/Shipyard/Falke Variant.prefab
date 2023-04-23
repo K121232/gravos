@@ -202,7 +202,7 @@ GameObject:
   - component: {fileID: 916807909}
   - component: {fileID: 916807908}
   m_Layer: 7
-  m_Name: F2 Railgun
+  m_Name: F2 Medium Canon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -845,8 +845,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   turrets:
   - {fileID: 916807911}
-  perimeterRadar: {fileID: 2110360274}
   launchIsDetectable: 1
+  firingLock: 0
+  radar: {fileID: 2110360274}
 --- !u!114 &8770562768778065395 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5217752661217200254, guid: d60a5bfe7b0116d4abc2d58e3fb1f9da, type: 3}
