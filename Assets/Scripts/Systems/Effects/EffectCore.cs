@@ -9,40 +9,45 @@ public class EffectCore : MonoBehaviour {
     public  bool    isAbsorbed = true;
     public  bool    dormant = true;
 
+    public  string  signature;
+
     public  virtual void    Defuse () {
         dormant = true;
-        if ( !gameObject.activeInHierarchy ) {
-            OnDisable ();
-        }
+        OnMagicDisengage ();
         gameObject.SetActive ( false );
     }
 
     public  virtual void    Activate ( Transform mainHull ) {
         target = mainHull;
-        dormant = false;
-        deltaTime = time;
         if ( isAbsorbed ) {
-            CryoStore ( transform );
+            FinalActivation ( gameObject );
         } else {
             GameObject clone = Instantiate ( gameObject, mainHull.GetChild ( 5 ).GetChild ( 2 ));
-            CryoStore ( clone.transform );
+            FinalActivation ( clone );
         }
-        if ( gameObject.activeInHierarchy ) {
-            OnEnable ();
-        }
-        gameObject.SetActive ( true );
+    }
 
+    public virtual  void    FinalActivation ( GameObject obj ) {
+        CryoStore ( obj.transform );
+
+        EffectCore efc = obj.GetComponent<EffectCore>();        
+        efc.dormant = false;
+        efc.deltaTime = time;
+        efc.isAbsorbed = false;
+
+        efc.OnMagicEngage ();
     }
 
     public  virtual void    CryoStore ( Transform alpha ) {
         alpha.GetChild ( 0 ).gameObject.SetActive ( false );
+        alpha.GetChild ( 1 ).gameObject.SetActive ( false );
     }
 
-    public virtual  void OnEnable () {
+    public virtual  void OnMagicEngage () {
 
     }
 
-    public virtual void OnDisable () {
+    public virtual void OnMagicDisengage () {
         target = null;
     }
 

@@ -10,17 +10,17 @@ public class EffectTargetingVirus : EffectCore {
         }
     }
 
-    public override void OnEnable () {
+    public override void OnMagicEngage () {
         if ( !dormant ) {
             MassModifyLocks ( true );
         }
-        base.OnEnable ();
+        base.OnMagicEngage ();
     }
 
-    public override void OnDisable () {
+    public override void OnMagicDisengage () {
         if ( dormant ) {
             MassModifyLocks ( false );
         }
-        base.OnDisable ();
+        base.OnMagicDisengage ();
     }
 }
