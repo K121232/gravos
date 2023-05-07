@@ -1,7 +1,7 @@
 using UnityEngine;
 
 public class PCFCM : FCM {
-    // POWER CELL
+    // POWER CELL FIRE CONTROL MECHANISM
     public  PowerCell   cell;
     public  float       drainRate = 1;            // drain per second
     public  float       drainInitial = 0;

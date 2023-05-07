@@ -9,7 +9,6 @@ public class TargetControlP : TargetControlCore {
     private void Start () {
         for ( int i = 0; i < weaponPorts.Length; i++ ) {
             weaponPorts [ i ].Autoload ();
-            weaponPorts [ i ].attachCallback = RefreshTurretList;
         }
         RefreshTurretList ();
     }

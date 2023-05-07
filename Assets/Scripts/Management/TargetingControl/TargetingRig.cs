@@ -20,7 +20,6 @@ public class TargetingRig : MonoBehaviour {
     public void Start () {
         sod = GetComponent<Konig> ();
         if ( GetComponent<ItemHandle> () ) {
-            GetComponent<ItemHandle> ().attachCallback = MainInit;
             MainInit ( GetComponent<ItemHandle> ().host );
         }
         triggerControls = GetComponent<FCM> ();

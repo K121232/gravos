@@ -18,9 +18,6 @@ public class EQBase : PCFCM {
     }   
 
     public override void Start () {
-        if ( GetComponent <ItemHandle>() ) {
-            GetComponent<ItemHandle> ().attachCallback = MainInit;
-        }
         UpdateIS ( control );
         base.Start ();
     }

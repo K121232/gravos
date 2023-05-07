@@ -1,31 +1,20 @@
 using UnityEngine;
 using System;
 
-public class ItemPort : MonoBehaviour {
-    public  Action      attachCallback;
-
-    public  Transform   hullLink;
-    public  Transform   batteryLink;
+public class ItemPort : ZephyrUnit {
+    [Header("Item Port Base")]
+    public  ItemHandle      item;
 
     public  ItemPolarity    polarity;
 
-    public  ItemHandle  item;
-    public  bool        bungholio = false;
+    public  bool            bungholio = false;
+
+    public  Transform       hullLink;
+    public  Transform       batteryLink;
 
     public string GetTagName () {
         if ( item == null ) return "X";
         return item.GetTagName ();
-    }
-
-    public void Start () {
-        Autoload ();
-    }
-
-    public void Autoload () {
-        if ( item == null && transform.childCount != 0 ) {
-            transform.GetChild ( 0 ).TryGetComponent ( out item );
-            item.Attach ( this );
-        }
     }
 
     public bool CheckPolarities ( ItemPolarity rx, ItemPolarity tx ) {
@@ -41,17 +30,26 @@ public class ItemPort : MonoBehaviour {
         return CheckPolarities ( polarity, providingPort.polarity );
     }
 
-    public  void  Swap ( ItemPort other ) {
-        if ( Compatible ( other ) && other.item != null && item != null ) {
-            ItemHandle delta = item;
-            other.item.Attach ( this );
-            delta.Attach ( other );
+    public override void Autobinding ( ZephyrUnit _unit ) {
+        if ( _unit != null ) {
+            item = ( ItemHandle ) _unit;
+        } else {
+            item = null;
         }
+        base.Autobinding ( _unit );
     }
 
-    public void OnAttach () {
-        if ( attachCallback != null ) {
-            attachCallback ();
-        }
+    public override void Autobreak () {
+        base.Autobreak ();
+        item = null;
+    }
+
+    protected override void AutoloadCore () {
+        item = transform.GetComponentInChildren<ItemHandle> ();
+        bind = item;
+    }
+
+    public void Swap ( ItemPort other ) {
+        
     }
 }

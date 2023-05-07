@@ -47,7 +47,7 @@ public class ItemPickup : MonoBehaviour {
     public bool AddItem ( ItemPort alpha ) {
         for ( int i = 0; i < ejector.ports.Length; i++ ) {
             if ( ejector.ports [ i ].item == null ) {
-                alpha.item.Attach ( ejector.ports [ i ] );
+                alpha.Autobinding ( ejector.ports [ i ] );
                 return true;
             }
         }
