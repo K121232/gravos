@@ -19,9 +19,6 @@ public class TargetingRig : MonoBehaviour {
 
     public void Start () {
         sod = GetComponent<Konig> ();
-        if ( GetComponent<ItemHandle> () ) {
-            MainInit ( GetComponent<ItemHandle> ().host );
-        }
         triggerControls = GetComponent<FCM> ();
         if ( triggerControls == null ) {
             fireControlOverride = true;

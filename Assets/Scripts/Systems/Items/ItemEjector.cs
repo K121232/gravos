@@ -9,17 +9,17 @@ public class ItemEjector : Turret {
     }
 
     public void Eject ( int target ) {
-        if ( ports [ target ] != null && ports [ target ].item != null ) {
+        if ( ports [ target ] != null && ports [ target ].GetItem () != null ) {
             lastItem = target;
             Fire ();
         }
     }
 
     public override GameObject Fire () {
-        if ( lastItem == -1 || ports [ lastItem ].item == null ) return null;
+        if ( lastItem == -1 || ports [ lastItem ].GetItem () == null ) return null;
         GameObject delta = base.Fire ();
         if ( delta == null ) return null;
-        ports [ lastItem ].item.Autobinding ( delta.GetComponent<ItemPort> () );
+        ports [ lastItem ].GetItem ().Autobinding ( delta.GetComponent<ItemPort> () );
         lastItem = -1;
         return delta;
     }

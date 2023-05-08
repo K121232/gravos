@@ -20,7 +20,7 @@ public class LoadoutMenu : MenuCore {
     }
 
     public void InitLeftSide ( ItemPort a ) {
-        LoadInspect ( 0, a.item.GetTagName (), a );
+        LoadInspect ( 0, ItemPolarityChecker.TFP ( a.polarity ), a );
     }
     public void InitCallbacks () {
         for ( int i = 0; i < helpers.Count; i++ ) {
@@ -35,8 +35,8 @@ public class LoadoutMenu : MenuCore {
 
     public void Draw () {
         for ( int i = 0; i < helpers.Count; i++ ) {
-            if ( CheckID ( i, store ) && store [ i ].item != null ) {
-                helpers [ i ].anchors [ 0 ].GetComponent<Image> ().sprite = store [ i ].item.icon;
+            if ( CheckID ( i, store ) && store [ i ].bind != null ) {
+                helpers [ i ].anchors [ 0 ].GetComponent<Image> ().sprite = store [ i ].GetItem().icon;
             } else {
                 helpers [ i ].anchors [ 0 ].GetComponent<Image> ().sprite = null;
             }
@@ -50,7 +50,7 @@ public class LoadoutMenu : MenuCore {
 
     public void DisplayCallback ( int id ) {
         if ( CheckID ( id, store ) && helpers [ id ] != null ) {
-            LoadInspect ( 1, store [ id ].GetTagName () + ( id + 1 ).ToString (), store [ id ] );
+            LoadInspect ( 1, ItemPolarityChecker.TFP ( store [ id ].polarity ) + ( id + 1 ).ToString (), store [ id ] );
         } else {
             LoadInspect ( 1 );
         }
@@ -60,7 +60,7 @@ public class LoadoutMenu : MenuCore {
         iHandles [ target ].SetLabel ( 0, pos );
         ItemHandle deltaIH = null;
         if ( a != null ) {
-            deltaIH = a.item;
+            deltaIH = a.GetItem();
             if ( target == 0 ) portA = a; else portB = a;
         }
         if ( deltaIH != null ) {

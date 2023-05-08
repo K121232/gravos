@@ -18,8 +18,8 @@ public class TargetControlP : TargetControlCore {
         turrets = new TargetingRig [ weaponPorts.Length ];
         for ( int i = 0; i < weaponPorts.Length; i++ ) {
             if ( turrets [ i ] != null ) turrets [ i ].OverrideTriggerPress ( false );
-            if ( weaponPorts [ i ].item != null ) {
-                turrets [ i ] = weaponPorts [ i ].item.GetComponent<TargetingRig> ();
+            if ( weaponPorts [ i ].GetItem () != null ) {
+                turrets [ i ] = weaponPorts [ i ].GetItem ().GetComponent<TargetingRig> ();
             }
         }
         ModifyTarget ( carrot );
