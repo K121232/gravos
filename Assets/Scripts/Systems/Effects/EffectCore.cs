@@ -1,41 +1,25 @@
 using UnityEngine;
 
-public class EffectCore : MonoBehaviour {
-    protected Transform   target;
+public class EffectCore : ZephyrUnit {
+    public  Transform   target;
 
     public  float   time;
     private float   deltaTime;
 
-    public  bool    isAbsorbed = true;
     public  bool    dormant = true;
 
-    public  string  signature;
+    public override void Autobind ( ZephyrUnit _unit ) {
+        EffectReciever  rx = (EffectReciever) _unit;
+        if ( rx != null ) {
+            base.Autobind ( _unit );
 
-    public  virtual void    Defuse () {
-        dormant = true;
-        OnMagicDisengage ();
-        gameObject.SetActive ( false );
-    }
+            target = rx.mainHull;
 
-    public  virtual void    Activate ( Transform mainHull ) {
-        target = mainHull;
-        if ( isAbsorbed ) {
-            FinalActivation ( gameObject );
-        } else {
-            GameObject clone = Instantiate ( gameObject, mainHull.GetChild ( 5 ).GetChild ( 2 ));
-            FinalActivation ( clone );
+            CryoStore ( transform );
+
+            dormant = false;
+            deltaTime = time;
         }
-    }
-
-    public virtual  void    FinalActivation ( GameObject obj ) {
-        CryoStore ( obj.transform );
-
-        EffectCore efc = obj.GetComponent<EffectCore>();        
-        efc.dormant = false;
-        efc.deltaTime = time;
-        efc.isAbsorbed = false;
-
-        efc.OnMagicEngage ();
     }
 
     public  virtual void    CryoStore ( Transform alpha ) {
@@ -43,19 +27,11 @@ public class EffectCore : MonoBehaviour {
         alpha.GetChild ( 1 ).gameObject.SetActive ( false );
     }
 
-    public virtual  void OnMagicEngage () {
-
-    }
-
-    public virtual void OnMagicDisengage () {
-        target = null;
-    }
-
     public virtual void Update () {
         if ( deltaTime > 0 ) {
             deltaTime -= Time.deltaTime;
             if ( deltaTime < 0 ) {
-                Defuse ();
+                Autobreak ();
             }
         }
     }

@@ -19,7 +19,7 @@ public class ItemEjector : Turret {
         if ( lastItem == -1 || ports [ lastItem ].GetItem () == null ) return null;
         GameObject delta = base.Fire ();
         if ( delta == null ) return null;
-        ports [ lastItem ].GetItem ().Autobinding ( delta.GetComponent<ItemPort> () );
+        ports [ lastItem ].GetItem ().Autobind ( delta.GetComponent<ItemPort> () );
         lastItem = -1;
         return delta;
     }

@@ -11296,7 +11296,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &537818550
 Transform:
   m_ObjectHideFlags: 0
@@ -11347,10 +11347,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57272f5a348599945bda00dfed4d66ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mirror: {fileID: 0}
+  target: {fileID: 0}
   time: 5
-  isAbsorbed: 1
   dormant: 1
-  signature: 
 --- !u!1 &559153464
 GameObject:
   m_ObjectHideFlags: 0
@@ -23563,10 +23563,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8337ec6b564b58f4cb3541f4c3f7c250, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mirror: {fileID: 0}
+  target: {fileID: 0}
   time: 5
-  isAbsorbed: 1
   dormant: 1
-  signature: 
   strength: 1
 --- !u!50 &1775269988
 Rigidbody2D:
@@ -27956,6 +27956,10 @@ PrefabInstance:
       propertyPath: warningRoot
       value: 
       objectReference: {fileID: 1302751189}
+    - target: {fileID: 139317988147292045, guid: 319d950173e416b47ad24e3a5cac5dce, type: 3}
+      propertyPath: itemName
+      value: Turret_01
+      objectReference: {fileID: 0}
     - target: {fileID: 2150567352331204280, guid: 319d950173e416b47ad24e3a5cac5dce, type: 3}
       propertyPath: autoloader
       value: 

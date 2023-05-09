@@ -15,10 +15,14 @@ public class ItemHandle : ZephyrUnit {
         return ItemPolarityChecker.TFP ( polarity );
     }
 
-    public override void Autobinding ( ZephyrUnit _unit ) {
+    public override void Autobind ( ZephyrUnit _unit ) {
         ItemPort host = null;
         if ( _unit != null ) {
             host = ( ItemPort ) _unit;
+
+            transform.SetParent ( host.transform );
+            transform.localPosition = Vector3.zero;
+            transform.localRotation = Quaternion.identity;
         }
 
         EQBase  eqb;
@@ -30,14 +34,6 @@ public class ItemHandle : ZephyrUnit {
             tgr.MainInit ( host );
         }
 
-        base.Autobinding ( _unit );
+        base.Autobind ( _unit );
     }
-
-    public override void Seal () {
-        base.Seal ();
-        transform.SetParent ( bind.transform );
-        transform.localPosition = Vector3.zero;
-        transform.localRotation = Quaternion.identity;
-    }
-
 }

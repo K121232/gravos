@@ -1,38 +1,31 @@
 using UnityEngine;
 
 public class ZephyrUnit : MonoBehaviour {
-    public  ZephyrUnit          bind;
+    public  ZephyrUnit          mirror;
 
-    public virtual void Autobinding ( ZephyrUnit _unit ) {
-        bind = _unit;
-        if ( bind != null && bind.bind != this ) {
-            Seal ();
+    public virtual void Autobind ( ZephyrUnit _unit ) {
+        mirror = _unit;
+        if ( mirror != null && mirror.mirror != this ) {
+            mirror.Autobind ( this );
         }
     }
 
-    public virtual  void Seal () {
-        bind.Autobinding ( this );
-    }
-
-    public  virtual void    Autobreak () {
-        if ( bind != null ) {
-            Unseal ();
+    public virtual void Autobreak () {
+        if ( mirror != null ) {
+            ZephyrUnit  delta = mirror;
+            mirror = null;
+            delta.Autobreak ();
         }
+        mirror = null;
     }
 
-    public  virtual void    Unseal () {
-        bind.Autobreak ();
-        bind = null;
-    }
+    protected virtual void AutoloadCore () { }
 
     public void Autoload () {
-        if ( bind == null ) {
+        if ( mirror == null ) {
             AutoloadCore ();
         }
-        Autobinding ( bind );
-    }
-
-    protected   virtual void    AutoloadCore () {
+        Autobind ( mirror );
     }
 
     protected virtual void Start () {

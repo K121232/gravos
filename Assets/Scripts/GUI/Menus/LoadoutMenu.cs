@@ -35,7 +35,7 @@ public class LoadoutMenu : MenuCore {
 
     public void Draw () {
         for ( int i = 0; i < helpers.Count; i++ ) {
-            if ( CheckID ( i, store ) && store [ i ].bind != null ) {
+            if ( CheckID ( i, store ) && store [ i ].mirror != null ) {
                 helpers [ i ].anchors [ 0 ].GetComponent<Image> ().sprite = store [ i ].GetItem().icon;
             } else {
                 helpers [ i ].anchors [ 0 ].GetComponent<Image> ().sprite = null;
