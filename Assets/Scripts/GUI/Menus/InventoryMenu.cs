@@ -35,9 +35,9 @@ public class InventoryMenu : MenuCore {
                 listRoot.GetChild ( i ).GetComponent<Multihelper> ().SetCallback ( 0, ContextButtonOpenInfo );
 
             string labelN = "NO ITEM", labelQ = "X";
-            if ( stores [ i ].item != null ) {
-                labelN = stores [ i ].item.itemName;
-                labelQ = stores [ i ].item.itemQuantity.ToString ();
+            if ( stores [ i ].GetItem() != null ) {
+                labelN = stores [ i ].GetItem ().itemName;
+                labelQ = stores [ i ].GetItem ().itemQuantity.ToString ();
             }
             listRoot.GetChild ( i ).GetComponent<Multihelper> ().SetLabel ( 0, labelN );
             listRoot.GetChild ( i ).GetComponent<Multihelper> ().SetLabel ( 1, labelQ );
@@ -66,7 +66,7 @@ public class InventoryMenu : MenuCore {
 
     public void ContextButtonOpenInfo ( int id ) {
         manager.CancelDecision ();
-        if ( id < 0 || id > stores.Count || stores [ id ].item == null ) {
+        if ( id < 0 || id > stores.Count || stores [ id ].GetItem () == null ) {
             contextButtonRoot.SetActive ( false );
             contextId = -1;
             contextTitle.text = "NOTHING SELECTED";
@@ -74,10 +74,10 @@ public class InventoryMenu : MenuCore {
         } else {
             contextButtonRoot.SetActive ( true );
             contextId = id;
-            contextTitle.text = stores [ id ].item.itemName;
-            contextDescription.text = stores [ id ].item.description;
+            contextTitle.text = stores [ id ].GetItem ().itemName;
+            contextDescription.text = stores [ id ].GetItem ().description;
 
-            contextEquipButton.SetActive ( stores [ id ].item.polarity != ItemPolarity.Item );
+            contextEquipButton.SetActive ( stores [ id ].GetItem ().polarity != ItemPolarity.Item );
             contextButtonRoot.transform.GetChild ( 0 ).GetComponent<Button> ().Select ();
         }
     }

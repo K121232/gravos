@@ -19,10 +19,6 @@ public class TargetingRig : MonoBehaviour {
 
     public void Start () {
         sod = GetComponent<Konig> ();
-        if ( GetComponent<ItemHandle> () ) {
-            GetComponent<ItemHandle> ().attachCallback = MainInit;
-            MainInit ( GetComponent<ItemHandle> ().host );
-        }
         triggerControls = GetComponent<FCM> ();
         if ( triggerControls == null ) {
             fireControlOverride = true;
@@ -36,7 +32,8 @@ public class TargetingRig : MonoBehaviour {
     }
 
     public void LoadTarget ( Transform alpha ) {
-        if ( alpha == target) return;
+        Debug.Log ( alpha + " " + target );
+        if ( alpha == target ) return;
         target = alpha;
         if ( target != null && target.GetComponent<Collider2D> () != null ) {
             targetRGB = target.GetComponent<Collider2D> ().attachedRigidbody;

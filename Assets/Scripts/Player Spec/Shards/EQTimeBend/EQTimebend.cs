@@ -1,9 +1,9 @@
 using UnityEngine;
 
 public class EQTimebend : EQBase {
-    [Header ( "EQ Time Bend" )]
-    public  float       bendSTR;
-    private float       pastScale;
+    [Header("EQ Time Bend")]
+    public float bendSTR;
+    private float pastScale;
 
     public override void MainInit ( ItemPort port ) {
         if ( port == null ) return;

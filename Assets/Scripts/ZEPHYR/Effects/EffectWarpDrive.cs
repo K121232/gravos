@@ -8,18 +8,18 @@ public class EffectWarpDrive : EffectCore {
         isWarping = magic;
     }
 
-    public override void OnMagicEngage () {
+    public override void Autobind ( ZephyrUnit _unit ) {
+        base.Autobind ( _unit );
         if ( !dormant ) {
             ModifyDriveState ( true );
         }
-        base.OnMagicEngage ();
     }
 
-    public override void OnMagicDisengage () {
-        if ( dormant ) {
+    public override void Autobreak () {
+        if ( !dormant ) {
             ModifyDriveState ( false );
         }
-        base.OnMagicDisengage ();
+        base.Autobreak ();
     }
 
     public override void Update () {

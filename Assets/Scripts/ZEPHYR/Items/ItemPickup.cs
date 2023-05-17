@@ -7,12 +7,10 @@ public class ItemPickup : MonoBehaviour {
 
     public  bool            canPickup;
 
-    // Get some way to display the option to pick up an item
-
     public  void    RecalculateFill () {
         fillCount = 0;
         for ( int i = 0; i < ejector.ports.Length; i++ ) {
-            if ( ejector.ports [ i ].item != null ) {
+            if ( ejector.ports [ i ].GetItem () != null ) {
                 fillCount++;
             }
         }
@@ -46,8 +44,8 @@ public class ItemPickup : MonoBehaviour {
 
     public bool AddItem ( ItemPort alpha ) {
         for ( int i = 0; i < ejector.ports.Length; i++ ) {
-            if ( ejector.ports [ i ].item == null ) {
-                alpha.item.Attach ( ejector.ports [ i ] );
+            if ( ejector.ports [ i ].GetItem () == null ) {
+                alpha.Autobind ( ejector.ports [ i ] );
                 return true;
             }
         }

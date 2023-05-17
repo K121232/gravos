@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class EffectReciever : MonoBehaviour {
+public class EffectReciever : ZephyrUnit {
     public  Radar       radar;
     public  Transform   mainHull;
 
@@ -10,8 +10,7 @@ public class EffectReciever : MonoBehaviour {
         if ( radar.collectedCount != 0 ) {
             for ( int i = 0; i < radar.collectedCount; i++ ) {
                 if ( radar.collectedColliders [ i ].transform.parent.TryGetComponent( out delta ) ) {
-
-                    delta.Activate ( mainHull );
+                    delta.Autobind ( this );
                 }
             }
         }    

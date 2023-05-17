@@ -503,8 +503,8 @@ MonoBehaviour:
     They can take a beating, but once down take a while to recharge. "
 
 
-    [ 5
-    HP, 4 SP ]'
+    ( 5
+    HP, 4 SP )'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 18aab6357a3c1754fa91abe628c4be69, type: 2}
   m_sharedMaterial: {fileID: 2848985055427872824, guid: 18aab6357a3c1754fa91abe628c4be69, type: 2}
@@ -8552,12 +8552,8 @@ MonoBehaviour:
   m_text: 'Excerpt from " E-warfare for dummmies 101 ":
 
 
-    " Radars dictate the
-    range at which the other ships will lock onto you, most ships operate radars
-    at 200 units "
-
-    " Your radar works at 250 units, giving you an advantage
-    "'
+    This part has been
+    disabled for now, disregard.'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 18aab6357a3c1754fa91abe628c4be69, type: 2}
   m_sharedMaterial: {fileID: 2848985055427872824, guid: 18aab6357a3c1754fa91abe628c4be69, type: 2}
@@ -11300,7 +11296,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &537818550
 Transform:
   m_ObjectHideFlags: 0
@@ -11351,10 +11347,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57272f5a348599945bda00dfed4d66ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mirror: {fileID: 0}
+  target: {fileID: 0}
   time: 5
-  isAbsorbed: 1
   dormant: 1
-  signature: 
 --- !u!1 &559153464
 GameObject:
   m_ObjectHideFlags: 0
@@ -11671,9 +11667,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: "Excerpt from \" 2 Fingers Pete's Explosive Handling Cookbook \" :\n\n\"
+    Red points can be draged and slammed into something else to do damage \"\n\"
     The enemy craft has a high powered rail gun, with low traversal speed \"\n\"
-    Look out for the firing predictors, they have 3 pips that light up as the turret
-    gets into the propper firing position \"\n\nRAILGUN - 5 DMG \nROCKET - 2 DMG\nBULLET
+    Why are you still reading this \"\n\nRAILGUN - 5 DMG \nROCKET - 2 DMG\nBULLET
     - 1 DMG"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 18aab6357a3c1754fa91abe628c4be69, type: 2}
@@ -13701,7 +13697,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &724142528
 Transform:
   m_ObjectHideFlags: 0
@@ -16418,7 +16414,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 954266160, guid: 319d950173e416b47ad24e3a5cac5dce, type: 3}
   m_PrefabInstance: {fileID: 9025192534201731930}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2122179218}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e8fec28348f62d942abbac049c50688b, type: 3}
@@ -16429,7 +16425,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 954266161, guid: 319d950173e416b47ad24e3a5cac5dce, type: 3}
   m_PrefabInstance: {fileID: 9025192534201731930}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2122179218}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 251143474f2f5c941a2001ebb24eca76, type: 3}
@@ -19939,13 +19935,13 @@ MonoBehaviour:
 
 
     "
-    [ M1 ],  and the I key are linked to your guns "
+    M1,  and the I key are linked to your guns "
 
-    " [ M2, SPACE ] are linked
-    to your equipment "
+    " K, Space are linked to your
+    equipment "
 
-    " The HUD displays data about your HP, SHIELDS and ENERGY
-    stores respectively "'
+    " From left to right, bars are for HP, SHIELD and TIMESTOP energy
+    "'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 18aab6357a3c1754fa91abe628c4be69, type: 2}
   m_sharedMaterial: {fileID: 2848985055427872824, guid: 18aab6357a3c1754fa91abe628c4be69, type: 2}
@@ -23567,10 +23563,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8337ec6b564b58f4cb3541f4c3f7c250, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mirror: {fileID: 0}
+  target: {fileID: 0}
   time: 5
-  isAbsorbed: 1
   dormant: 1
-  signature: 
   strength: 1
 --- !u!50 &1775269988
 Rigidbody2D:
@@ -25197,12 +25193,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'MISSION OBJECTIVES :
-
-
-    SAMPLE PAGE 1
-
-'
+  m_text: "MISSION OBJECTIVES :\n\nI dont fucking know. \nUr mum's hot, Jessie\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 18aab6357a3c1754fa91abe628c4be69, type: 2}
   m_sharedMaterial: {fileID: 2848985055427872824, guid: 18aab6357a3c1754fa91abe628c4be69, type: 2}
@@ -25596,7 +25587,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "Excerpt from \"Beyond the 4th wall\" : \n\n\" To change ur ship's handling
     characteristics, press M \"\n\" To open the telemetry menu, press X \"\n\" To
-    open the reset menu, press N \"\n\" To open the inventory menu, press P \""
+    open the reset menu, press N. Disregard the message \"\n\" To open the inventory
+    menu, press P \""
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 18aab6357a3c1754fa91abe628c4be69, type: 2}
   m_sharedMaterial: {fileID: 2848985055427872824, guid: 18aab6357a3c1754fa91abe628c4be69, type: 2}
@@ -27536,11 +27528,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2110402426}
   m_CullTransparentMesh: 1
---- !u!1 &2122179218 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 9025192534602348920, guid: 319d950173e416b47ad24e3a5cac5dce, type: 3}
-  m_PrefabInstance: {fileID: 9025192534201731930}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2135883511
 GameObject:
   m_ObjectHideFlags: 0
@@ -27925,6 +27912,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1761362140}
     m_Modifications:
+    - target: {fileID: 339368876, guid: 319d950173e416b47ad24e3a5cac5dce, type: 3}
+      propertyPath: specLink
+      value: 
+      objectReference: {fileID: 1795681167}
     - target: {fileID: 756480858, guid: 319d950173e416b47ad24e3a5cac5dce, type: 3}
       propertyPath: speedlines
       value: 
@@ -27971,12 +27962,8 @@ PrefabInstance:
       objectReference: {fileID: 1302751189}
     - target: {fileID: 139317988147292045, guid: 319d950173e416b47ad24e3a5cac5dce, type: 3}
       propertyPath: itemName
-      value: Turret_01
+      value: HYPERTURRET
       objectReference: {fileID: 0}
-    - target: {fileID: 139317988147292051, guid: 319d950173e416b47ad24e3a5cac5dce, type: 3}
-      propertyPath: mainHull
-      value: 
-      objectReference: {fileID: 2122179218}
     - target: {fileID: 139317988147292051, guid: 319d950173e416b47ad24e3a5cac5dce, type: 3}
       propertyPath: autoloader
       value: 
@@ -27985,6 +27972,14 @@ PrefabInstance:
       propertyPath: trailLoader
       value: 
       objectReference: {fileID: 1072375455}
+    - target: {fileID: 139317988147292052, guid: 319d950173e416b47ad24e3a5cac5dce, type: 3}
+      propertyPath: m_Name
+      value: Turret_SUPER
+      objectReference: {fileID: 0}
+    - target: {fileID: 139317988147292054, guid: 319d950173e416b47ad24e3a5cac5dce, type: 3}
+      propertyPath: fireRate
+      value: 0.02
+      objectReference: {fileID: 0}
     - target: {fileID: 2150567352331204280, guid: 319d950173e416b47ad24e3a5cac5dce, type: 3}
       propertyPath: autoloader
       value: 

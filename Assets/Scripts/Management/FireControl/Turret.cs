@@ -13,6 +13,14 @@ public class Turret : MonoBehaviour {
     public  bool        inheritLayer;
     public FCM          fcm;
 
+    protected Vector2 GetV () {
+        if ( rgb != null ) return rgb.velocity; return Vector2.zero;
+    }
+
+    public void SetTarget ( Transform _target ) {
+        target = _target;
+    }
+
     public virtual void Start () {
         rgb = GetComponent<Rigidbody2D> ();
         if ( fcm == null ) {
@@ -21,14 +29,6 @@ public class Turret : MonoBehaviour {
         if ( fcm != null ) {
             fcm.burialHelper = FireWrapper;
         }
-    }
-
-    protected Vector2 GetV () {
-        if ( rgb != null ) return rgb.velocity; return Vector2.zero;
-    }
-
-    public  void    SetTarget ( Transform _target ) {
-        target = _target;
     }
 
     public virtual GameObject Fire () {

@@ -8,8 +8,8 @@ public class TargetControlRadar : TargetControlCore {
         delta = null;
     }
 
-    public override void ModifyLock ( bool alpha ) {
-        base.ModifyLock ( alpha );
+    public override void SetFiringLock ( bool alpha ) {
+        base.SetFiringLock ( alpha );
         delta = null;
     }
 
