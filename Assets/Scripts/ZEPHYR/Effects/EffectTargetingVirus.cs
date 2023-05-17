@@ -6,7 +6,7 @@ public class EffectTargetingVirus : EffectCore {
         TargetControlCore[] delta;
         delta = target.transform.GetChild ( 2 ).GetComponents<TargetControlCore> ();
         for ( int i = 0; i < delta.Length; i++ ) {
-            delta [ i ].ModifyLock ( a );
+            delta [ i ].SetFiringLock ( a );
         }
     }
 

@@ -4,6 +4,9 @@ public class ZephyrUnit : MonoBehaviour {
     public  ZephyrUnit          mirror;
 
     public virtual void Autobind ( ZephyrUnit _unit ) {
+        if ( _unit == null && mirror != null ) {
+            Autobreak ();
+        }
         mirror = _unit;
         if ( mirror != null && mirror.mirror != this ) {
             mirror.Autobind ( this );
@@ -16,7 +19,6 @@ public class ZephyrUnit : MonoBehaviour {
             mirror = null;
             delta.Autobreak ();
         }
-        mirror = null;
     }
 
     protected virtual void AutoloadCore () { }

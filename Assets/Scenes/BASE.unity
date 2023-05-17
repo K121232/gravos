@@ -27912,6 +27912,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1761362140}
     m_Modifications:
+    - target: {fileID: 339368876, guid: 319d950173e416b47ad24e3a5cac5dce, type: 3}
+      propertyPath: specLink
+      value: 
+      objectReference: {fileID: 1795681167}
     - target: {fileID: 756480858, guid: 319d950173e416b47ad24e3a5cac5dce, type: 3}
       propertyPath: speedlines
       value: 
@@ -27958,7 +27962,23 @@ PrefabInstance:
       objectReference: {fileID: 1302751189}
     - target: {fileID: 139317988147292045, guid: 319d950173e416b47ad24e3a5cac5dce, type: 3}
       propertyPath: itemName
-      value: Turret_01
+      value: HYPERTURRET
+      objectReference: {fileID: 0}
+    - target: {fileID: 139317988147292051, guid: 319d950173e416b47ad24e3a5cac5dce, type: 3}
+      propertyPath: autoloader
+      value: 
+      objectReference: {fileID: 195569619}
+    - target: {fileID: 139317988147292051, guid: 319d950173e416b47ad24e3a5cac5dce, type: 3}
+      propertyPath: trailLoader
+      value: 
+      objectReference: {fileID: 1072375455}
+    - target: {fileID: 139317988147292052, guid: 319d950173e416b47ad24e3a5cac5dce, type: 3}
+      propertyPath: m_Name
+      value: Turret_SUPER
+      objectReference: {fileID: 0}
+    - target: {fileID: 139317988147292054, guid: 319d950173e416b47ad24e3a5cac5dce, type: 3}
+      propertyPath: fireRate
+      value: 0.02
       objectReference: {fileID: 0}
     - target: {fileID: 2150567352331204280, guid: 319d950173e416b47ad24e3a5cac5dce, type: 3}
       propertyPath: autoloader

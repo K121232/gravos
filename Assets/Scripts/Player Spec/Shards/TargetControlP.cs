@@ -40,12 +40,12 @@ public class TargetControlP : TargetControlCore {
         }            
     }
 
-    public override void ModifyLock ( bool alpha ) {
+    public override void SetFiringLock ( bool alpha ) {
         firingLock = alpha;
     }
 
-    public override void ModifyTurretOp ( TargetingRig alpha ) {
+    public override void InternalTurretMOP ( TargetingRig alpha ) {
         alpha.fireControlOverride = true;
-        base.ModifyTurretOp ( alpha );
+        base.InternalTurretMOP ( alpha );
     }
 }

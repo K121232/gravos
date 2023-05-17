@@ -16,7 +16,7 @@ public class EffectWarpDrive : EffectCore {
     }
 
     public override void Autobreak () {
-        if ( dormant ) {
+        if ( !dormant ) {
             ModifyDriveState ( false );
         }
         base.Autobreak ();

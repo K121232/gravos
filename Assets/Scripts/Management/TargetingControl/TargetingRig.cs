@@ -32,7 +32,8 @@ public class TargetingRig : MonoBehaviour {
     }
 
     public void LoadTarget ( Transform alpha ) {
-        if ( alpha == target) return;
+        Debug.Log ( alpha + " " + target );
+        if ( alpha == target ) return;
         target = alpha;
         if ( target != null && target.GetComponent<Collider2D> () != null ) {
             targetRGB = target.GetComponent<Collider2D> ().attachedRigidbody;

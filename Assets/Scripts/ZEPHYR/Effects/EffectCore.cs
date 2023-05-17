@@ -22,6 +22,11 @@ public class EffectCore : ZephyrUnit {
         }
     }
 
+    public override void Autobreak () {
+        dormant = true;
+        base.Autobreak ();
+    }
+
     public  virtual void    CryoStore ( Transform alpha ) {
         alpha.GetChild ( 0 ).gameObject.SetActive ( false );
         alpha.GetChild ( 1 ).gameObject.SetActive ( false );
