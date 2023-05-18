@@ -1,3 +1,4 @@
+using UnityEngine;
 
 public enum ItemPolarity { Item, Weapon, Equipment };
 
@@ -17,4 +18,20 @@ public static class ItemPolarityChecker {
             default: return "X";
         }
     } 
+}
+
+public class PayloadObject {
+    public  Vector2     hostV;
+    public  Vector2     heading;
+    public  Transform   target;
+    public PayloadObject () {
+        hostV = Vector2.zero;
+        heading = Vector2.up;
+        target = null;
+    }
+    public PayloadObject ( Vector2 _hostV, Vector2 _heading, Transform _target ) {
+        hostV = _hostV;
+        heading = _heading;
+        target = _target;
+    }
 }

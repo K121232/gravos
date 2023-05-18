@@ -40,17 +40,7 @@ public class Turret : MonoBehaviour {
 
         instPayload.transform.SetPositionAndRotation ( transform.position + transform.up * minRangeOffset, transform.rotation );
 
-        if ( instPayload.GetComponent<IMP> () != null ) {
-            instPayload.GetComponent<IMP> ().Prime ( GetV () );
-        }
-
-        if ( instPayload.GetComponent<HSTM> () != null ) {
-            instPayload.GetComponent<HSTM> ().Bind ( target );
-        }
-
-        if ( instPayload.GetComponent<TMFuse> () != null ) {
-            instPayload.GetComponent<TMFuse> ().Bind ( GetV(), transform.up );
-        }
+        instPayload.GetComponent<PayloadStart> ().Deploy ( new PayloadObject ( GetV (), transform.up, target ) );
 
         instPayload.SetActive ( true );
 
