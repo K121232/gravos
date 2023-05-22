@@ -2,7 +2,9 @@ using UnityEngine;
 
 public class PCFCM : FCM {
     // POWER CELL FIRE CONTROL MECHANISM
-    public  PowerCell   cell;
+    public  int         cellSelection = -1;
+
+    protected PowerCell cell;
     public  float       drainRate = 1;            // drain per second
     public  float       drainInitial = 0;
 
@@ -21,9 +23,15 @@ public class PCFCM : FCM {
         isRefiring = false;
     }
 
-    public override GameObject Fire () {
+    public override void Fire () {
         cell.VariDrain ( ( isRefiring ? drainRate : drainInitial ) * Time.unscaledDeltaTime );
         isRefiring = true;
-        return base.Fire ();
+        base.Fire ();
+    }
+
+    public  void LoadCell ( Transform cellLink ) {
+        if ( cellSelection > -1 && cellSelection < cellLink.childCount ) {
+            cell = cellLink.GetChild ( cellSelection ).GetComponent<PowerCell> ();
+        }
     }
 }

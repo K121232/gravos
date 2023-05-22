@@ -11,6 +11,8 @@ public class ItemHandle : ZephyrUnit {
     public  float       weight = 1;
     public  Sprite      icon;
 
+    public  Transform   visuals;
+
     public string GetTagName () {
         return ItemPolarityChecker.TFP ( polarity );
     }
@@ -29,9 +31,9 @@ public class ItemHandle : ZephyrUnit {
         if ( polarity == ItemPolarity.Equipment && TryGetComponent ( out eqb ) ) {
             eqb.MainInit ( host );
         }
-        TargetingRig tgr;
-        if ( polarity == ItemPolarity.Weapon && TryGetComponent<TargetingRig>( out tgr ) ) {
-            tgr.MainInit ( host );
+        Thunder thd;
+        if ( polarity == ItemPolarity.Weapon && TryGetComponent( out thd ) ) {
+            thd.MainInit ( host );
         }
 
         base.Autobind ( _unit );

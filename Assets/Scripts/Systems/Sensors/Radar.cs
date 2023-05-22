@@ -19,4 +19,10 @@ public class Radar : MonoBehaviour {
         collectedColliders.Clear();
         collectedCount = 0;
     }
+
+    virtual public Collider2D GetClosestElement ( Collider2D elem ) {
+        if ( collectedColliders.Count == 0 ) { return null; }
+        if ( collectedColliders.Contains ( elem ) ) return elem;
+        return collectedColliders [ 0 ];
+    }
 }

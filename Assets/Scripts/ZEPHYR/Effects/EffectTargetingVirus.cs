@@ -3,8 +3,8 @@ using UnityEngine;
 public class EffectTargetingVirus : EffectCore {
     private void MassModifyLocks ( bool a ) {
         if ( target == null ) return;
-        TargetControlCore[] delta;
-        delta = target.transform.GetChild ( 2 ).GetComponents<TargetControlCore> ();
+        Zeus[] delta;
+        delta = target.transform.GetChild ( 2 ).GetComponents<Zeus> ();
         for ( int i = 0; i < delta.Length; i++ ) {
             delta [ i ].SetFiringLock ( a );
         }

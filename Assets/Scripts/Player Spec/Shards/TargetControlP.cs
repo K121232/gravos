@@ -1,25 +1,28 @@
 using UnityEngine;
 
-public class TargetControlP : TargetControlCore {
+public class TargetControlP : Zeus {
     public  ItemPort[]      weaponPorts;
     public  Transform       carrot;
 
     private bool            transition, delta;
 
-    private void Start () {
+    private new void Start () {
         for ( int i = 0; i < weaponPorts.Length; i++ ) {
             weaponPorts [ i ].Autoload ();
         }
         RefreshTurretList ();
     }
 
-    public  void    RefreshTurretList () {
+    public void RefreshTurretList () {
         if ( turrets.Length != 0 && weaponPorts.Length == 0 ) { return; }
-        turrets = new TargetingRig [ weaponPorts.Length ];
+
+        for ( int i = 0; i < turrets.Length; i++ ) {
+            if ( turrets [ i ] != null ) turrets [ i ].ForceFire ( false );
+        }
+        turrets = new Thunder [ weaponPorts.Length ];
         for ( int i = 0; i < weaponPorts.Length; i++ ) {
-            if ( turrets [ i ] != null ) turrets [ i ].OverrideTriggerPress ( false );
             if ( weaponPorts [ i ].GetItem () != null ) {
-                turrets [ i ] = weaponPorts [ i ].GetItem ().GetComponent<TargetingRig> ();
+                turrets [ i ] = weaponPorts [ i ].GetItem ().GetComponent<Thunder> ();
             }
         }
         ModifyTarget ( carrot );
@@ -33,7 +36,7 @@ public class TargetControlP : TargetControlCore {
         if ( delta != transition ) {
             for ( int i = 0; i < turrets.Length; i++ ) {
                 if ( turrets [ i ] != null ) {
-                    turrets [ i ].OverrideTriggerPress ( delta );
+                    turrets [ i ].ForceFire ( delta );
                 }
             }
             transition = delta;
@@ -44,8 +47,8 @@ public class TargetControlP : TargetControlCore {
         firingLock = alpha;
     }
 
-    public override void InternalTurretMOP ( TargetingRig alpha ) {
-        alpha.fireControlOverride = true;
-        base.InternalTurretMOP ( alpha );
+    public override void InternalTurretMOP ( Transform target, Thunder alpha ) {
+        alpha.SetAutofire ( false );
+        base.InternalTurretMOP ( target, alpha );
     }
 }

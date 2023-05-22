@@ -1,12 +1,8 @@
 using UnityEngine;
 
-public class ItemEjector : Turret {
+public class ItemEjector : Fireable {
     public  ItemPort[]      ports;
     private int             lastItem = -1;
-
-    public override void Start () {
-        base.Start ();
-    }
 
     public void Eject ( int target ) {
         if ( ports [ target ] != null && ports [ target ].GetItem () != null ) {

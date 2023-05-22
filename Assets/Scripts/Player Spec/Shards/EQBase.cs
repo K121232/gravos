@@ -35,5 +35,6 @@ public class EQBase : PCFCM {
         if ( port == null ) return;
         enabled = port.bungholio;
         rgb = port.hullLink.GetComponent<Rigidbody2D> ();
+        LoadCell ( port.batteryLink );
     }
 }

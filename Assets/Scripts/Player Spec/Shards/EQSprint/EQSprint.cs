@@ -13,9 +13,6 @@ public class EQSprint : EQBase {
         base.MainInit ( port );
         if ( enabled ) {
             movementCore = port.hullLink.GetComponent<TeflonPMove> ();
-            cell = port.batteryLink.GetChild ( 2 ).GetComponent<PowerCell> ();
-        } else {
-            cell = null;
         }
     }
 
@@ -29,12 +26,12 @@ public class EQSprint : EQBase {
         speedlines.Stop ();
     }
 
-    public override GameObject Fire () {
+    public override void Fire () {
         if ( movementCore.mxv != sprintSTR ) {
             pastMax = movementCore.mxv;
             movementCore.mxv = sprintSTR;
         }
         movementCore.SetV ( 1 );
-        return base.Fire ();
+        base.Fire ();
     }
 }

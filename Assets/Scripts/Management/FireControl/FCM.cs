@@ -3,6 +3,8 @@ using System;
 
 public class FCM : MonoBehaviour {
     // FIRE CONTROL MECHANISM
+    public  INTFCM  fireable;
+
     protected bool  triggerDown;
     private bool    triggerSear;
     public  bool    canAuto = true;
@@ -10,7 +12,6 @@ public class FCM : MonoBehaviour {
     public  float   fireRate;
     protected float   deltaC;
 
-    public  Action  burialHelper = null;
     public  bool    isFiring;
 
     public virtual void TriggerHold () {
@@ -22,7 +23,7 @@ public class FCM : MonoBehaviour {
         triggerSear = true;
     }
 
-    public virtual void Reload () {}
+    public virtual void Reload () { }
 
     public virtual void Start () {
         isFiring = false;
@@ -34,7 +35,7 @@ public class FCM : MonoBehaviour {
         deltaC = 0;
     }
 
-    public virtual bool AmmoCheck() { return true; }
+    public virtual bool AmmoCheck () { return true; }
 
     public virtual void Update () {
         if ( deltaC >= 0 ) {
@@ -43,7 +44,7 @@ public class FCM : MonoBehaviour {
                 triggerSear = true;
             }
         }
-        if ( deltaC <= 0 && triggerDown && triggerSear && AmmoCheck() ) {
+        if ( deltaC <= 0 && triggerDown && triggerSear && AmmoCheck () ) {
             deltaC = fireRate;
             triggerSear = false;
             if ( !isFiring ) {
@@ -59,12 +60,12 @@ public class FCM : MonoBehaviour {
         }
     }
 
-    public virtual void OnStartFire () {}
-    public virtual void OnStopFire () {}
-    public virtual GameObject Fire () { if ( burialHelper != null ) { burialHelper (); } return null; }
+    public virtual void OnStartFire () { }
+    public virtual void OnStopFire () { }
+    public virtual void Fire () { if ( fireable != null ) { fireable.Fire (); } }
 
-    public  float   GetCooldownProgress () {
-        if ( fireRate == 0 || deltaC <= 0 ) return 1;
+    public float GetProgress () {
+        if ( fireRate <= 0.25f || deltaC <= 0 ) return 1;
         return ( fireRate - deltaC ) / fireRate;
     }
 }

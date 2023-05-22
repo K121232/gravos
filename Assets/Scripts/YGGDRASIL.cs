@@ -35,3 +35,8 @@ public class PayloadObject {
         target = _target;
     }
 }
+
+
+public interface INTFCM {
+    GameObject Fire ();
+}

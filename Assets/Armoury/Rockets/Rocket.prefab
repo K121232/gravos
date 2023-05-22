@@ -103,6 +103,8 @@ GameObject:
   - component: {fileID: 4844953551086441954}
   - component: {fileID: 4226958041508042403}
   - component: {fileID: -1154642446060059609}
+  - component: {fileID: 5626507015616054694}
+  - component: {fileID: 5835145820545871652}
   m_Layer: 0
   m_Name: Rocket
   m_TagString: Missile
@@ -218,7 +220,6 @@ MonoBehaviour:
   angleDrag: 0
   hasParticles: 0
   particleSTR: 0
-  DEBUGOFF: {x: 0, y: 0}
 --- !u!114 &7781164887404175965
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -299,3 +300,31 @@ MonoBehaviour:
   f: 5
   z: 1
   r: 0
+--- !u!114 &5626507015616054694
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 687800561341309174}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4acc025c5731134194e8014e2b973dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  next: {fileID: 5835145820545871652}
+  deployed: 0
+--- !u!114 &5835145820545871652
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 687800561341309174}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6267608835eaad74b811d17abb48c7cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  next: {fileID: 0}
+  deployed: 0

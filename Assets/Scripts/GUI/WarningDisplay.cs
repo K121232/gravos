@@ -24,11 +24,11 @@ public class WarningDisplay : MonoBehaviour {
         if ( foeRadar.collectedCount != 0 ) {
             for ( int i = 0; i < foeRadar.collectedCount; i++ ) {
                 Transform deltaHPR = foeRadar.collectedColliders [ i ].transform.parent.parent.GetChild(2);
-                TargetControlRadar[]   list = deltaHPR.GetComponents<TargetControlRadar>();
+                Zeus[]   list = deltaHPR.GetComponents<Zeus>();
                 for ( int j = 0; j < list.Length; j++ ) {
                     if ( list [ j ].IsTracking () && list [ j ].launchIsDetectable ) {
                         for ( int k = 0; k < list [ j ].turrets.Length; k++ ) {
-                            float urubega = list [ j ].turrets [ k ].GetFiringProgress ();
+                            float urubega = list [ j ].turrets [ k ].GetFireProgress ();
                             if ( urubega >= warningActivationThreshold ) {
                                 if ( progress < mxw ) {
                                     warningHandles [ progress ].gameObject.SetActive ( true );

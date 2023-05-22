@@ -38,9 +38,9 @@ public class SCAFCM : FCM {
         deltaC += cooldownReload;
     }
 
-    public override GameObject Fire () {
+    public override void Fire () {
         shotCredit -= shotCost;
-        return base.Fire ();
+        base.Fire ();
     }
 
     public virtual float GetAmmo () {

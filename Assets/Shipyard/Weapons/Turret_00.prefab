@@ -93,11 +93,13 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6982749129390570751}
-  - component: {fileID: 6982749129390570744}
-  - component: {fileID: 6982749129390570747}
-  - component: {fileID: 6982749129390570750}
-  - component: {fileID: 6982749129390570746}
   - component: {fileID: 6982749129390570725}
+  - component: {fileID: 6961634802070197393}
+  - component: {fileID: 6142562696120482798}
+  - component: {fileID: 4303141878153043142}
+  - component: {fileID: 4905687103882860865}
+  - component: {fileID: 6982749129390570746}
+  - component: {fileID: 3665160360693004734}
   m_Layer: 6
   m_Name: Turret_00
   m_TagString: Untagged
@@ -121,7 +123,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6982749129390570744
+--- !u!114 &6982749129390570725
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -130,17 +132,32 @@ MonoBehaviour:
   m_GameObject: {fileID: 6982749129390570748}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 64d81f765ba0c28468bc92a553e57d37, type: 3}
+  m_Script: {fileID: 11500000, guid: 23f5a962dd76f18478def70ef28e0814, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mirror: {fileID: 0}
+  polarity: 1
+  itemName: Turret_00
+  description: Basic weapon
+  itemQuantity: 1
+  weight: 1
+  icon: {fileID: 0}
+--- !u!114 &6961634802070197393
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6982749129390570748}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f2870aaa60ca4548b41966f7a797f22, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
-  targetRGB: {fileID: 0}
-  traversalSpeed: 180
-  velocityPredictStrength: 0
-  coneMaxDeviation: 30
-  fireControlOverride: 1
-  pastDeviation: 0
---- !u!114 &6982749129390570747
+  autofire: 1
+  aimOffset: {x: 0, y: 1}
+--- !u!114 &6142562696120482798
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -149,31 +166,44 @@ MonoBehaviour:
   m_GameObject: {fileID: 6982749129390570748}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ecd7b08e9ffdf148916fb41075b3999, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mainHull: {fileID: 0}
-  autoloader: {fileID: 0}
-  trailLoader: {fileID: 0}
-  target: {fileID: 0}
-  minRangeOffset: 2
-  inheritLayer: 1
-  fcm: {fileID: 6982749129390570750}
---- !u!114 &6982749129390570750
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6982749129390570748}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ca14aa7ea55add742b12667fda2716c1, type: 3}
+  m_Script: {fileID: 11500000, guid: abd365af22c474148b6430a45be5a61d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   canAuto: 1
-  fireRate: 0.1
+  fireRate: 2
   isFiring: 0
+--- !u!114 &4303141878153043142
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6982749129390570748}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d786d94f1c3583c4ca93ade1d572689a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  controller: {fileID: 6961634802070197393}
+  payloadLoader: {fileID: 0}
+  trailLoader: {fileID: 0}
+  minRangeOffset: 1
+  inheritLayer: 1
+--- !u!114 &4905687103882860865
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6982749129390570748}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2a2e819fd42d864da57902363fd05d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  controller: {fileID: 0}
+  traversalSpeed: 0
+  velocityPredictStrength: 0
 --- !u!114 &6982749129390570746
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -189,7 +219,7 @@ MonoBehaviour:
   f: 5
   z: 1
   r: 0
---- !u!114 &6982749129390570725
+--- !u!114 &3665160360693004734
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -198,13 +228,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 6982749129390570748}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 23f5a962dd76f18478def70ef28e0814, type: 3}
+  m_Script: {fileID: 11500000, guid: 8c39aced86fc190488dfc32b25015c87, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  host: {fileID: 0}
-  itemName: Turret_00
-  description: Basic weapon
-  itemQuantity: 1
-  weight: 1
-  polarity: 1
-  icon: {fileID: 0}
+  controller: {fileID: 0}
+  coneMaxDeviation: 0

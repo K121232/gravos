@@ -5,16 +5,6 @@ public class EQTimebend : EQBase {
     public float bendSTR;
     private float pastScale;
 
-    public override void MainInit ( ItemPort port ) {
-        if ( port == null ) return;
-        base.MainInit ( port );
-        if ( enabled ) {
-            cell = port.batteryLink.GetChild ( 1 ).GetComponent<PowerCell> ();
-        } else {
-            cell = null;
-        }
-    }
-
     public override void Update () {
         base.Update ();
     }
@@ -27,11 +17,11 @@ public class EQTimebend : EQBase {
         Time.timeScale = pastScale;
     }
 
-    public override GameObject Fire () {
+    public override void Fire () {
         if ( bendSTR != Time.timeScale ) {
             pastScale = Time.timeScale;
             Time.timeScale = bendSTR;
         }
-        return base.Fire ();
+        base.Fire ();
     }
 }
