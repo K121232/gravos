@@ -13,10 +13,17 @@ public class Thunder : MonoBehaviour {
     private AIM         aim;
     private TFC         tfc;
 
+    public  bool IsFiring () {
+        if ( fcm == null ) return false;
+        return fcm.isFiring;
+    }
+
     private void Start () {
         Autoload ();
         Autobind ();
         SetAutofire ( autofire );
+        Debug.Log ( "AUTOSTART THUNDER" );
+        Debug.Log ( fcm.enabled );
     }
 
     private void Autoload () {
