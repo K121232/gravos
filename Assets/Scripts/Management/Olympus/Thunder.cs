@@ -22,8 +22,6 @@ public class Thunder : MonoBehaviour {
         Autoload ();
         Autobind ();
         SetAutofire ( autofire );
-        Debug.Log ( "AUTOSTART THUNDER" );
-        Debug.Log ( fcm.enabled );
     }
 
     private void Autoload () {
@@ -119,6 +117,10 @@ public class Thunder : MonoBehaviour {
 
     public float GetAngV () {
         if ( rgb == null ) return 0; return rgb.angularVelocity;
+    }
+
+    public float    GetTFCP () {
+        return tfc == null ? 1 : tfc.GetProgress();
     }
 
     public float GetFireProgress () {

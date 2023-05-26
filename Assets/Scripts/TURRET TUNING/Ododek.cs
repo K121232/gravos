@@ -1,4 +1,5 @@
 using UnityEngine;
+using TMPro;
 
 public class Ododek : MonoBehaviour {
     public  Radar []        bodies;
@@ -6,14 +7,23 @@ public class Ododek : MonoBehaviour {
 
     public  Thunder         thunder;
 
-    public  string          percentage;
+    public  string          raport;
     private int             totalShots, hitShots;
+    private float           totalTime, timeOnTarget;
 
     public  bool            resetP;
 
-    private void ResetShots () {
+    public TMP_Text         label;
+    
+    public  void ToggleBodies ( int which ) {
+        actifity [ which ] = !actifity [ which ];
+    }
+
+    public  void ResetShots () {
         totalShots = 0;
         hitShots = 0;
+        totalTime = 0;
+        timeOnTarget = 0;
     }
 
     void Start () {
@@ -37,10 +47,21 @@ public class Ododek : MonoBehaviour {
         if ( thunder.IsFiring() ) {
             totalShots++;
         }
-        if ( totalShots > 0 ) {
-            percentage = ( 100 * (float) hitShots / totalShots ).ToString("0.00f");
-        } else {
-            percentage = "NOT ANY";
+        if ( thunder.GetTFCP () > 0.99f ) {
+            timeOnTarget += Time.deltaTime;
         }
+        totalTime += Time.deltaTime;
+        if ( totalShots > 0 ) {
+            raport = ( 100 * (float) hitShots / totalShots ).ToString("0.00");
+        } else {
+            raport = "N/A";
+        }
+        if ( timeOnTarget > 0 ) {
+            raport += "\n" + ( 100 * ( float ) timeOnTarget / totalTime ).ToString ( "0.00" );
+        } else {
+            raport += " \nN/A";
+        }
+        raport += "\n" + ( thunder.target != null ? thunder.target.name : "N/A" );
+        label.text = raport;
     }
 }

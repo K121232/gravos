@@ -36,6 +36,9 @@ public class AIM : MonoBehaviour {
             delta = Mathf.Clamp ( delta, -traversalSpeed, traversalSpeed ) * Time.deltaTime;
             transform.Rotate ( Vector3.forward, delta );
         }
+
+        Debug.DrawLine ( transform.position, transform.position + transform.up * 5, Color.green );
+        Debug.DrawLine ( transform.position, transform.position + tgv, Color.red );
     }
 
     public  float   GetLastDeviation () {

@@ -5,7 +5,7 @@ public class Konig : MonoBehaviour {
     private     float   xv, xp;
     protected   float   k1 = 0, k2 = 0, k3 = 0;
 
-    public void Start () {
+    private void OnEnable () {
         float PIF = Mathf.PI * f;
         k1 = z / PIF;
         k2 = 1f / ( 4f * PIF * PIF );

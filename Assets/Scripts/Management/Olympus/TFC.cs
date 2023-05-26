@@ -20,7 +20,7 @@ public class TFC : MonoBehaviour {
             if ( Mathf.Abs ( controller.GetAIMDeviation () ) < coneMaxDeviation ) {
                 return 1;
             }
-            return Mathf.Clamp ( 2 - controller.GetAIMTTT (), 0, 1 );
+            return Mathf.Clamp ( 1 - controller.GetAIMTTT (), 0, 1 );
         }
         return 1;
     }
