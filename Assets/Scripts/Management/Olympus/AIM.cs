@@ -14,6 +14,10 @@ public class AIM : MonoBehaviour {
         konig = GetComponent<Konig> ();
     }
 
+    public void ResetPD () {
+        pastDeviation = Mathf.Infinity;
+    }
+
     private void Update () {
         Vector3 tgv = Vector3.zero;
 
@@ -32,8 +36,8 @@ public class AIM : MonoBehaviour {
         pastDeviation = delta;
 
         if ( traversalSpeed != 0 ) {
-            delta = konig.NextFrame ( Time.deltaTime, delta, Vector2.SignedAngle ( Vector2.up, tgv ), controller.GetAngV() );
-            delta = Mathf.Clamp ( delta, -traversalSpeed, traversalSpeed ) * Time.deltaTime;
+            delta = konig.NextFrame ( Time.fixedDeltaTime, delta, Vector2.SignedAngle ( Vector2.up, tgv ), controller.GetAngV() );
+            delta = Mathf.Clamp ( delta, -traversalSpeed, traversalSpeed ) * Time.fixedDeltaTime;
             transform.Rotate ( Vector3.forward, delta );
         }
 

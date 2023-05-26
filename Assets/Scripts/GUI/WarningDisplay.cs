@@ -38,6 +38,7 @@ public class WarningDisplay : MonoBehaviour {
                                         warningHandles [ progress ].GetComponent<Multihelper> ().anchors [ 1 + n ].gameObject.SetActive ( ! ( ( 1 - warningActivationThreshold ) * n / 3 >= urubega - warningActivationThreshold ) );
                                     }
                                     progress++;
+                                    break;
                                 }
                             }
                         }

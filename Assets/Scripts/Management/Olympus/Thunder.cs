@@ -78,6 +78,7 @@ public class Thunder : MonoBehaviour {
     public void SetTarget ( Transform alpha ) {
         target = alpha;
         Collider2D  deltaC;
+        if ( aim != null ) { aim.ResetPD (); }
         if ( target != null && target.TryGetComponent ( out deltaC ) ) {
             targetRGB = deltaC.attachedRigidbody;
         } else {

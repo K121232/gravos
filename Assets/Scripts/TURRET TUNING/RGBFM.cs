@@ -11,6 +11,8 @@ public class RGBFM : MonoBehaviour {
     public enum SELECTION { STATIC, LINEAR, LINEAR2, ROUND, ROUND2 }
     public  SELECTION trajectory;
 
+    public Vector2      R2TARGET;
+
     void Start () {
         rgb = GetComponent<Rigidbody2D>();  
     }
@@ -35,6 +37,10 @@ public class RGBFM : MonoBehaviour {
     void FixedUpdate () {
         deltaT += Time.fixedDeltaTime;
         deltaT -= Mathf.FloorToInt ( deltaT / loopspan ) * deltaT;
-        rgb.velocity = FX ( deltaT / loopspan );
+        if ( trajectory == SELECTION.ROUND2 ) {
+            rgb.MovePosition ( FX ( deltaT/loopspan ) + R2TARGET );
+        } else {
+            rgb.velocity = FX ( deltaT / loopspan );
+        }
     }
 }
