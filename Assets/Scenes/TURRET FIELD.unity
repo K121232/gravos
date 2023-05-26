@@ -144,11 +144,11 @@ PrefabInstance:
       objectReference: {fileID: 1508011887}
     - target: {fileID: 4905687103882860865, guid: 45eb9be99b6c1b94db634b831198028e, type: 3}
       propertyPath: traversalSpeed
-      value: 60
+      value: 120
       objectReference: {fileID: 0}
     - target: {fileID: 4905687103882860865, guid: 45eb9be99b6c1b94db634b831198028e, type: 3}
       propertyPath: velocityPredictStrength
-      value: 0.3
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6142562696120482798, guid: 45eb9be99b6c1b94db634b831198028e, type: 3}
       propertyPath: fireRate
@@ -160,11 +160,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6982749129390570746, guid: 45eb9be99b6c1b94db634b831198028e, type: 3}
       propertyPath: f
-      value: 2
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 6982749129390570746, guid: 45eb9be99b6c1b94db634b831198028e, type: 3}
       propertyPath: r
-      value: 1
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6982749129390570746, guid: 45eb9be99b6c1b94db634b831198028e, type: 3}
+      propertyPath: z
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 6982749129390570748, guid: 45eb9be99b6c1b94db634b831198028e, type: 3}
       propertyPath: m_Name
@@ -2184,7 +2188,7 @@ MonoBehaviour:
   - {fileID: 1268115735}
   - {fileID: 1515951873}
   - {fileID: 434783786}
-  actifity: 000100
+  actifity: 010000
   thunder: {fileID: 201616383}
   raport: 
   resetP: 0
@@ -2579,7 +2583,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   loopspan: 2.5
   magnitude: 20
-  trajectory: 2
+  trajectory: 1
 --- !u!61 &1968044879
 BoxCollider2D:
   m_ObjectHideFlags: 0

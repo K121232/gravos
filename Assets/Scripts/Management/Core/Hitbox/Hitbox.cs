@@ -32,8 +32,8 @@ public class Hitbox : MonoBehaviour {
 
     public virtual void DeltaF ( int a ) {}
          
-    public void Superwrapper ( Collider2D alpha ) {
-        TriggerHitEffect ( alpha.transform );
+    public void Superwrapper ( Collider2D alpha, bool hitEffect = false ) {
+        if ( hitEffect ) { TriggerHitEffect ( alpha.transform ); }
         EvWrapper ( alpha.gameObject, alpha.isTrigger );
     }
 
@@ -42,6 +42,6 @@ public class Hitbox : MonoBehaviour {
     }
 
     private void OnCollisionEnter2D( Collision2D collision ) {
-        Superwrapper ( collision.collider );
+        Superwrapper ( collision.collider, true );
     }
 }

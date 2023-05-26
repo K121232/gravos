@@ -37,7 +37,7 @@ public class AIM : MonoBehaviour {
             transform.Rotate ( Vector3.forward, delta );
         }
 
-        Debug.DrawLine ( transform.position, transform.position + transform.up * 5, Color.green );
+        Debug.DrawLine ( transform.position, transform.position + transform.up * 30, Color.green );
         Debug.DrawLine ( transform.position, transform.position + tgv, Color.red );
     }
 
