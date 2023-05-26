@@ -38,7 +38,7 @@ public class AIM : MonoBehaviour {
         if ( traversalSpeed != 0 ) {
             delta = konig.NextFrame ( Time.fixedDeltaTime, delta, Vector2.SignedAngle ( Vector2.up, tgv ), controller.GetAngV() );
             delta = Mathf.Clamp ( delta, -traversalSpeed, traversalSpeed ) * Time.fixedDeltaTime;
-            transform.Rotate ( Vector3.forward, delta );
+            transform.Rotate ( Vector3.forward, delta * Time.timeScale );
         }
 
         Debug.DrawLine ( transform.position, transform.position + transform.up * 30, Color.green );

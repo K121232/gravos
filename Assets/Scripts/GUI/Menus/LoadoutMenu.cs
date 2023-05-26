@@ -22,9 +22,11 @@ public class LoadoutMenu : MenuCore {
     public void InitLeftSide ( ItemPort a ) {
         LoadInspect ( 0, ItemPolarityChecker.TFP ( a.polarity ), a );
     }
+
     public void InitCallbacks () {
         for ( int i = 0; i < helpers.Count; i++ ) {
             helpers [ i ].Init ( i );
+            helpers [ i ].selectC = DisplayCallback;
             helpers [ i ].SetCallback ( 0, DisplayCallback );
         }
     }

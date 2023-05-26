@@ -25,10 +25,18 @@ public class InventoryMenu : MenuCore {
 
     public void Redraw () {
         GameObject delta;
+        
+        if ( listRoot != null ) {
+            Vector2 sizeDelta = listRoot.GetComponent<RectTransform>().sizeDelta;
+
+            sizeDelta.y = 110 * stores.Count;
+
+            listRoot.GetComponent<RectTransform> ().sizeDelta = sizeDelta;
+        }
+
         for ( int i = 0; i < stores.Count; i++ ) {
                 if ( i >= listRoot.childCount ) {
                     delta = Instantiate ( listItemPrefab, listRoot );
-                    delta.GetComponent<RectTransform> ().Translate ( 0, -6 * i, 0, Space.Self );
                 }
                 // TESTING FOR ONCLICK LISTENERS
                 listRoot.GetChild ( i ).GetComponent<Multihelper> ().Init ( i );

@@ -1,13 +1,28 @@
 using UnityEngine;
 using System;
 using TMPro;
+using UnityEngine.EventSystems;
 
-public class Multihelper : MonoBehaviour {
+public class Multihelper : MonoBehaviour, ISelectHandler, IDeselectHandler {
     public  int             callID = -1;
 
     public  Transform[]     anchors;
     public  TMP_Text[]      labels;
     private Action<int>[]   callbacks;
+
+    public Action<int>      selectC, deselectC;
+
+    public void OnSelect ( BaseEventData eventData ) {
+        if ( selectC != null ) {
+            selectC ( callID );
+        }
+    }
+
+    public void OnDeselect ( BaseEventData eventData ) {
+        if ( deselectC != null ) {
+            deselectC ( callID );
+        }
+    }
 
     public void Init ( int _callID ) {
         callID = _callID;
