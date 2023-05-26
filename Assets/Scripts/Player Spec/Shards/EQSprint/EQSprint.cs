@@ -3,7 +3,7 @@ using UnityEngine;
 public class EQSprint : EQBase {
     [Header ( "EQ Sprint" )]
     public  ParticleSystem  speedlines;
-    public  Movement        movementCore;
+    public  TeflonMovement  movementCore;
 
     public  float           sprintSTR;
     private float           pastMax;
