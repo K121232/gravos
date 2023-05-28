@@ -36,8 +36,8 @@ public class AIM : MonoBehaviour {
         pastDeviation = delta;
 
         if ( traversalSpeed != 0 ) {
-            delta = konig.NextFrame ( Time.fixedDeltaTime, delta, Vector2.SignedAngle ( Vector2.up, tgv ), controller.GetAngV() );
-            delta = Mathf.Clamp ( delta, -traversalSpeed, traversalSpeed ) * Time.fixedDeltaTime;
+            delta = konig.NextFrame ( Time.deltaTime, delta, Vector2.SignedAngle ( Vector2.up, tgv ), controller.GetAngV() );
+            delta = Mathf.Clamp ( delta, -traversalSpeed, traversalSpeed ) * Time.deltaTime;
             transform.Rotate ( Vector3.forward, delta * Time.timeScale );
         }
 

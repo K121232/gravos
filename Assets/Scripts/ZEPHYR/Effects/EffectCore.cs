@@ -3,6 +3,7 @@ using UnityEngine;
 public class EffectCore : ZephyrUnit {
     public  Transform   target;
 
+    public  string  effectName;
     public  float   time;
     private float   deltaTime;
 

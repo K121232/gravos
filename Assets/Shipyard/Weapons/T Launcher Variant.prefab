@@ -29,7 +29,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6142562696120482798, guid: 45eb9be99b6c1b94db634b831198028e, type: 3}
       propertyPath: fireRate
-      value: 15
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 6961634802070197393, guid: 45eb9be99b6c1b94db634b831198028e, type: 3}
       propertyPath: aimOffset.x

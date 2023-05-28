@@ -1,6 +1,7 @@
 using UnityEngine;
 
 public class EffectWarpDrive : EffectCore {
+
     private bool    isWarping = false;
     public  float   strength;
 
