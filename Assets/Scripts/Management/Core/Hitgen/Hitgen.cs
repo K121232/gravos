@@ -9,7 +9,7 @@ public class Hitgen : MonoBehaviour {
         deltaPos = transform.position;
     }
 
-    private void Update () {
+    public virtual void Update () {
         if (!autoline) { return; }
         RaycastHit2D[] hits;
         Hitbox delta;

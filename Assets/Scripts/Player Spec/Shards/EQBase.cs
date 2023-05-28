@@ -15,7 +15,11 @@ public class EQBase : PCFCM {
         if ( a == InteractionSlot.SEC ) {
             axisString = "Fire3";
         }
-    }   
+    }
+
+    private void OnDisable () {
+        OnStopFire ();   
+    }
 
     public override void Start () {
         UpdateIS ( control );

@@ -23,7 +23,8 @@ public class DVHitgen : Hitgen {
         pastPosition = transform.position;
     }
 
-    public virtual void Update () {
+    public override void Update () {
+        base.Update ();
         while ( timings.Count > 0 && timings [ 0 ] <= Time.time ) {
             timings.RemoveAt ( 0 );
             safeguard.RemoveAt ( 0 );

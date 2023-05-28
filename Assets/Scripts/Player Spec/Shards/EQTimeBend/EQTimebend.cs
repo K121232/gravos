@@ -3,7 +3,7 @@ using UnityEngine;
 public class EQTimebend : EQBase {
     [Header("EQ Time Bend")]
     public float bendSTR;
-    private float pastScale;
+    private float pastScale = 1;
 
     public override void Update () {
         base.Update ();
