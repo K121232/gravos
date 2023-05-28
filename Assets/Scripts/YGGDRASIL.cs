@@ -28,7 +28,7 @@ public static class ItemPolarityChecker {
     public  static  bool    CPC ( ItemPolarity port, ItemPolarity item ) {
         if ( port == ItemPolarity.Item ) return true;
         if ( port == item ) return true;
-        return true;
+        return false;
     }
     // TAG FROM POLARITY
     public  static  string  TFP ( ItemPolarity a ) {
