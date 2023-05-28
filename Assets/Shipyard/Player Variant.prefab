@@ -45,11 +45,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c758bc6a363b73b46b33bf8bd890a650, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mirror: {fileID: 0}
+  polarity: 2
+  bungholio: 1
   hullLink: {fileID: 9025192534602348913}
   batteryLink: {fileID: 9025192533876655852}
-  polarity: 2
-  item: {fileID: 0}
-  bungholio: 1
+  specLink: {fileID: 0}
 --- !u!1 &116554993
 GameObject:
   m_ObjectHideFlags: 0
@@ -95,11 +96,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c758bc6a363b73b46b33bf8bd890a650, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mirror: {fileID: 0}
+  polarity: 2
+  bungholio: 1
   hullLink: {fileID: 9025192534602348913}
   batteryLink: {fileID: 9025192533876655852}
-  polarity: 2
-  item: {fileID: 0}
-  bungholio: 1
+  specLink: {fileID: 0}
 --- !u!1 &339368874
 GameObject:
   m_ObjectHideFlags: 0
@@ -129,7 +131,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 2150567352331204284}
+  - {fileID: 139317988147292055}
   m_Father: {fileID: 9025192533782552789}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -145,11 +147,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c758bc6a363b73b46b33bf8bd890a650, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mirror: {fileID: 0}
+  polarity: 1
+  bungholio: 1
   hullLink: {fileID: 9025192534602348913}
   batteryLink: {fileID: 9025192533876655852}
-  polarity: 1
-  item: {fileID: 0}
-  bungholio: 1
+  specLink: {fileID: 9025192533782552789}
 --- !u!1 &483265973
 GameObject:
   m_ObjectHideFlags: 0
@@ -194,11 +197,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c758bc6a363b73b46b33bf8bd890a650, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mirror: {fileID: 0}
+  polarity: 0
+  bungholio: 0
   hullLink: {fileID: 9025192534602348913}
   batteryLink: {fileID: 9025192533876655852}
-  polarity: 0
-  item: {fileID: 0}
-  bungholio: 0
+  specLink: {fileID: 0}
 --- !u!1 &640889393
 GameObject:
   m_ObjectHideFlags: 0
@@ -295,13 +299,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23f5a962dd76f18478def70ef28e0814, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  host: {fileID: 0}
+  mirror: {fileID: 0}
+  polarity: 2
   itemName: E_Sprint
   description: 'Sprint : TS = 50'
   itemQuantity: 1
   weight: 1
-  polarity: 2
   icon: {fileID: 0}
+  visuals: {fileID: 0}
 --- !u!114 &756480858
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -317,7 +322,7 @@ MonoBehaviour:
   canAuto: 1
   fireRate: 0
   isFiring: 0
-  cell: {fileID: 0}
+  cellSelection: 2
   drainRate: 30
   drainInitial: 10
   control: 0
@@ -368,11 +373,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c758bc6a363b73b46b33bf8bd890a650, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mirror: {fileID: 0}
+  polarity: 0
+  bungholio: 0
   hullLink: {fileID: 9025192534602348913}
   batteryLink: {fileID: 9025192533876655852}
-  polarity: 0
-  item: {fileID: 0}
-  bungholio: 0
+  specLink: {fileID: 0}
 --- !u!1 &930664699
 GameObject:
   m_ObjectHideFlags: 0
@@ -418,11 +424,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c758bc6a363b73b46b33bf8bd890a650, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mirror: {fileID: 0}
+  polarity: 0
+  bungholio: 0
   hullLink: {fileID: 9025192534602348913}
   batteryLink: {fileID: 9025192533876655852}
-  polarity: 0
-  item: {fileID: 0}
-  bungholio: 0
+  specLink: {fileID: 0}
 --- !u!1 &938952995
 GameObject:
   m_ObjectHideFlags: 0
@@ -468,13 +475,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23f5a962dd76f18478def70ef28e0814, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  host: {fileID: 0}
+  mirror: {fileID: 0}
+  polarity: 2
   itemName: E Timebend
   description: Slows down time to 0.5
   itemQuantity: 1
   weight: 1
-  polarity: 2
   icon: {fileID: 0}
+  visuals: {fileID: 0}
 --- !u!114 &938952997
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -490,7 +498,7 @@ MonoBehaviour:
   canAuto: 1
   fireRate: 0
   isFiring: 0
-  cell: {fileID: 0}
+  cellSelection: 1
   drainRate: 1
   drainInitial: 0
   control: 1
@@ -524,7 +532,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 139317988147292055}
+  - {fileID: 565152782802515458}
   m_Father: {fileID: 9025192534295825553}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -540,11 +548,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c758bc6a363b73b46b33bf8bd890a650, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mirror: {fileID: 0}
+  polarity: 0
+  bungholio: 0
   hullLink: {fileID: 9025192534602348913}
   batteryLink: {fileID: 9025192533876655852}
-  polarity: 0
-  item: {fileID: 0}
-  bungholio: 0
+  specLink: {fileID: 0}
 --- !u!1 &1040781276
 GameObject:
   m_ObjectHideFlags: 0
@@ -790,13 +799,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23f5a962dd76f18478def70ef28e0814, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  host: {fileID: 0}
+  mirror: {fileID: 0}
+  polarity: 0
   itemName: Item_00
   description: No description needed
   itemQuantity: 1
   weight: 10
-  polarity: 0
   icon: {fileID: 0}
+  visuals: {fileID: 0}
 --- !u!1 &1837486431
 GameObject:
   m_ObjectHideFlags: 0
@@ -953,6 +963,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 64825744533592614, guid: d60a5bfe7b0116d4abc2d58e3fb1f9da, type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 5217752661076073390, guid: d60a5bfe7b0116d4abc2d58e3fb1f9da, type: 3}
       propertyPath: autoloader
       value: 
@@ -1055,7 +1069,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5217752662822019935, guid: d60a5bfe7b0116d4abc2d58e3fb1f9da, type: 3}
       propertyPath: m_Constraints
-      value: 4
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5217752663018576417, guid: d60a5bfe7b0116d4abc2d58e3fb1f9da, type: 3}
       propertyPath: ports.Array.size
@@ -1101,34 +1115,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 5217752661276924953, guid: d60a5bfe7b0116d4abc2d58e3fb1f9da, type: 3}
   m_PrefabInstance: {fileID: 3843473376117004838}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1559793002
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9025192532923024959}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d33bc1d30a8236d4a9fb78e0ad894738, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bridge: {fileID: 954266160}
-  hpSlider: {fileID: 0}
-  cells:
-  - {fileID: 2071643748}
-  - {fileID: 1143843356}
-  - {fileID: 640889395}
-  sliders:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  scales:
-  - 4
-  - 5
-  - 4
-  itemPickup: {fileID: 614992732}
-  ntp: {fileID: 0}
 --- !u!114 &1559793003
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1175,9 +1161,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8e8e55ed22001745ba943440e9ec8e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  port: {fileID: 0}
   turrets: []
   launchIsDetectable: 1
   firingLock: 0
+  trackedTarget: {fileID: 0}
   weaponPorts:
   - {fileID: 339368876}
   carrot: {fileID: 1193471324}
@@ -1264,6 +1252,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   acc: 45
   mxv: 30
+  angleAcc: 180
+  angleMxv: 360
+  angleDrag: 0
   hasParticles: 0
   particleSTR: 0
   sod: {fileID: 954266159}
@@ -1272,7 +1263,7 @@ MonoBehaviour:
   cam: {fileID: 0}
   innerHeading: {x: 0, y: 0}
   trimSTR: 10
-  visual: {fileID: 9025192532923024956}
+  DEBUGSAVE: {x: 0, y: 0}
 --- !u!114 &9025192534664675329 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5217752663018576423, guid: d60a5bfe7b0116d4abc2d58e3fb1f9da, type: 3}
@@ -1315,11 +1306,51 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 1023717603}
+    m_TransformParent: {fileID: 339368875}
     m_Modifications:
+    - target: {fileID: 4905687103882860865, guid: 45eb9be99b6c1b94db634b831198028e, type: 3}
+      propertyPath: traversalSpeed
+      value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: 6142562696120482798, guid: 45eb9be99b6c1b94db634b831198028e, type: 3}
+      propertyPath: fireRate
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6982749128706068847, guid: 45eb9be99b6c1b94db634b831198028e, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6982749129390570746, guid: 45eb9be99b6c1b94db634b831198028e, type: 3}
+      propertyPath: f
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6982749129390570746, guid: 45eb9be99b6c1b94db634b831198028e, type: 3}
+      propertyPath: r
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6982749129390570746, guid: 45eb9be99b6c1b94db634b831198028e, type: 3}
+      propertyPath: z
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6982749129390570747, guid: 45eb9be99b6c1b94db634b831198028e, type: 3}
+      propertyPath: mainHull
+      value: 
+      objectReference: {fileID: 9025192534602348920}
+    - target: {fileID: 6982749129390570747, guid: 45eb9be99b6c1b94db634b831198028e, type: 3}
+      propertyPath: autoloader
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6982749129390570747, guid: 45eb9be99b6c1b94db634b831198028e, type: 3}
+      propertyPath: trailLoader
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 6982749129390570748, guid: 45eb9be99b6c1b94db634b831198028e, type: 3}
       propertyPath: m_Name
       value: Turret_00
+      objectReference: {fileID: 0}
+    - target: {fileID: 6982749129390570748, guid: 45eb9be99b6c1b94db634b831198028e, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 6982749129390570751, guid: 45eb9be99b6c1b94db634b831198028e, type: 3}
       propertyPath: m_RootOrder
@@ -1372,28 +1403,24 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6982749129390570751, guid: 45eb9be99b6c1b94db634b831198028e, type: 3}
   m_PrefabInstance: {fileID: 6992192114711419752}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &9025192533180729923
+--- !u!1001 &7435555274195880701
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 339368875}
+    m_TransformParent: {fileID: 1023717603}
     m_Modifications:
-    - target: {fileID: 6982749129390570747, guid: 45eb9be99b6c1b94db634b831198028e, type: 3}
-      propertyPath: mainHull
-      value: 
-      objectReference: {fileID: 9025192534602348920}
-    - target: {fileID: 6982749129390570747, guid: 45eb9be99b6c1b94db634b831198028e, type: 3}
-      propertyPath: autoloader
-      value: 
+    - target: {fileID: 4905687103882860865, guid: 45eb9be99b6c1b94db634b831198028e, type: 3}
+      propertyPath: traversalSpeed
+      value: 180
       objectReference: {fileID: 0}
-    - target: {fileID: 6982749129390570747, guid: 45eb9be99b6c1b94db634b831198028e, type: 3}
-      propertyPath: trailLoader
-      value: 
+    - target: {fileID: 6982749129390570725, guid: 45eb9be99b6c1b94db634b831198028e, type: 3}
+      propertyPath: itemName
+      value: HYPERTURRET
       objectReference: {fileID: 0}
     - target: {fileID: 6982749129390570748, guid: 45eb9be99b6c1b94db634b831198028e, type: 3}
       propertyPath: m_Name
-      value: Turret_00
+      value: Turret_SUPER
       objectReference: {fileID: 0}
     - target: {fileID: 6982749129390570751, guid: 45eb9be99b6c1b94db634b831198028e, type: 3}
       propertyPath: m_RootOrder
@@ -1441,8 +1468,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 45eb9be99b6c1b94db634b831198028e, type: 3}
---- !u!4 &2150567352331204284 stripped
+--- !u!4 &565152782802515458 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6982749129390570751, guid: 45eb9be99b6c1b94db634b831198028e, type: 3}
-  m_PrefabInstance: {fileID: 9025192533180729923}
+  m_PrefabInstance: {fileID: 7435555274195880701}
   m_PrefabAsset: {fileID: 0}

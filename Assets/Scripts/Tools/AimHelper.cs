@@ -20,6 +20,8 @@ public class AimHelper : MonoBehaviour {
     public  float           minOrtoSize;
     public  float           maxOrtoSize;
 
+    public  float           userFactor = 1;
+
     private bool            lockout;
 
     private void Start () {
@@ -40,11 +42,13 @@ public class AimHelper : MonoBehaviour {
         Vector2 delta   = Vector2.zero;
         float   deltaS  = 0;
 
-        if ( !lockout ) {
+        userFactor -= Input.GetAxis ( "Mouse ScrollWheel" );
+        userFactor = Mathf.Clamp ( userFactor, 0.1f, 2 );
 
+        if ( !lockout ) {
             deltaS = ( bodyB.position - bodyA.position ).magnitude * STRORS;
 
-            delta = ( bodyB.position - bodyA.position ) * STRPD;
+            delta = ( bodyB.position - bodyA.position ) * STRPD * userFactor;
             Vector2 filter =  new Vector2 ( ((float)Screen.height)/((float)Screen.width), 1 );
 
             delta.Scale ( filter );
@@ -54,6 +58,9 @@ public class AimHelper : MonoBehaviour {
         }
 
         tether.offset = Vector3.Lerp ( tether.offset, originalOffset + (Vector3)delta, STRD * Time.smoothDeltaTime );
-        cam.orthographicSize = Mathf.Lerp ( cam.orthographicSize, Mathf.Clamp ( originalSize + deltaS, minOrtoSize, maxOrtoSize ), STRD * Time.smoothDeltaTime );
+        // Delta Low / High Ortho Size
+        float dLOS = Mathf.Clamp ( minOrtoSize * userFactor, minOrtoSize, maxOrtoSize );
+        float dHOS = Mathf.Clamp ( maxOrtoSize * userFactor, minOrtoSize, maxOrtoSize );
+        cam.orthographicSize = Mathf.Lerp ( cam.orthographicSize, Mathf.Clamp ( originalSize + deltaS, dLOS, dHOS ), STRD * Time.smoothDeltaTime );
     }
 }
