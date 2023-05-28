@@ -5,18 +5,16 @@ public class Hitgen : MonoBehaviour {
     public  bool    autoline = true;
     private Vector3 deltaPos = Vector3.zero;
 
+    RaycastHit2D[] hits;
+    Hitbox delta;
+
     public void OnEnable () {
         deltaPos = transform.position;
     }
 
     public virtual void Update () {
         if (!autoline) { return; }
-        RaycastHit2D[] hits;
-        Hitbox delta;
-        if ( transform.position.y > 0) {
-        }
-        hits = Physics2D.RaycastAll ( transform.position, deltaPos - transform.position, ( deltaPos - transform.position ).magnitude, gameObject.layer );
-        Debug.DrawLine ( transform.position, deltaPos );
+        hits = Physics2D.RaycastAll ( transform.position, deltaPos - transform.position, ( deltaPos - transform.position ).magnitude, ~LayerMask.GetMask ( LayerMask.LayerToName ( gameObject.layer ) )  );
         for ( int i = 0; i < hits.Length; i++ ) {
             if ( hits [ i ].transform.TryGetComponent( out delta )  ) {
                 delta.Superwrapper ( GetComponent<Collider2D>() );

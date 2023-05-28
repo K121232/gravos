@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class ItemEjector : Fireable {
+public class ItemEjector : PayloadFireable {
     public  ItemPort[]      ports;
     private int             lastItem = -1;
 

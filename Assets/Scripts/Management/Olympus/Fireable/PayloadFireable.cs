@@ -1,11 +1,6 @@
 using UnityEngine;
 
-public class Fireable : MonoBehaviour, INTFCM {
-    public  Thunder     controller;
-
-    public  PoolSpooler payloadLoader;
-    public  PoolSpooler trailLoader;
-
+public class PayloadFireable : FireableCore, INTFCM {
     public  float       minRangeOffset  = 1;
     public  bool        inheritLayer    = true;
 

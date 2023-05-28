@@ -15,6 +15,11 @@ public class TrailAddon : Autodisabler {
         transform.position = alpha.position;
     }
 
+    public override void OnEnable () {
+        tr = GetComponent<TrailRenderer> ();
+        base.OnEnable ();
+    }
+
     private void OnDisable () {
         if ( tr != null ) {
             tr = GetComponent<TrailRenderer> ();
@@ -23,6 +28,8 @@ public class TrailAddon : Autodisabler {
     }
 
     void LateUpdate () {
-        transform.position = target.position;
+        if ( target != null ) {
+            transform.position = target.position;
+        }
     }
 }

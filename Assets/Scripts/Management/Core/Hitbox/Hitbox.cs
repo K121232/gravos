@@ -4,6 +4,7 @@ public class Hitbox : MonoBehaviour {
     public  PoolSpooler     ps;
 
     public  void    TriggerHitEffect ( Transform impactor ) {
+        if ( ps == null ) { return; }
         GameObject      deltaGO = ps.Request();
         ParticleSystem  deltaPS = deltaGO.GetComponent<ParticleSystem>();
         deltaGO.SetActive ( true );

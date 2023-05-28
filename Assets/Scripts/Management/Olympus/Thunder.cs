@@ -31,18 +31,18 @@ public class Thunder : MonoBehaviour {
     }
 
     private void Autobind () {
-        if ( fcm != null ) {
-            fcm.fireable = GetComponent<Fireable>();
-        }
         if ( aim != null ) {
             aim.controller = this;
         }
         if ( tfc != null ) {
             tfc.controller = this;
         }
-        Fireable fireable;
+        FireableCore fireable;
         if ( TryGetComponent ( out fireable ) ) {
-            fireable.controller = this;
+            fireable.MainInit ( this );
+        }
+        if ( fcm != null ) {
+            fcm.fireable = fireable;
         }
     }
 
