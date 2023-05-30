@@ -17,7 +17,7 @@ public class Thunder : MonoBehaviour {
 
     public  Vector2     aimOffset = Vector2.up;
 
-    public  bool IsFiring () {
+    public bool IsFiring () {
         if ( fcm == null ) return false;
         return fcm.isFiring;
     }
@@ -136,17 +136,19 @@ public class Thunder : MonoBehaviour {
         return 0;
     }
 
-    public float GetAngV () {
-        if ( rgb == null ) return 0; return rgb.angularVelocity;
+    public float GetAngV ( float turretAdditive = 0 ) {
+        if ( rgb == null ) return turretAdditive; 
+        return rgb.angularVelocity + turretAdditive;
     }
 
-    public float    GetTFCP () {
-        return tfc == null ? 1 : tfc.GetProgress();
+    public float GetTFCP () {
+        return tfc == null ? 1 : tfc.GetProgress ();
+    }
+    public float GetFCMP () {
+        return fcm == null ? 1 : fcm.GetProgress ();
     }
 
     public float GetFireProgress () {
-        float deltaTD = tfc == null ? 1 : tfc.GetProgress();
-        float deltaFC = fcm == null ? 1 : fcm.GetProgress();
-        return ( deltaFC + deltaTD ) / 2;
+        return ( GetTFCP () + GetFCMP () ) / 2;
     }
 }
