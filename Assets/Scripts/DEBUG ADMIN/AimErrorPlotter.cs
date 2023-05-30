@@ -1,18 +1,18 @@
 using UnityEngine;
 
 public class AimErrorPlotter : DataPlotter {
-    public  TFC     tfc;
+    public  Thunder thunder;
 
     public override void Start () {        
-        lineHigh = tfc.coneMaxDeviation;
+        lineHigh = 10;
         lineLow = -lineHigh;
 
         base.Start ();
     }
 
     public override void LateUpdate () {
-        if ( tfc.controller.target != null ) {
-            sample = tfc.controller.GetAIMDeviation();
+        if ( thunder.target != null ) {
+            sample = thunder.GetAIMDeviation();
         } else {
             sample = 0;
         }

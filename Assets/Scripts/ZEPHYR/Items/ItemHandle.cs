@@ -11,10 +11,14 @@ public class ItemHandle : ZephyrUnit {
     public  float       weight = 1;
     public  Sprite      icon;
 
-    public  Transform   visuals;
+    public  GameObject  visuals;
 
     public string GetTagName () {
         return ItemPolarityChecker.TFP ( polarity );
+    }
+
+    public virtual void SetVisuals ( bool alpha ) {
+        visuals.SetActive ( alpha );
     }
 
     public override void Autobind ( ZephyrUnit _unit ) {
@@ -25,12 +29,17 @@ public class ItemHandle : ZephyrUnit {
             transform.SetParent ( host.transform );
             transform.localPosition = Vector3.zero;
             transform.localRotation = Quaternion.identity;
+
+            SetVisuals ( true );
+        } else {
+            SetVisuals ( false );
         }
 
         EQBase  eqb;
         if ( polarity == ItemPolarity.Equipment && TryGetComponent ( out eqb ) ) {
             eqb.MainInit ( host );
         }
+
         Thunder thd;
         if ( polarity == ItemPolarity.Weapon && TryGetComponent( out thd ) ) {
             thd.MainInit ( host );

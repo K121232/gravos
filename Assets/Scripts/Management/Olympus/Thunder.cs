@@ -4,14 +4,18 @@ public class Thunder : MonoBehaviour {
     public  Transform   target;
     private Rigidbody2D targetRGB;
 
-    public  bool        autofire = true;
-    public  Vector2     aimOffset = Vector2.up;
-
     private Rigidbody2D rgb;
 
+    private ItemHandle  handle;
     private FCM         fcm;
     private AIM         aim;
     private TFC         tfc;
+
+    public  bool        useFCM = true;
+    public  bool        useAIM = true;
+    public  bool        useTFC = true;
+
+    public  Vector2     aimOffset = Vector2.up;
 
     public  bool IsFiring () {
         if ( fcm == null ) return false;
@@ -21,21 +25,34 @@ public class Thunder : MonoBehaviour {
     private void Start () {
         Autoload ();
         Autobind ();
-        SetAutofire ( autofire );
+        SetAutofire ( useTFC );
     }
 
     private void Autoload () {
-        fcm = GetComponent<FCM> ();
-        aim = GetComponent<AIM> ();
-        tfc = GetComponent<TFC> ();
+        handle = GetComponent<ItemHandle> ();
+        if ( useFCM ) {
+            fcm = GetComponent<FCM> ();
+        } else {
+            fcm = null;
+        }
+        if ( useAIM ) {
+            aim = GetComponent<AIM> ();
+        } else {
+            aim = null;
+        }
+        if ( useTFC ) {
+            tfc = GetComponent<TFC> ();
+        } else {
+            tfc = null;
+        }
     }
 
     private void Autobind () {
         if ( aim != null ) {
-            aim.controller = this;
+            aim.SetController ( this );
         }
         if ( tfc != null ) {
-            tfc.controller = this;
+            tfc.SetController ( this );
         }
         FireableCore fireable;
         if ( TryGetComponent ( out fireable ) ) {
@@ -59,8 +76,10 @@ public class Thunder : MonoBehaviour {
         if ( host != null && host.bungholio ) { // means we are live
             rgb = host.hullLink.GetComponent<Rigidbody2D> ();
             MainBreaker ( true );
+            handle.SetVisuals ( true );
         } else {
             MainBreaker ( false );
+            handle.SetVisuals ( false );
         }
         SetTarget ( null );
     }
@@ -87,10 +106,11 @@ public class Thunder : MonoBehaviour {
     }
 
     public void SetAutofire ( bool alpha ) {
-        autofire = alpha;
+        useTFC = alpha;
         if ( tfc != null ) {
             tfc.enabled = alpha;
         }
+        Autoload ();
     }
 
     public Vector2 GetV () {

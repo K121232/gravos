@@ -1,8 +1,12 @@
 using UnityEngine;
 
-public class TFC : MonoBehaviour {
-    public  Thunder     controller;
+public class TFC : MonoBehaviour, ThunderMinion {
+    private Thunder     controller;
     public  float       coneMaxDeviation = 5;
+
+    public void SetController ( Thunder thunder ) {
+        controller = thunder;
+    }
 
     private void Update () {
         if ( controller == null ) return;

@@ -1,7 +1,7 @@
 using UnityEngine;
 
-public class AIM : MonoBehaviour {
-    public      Thunder     controller;
+public class AIM : MonoBehaviour, ThunderMinion {
+    private     Thunder     controller;
     protected   Rigidbody2D targetRGB;
 
     public  float       traversalSpeed;
@@ -9,6 +9,11 @@ public class AIM : MonoBehaviour {
     private Konig       konig;
 
     private float       pastDeviation;
+
+
+    public void SetController ( Thunder thunder ) {
+        controller = thunder;
+    }
 
     public void Start () {
         konig = GetComponent<Konig> ();

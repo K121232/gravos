@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &6982749128706068847
+--- !u!1 &5182914893719468859
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,37 +8,37 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 6982749128706068846}
-  - component: {fileID: 6982749128706068841}
+  - component: {fileID: 2390430193744963793}
+  - component: {fileID: 2251312590465559897}
   m_Layer: 8
-  m_Name: Visual
+  m_Name: Base
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &6982749128706068846
+--- !u!4 &2390430193744963793
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6982749128706068847}
+  m_GameObject: {fileID: 5182914893719468859}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 6982749129390570751}
+  m_Father: {fileID: 6982749128706068846}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &6982749128706068841
+--- !u!212 &2251312590465559897
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6982749128706068847}
+  m_GameObject: {fileID: 5182914893719468859}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -84,6 +84,38 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &6982749128706068847
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6982749128706068846}
+  m_Layer: 8
+  m_Name: Visual
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6982749128706068846
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6982749128706068847}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 2390430193744963793}
+  m_Father: {fileID: 6982749129390570751}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6982749129390570748
 GameObject:
   m_ObjectHideFlags: 0
@@ -96,7 +128,6 @@ GameObject:
   - component: {fileID: 6982749129390570725}
   - component: {fileID: 6961634802070197393}
   - component: {fileID: 6142562696120482798}
-  - component: {fileID: 4303141878153043142}
   - component: {fileID: 4905687103882860865}
   - component: {fileID: 6982749129390570746}
   - component: {fileID: 3665160360693004734}
@@ -137,12 +168,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mirror: {fileID: 0}
   polarity: 1
-  itemName: Turret_00
+  itemName: Weapon
   description: Basic weapon
   itemQuantity: 1
   weight: 1
   icon: {fileID: 0}
-  visuals: {fileID: 0}
+  visuals: {fileID: 6982749128706068847}
 --- !u!114 &6961634802070197393
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -156,7 +187,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
-  autofire: 1
+  useFCM: 1
+  useAIM: 1
+  useTFC: 1
   aimOffset: {x: 0, y: 1}
 --- !u!114 &6142562696120482798
 MonoBehaviour:
@@ -171,25 +204,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canAuto: 1
-  fireRate: 2
+  fireRate: 1
   isFiring: 0
---- !u!114 &4303141878153043142
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6982749129390570748}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d786d94f1c3583c4ca93ade1d572689a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  controller: {fileID: 6961634802070197393}
-  payloadLoader: {fileID: 0}
-  trailLoader: {fileID: 0}
-  minRangeOffset: 1
-  inheritLayer: 1
 --- !u!114 &4905687103882860865
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -202,8 +218,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2a2e819fd42d864da57902363fd05d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  controller: {fileID: 0}
-  traversalSpeed: 0
+  traversalSpeed: 120
   velocityPredictStrength: 0
 --- !u!114 &6982749129390570746
 MonoBehaviour:
@@ -219,7 +234,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   f: 5
   z: 1
-  r: 0
+  r: 0.5
 --- !u!114 &3665160360693004734
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -232,5 +247,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c39aced86fc190488dfc32b25015c87, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  controller: {fileID: 0}
-  coneMaxDeviation: 0
+  coneMaxDeviation: 2.5

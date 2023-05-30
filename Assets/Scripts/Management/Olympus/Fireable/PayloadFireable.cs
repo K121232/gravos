@@ -1,10 +1,10 @@
 using UnityEngine;
 
-public class PayloadFireable : FireableCore, INTFCM {
+public class PayloadFireable : FireableCore {
     public  float       minRangeOffset  = 1;
     public  bool        inheritLayer    = true;
 
-    public virtual GameObject Fire () {
+    public override GameObject Fire () {
         if ( controller == null ) return null;
 
         GameObject instPayload  = payloadLoader.Request();
