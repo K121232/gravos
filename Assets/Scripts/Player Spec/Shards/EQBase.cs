@@ -37,8 +37,13 @@ public class EQBase : PCFCM {
 
     public virtual void MainInit ( ItemPort port ) {
         if ( port == null ) return;
+        UpdateIS ( control );
         enabled = port.bungholio;
         rgb = port.hullLink.GetComponent<Rigidbody2D> ();
-        LoadCell ( port.batteryLink );
+        if ( enabled ) {
+            LoadCell ( port.batteryLink );
+        } else {
+            LoadCell ( null );
+        }
     }
 }

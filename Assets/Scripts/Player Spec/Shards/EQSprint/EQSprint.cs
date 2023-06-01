@@ -6,7 +6,7 @@ public class EQSprint : EQBase {
     public  TeflonMovement  movementCore;
 
     public  float           sprintSTR;
-    private float           pastMax;
+    private float           pastMax = -1;
 
     public override void MainInit ( ItemPort port ) {
         if ( port == null ) return;
@@ -22,7 +22,9 @@ public class EQSprint : EQBase {
     }
 
     public override void OnStopFire () {
-        movementCore.mxv = pastMax;
+        if ( pastMax != -1 ) {
+            movementCore.mxv = pastMax;
+        }
         if ( speedlines != null ) {
             speedlines.Stop ();
         }

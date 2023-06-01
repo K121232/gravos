@@ -13679,7 +13679,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &724142528
 Transform:
   m_ObjectHideFlags: 0
@@ -15857,6 +15857,80 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 846212878}
   m_CullTransparentMesh: 1
+--- !u!1 &846468719
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 846468720}
+  - component: {fileID: 846468721}
+  - component: {fileID: 846468722}
+  m_Layer: 6
+  m_Name: EQ_Blink
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &846468720
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 846468719}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1638738207}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &846468721
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 846468719}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23f5a962dd76f18478def70ef28e0814, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mirror: {fileID: 0}
+  polarity: 2
+  itemName: EQ Blink
+  description: Teleport a set distance forwards
+  itemQuantity: 1
+  weight: 1
+  icon: {fileID: 0}
+  visuals: {fileID: 0}
+--- !u!114 &846468722
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 846468719}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b7c9e1eccfd8594e8c3dc960efe8818, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canAuto: 1
+  fireRate: 3
+  isFiring: 0
+  cellSelection: 2
+  drainRate: 0
+  drainInitial: 50
+  control: 0
+  distance: 30
+  damage: 10
 --- !u!1 &862879621
 GameObject:
   m_ObjectHideFlags: 0
@@ -22872,6 +22946,11 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2, y: 2}
   m_EdgeRadius: 0
+--- !u!4 &1638738207 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1023717603, guid: 319d950173e416b47ad24e3a5cac5dce, type: 3}
+  m_PrefabInstance: {fileID: 9025192534201731930}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1662935507
 GameObject:
   m_ObjectHideFlags: 0
@@ -28084,6 +28163,26 @@ PrefabInstance:
       propertyPath: ps
       value: 
       objectReference: {fileID: 1817202013}
+    - target: {fileID: 1907477388944961563, guid: 0301b2b219d3fb843968016df20b3297, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1907477388944961563, guid: 0301b2b219d3fb843968016df20b3297, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1907477388944961563, guid: 0301b2b219d3fb843968016df20b3297, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1907477388944961563, guid: 0301b2b219d3fb843968016df20b3297, type: 3}
+      propertyPath: m_RenderingLayerMask
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 1907477388944961563, guid: 0301b2b219d3fb843968016df20b3297, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: fab7ae8d5e7e066498d8985e17958c02, type: 2}
     - target: {fileID: 1907477389837354450, guid: 0301b2b219d3fb843968016df20b3297, type: 3}
       propertyPath: m_Name
       value: Kotaka

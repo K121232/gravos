@@ -24,14 +24,16 @@ public class PCFCM : FCM {
     }
 
     public override void Fire () {
-        cell.VariDrain ( ( isRefiring ? drainRate : drainInitial ) * Time.unscaledDeltaTime );
+        cell.VariDrain ( ( isRefiring ? drainRate * Time.unscaledDeltaTime : drainInitial ) );
         isRefiring = true;
         base.Fire ();
     }
 
     public  void LoadCell ( Transform cellLink ) {
-        if ( cellSelection > -1 && cellSelection < cellLink.childCount ) {
+        if ( cellLink != null && cellSelection > -1 && cellSelection < cellLink.childCount ) {
             cell = cellLink.GetChild ( cellSelection ).GetComponent<PowerCell> ();
+        } else {
+            cell = null;
         }
     }
 }
