@@ -18,14 +18,12 @@ public class EQBlink : EQBase {
         Hitbox dhb;
         bool canBlink = true;
         for ( int i = 0; i < delta.Length; i++ ) {
-            Debug.Log ( delta [ i ].name );
             if ( !delta [ i ].isTrigger && ( !delta [ i ].TryGetComponent ( out dhb ) || delta [ i ].GetComponent<Hitgen> () == null ) ) {
                 canBlink = false;
                 break;
             }
         }
         if ( canBlink ) {
-            Debug.Log ( "FUCK U " );
             rgb.position = transform.position + transform.up * distance;
             for ( int i = 0; i < delta.Length; i++ ) {
                 if ( delta [ i ].TryGetComponent ( out dhb ) ) {
