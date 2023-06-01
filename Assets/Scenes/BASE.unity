@@ -17837,6 +17837,10 @@ PrefabInstance:
       propertyPath: payloadLoader
       value: 
       objectReference: {fileID: 195569619}
+    - target: {fileID: 6457654997995527044, guid: b328290adfe70fe43942b18be2225cdf, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6457654997995527069, guid: b328290adfe70fe43942b18be2225cdf, type: 3}
       propertyPath: m_Name
       value: Turret_01_PDC
@@ -20440,6 +20444,10 @@ PrefabInstance:
       propertyPath: payloadLoader
       value: 
       objectReference: {fileID: 195569619}
+    - target: {fileID: 6457654997995527044, guid: b328290adfe70fe43942b18be2225cdf, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6457654997995527069, guid: b328290adfe70fe43942b18be2225cdf, type: 3}
       propertyPath: m_Name
       value: Turret_01_PDC
@@ -21001,6 +21009,10 @@ PrefabInstance:
       propertyPath: payloadLoader
       value: 
       objectReference: {fileID: 195569619}
+    - target: {fileID: 6457654997995527044, guid: b328290adfe70fe43942b18be2225cdf, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6457654997995527069, guid: b328290adfe70fe43942b18be2225cdf, type: 3}
       propertyPath: m_Name
       value: Turret_01_PDC
@@ -28064,6 +28076,10 @@ PrefabInstance:
       propertyPath: turrets.Array.data[2]
       value: 
       objectReference: {fileID: 32040966}
+    - target: {fileID: 951053742, guid: 0301b2b219d3fb843968016df20b3297, type: 3}
+      propertyPath: bungholio
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1907477388232617714, guid: 0301b2b219d3fb843968016df20b3297, type: 3}
       propertyPath: ps
       value: 
@@ -28074,7 +28090,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1907477389837354450, guid: 0301b2b219d3fb843968016df20b3297, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1907477389837354459, guid: 0301b2b219d3fb843968016df20b3297, type: 3}
       propertyPath: m_RootOrder
