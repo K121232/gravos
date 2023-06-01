@@ -10,7 +10,7 @@ public class Konig : MonoBehaviour {
 
     // MAJOR WARNINGS : MUST BE UPDATED IN LOCKSTEP WITH THE TARGET, OR IT LOSES SYNC
 
-    public float NextFrame ( float target, float current, float deltaTime, float aaaaa = 0 ) {
+    public float NextFrame ( float target, float current, float deltaTime ) {
         if ( deltaTime == 0 ) { return 0; }
         float error = target - current;
         integral += error * deltaTime;

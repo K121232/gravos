@@ -23,7 +23,9 @@ public class EQSprint : EQBase {
 
     public override void OnStopFire () {
         movementCore.mxv = pastMax;
-        speedlines.Stop ();
+        if ( speedlines != null ) {
+            speedlines.Stop ();
+        }
     }
 
     public override void Fire () {

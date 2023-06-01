@@ -7,6 +7,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3665160360693004734, guid: 45eb9be99b6c1b94db634b831198028e, type: 3}
+      propertyPath: coneMaxDeviation
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 4905687103882860865, guid: 45eb9be99b6c1b94db634b831198028e, type: 3}
       propertyPath: velocityPredictStrength
       value: 0.25
@@ -38,10 +42,6 @@ PrefabInstance:
     - target: {fileID: 6982749129390570748, guid: 45eb9be99b6c1b94db634b831198028e, type: 3}
       propertyPath: m_Name
       value: Turret_01_PDC
-      objectReference: {fileID: 0}
-    - target: {fileID: 6982749129390570748, guid: 45eb9be99b6c1b94db634b831198028e, type: 3}
-      propertyPath: m_Layer
-      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 6982749129390570751, guid: 45eb9be99b6c1b94db634b831198028e, type: 3}
       propertyPath: m_RootOrder

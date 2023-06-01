@@ -13,6 +13,8 @@ GameObject:
   - component: {fileID: 6088086387421162108}
   - component: {fileID: 6088086387421162111}
   - component: {fileID: -4445772493945820086}
+  - component: {fileID: 7689046121200148843}
+  - component: {fileID: -6374467843515164604}
   m_Layer: 8
   m_Name: Cargo Pod
   m_TagString: Item
@@ -153,6 +155,35 @@ MonoBehaviour:
   hullLink: {fileID: 6088086387421162106}
   batteryLink: {fileID: 0}
   specLink: {fileID: 0}
+--- !u!114 &7689046121200148843
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6088086387421162107}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4acc025c5731134194e8014e2b973dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  next: {fileID: -6374467843515164604}
+  deployed: 0
+--- !u!114 &-6374467843515164604
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6088086387421162107}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d1727cfee7037c4496cb9a9aa5f2698, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  next: {fileID: 0}
+  deployed: 0
+  launchSpeed: 20
 --- !u!1 &6088086388000620154
 GameObject:
   m_ObjectHideFlags: 0
@@ -204,3 +235,4 @@ MonoBehaviour:
   itemQuantity: 25
   weight: 100
   icon: {fileID: 0}
+  visuals: {fileID: 0}

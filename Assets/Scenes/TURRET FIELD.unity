@@ -2939,30 +2939,6 @@ PrefabInstance:
       propertyPath: payloadLoader
       value: 
       objectReference: {fileID: 1508011887}
-    - target: {fileID: 6457654997995527067, guid: b328290adfe70fe43942b18be2225cdf, type: 3}
-      propertyPath: f
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 6457654997995527067, guid: b328290adfe70fe43942b18be2225cdf, type: 3}
-      propertyPath: r
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6457654997995527067, guid: b328290adfe70fe43942b18be2225cdf, type: 3}
-      propertyPath: z
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 6457654997995527067, guid: b328290adfe70fe43942b18be2225cdf, type: 3}
-      propertyPath: Kd
-      value: 0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6457654997995527067, guid: b328290adfe70fe43942b18be2225cdf, type: 3}
-      propertyPath: Ki
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 6457654997995527067, guid: b328290adfe70fe43942b18be2225cdf, type: 3}
-      propertyPath: Kp
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 6457654997995527069, guid: b328290adfe70fe43942b18be2225cdf, type: 3}
       propertyPath: m_Name
       value: Turret_00_Base
@@ -3010,14 +2986,6 @@ PrefabInstance:
     - target: {fileID: 6457654997995527070, guid: b328290adfe70fe43942b18be2225cdf, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9037886873906036256, guid: b328290adfe70fe43942b18be2225cdf, type: 3}
-      propertyPath: multiParam1
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 9037886873906036256, guid: b328290adfe70fe43942b18be2225cdf, type: 3}
-      propertyPath: targetingMethod
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b328290adfe70fe43942b18be2225cdf, type: 3}

@@ -18,6 +18,7 @@ public class TM : MonoBehaviour {
 
     protected   Vector2 targetLink;
     protected   float   thurstLink;
+
     public virtual void Update () {
         Debug.DrawLine ( transform.position, targetLink, Color.yellow );
 
