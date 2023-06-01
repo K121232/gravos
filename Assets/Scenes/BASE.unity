@@ -18113,17 +18113,6 @@ MonoBehaviour:
   strength: 1
   rotationStrength: 0
   scaledTime: 0
---- !u!114 &1099346538 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2296900841561860792, guid: 0301b2b219d3fb843968016df20b3297, type: 3}
-  m_PrefabInstance: {fileID: 5913673754164427803}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9f2870aaa60ca4548b41966f7a797f22, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1121531663
 GameObject:
   m_ObjectHideFlags: 0
@@ -26668,17 +26657,6 @@ RectTransform:
   m_AnchoredPosition: {x: -150, y: 50}
   m_SizeDelta: {x: 200, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1989353681 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8557056711064478484, guid: 0301b2b219d3fb843968016df20b3297, type: 3}
-  m_PrefabInstance: {fileID: 5913673754164427803}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9f2870aaa60ca4548b41966f7a797f22, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &2001519781
 GameObject:
   m_ObjectHideFlags: 0
@@ -27619,31 +27597,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0.5, y: 0}
   m_SizeDelta: {x: -11, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!1 &2094870161 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8470064938935250396, guid: 319d950173e416b47ad24e3a5cac5dce, type: 3}
-  m_PrefabInstance: {fileID: 9025192534201731930}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &2094870169
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2094870161}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 23f5a962dd76f18478def70ef28e0814, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mirror: {fileID: 0}
-  polarity: 0
-  itemName: Turret_00
-  description: Basic turret
-  itemQuantity: 1
-  weight: 1
-  icon: {fileID: 0}
-  visuals: {fileID: 0}
 --- !u!1 &2104378777
 GameObject:
   m_ObjectHideFlags: 0
@@ -28109,18 +28062,34 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 724142528}
     m_Modifications:
+    - target: {fileID: 227007131, guid: 0301b2b219d3fb843968016df20b3297, type: 3}
+      propertyPath: Kd
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 227007131, guid: 0301b2b219d3fb843968016df20b3297, type: 3}
+      propertyPath: Ki
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 227007131, guid: 0301b2b219d3fb843968016df20b3297, type: 3}
+      propertyPath: Kp
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 227007133, guid: 0301b2b219d3fb843968016df20b3297, type: 3}
       propertyPath: deathPs
       value: 
       objectReference: {fileID: 1804143458}
     - target: {fileID: 951053740, guid: 0301b2b219d3fb843968016df20b3297, type: 3}
+      propertyPath: turrets.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 951053740, guid: 0301b2b219d3fb843968016df20b3297, type: 3}
       propertyPath: turrets.Array.data[0]
       value: 
-      objectReference: {fileID: 1099346538}
+      objectReference: {fileID: 0}
     - target: {fileID: 951053740, guid: 0301b2b219d3fb843968016df20b3297, type: 3}
       propertyPath: turrets.Array.data[1]
       value: 
-      objectReference: {fileID: 1989353681}
+      objectReference: {fileID: 0}
     - target: {fileID: 1907477388232617714, guid: 0301b2b219d3fb843968016df20b3297, type: 3}
       propertyPath: ps
       value: 
@@ -28306,6 +28275,18 @@ PrefabInstance:
       propertyPath: speedlines
       value: 
       objectReference: {fileID: 256984552}
+    - target: {fileID: 954266159, guid: 319d950173e416b47ad24e3a5cac5dce, type: 3}
+      propertyPath: Kd
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 954266159, guid: 319d950173e416b47ad24e3a5cac5dce, type: 3}
+      propertyPath: Ki
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 954266159, guid: 319d950173e416b47ad24e3a5cac5dce, type: 3}
+      propertyPath: Kp
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 954266160, guid: 319d950173e416b47ad24e3a5cac5dce, type: 3}
       propertyPath: ntf
       value: 

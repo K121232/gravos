@@ -18,7 +18,9 @@ public class ItemHandle : ZephyrUnit {
     }
 
     public virtual void SetVisuals ( bool alpha ) {
-        visuals.SetActive ( alpha );
+        if ( visuals != null ) {
+            visuals.SetActive ( alpha );
+        }
     }
 
     public override void Autobind ( ZephyrUnit _unit ) {

@@ -29,9 +29,7 @@ public class TeflonPMove : TeflonMovement {
                     delta += Mathf.Max ( Vector2.Dot ( -rgb.velocity.normalized, transform.up ), 0 );
                 }
             }
-            deltaAngle += FilterAngle ( sod.NextFrame ( Time.fixedDeltaTime,
-                Vector2.SignedAngle ( transform.up, targetDir ),
-                Vector2.SignedAngle ( Vector2.up, targetDir ), rgb.angularVelocity ) ) / Time.fixedDeltaTime;
+            deltaAngle += FilterAngle ( sod.NextFrame ( 0, Vector2.SignedAngle ( targetDir, transform.up ), Time.deltaTime ) ) / Time.fixedDeltaTime;
         } else {
             Vector2 deltaI = new Vector2 ( Input.GetAxis ("Horizontal"), Input.GetAxis("Vertical") );
             Debug.DrawLine ( DEBUGSAVE * 10, deltaI * 10, Color.green, 1000 );
@@ -41,9 +39,7 @@ public class TeflonPMove : TeflonMovement {
             }
             innerHeading = Quaternion.Euler ( 0, 0, Input.GetAxis ( "TrimRotation" ) * trimSTR ) * innerHeading;
 
-            deltaAngle += FilterAngle ( sod.NextFrame ( Time.fixedDeltaTime,
-                Vector2.SignedAngle ( transform.up, innerHeading ),
-                Vector2.SignedAngle ( Vector2.up, innerHeading ), rgb.angularVelocity ) ) / Time.fixedDeltaTime;
+            deltaAngle += FilterAngle ( sod.NextFrame ( 0, Vector2.SignedAngle ( innerHeading, transform.up ), Time.deltaTime ) ) / Time.fixedDeltaTime;
 
             delta += Mathf.Max ( Vector2.Dot ( transform.up, deltaI ), 0 );
         }

@@ -16,7 +16,6 @@ public class AIM : MonoBehaviour, ThunderMinion {
     protected   Konig       konig;
 
     protected float       pastDeviation;
-    protected Quaternion  pastOrientation;
 
     public void SetController ( Thunder thunder ) {
         controller = thunder;
@@ -24,7 +23,6 @@ public class AIM : MonoBehaviour, ThunderMinion {
 
     public void Start () {
         konig = GetComponent<Konig> ();
-        pastOrientation = transform.rotation;
     }
 
     public void ResetPD () {
@@ -67,18 +65,13 @@ public class AIM : MonoBehaviour, ThunderMinion {
                 tgv = GetTGVPredict ();
             }
         }
-        float delta = Vector2.SignedAngle ( transform.up, tgv );
+        float delta = Vector2.SignedAngle ( tgv, transform.up );
         pastDeviation = delta;
 
         if ( traversalSpeed != 0 ) {
-            float deltaANGV = controller.GetAngV( Quaternion.Angle ( pastOrientation, transform.rotation ) / Time.deltaTime );
-
-            Debug.Log ( pastDeviation + " !!!! " + deltaANGV );
-
-            delta = konig.NextFrame ( Time.deltaTime, delta, Vector2.SignedAngle ( Vector2.up, tgv ), deltaANGV );
+            delta = konig.NextFrame ( 0, delta, Time.deltaTime );
             delta = Mathf.Clamp ( delta, -traversalSpeed, traversalSpeed ) * Time.deltaTime;
 
-            pastOrientation = transform.rotation;
             transform.Rotate ( Vector3.forward, delta * Time.timeScale );
         }
 

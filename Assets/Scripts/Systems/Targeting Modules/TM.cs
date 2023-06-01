@@ -27,7 +27,7 @@ public class TM : MonoBehaviour {
         Debug.DrawLine ( transform.position, target.position, Color.red );
         Debug.DrawLine ( transform.position, transform.position + transform.up * 4, Color.blue );
         */
-        float deltaAA = sod.NextFrame ( Time.deltaTime, Vector2.SignedAngle ( transform.up, targetLink ), Vector2.SignedAngle ( Vector2.up, targetLink ), rgb.angularVelocity );
+        float deltaAA = sod.NextFrame ( 0, Vector2.SignedAngle ( targetLink, transform.up ), Time.deltaTime );
         if ( !thrustBypass ) {
             if ( variThrust ) {
                 thurstLink = Mathf.Max ( Vector2.Dot ( transform.up, targetLink.normalized ), 0 );

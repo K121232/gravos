@@ -2694,9 +2694,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 180b655e2fd629841a37786f33156c05, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  loopspan: 10
-  magnitude: -40
-  trajectory: 0
+  loopspan: 100
+  magnitude: 10
+  trajectory: 1
   R2TARGET: {x: 0, y: -10}
 --- !u!61 &1968044879
 BoxCollider2D:
@@ -2950,6 +2950,18 @@ PrefabInstance:
     - target: {fileID: 6457654997995527067, guid: b328290adfe70fe43942b18be2225cdf, type: 3}
       propertyPath: z
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6457654997995527067, guid: b328290adfe70fe43942b18be2225cdf, type: 3}
+      propertyPath: Kd
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6457654997995527067, guid: b328290adfe70fe43942b18be2225cdf, type: 3}
+      propertyPath: Ki
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6457654997995527067, guid: b328290adfe70fe43942b18be2225cdf, type: 3}
+      propertyPath: Kp
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6457654997995527069, guid: b328290adfe70fe43942b18be2225cdf, type: 3}
       propertyPath: m_Name

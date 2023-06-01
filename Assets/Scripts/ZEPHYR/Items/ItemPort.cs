@@ -26,9 +26,11 @@ public class ItemPort : ZephyrUnit {
     public override void Autobind ( ZephyrUnit _unit ) {
         base.Autobind ( _unit );
 
-        ItemHandle delta = _unit as ItemHandle;
-        if ( bungholio && polarity == ItemPolarity.Weapon && delta.polarity == ItemPolarity.Weapon ) {
-            specLink.GetComponent<TargetControlP> ().RefreshTurretList ();
+        if ( _unit != null ) {
+            ItemHandle delta = _unit as ItemHandle;
+            if ( bungholio && polarity == ItemPolarity.Weapon && delta.polarity == ItemPolarity.Weapon ) {
+                specLink.GetComponent<TargetControlP> ().RefreshTurretList ();
+            }
         }
     }
 
