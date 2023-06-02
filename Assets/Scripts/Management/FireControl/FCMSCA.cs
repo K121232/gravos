@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class SCAFCM : FCM {
+public class FCMSCA : FCM {
     // SELF CONTAINED AMMO
     public  float       cooldownReload;
     public  bool        autoreload;

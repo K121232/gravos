@@ -1,38 +1,36 @@
 using UnityEngine;
 
-public class PayloadFireable : FireableCore {
+public class PayloadFireable : CoreFireable {
     public  float       minRangeOffset  = 1;
     public  bool        inheritLayer    = true;
 
-    public override GameObject Fire () {
-        if ( controller == null ) return null;
-
-        GameObject instPayload  = payloadLoader.Request();
-        if ( instPayload == null ) return null;
+    public override void Fire () {
+        transfer = null;
+        if ( controller == null ) return;
+        transfer  = payloadLoader.Request();
+        if ( transfer == null ) return;
         if ( inheritLayer ) {
-            instPayload.layer = gameObject.layer;
+            transfer.layer = gameObject.layer;
         }
 
-        instPayload.transform.SetPositionAndRotation ( 
+        transfer.transform.SetPositionAndRotation ( 
             transform.position + transform.up * minRangeOffset, 
             transform.rotation 
             );
 
-        instPayload.GetComponent<PayloadStart> ().Deploy (
+        transfer.GetComponent<PayloadStart> ().Deploy (
             new PayloadObject ( 
                 controller.GetV (), 
                 transform.rotation * controller.aimOffset, 
                 controller.target ) 
             );
 
-        instPayload.SetActive ( true );
+        transfer.SetActive ( true );
 
         if ( trailLoader != null ) {
             GameObject instTrail    = trailLoader.Request();
-            instTrail.GetComponent<TrailAddon> ().Bind ( instPayload.transform );
+            instTrail.GetComponent<TrailAddon> ().Bind ( transfer.transform );
             instTrail.SetActive ( true );
         }
-
-        return instPayload;
     }
 }

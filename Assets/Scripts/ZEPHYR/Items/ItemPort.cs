@@ -29,7 +29,7 @@ public class ItemPort : ZephyrUnit {
         if ( _unit != null ) {
             ItemHandle delta = _unit as ItemHandle;
             if ( bungholio && polarity == ItemPolarity.Weapon && delta.polarity == ItemPolarity.Weapon ) {
-                specLink.GetComponent<TargetControlP> ().RefreshTurretList ();
+                specLink.GetComponent<ZeusPTC> ().RefreshTurretList ();
             }
         }
     }

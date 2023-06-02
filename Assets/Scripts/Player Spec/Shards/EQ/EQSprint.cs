@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class EQSprint : EQBase {
+public class EQSprint : UnifiedOrdnance {
     [Header ( "EQ Sprint" )]
     public  ParticleSystem  speedlines;
     public  TeflonMovement  movementCore;
@@ -8,20 +8,21 @@ public class EQSprint : EQBase {
     public  float           sprintSTR;
     private float           pastMax = -1;
 
-    public override void MainInit ( ItemPort port ) {
-        if ( port == null ) return;
-        base.MainInit ( port );
-        if ( enabled ) {
-            movementCore = port.hullLink.GetComponent<TeflonPMove> ();
+    public override void MainInit ( Thunder _controller ) {
+        base.MainInit ( _controller );
+        if ( enabled && controller != null && controller.rgb != null ) {
+            movementCore = controller.rgb.GetComponent<TeflonPMove> ();
         }
     }
 
     public override void OnStartFire () {
+        if ( controller == null ) return;
         pastMax = movementCore.mxv;
         speedlines.Play ();
     }
 
     public override void OnStopFire () {
+        if ( controller == null ) return;
         if ( pastMax != -1 ) {
             movementCore.mxv = pastMax;
         }
@@ -31,11 +32,11 @@ public class EQSprint : EQBase {
     }
 
     public override void Fire () {
+        if ( controller == null ) return;
         if ( movementCore.mxv != sprintSTR ) {
             pastMax = movementCore.mxv;
             movementCore.mxv = sprintSTR;
         }
         movementCore.SetV ( 1 );
-        base.Fire ();
     }
 }

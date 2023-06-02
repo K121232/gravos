@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class ItemEjector : PayloadFireable {
+public class ItemEjectorFireable : PayloadFireable {
     public  ItemPort[]      ports;
     private int             lastItem = -1;
 
@@ -11,13 +11,13 @@ public class ItemEjector : PayloadFireable {
         }
     }
 
-    public override GameObject Fire () {
-        if ( lastItem == -1 || ports [ lastItem ].GetItem () == null ) return null;
-        GameObject delta = base.Fire ();
-        if ( delta == null ) return null;
-        ports [ lastItem ].GetItem ().Autobind ( delta.GetComponent<ItemPort> () );
-        lastItem = -1;
-        return delta;
+    public override void Fire () {
+        if ( lastItem == -1 || ports [ lastItem ].GetItem () == null ) return;
+        base.Fire ();
+        if ( transfer != null ) {
+            ports [ lastItem ].GetItem ().Autobind ( transfer.GetComponent<ItemPort> () );
+            lastItem = -1;
+        }
     }
 
     private void OnDisable () {

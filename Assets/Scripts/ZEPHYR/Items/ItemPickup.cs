@@ -1,7 +1,7 @@
 using UnityEngine;
 
 public class ItemPickup : MonoBehaviour {
-    public  ItemEjector     ejector;
+    public  ItemEjectorFireable     ejector;
     public  Radar           pickupRadar;
     public  int             fillCount = 0;
 

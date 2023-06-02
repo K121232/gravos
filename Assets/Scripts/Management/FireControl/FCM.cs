@@ -3,7 +3,7 @@ using System;
 
 public class FCM : MonoBehaviour {
     // FIRE CONTROL MECHANISM
-    public  INTFCM  fireable;
+    public  UnifiedOrdnanceFireInterface  fireable;
 
     protected bool  triggerDown;
     private bool    triggerSear;
@@ -60,8 +60,8 @@ public class FCM : MonoBehaviour {
         }
     }
 
-    public virtual void OnStartFire () { }
-    public virtual void OnStopFire () { }
+    public virtual void OnStartFire () { if ( fireable != null ) { fireable.OnStartFire (); } }
+    public virtual void OnStopFire () { if ( fireable != null ) { fireable.OnStopFire (); } }
     public virtual void Fire () { if ( fireable != null ) { fireable.Fire (); } }
 
     public float GetProgress () {

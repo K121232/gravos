@@ -1,18 +1,24 @@
 using UnityEngine;
 
-public class EQBlink : EQBase {
+public class EQBlink : UnifiedOrdnance {
     [Header ( "EQ Blink" )]
-    
+    private Rigidbody2D rgb;
+
     public  float   distance;
     public  int     damage;
 
-    public override void MainInit ( ItemPort port ) {
-        base.MainInit ( port );
-        canAuto = false;
+    public override void MainInit ( Thunder _controller ) {
+        base.MainInit ( _controller );
+        if ( enabled && controller != null ) {
+            rgb = controller.rgb;
+        } else {
+            rgb = null;
+        }
     }
 
     public override void OnStartFire () {
-        Collider2D[] delta = Physics2D.OverlapBoxAll ( transform.position + transform.up * distance / 2, new Vector2 ( 1, distance ),
+        if ( controller == null ) return;
+        Collider2D[] delta = Physics2D.OverlapBoxAll ( rgb.transform.position + transform.up * distance / 2, new Vector2 ( 1, distance ),
             transform.eulerAngles.z, ~LayerMask.GetMask ( LayerMask.LayerToName ( gameObject.layer ) )
             );
         Hitbox dhb;
@@ -24,16 +30,12 @@ public class EQBlink : EQBase {
             }
         }
         if ( canBlink ) {
-            rgb.position = transform.position + transform.up * distance;
+            rgb.position = rgb.transform.position + transform.up * distance;
             for ( int i = 0; i < delta.Length; i++ ) {
                 if ( delta [ i ].TryGetComponent ( out dhb ) ) {
                     dhb.DeltaF ( damage );
                 }
             }
         }
-    }
-
-    public override void Fire () {
-        base.Fire ();
     }
 }

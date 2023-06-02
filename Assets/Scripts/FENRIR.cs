@@ -1,9 +1,7 @@
 using UnityEngine;
 
-public interface INTFCM {
-    GameObject Fire ();
-}
-
-public interface ThunderMinion {
-    public void SetController ( Thunder thunder );
+public interface UnifiedOrdnanceFireInterface {
+    void Fire ();
+    void OnStartFire ();
+    void OnStopFire ();
 }

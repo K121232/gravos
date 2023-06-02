@@ -28,8 +28,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 0}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 938952996}
+  m_Children: []
   m_Father: {fileID: 9025192534888195798}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -79,8 +78,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 756480856}
+  m_Children: []
   m_Father: {fileID: 9025192534888195798}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -328,81 +326,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 3, y: 1}
   m_EdgeRadius: 0
---- !u!1 &756480855
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 756480856}
-  - component: {fileID: 756480857}
-  - component: {fileID: 756480858}
-  m_Layer: 6
-  m_Name: EQ_Sprint
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &756480856
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 756480855}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 116554994}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &756480857
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 756480855}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 23f5a962dd76f18478def70ef28e0814, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mirror: {fileID: 0}
-  polarity: 2
-  itemName: E_Sprint
-  description: 'Sprint : TS = 50'
-  itemQuantity: 1
-  weight: 1
-  icon: {fileID: 0}
-  visuals: {fileID: 0}
---- !u!114 &756480858
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 756480855}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 31138e81e1e3b7e418588f33bef10501, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  canAuto: 1
-  fireRate: 0
-  isFiring: 0
-  cellSelection: 2
-  drainRate: 30
-  drainInitial: 10
-  control: 0
-  speedlines: {fileID: 0}
-  movementCore: {fileID: 0}
-  sprintSTR: 50
 --- !u!1 &830714317
 GameObject:
   m_ObjectHideFlags: 0
@@ -504,79 +427,6 @@ MonoBehaviour:
   hullLink: {fileID: 9025192534602348913}
   batteryLink: {fileID: 9025192533876655852}
   specLink: {fileID: 0}
---- !u!1 &938952995
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 938952996}
-  - component: {fileID: 938952998}
-  - component: {fileID: 938952997}
-  m_Layer: 6
-  m_Name: EQ_Bend
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &938952996
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 938952995}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 82192821}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &938952998
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 938952995}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 23f5a962dd76f18478def70ef28e0814, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mirror: {fileID: 0}
-  polarity: 2
-  itemName: E Timebend
-  description: Slows down time to 0.5
-  itemQuantity: 1
-  weight: 1
-  icon: {fileID: 0}
-  visuals: {fileID: 0}
---- !u!114 &938952997
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 938952995}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a29bb99830e9baf48bd81e9fa96929c0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  canAuto: 1
-  fireRate: 0
-  isFiring: 0
-  cellSelection: 1
-  drainRate: 1
-  drainInitial: 0
-  control: 1
-  bendSTR: 0.5
 --- !u!1 &1023717602
 GameObject:
   m_ObjectHideFlags: 0
@@ -1380,7 +1230,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5217752662822019934, guid: d60a5bfe7b0116d4abc2d58e3fb1f9da, type: 3}
       propertyPath: m_Name
-      value: Player
+      value: Player Variant
       objectReference: {fileID: 0}
     - target: {fileID: 5217752662822019935, guid: d60a5bfe7b0116d4abc2d58e3fb1f9da, type: 3}
       propertyPath: m_Constraints
@@ -1633,6 +1483,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
+  targetRGB: {fileID: 0}
+  rgb: {fileID: 0}
   useFCM: 1
   useAIM: 1
   useTFC: 1

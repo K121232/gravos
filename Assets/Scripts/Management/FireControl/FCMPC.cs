@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class PCFCM : FCM {
+public class FCMPC : FCM {
     // POWER CELL FIRE CONTROL MECHANISM
     public  int         cellSelection = -1;
 
@@ -24,7 +24,7 @@ public class PCFCM : FCM {
     }
 
     public override void Fire () {
-        cell.VariDrain ( ( isRefiring ? drainRate * Time.unscaledDeltaTime : drainInitial ) );
+        cell.VariDrain ( isRefiring ? drainRate * Time.unscaledDeltaTime : drainInitial );
         isRefiring = true;
         base.Fire ();
     }

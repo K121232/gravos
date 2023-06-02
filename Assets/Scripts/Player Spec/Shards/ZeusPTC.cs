@@ -1,6 +1,8 @@
 using UnityEngine;
 
-public class TargetControlP : Zeus {
+// Player target control
+
+public class ZeusPTC : Zeus {
     public  ItemPort[]      weaponPorts;
     public  Transform       carrot;
 

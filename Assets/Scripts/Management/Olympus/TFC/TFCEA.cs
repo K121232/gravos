@@ -1,14 +1,10 @@
 using UnityEngine;
 
-public class TFC : MonoBehaviour, ThunderMinion {
-    private Thunder     controller;
-    public  float       coneMaxDeviation = 5;
+// Error angle 
+public class TFCEA : TFC {
+    public      float       coneMaxDeviation = 5;
 
-    public void SetController ( Thunder thunder ) {
-        controller = thunder;
-    }
-
-    private void Update () {
+    protected void Update () {
         if ( controller == null ) return;
         controller.ForceFire (
             controller.target != null && (
@@ -18,7 +14,7 @@ public class TFC : MonoBehaviour, ThunderMinion {
         );
     }
 
-    public float GetProgress () {
+    public override float GetProgress () {
         if ( controller.target == null ) return 0;
         if ( coneMaxDeviation != 0 ) {
             if ( Mathf.Abs ( controller.GetAIMDeviation () ) < coneMaxDeviation ) {

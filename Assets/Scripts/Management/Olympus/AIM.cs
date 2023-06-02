@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.Rendering;
 
-public class AIM : MonoBehaviour, ThunderMinion {
+public class AIM : MonoBehaviour {
     protected   Thunder     controller;
     protected   Rigidbody2D targetRGB;
 

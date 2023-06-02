@@ -5,7 +5,7 @@ using TMPro;
 
 public class InventoryMenu : MenuCore {
     public  LoadoutMenu         ldm;
-    public  ItemEjector         itemEjector;
+    public  ItemEjectorFireable         itemEjector;
 
     public  List<ItemPort>      stores;
 
@@ -45,7 +45,7 @@ public class InventoryMenu : MenuCore {
             string labelN = "NO ITEM", labelQ = "X";
             if ( stores [ i ].GetItem() != null ) {
                 labelN = stores [ i ].GetItem ().itemName;
-                labelQ = stores [ i ].GetItem ().itemQuantity.ToString ();
+                labelQ = "X";
             }
             listRoot.GetChild ( i ).GetComponent<Multihelper> ().SetLabel ( 0, labelN );
             listRoot.GetChild ( i ).GetComponent<Multihelper> ().SetLabel ( 1, labelQ );

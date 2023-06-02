@@ -2,9 +2,9 @@ using UnityEngine;
 
 public class Thunder : MonoBehaviour {
     public  Transform   target;
-    private Rigidbody2D targetRGB;
+    public  Rigidbody2D targetRGB;
 
-    private Rigidbody2D rgb;
+    public  Rigidbody2D rgb;
 
     private ItemHandle  handle;
     private FCM         fcm;
@@ -54,12 +54,12 @@ public class Thunder : MonoBehaviour {
         if ( tfc != null ) {
             tfc.SetController ( this );
         }
-        FireableCore fireable;
-        if ( TryGetComponent ( out fireable ) ) {
-            fireable.MainInit ( this );
+        UnifiedOrdnance uo;
+        if ( TryGetComponent ( out uo ) ) {
+            uo.MainInit ( this );
         }
         if ( fcm != null ) {
-            fcm.fireable = fireable;
+            fcm.fireable = uo;
         }
     }
 
@@ -76,6 +76,10 @@ public class Thunder : MonoBehaviour {
         if ( host != null && host.bungholio ) { // means we are live
             rgb = host.hullLink.GetComponent<Rigidbody2D> ();
             MainBreaker ( true );
+            Autobind ();
+            if ( fcm != null && fcm is FCMPC ) {
+                ( fcm as FCMPC ).LoadCell ( host.batteryLink );
+            }
             handle.SetVisuals ( true );
         } else {
             MainBreaker ( false );
@@ -128,7 +132,6 @@ public class Thunder : MonoBehaviour {
         return 0;
     }
 
-    // Get AIM Time To Target
     public float GetAIMTTT () {
         if ( aim != null && aim.traversalSpeed != 0 ) {
             return Mathf.Abs ( aim.GetLastDeviation () ) / aim.traversalSpeed;

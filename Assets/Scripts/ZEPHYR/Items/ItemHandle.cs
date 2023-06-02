@@ -7,8 +7,6 @@ public class ItemHandle : ZephyrUnit {
 
     public  string      itemName;
     public  string      description;
-    public  int         itemQuantity = 1;
-    public  float       weight = 1;
     public  Sprite      icon;
 
     public  GameObject  visuals;
@@ -37,13 +35,8 @@ public class ItemHandle : ZephyrUnit {
             SetVisuals ( false );
         }
 
-        EQBase  eqb;
-        if ( polarity == ItemPolarity.Equipment && TryGetComponent ( out eqb ) ) {
-            eqb.MainInit ( host );
-        }
-
         Thunder thd;
-        if ( polarity == ItemPolarity.Weapon && TryGetComponent( out thd ) ) {
+        if ( TryGetComponent( out thd ) ) {
             thd.MainInit ( host );
         }
 
