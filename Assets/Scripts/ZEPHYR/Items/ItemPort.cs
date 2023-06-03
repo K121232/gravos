@@ -1,5 +1,4 @@
 using UnityEngine;
-using System;
 
 public class ItemPort : ZephyrUnit {
     [Header("Item Port Base")]
@@ -36,15 +35,19 @@ public class ItemPort : ZephyrUnit {
 
     public  ItemHandle  GetItem () {
         if ( mirror == null ) return null;
-        return ( ItemHandle ) mirror;
+        return mirror as ItemHandle;
     }
 
     public void Swap ( ItemPort other ) {
         if ( Compatible ( other ) ) {
             ZephyrUnit  h1 = mirror, h2 = other.mirror;
 
-            h1.Autobreak ();
-            h2.Autobreak ();
+            if ( h1 != null ) {
+                h1.Autobreak ();
+            }
+            if ( h2 != null ) {
+                h2.Autobreak ();
+            }
 
             Autobind ( h2 );
             other.Autobind ( h1 );

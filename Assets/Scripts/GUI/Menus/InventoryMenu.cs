@@ -99,11 +99,8 @@ public class InventoryMenu : MenuCore {
     }
     
     // CALLBACKS 
-
     public void DecisionCallback ( int outcome ) {
         if ( contextId == -1 ) return;
-        // Depends on what kind of decision was called
-        // 0 is for discard
         switch ( decisionType ) {
             case 0:
                 DiscardCallback ( outcome );
@@ -123,7 +120,6 @@ public class InventoryMenu : MenuCore {
     public void SwapCallback ( ItemPort other, int cid ) {
         if ( other != null && swapContextId != -1 ) {
             Debug.Log ( swapContextId + " " + other.name );
-
         }
         contextId = -1;
     }

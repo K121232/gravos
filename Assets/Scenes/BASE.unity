@@ -28425,6 +28425,18 @@ PrefabInstance:
       propertyPath: speedlines
       value: 
       objectReference: {fileID: 256984552}
+    - target: {fileID: 954266159, guid: 319d950173e416b47ad24e3a5cac5dce, type: 3}
+      propertyPath: Kd
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 954266159, guid: 319d950173e416b47ad24e3a5cac5dce, type: 3}
+      propertyPath: Ki
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 954266159, guid: 319d950173e416b47ad24e3a5cac5dce, type: 3}
+      propertyPath: Kp
+      value: 7.5
+      objectReference: {fileID: 0}
     - target: {fileID: 954266160, guid: 319d950173e416b47ad24e3a5cac5dce, type: 3}
       propertyPath: ntf
       value: 

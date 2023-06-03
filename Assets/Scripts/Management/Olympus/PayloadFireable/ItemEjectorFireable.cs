@@ -15,7 +15,7 @@ public class ItemEjectorFireable : PayloadFireable {
         if ( lastItem == -1 || ports [ lastItem ].GetItem () == null ) return;
         base.Fire ();
         if ( transfer != null ) {
-            ports [ lastItem ].GetItem ().Autobind ( transfer.GetComponent<ItemPort> () );
+            ports [ lastItem ].Swap ( transfer.GetComponent<ItemPort> () );
             lastItem = -1;
         }
     }

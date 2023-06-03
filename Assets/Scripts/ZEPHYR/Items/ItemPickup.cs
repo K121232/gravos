@@ -29,7 +29,6 @@ public class ItemPickup : MonoBehaviour {
                     canPickup = true;
                     deltaI = i;
                     break;
-                    
                 }
             }
         }
@@ -45,10 +44,10 @@ public class ItemPickup : MonoBehaviour {
     public bool AddItem ( ItemPort alpha ) {
         for ( int i = 0; i < ejector.ports.Length; i++ ) {
             if ( ejector.ports [ i ].GetItem () == null ) {
-                alpha.Autobind ( ejector.ports [ i ] );
+                alpha.Swap ( ejector.ports [ i ] );
                 return true;
             }
-        }
+        } 
         return false;
     }
 }
