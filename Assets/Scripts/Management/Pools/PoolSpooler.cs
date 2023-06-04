@@ -15,6 +15,9 @@ public class PoolSpooler : MonoBehaviour {
 
     public virtual void Start() {
         pool = new List<GameObject>( expected );
+        if ( generator == null ) {
+            generator = transform.GetChild ( 0 ).gameObject;
+        }
         for ( int i = 0; i < expected; i++ ) {
             GameObject delta = Instantiate( generator );
             ItemOnStart ( delta );

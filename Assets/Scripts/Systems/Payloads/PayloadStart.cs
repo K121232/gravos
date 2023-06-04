@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class PayloadStart : PayloadCore {
     private void OnEnable () {
-        if ( instructions != null) {
+        if ( instructions != null ) {
             Deploy ( instructions );
         }
     }

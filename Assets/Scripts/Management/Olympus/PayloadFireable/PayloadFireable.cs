@@ -7,25 +7,25 @@ public class PayloadFireable : CoreFireable {
     public override void Fire () {
         transfer = null;
         if ( controller == null ) return;
-        transfer  = payloadLoader.Request();
+        transfer = payloadLoader.Request ();
         if ( transfer == null ) return;
         if ( inheritLayer ) {
             transfer.layer = gameObject.layer;
         }
 
-        transfer.transform.SetPositionAndRotation ( 
-            transform.position + transform.up * minRangeOffset, 
-            transform.rotation 
-            );
-
-        transfer.GetComponent<PayloadStart> ().Deploy (
-            new PayloadObject ( 
-                controller.GetV (), 
-                transform.rotation * controller.aimOffset, 
-                controller.target ) 
+        transfer.transform.SetPositionAndRotation (
+            transform.position + transform.up * minRangeOffset,
+            transform.rotation
             );
 
         transfer.SetActive ( true );
+
+        transfer.GetComponent<PayloadStart> ().Deploy (
+            new PayloadObject (
+                controller.GetV (),
+                transform.rotation * controller.aimOffset,
+                controller.target )
+            );
 
         if ( trailLoader != null ) {
             GameObject instTrail    = trailLoader.Request();

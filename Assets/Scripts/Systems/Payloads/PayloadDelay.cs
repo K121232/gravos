@@ -1,4 +1,3 @@
-using Mono.Cecil.Cil;
 using UnityEngine;
 
 public class PayloadDelay : PayloadCore {
@@ -6,18 +5,12 @@ public class PayloadDelay : PayloadCore {
     private float   delta = -1;
 
     public override void Deploy ( PayloadObject _instructions ) {
-        delta = delay;
-        enabled = true;
         base.Deploy ( _instructions );
-    }
-
-    public override void Store () {
-        enabled = false;
-        base.Store ();
+        delta = delay;
     }
 
     private void Update () {
-        if ( delta > 0 ) {
+        if ( deployed && delta > 0 ) {
             delta -= Time.deltaTime;
             if ( delta < 0 ) {
                 Store ();

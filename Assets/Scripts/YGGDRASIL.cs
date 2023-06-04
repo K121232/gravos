@@ -92,3 +92,7 @@ public class LineIntersection {
         return Vector2.zero; // Lines do not intersect within the given line segments
     }
 }
+
+public class DamageLink {
+    public  int     damage;
+}

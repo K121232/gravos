@@ -14,7 +14,11 @@ public class Hitgen : MonoBehaviour {
 
     public virtual void Update () {
         if (!autoline) { return; }
-        hits = Physics2D.RaycastAll ( transform.position, deltaPos - transform.position, ( deltaPos - transform.position ).magnitude, ~LayerMask.GetMask ( LayerMask.LayerToName ( gameObject.layer ) )  );
+        hits = Physics2D.RaycastAll ( 
+            transform.position, 
+            deltaPos - transform.position, ( deltaPos - transform.position ).magnitude, 
+            ~LayerMask.GetMask ( LayerMask.LayerToName ( gameObject.layer ) ) 
+        );
         for ( int i = 0; i < hits.Length; i++ ) {
             if ( hits [ i ].transform.TryGetComponent( out delta )  ) {
                 delta.Superwrapper ( GetComponent<Collider2D>() );

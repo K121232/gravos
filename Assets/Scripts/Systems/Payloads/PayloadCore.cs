@@ -1,9 +1,9 @@
 using UnityEngine;
 
 public class PayloadCore : MonoBehaviour {
-    public  PayloadCore     next;
-    public  bool            deployed;
-    protected PayloadObject   instructions;
+    public  PayloadCore     next            = null;
+    public  bool            deployed        = false;
+    protected PayloadObject   instructions  = null;
 
     public virtual void Deploy ( PayloadObject _instructions ) {
         instructions = _instructions;
@@ -15,9 +15,6 @@ public class PayloadCore : MonoBehaviour {
         if ( next != null && instructions != null ) {
             next.Deploy ( instructions );
         }
-    }
-
-    private void OnDisable () {
-        Store ();
+        instructions = null;
     }
 }
