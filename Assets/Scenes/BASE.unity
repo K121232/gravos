@@ -13767,7 +13767,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &724142528
 Transform:
   m_ObjectHideFlags: 0
@@ -17976,6 +17976,18 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6457654997995527067, guid: b328290adfe70fe43942b18be2225cdf, type: 3}
+      propertyPath: Kd
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6457654997995527067, guid: b328290adfe70fe43942b18be2225cdf, type: 3}
+      propertyPath: Ki
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 6457654997995527067, guid: b328290adfe70fe43942b18be2225cdf, type: 3}
+      propertyPath: Kp
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 6457654997995527069, guid: b328290adfe70fe43942b18be2225cdf, type: 3}
       propertyPath: m_Name
       value: Turret_01_PDC
@@ -20653,6 +20665,18 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6457654997995527067, guid: b328290adfe70fe43942b18be2225cdf, type: 3}
+      propertyPath: Kd
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6457654997995527067, guid: b328290adfe70fe43942b18be2225cdf, type: 3}
+      propertyPath: Ki
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 6457654997995527067, guid: b328290adfe70fe43942b18be2225cdf, type: 3}
+      propertyPath: Kp
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 6457654997995527069, guid: b328290adfe70fe43942b18be2225cdf, type: 3}
       propertyPath: m_Name
       value: Turret_01_PDC
@@ -21217,6 +21241,18 @@ PrefabInstance:
     - target: {fileID: 6457654997995527044, guid: b328290adfe70fe43942b18be2225cdf, type: 3}
       propertyPath: m_Enabled
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6457654997995527067, guid: b328290adfe70fe43942b18be2225cdf, type: 3}
+      propertyPath: Kd
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6457654997995527067, guid: b328290adfe70fe43942b18be2225cdf, type: 3}
+      propertyPath: Ki
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 6457654997995527067, guid: b328290adfe70fe43942b18be2225cdf, type: 3}
+      propertyPath: Kp
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 6457654997995527069, guid: b328290adfe70fe43942b18be2225cdf, type: 3}
       propertyPath: m_Name
@@ -24136,7 +24172,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1775269985}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6.08, y: -10, z: 0}
+  m_LocalPosition: {x: -19.92, y: -10, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -28070,6 +28106,10 @@ PrefabInstance:
       propertyPath: explosionEffect
       value: 
       objectReference: {fileID: 1804143458}
+    - target: {fileID: 1131627651920648271, guid: 76e338a116c6caf428791c421ad02ed8, type: 3}
+      propertyPath: explosionEffect
+      value: 
+      objectReference: {fileID: 1804143458}
     - target: {fileID: 4119232206190064721, guid: 76e338a116c6caf428791c421ad02ed8, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -28364,6 +28404,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 724142528}
     m_Modifications:
+    - target: {fileID: 227007130, guid: 0301b2b219d3fb843968016df20b3297, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 227007131, guid: 0301b2b219d3fb843968016df20b3297, type: 3}
       propertyPath: Kd
       value: 0.1
@@ -28436,6 +28480,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: fab7ae8d5e7e066498d8985e17958c02, type: 2}
+    - target: {fileID: 1907477389022026878, guid: 0301b2b219d3fb843968016df20b3297, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1907477389837354450, guid: 0301b2b219d3fb843968016df20b3297, type: 3}
       propertyPath: m_Name
       value: Kotaka

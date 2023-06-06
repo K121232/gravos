@@ -13,6 +13,7 @@ public class PayloadExplosion : PayloadCore {
 
         Hitbox dhb;
         for ( int i = 0; i < delta.Length; i++ ) {
+            if ( delta [ i ].isTrigger ) continue;
             if ( delta [ i ].TryGetComponent( out dhb ) ) {
                 dhb.DeltaF ( damage );
             }

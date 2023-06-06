@@ -5,8 +5,11 @@ public class PayloadCore : MonoBehaviour {
     public  bool            deployed        = false;
     protected PayloadObject   instructions  = null;
 
-    public virtual void Deploy ( PayloadObject _instructions ) {
-        instructions = _instructions;
+    public virtual void Deploy ( PayloadObject _instructions = null ) {
+        if ( instructions == null ) {
+            instructions = _instructions;
+        }
+        //Debug.Log ( "TRIGGERED CORE, STATUS: " + gameObject.activeInHierarchy );
         deployed = true;
     }
 

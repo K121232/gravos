@@ -130,7 +130,6 @@ GameObject:
   - component: {fileID: 6142562696120482798}
   - component: {fileID: 4905687103882860865}
   - component: {fileID: 6982749129390570746}
-  - component: {fileID: 3665160360693004734}
   m_Layer: 8
   m_Name: Turret_00_Base
   m_TagString: Untagged
@@ -170,8 +169,6 @@ MonoBehaviour:
   polarity: 1
   itemName: Weapon
   description: Basic weapon
-  itemQuantity: 1
-  weight: 1
   icon: {fileID: 0}
   visuals: {fileID: 6982749128706068847}
 --- !u!114 &6961634802070197393
@@ -187,6 +184,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
+  targetRGB: {fileID: 0}
+  rgb: {fileID: 0}
   useFCM: 1
   useAIM: 1
   useTFC: 1
@@ -236,16 +235,3 @@ MonoBehaviour:
   Kp: 20
   Ki: 2
   Kd: 0.5
---- !u!114 &3665160360693004734
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6982749129390570748}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8c39aced86fc190488dfc32b25015c87, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  coneMaxDeviation: 2.5
