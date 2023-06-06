@@ -89,12 +89,6 @@ public class TeflonMovement : MonoBehaviour {
 
         Vector2 deltaProcessed = Cutter( transform.up * delta * acc * Time.fixedDeltaTime, rgb.velocity, mxv );
 
-        //deltaProcessed = Vector3.Project( deltaProcessed, transform.up );
-        //Debug.Log( rgb.velocity.magnitude.ToString( "0.00" ) );
-        //Debug.Log( Vector2.Dot( deltaProcessed.normalized, transform.up ).ToString("0.00") );
-
-        //Debug.Log ( rgb.velocity.magnitude.ToString ("0.00") + " " + deltaProcessed.magnitude.ToString ( "0.00" ) );
-
         if ( hasParticles && deltaProcessed.magnitude > 1 ) {
             ps.Emit ( (int) ( particleSTR * deltaProcessed.magnitude ) );
         }

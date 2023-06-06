@@ -16,33 +16,30 @@ public class TeflonPMove : TeflonMovement {
     public  Vector2     innerHeading;
     public  float       trimSTR = 1;
 
-    public  Vector2     DEBUGSAVE;
-
     public override void Update () {
         if ( flybywire ) {
-            Vector2 targetDir = cam.ScreenToWorldPoint ( Input.mousePosition ) - transform.position;
             if ( Input.GetAxis ( "Vertical" ) >= 0 ) {
+                innerHeading = cam.ScreenToWorldPoint ( Input.mousePosition ) - transform.position;
                 delta += Mathf.Max ( Input.GetAxis ( "Vertical" ), 0 );
             } else {
                 if ( rgb.velocity.magnitude > 2.5f ) {
-                    targetDir = -rgb.velocity;
+                    innerHeading = -rgb.velocity;
                     delta += Mathf.Max ( Vector2.Dot ( -rgb.velocity.normalized, transform.up ), 0 );
                 }
             }
-            deltaAngle += FilterAngle ( sod.NextFrame ( 0, Vector2.SignedAngle ( targetDir, transform.up ), Time.deltaTime ) ) / Time.fixedDeltaTime;
         } else {
             Vector2 deltaI = new Vector2 ( Input.GetAxis ("Horizontal"), Input.GetAxis("Vertical") );
-            Debug.DrawLine ( DEBUGSAVE * 10, deltaI * 10, Color.green, 1000 );
-            DEBUGSAVE = deltaI;
-            if ( deltaI.magnitude > 0.5f ) {
+            if ( deltaI.magnitude > 0.25f ) {
                 innerHeading = deltaI.normalized;
             }
-            innerHeading = Quaternion.Euler ( 0, 0, Input.GetAxis ( "TrimRotation" ) * trimSTR ) * innerHeading;
-
-            deltaAngle += FilterAngle ( sod.NextFrame ( 0, Vector2.SignedAngle ( innerHeading, transform.up ), Time.deltaTime ) ) / Time.fixedDeltaTime;
-
             delta += Mathf.Max ( Vector2.Dot ( transform.up, deltaI ), 0 );
         }
+
+        deltaAngle += FilterAngle ( sod.NextFrame ( 0, 
+            Vector2.SignedAngle ( Quaternion.Euler ( 0, 0, Input.GetAxis ( "TrimRotation" ) * trimSTR ) * innerHeading, transform.up ), 
+            Time.fixedDeltaTime ) 
+            ) / Time.fixedDeltaTime;
+
         base.Update ();
     }
 
