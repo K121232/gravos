@@ -7,8 +7,6 @@ public class PayloadStart : PayloadCore {
     public void EarlyDetonate () {
         if ( staleInstructions != null && earlyDetonationTarget != null ) {
             earlyDetonationTarget.Deploy ( staleInstructions );
-        } else {
-            Debug.Log ( "SOMETHING IS MISSING" );
         }
         staleInstructions = null;
     }

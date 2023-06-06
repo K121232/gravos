@@ -18,7 +18,11 @@ public class PayloadExplosion : PayloadCore {
                 dhb.DeltaF ( damage );
             }
             if ( delta [ i ].attachedRigidbody != null ) {
-                delta [ i ].attachedRigidbody.AddForce ( ( delta [ i ].transform.position - transform.position ).normalized * ekSTR );
+                Vector3 dcp = delta [ i ].ClosestPoint ( transform.position );
+                delta [ i ].attachedRigidbody.AddForceAtPosition (
+                    ( delta [ i ].transform.position - transform.position ).normalized * ekSTR * ( transform.position - dcp ).magnitude / range,
+                    dcp
+                );
             }
         }
 
