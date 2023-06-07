@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 687800559616794390}
   - component: {fileID: 687800559616794389}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Main hull
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -105,7 +105,7 @@ GameObject:
   - component: {fileID: -1154642446060059609}
   - component: {fileID: 5626507015616054694}
   - component: {fileID: 5835145820545871652}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Rocket
   m_TagString: Missile
   m_Icon: {fileID: 0}
@@ -188,6 +188,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damageBase: 2
+  autoline: 1
 --- !u!114 &687800561341309169
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -200,7 +201,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 838565ead8fd1af4b88abe7cbdf64ffc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lifespan: -1
+  lifespan: 30
 --- !u!114 &6938031529853935775
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -297,9 +298,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 605e62bee47d4bd429eec15f4c6dddc0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  f: 5
-  z: 1
-  r: 0
+  Kp: 0.8
+  Ki: 0.2
+  Kd: 0.1
 --- !u!114 &5626507015616054694
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -314,6 +315,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   next: {fileID: 5835145820545871652}
   deployed: 0
+  earlyDetonationTarget: {fileID: 0}
 --- !u!114 &5835145820545871652
 MonoBehaviour:
   m_ObjectHideFlags: 0

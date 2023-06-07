@@ -8,7 +8,7 @@ public class Konig : MonoBehaviour {
     private float integral;
     private float previousError;
 
-    // MAJOR WARNINGS : MUST BE UPDATED IN LOCKSTEP WITH THE TARGET, OR IT LOSES SYNC
+    // MAJOR WARNING : MUST BE UPDATED IN LOCKSTEP WITH THE TARGET, OR IT LOSES SYNC
 
     public float NextFrame ( float target, float current, float deltaTime ) {
         if ( deltaTime == 0 ) { return 0; }
