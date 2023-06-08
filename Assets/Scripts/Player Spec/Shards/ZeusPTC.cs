@@ -18,9 +18,8 @@ public class ZeusPTC : Zeus {
     }
 
     public void AdditionalEquipmentTargetOverride () {
-        for ( int i = 0; i < turrets.Length; i++ ) {
-            if ( turrets [ i ] != null ) turrets [ i ].SetTarget ( carrot );
-        }
+        RefreshTurretList();
+        ModifyTarget ( carrot );
     }
 
     public void RefreshTurretList () {
@@ -31,6 +30,7 @@ public class ZeusPTC : Zeus {
         }
         turrets = new Thunder [ weaponPorts.Length ];
         for ( int i = 0; i < weaponPorts.Length; i++ ) {
+            weaponPorts [ i ].Autoload ();
             if ( weaponPorts [ i ].GetItem () != null ) {
                 turrets [ i ] = weaponPorts [ i ].GetItem ().GetComponent<Thunder> ();
             }

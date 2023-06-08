@@ -27,7 +27,9 @@ public class ZephyrUnit : MonoBehaviour {
         if ( mirror == null ) {
             AutoloadCore ();
         }
-        Autobind ( mirror );
+        if ( mirror == null || ( mirror != null && mirror.mirror != this ) ) {
+            Autobind ( mirror );
+        }
     }
 
     protected virtual void Start () {
