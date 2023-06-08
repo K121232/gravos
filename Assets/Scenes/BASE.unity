@@ -10763,9 +10763,10 @@ MonoBehaviour:
   target: {fileID: 954266155}
   trackingRigidbody: {fileID: 0}
   offset: {x: 0, y: 0, z: -10}
-  velocityFactor: 0.2
-  strength: 0.9
-  rotationStrength: 0
+  velocitySTR: 0
+  strength: 0.75
+  rotationLerpSTR: 0
+  translationLerpSTR: 5
   scaledTime: 0
 --- !u!114 &519420034
 MonoBehaviour:
@@ -18274,9 +18275,10 @@ MonoBehaviour:
   target: {fileID: 954266155}
   trackingRigidbody: {fileID: 954266147}
   offset: {x: 0, y: 0, z: -10}
-  velocityFactor: 0
+  velocitySTR: 0
   strength: 1
-  rotationStrength: 0
+  rotationLerpSTR: 0
+  translationLerpSTR: 100
   scaledTime: 0
 --- !u!1 &1121531663
 GameObject:

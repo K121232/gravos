@@ -5,10 +5,11 @@ public class SmoothTracker : MonoBehaviour {
     public  Rigidbody2D trackingRigidbody;
 
     public  Vector3     offset;
-    public  float       velocityFactor;
+    public  float       velocitySTR;
 
     public  float       strength;
-    public  float       rotationStrength;
+    public  float       rotationLerpSTR;
+    public  float       translationLerpSTR;
 
     private Vector3     delta;
     public  bool        scaledTime = false;
@@ -19,16 +20,17 @@ public class SmoothTracker : MonoBehaviour {
         }
     }
 
-    public virtual void LateUpdate() {
+    public virtual void LateUpdate () {
         if ( trackingRigidbody != null ) {
-            delta = ( Vector3 )target.position + ( Vector3 )trackingRigidbody.velocity * velocityFactor;
+            delta = target.position + ( Vector3 ) trackingRigidbody.velocity * velocitySTR;
         } else {
             delta = target.position;
         }
 
         delta += offset;
 
-        transform.position = Vector3.Lerp( transform.position - offset, delta, strength ) + offset;
-        transform.rotation = Quaternion.Lerp ( transform.rotation, target.rotation, rotationStrength * ( scaledTime ? Time.deltaTime : Time.unscaledDeltaTime ) );
+        float timescalefactor = scaledTime ? Time.deltaTime : Time.unscaledDeltaTime ;
+        transform.position = Vector3.Lerp ( transform.position - offset, delta, translationLerpSTR * timescalefactor ) + offset;
+        transform.rotation = Quaternion.Lerp ( transform.rotation, target.rotation, rotationLerpSTR * timescalefactor );
     }
 }

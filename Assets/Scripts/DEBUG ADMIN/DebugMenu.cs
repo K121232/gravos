@@ -47,7 +47,7 @@ public class DebugMenu : MenuCore {
         base.Start ();
         sliders [ 0 ].SetValueWithoutNotify ( playerShip.mxv );
         sliders [ 1 ].SetValueWithoutNotify ( playerShip.acc );
-        sliders [ 4 ].SetValueWithoutNotify ( camTether.rotationStrength );
+        sliders [ 4 ].SetValueWithoutNotify ( camTether.rotationLerpSTR );
 
         FBW.SyncFromPrefs ();
         MAS.SyncFromPrefs ();
@@ -83,7 +83,7 @@ public class DebugMenu : MenuCore {
     public void OnSaveMenu () {
         playerShip.mxv = sliders [ 0 ].value;
         playerShip.acc = sliders [ 1 ].value;
-        camTether.rotationStrength = sliders [ 4 ].value;
+        camTether.rotationLerpSTR = sliders [ 4 ].value;
 
         playerBridge.invulnerability = INV.GetStatus ();
         playerShip.flybywire = FBW.GetStatus ();
