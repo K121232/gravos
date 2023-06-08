@@ -8,7 +8,7 @@ public class Thunder : MonoBehaviour {
 
     private ItemHandle  handle;
     private FCM         fcm;
-    private AIM         aim;
+    private AIMREAL         aim;
     private TFC         tfc;
 
     public  bool        useFCM = true;
@@ -36,7 +36,7 @@ public class Thunder : MonoBehaviour {
             fcm = null;
         }
         if ( useAIM ) {
-            aim = GetComponent<AIM> ();
+            aim = GetComponent<AIMREAL> ();
         } else {
             aim = null;
         }

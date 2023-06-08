@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 5378454423583095679}
   - component: {fileID: 5378454423583095619}
   - component: {fileID: 5378454423583095677}
-  - component: {fileID: 5378454423583095678}
   - component: {fileID: 5378454423583095676}
+  - component: {fileID: 5262122397993136474}
   m_Layer: 0
   m_Name: EQBase
   m_TagString: Untagged
@@ -51,8 +51,6 @@ MonoBehaviour:
   polarity: 2
   itemName: 
   description: Equipment
-  itemQuantity: 1
-  weight: 1
   icon: {fileID: 0}
   visuals: {fileID: 0}
 --- !u!114 &5378454423583095677
@@ -71,22 +69,9 @@ MonoBehaviour:
   targetRGB: {fileID: 0}
   rgb: {fileID: 0}
   useFCM: 1
-  useAIM: 0
-  useTFC: 1
+  useAIM: 1
+  useTFC: 0
   aimOffset: {x: 0, y: 1}
---- !u!114 &5378454423583095678
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5378454423583095672}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: df61fbae2380b694bafd00090829c624, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  control: 0
 --- !u!114 &5378454423583095676
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -105,3 +90,15 @@ MonoBehaviour:
   cellSelection: -1
   drainRate: 1
   drainInitial: 0
+--- !u!114 &5262122397993136474
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5378454423583095672}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e73d324118603984eb18e94dc66f9188, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

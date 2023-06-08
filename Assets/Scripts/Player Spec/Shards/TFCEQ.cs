@@ -1,5 +1,7 @@
+using System;
 using UnityEngine;
 
+[Obsolete]
 public class TFCEQ : TFC {
     public enum InteractionSlot { MAIN, SEC };
     public      InteractionSlot control;

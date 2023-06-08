@@ -50,7 +50,7 @@ MonoBehaviour:
   bungholio: 1
   hullLink: {fileID: 9025192534602348913}
   batteryLink: {fileID: 9025192533876655852}
-  specLink: {fileID: 0}
+  specLink: {fileID: 9025192534888195798}
 --- !u!1 &116554993
 GameObject:
   m_ObjectHideFlags: 0
@@ -101,7 +101,7 @@ MonoBehaviour:
   bungholio: 1
   hullLink: {fileID: 9025192534602348913}
   batteryLink: {fileID: 9025192533876655852}
-  specLink: {fileID: 0}
+  specLink: {fileID: 9025192534888195798}
 --- !u!1 &339368874
 GameObject:
   m_ObjectHideFlags: 0
@@ -1344,6 +1344,7 @@ MonoBehaviour:
   weaponPorts:
   - {fileID: 339368876}
   carrot: {fileID: 1193471324}
+  firingAxis: Fire1
 --- !u!4 &9025192533782552789 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5217752662039984883, guid: d60a5bfe7b0116d4abc2d58e3fb1f9da, type: 3}
@@ -1489,6 +1490,53 @@ MonoBehaviour:
   useAIM: 1
   useTFC: 1
   aimOffset: {x: 0, y: 1}
+--- !u!1 &9025192534888195793 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5217752663078518007, guid: d60a5bfe7b0116d4abc2d58e3fb1f9da, type: 3}
+  m_PrefabInstance: {fileID: 3843473376117004838}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &568117125
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9025192534888195793}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8e8e55ed22001745ba943440e9ec8e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  port: {fileID: 0}
+  turrets: []
+  launchIsDetectable: 0
+  firingLock: 0
+  trackedTarget: {fileID: 0}
+  weaponPorts:
+  - {fileID: 82192820}
+  carrot: {fileID: 1193471324}
+  firingAxis: Fire3
+--- !u!114 &568117126
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9025192534888195793}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8e8e55ed22001745ba943440e9ec8e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  port: {fileID: 0}
+  turrets: []
+  launchIsDetectable: 0
+  firingLock: 0
+  trackedTarget: {fileID: 0}
+  weaponPorts:
+  - {fileID: 116554995}
+  carrot: {fileID: 1193471324}
+  firingAxis: Fire2
 --- !u!4 &9025192534888195798 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5217752663078518000, guid: d60a5bfe7b0116d4abc2d58e3fb1f9da, type: 3}

@@ -8,6 +8,8 @@ public class ZeusPTC : Zeus {
 
     private bool            transition, delta;
 
+    public string           firingAxis = "Fire1";
+
     private new void Start () {
         for ( int i = 0; i < weaponPorts.Length; i++ ) {
             weaponPorts [ i ].Autoload ();
@@ -31,7 +33,7 @@ public class ZeusPTC : Zeus {
     }
 
     void Update () {
-        delta = Input.GetAxis ( "Fire1" ) > 0;
+        delta = Input.GetAxis ( firingAxis ) > 0;
         if ( firingLock ) {
             delta = false;
         }

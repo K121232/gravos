@@ -1,32 +1,20 @@
 using UnityEngine;
-using UnityEngine.Rendering;
 
-public class AIM : MonoBehaviour {
-    protected   Thunder     controller;
+public class AIMREAL : AIM {
     protected   Rigidbody2D targetRGB;
 
     public  enum        TargetingMethod { SIMPLE, PREDICT };
     public TargetingMethod  targetingMethod = TargetingMethod.SIMPLE;
     [Tooltip("Multiparameter : \n" +
         " SIMPLE:\t strength of velocity prediction \n" +
-        " PREDICT:\t velocity of the projectile")]
+        " PREDICT:\t velocity of the projectile ")]
     public  float           multiParam1 = 1;
 
     public      float       traversalSpeed;
     protected   Konig       konig;
 
-    protected float       pastDeviation;
-
-    public void SetController ( Thunder thunder ) {
-        controller = thunder;
-    }
-
     public void Start () {
         konig = GetComponent<Konig> ();
-    }
-
-    public void ResetPD () {
-        pastDeviation = Mathf.Infinity;
     }
 
     public Vector2 GetTGVSimple () {
@@ -77,10 +65,6 @@ public class AIM : MonoBehaviour {
 
         Debug.DrawLine ( transform.position, transform.position + transform.up * 30, Color.green );
         Debug.DrawLine ( transform.position, transform.position + tgv, Color.red );
-    }
-
-    public  float   GetLastDeviation () {
-        return pastDeviation;
     }
 
 }
