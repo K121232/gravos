@@ -513,9 +513,12 @@ MonoBehaviour:
     "
     They can take a beating, but once down take a while to recharge. "
 
+    " Attachable
+    shields can be used, but will get destroyed after taking enough damage. "
 
-    ( 5
-    HP, 4 SP )'
+
+    (
+    5 HP, 4 SP )'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 18aab6357a3c1754fa91abe628c4be69, type: 2}
   m_sharedMaterial: {fileID: 2848985055427872824, guid: 18aab6357a3c1754fa91abe628c4be69, type: 2}
@@ -8654,11 +8657,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Excerpt from " E-warfare for dummmies 101 ":
-
-
-    This part has been
-    disabled for now, disregard.'
+  m_text: "Excerpt from \" E-warfare for dummmies 101 \" :\n\n\" Ships use radars
+    and other sensors to survey their surroundings. \" \n\" Radars have limited range,
+    and a ship won't shoot something it does not detect. \""
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 18aab6357a3c1754fa91abe628c4be69, type: 2}
   m_sharedMaterial: {fileID: 2848985055427872824, guid: 18aab6357a3c1754fa91abe628c4be69, type: 2}
@@ -11772,11 +11773,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Excerpt from \" 2 Fingers Pete's Explosive Handling Cookbook \" :\n\n\"
-    Red points can be draged and slammed into something else to do damage \"\n\"
-    The enemy craft has a high powered rail gun, with low traversal speed \"\n\"
-    Why are you still reading this \"\n\nRAILGUN - 5 DMG \nROCKET - 2 DMG\nBULLET
-    - 1 DMG"
+  m_text: "Excerpt from \" 7 Fingers Pete's Explosives Cookbook \" :\n\n\" Munitions
+    come standard, but it's often useful to modify them to suit your uses. \"\n\"
+    Here's a few standard munition characteristics : \"\n\nRAILGUN - 5 DMG \nROCKET
+    - 2 DMG\nBULLET - 1 DMG"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 18aab6357a3c1754fa91abe628c4be69, type: 2}
   m_sharedMaterial: {fileID: 2848985055427872824, guid: 18aab6357a3c1754fa91abe628c4be69, type: 2}
@@ -20385,17 +20385,21 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Excerpt from " Control panels and their usage, 69th edition "  :
+  m_text: 'Excerpt from " Control panels and their usage "  :
 
+
+    " Use Mouse 1
+    or I to fire your weapons. "
+
+
+    " Mouse 2 or K - primary equipment slot. "
 
     "
-    M1,  and the I key are linked to your guns "
+    Spacebar - secondary equipment slot. "
 
-    " K, Space are linked to your
-    equipment "
 
-    " From left to right, bars are for HP, SHIELD and TIMESTOP energy
-    "'
+    " From left to right, bars are for
+    HP, SHIELD and the energy bars for your A and B resources . "'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 18aab6357a3c1754fa91abe628c4be69, type: 2}
   m_sharedMaterial: {fileID: 2848985055427872824, guid: 18aab6357a3c1754fa91abe628c4be69, type: 2}
@@ -25807,7 +25811,12 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "MISSION OBJECTIVES :\n\nI dont fucking know. \nUr mum's hot, Jessie\n"
+  m_text: 'MISSION OBJECTIVES :
+
+
+    DONT DIE
+
+'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 18aab6357a3c1754fa91abe628c4be69, type: 2}
   m_sharedMaterial: {fileID: 2848985055427872824, guid: 18aab6357a3c1754fa91abe628c4be69, type: 2}
@@ -26199,10 +26208,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Excerpt from \"Beyond the 4th wall\" : \n\n\" To change ur ship's handling
-    characteristics, press M \"\n\" To open the telemetry menu, press X \"\n\" To
-    open the reset menu, press N. Disregard the message \"\n\" To open the inventory
-    menu, press P \""
+  m_text: "Excerpt from \"Beyond the 4th wall\" : \n\n\" To open the telemetry menu,
+    press X \"\n\" To open the reset menu, press N \"\n\" To open the inventory menu,
+    press P \""
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 18aab6357a3c1754fa91abe628c4be69, type: 2}
   m_sharedMaterial: {fileID: 2848985055427872824, guid: 18aab6357a3c1754fa91abe628c4be69, type: 2}
