@@ -17,6 +17,12 @@ public class ZeusPTC : Zeus {
         RefreshTurretList ();
     }
 
+    public void AdditionalEquipmentTargetOverride () {
+        for ( int i = 0; i < turrets.Length; i++ ) {
+            if ( turrets [ i ] != null ) turrets [ i ].SetTarget ( carrot );
+        }
+    }
+
     public void RefreshTurretList () {
         if ( turrets.Length != 0 && weaponPorts.Length == 0 ) { return; }
 

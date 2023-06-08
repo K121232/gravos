@@ -8,7 +8,7 @@ public class Thunder : MonoBehaviour {
 
     private ItemHandle  handle;
     private FCM         fcm;
-    private AIMREAL         aim;
+    private AIM         aim;
     private TFC         tfc;
 
     public  bool        useFCM = true;
@@ -36,7 +36,7 @@ public class Thunder : MonoBehaviour {
             fcm = null;
         }
         if ( useAIM ) {
-            aim = GetComponent<AIMREAL> ();
+            aim = GetComponent<AIM> ();
         } else {
             aim = null;
         }
@@ -133,8 +133,8 @@ public class Thunder : MonoBehaviour {
     }
 
     public float GetAIMTTT () {
-        if ( aim != null && aim.traversalSpeed != 0 ) {
-            return Mathf.Abs ( aim.GetLastDeviation () ) / aim.traversalSpeed;
+        if ( aim != null && aim is AIMREAL &&  ( aim as AIMREAL ).traversalSpeed != 0 ) {
+            return Mathf.Abs ( aim.GetLastDeviation () ) / ( aim as AIMREAL ).traversalSpeed;
         }
         return 0;
     }
