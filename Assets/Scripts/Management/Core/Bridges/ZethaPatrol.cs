@@ -14,9 +14,11 @@ public class ZethaPatrol : Zetha {
     public void PhaseChange ( bool _chasing, Transform  _target = null ) {
         chasing = _chasing;
         if ( chasing ) {
+            /*
             if ( chasePatternTM.GetType () == typeof ( LRCTM ) ) {
                 ( (LRCTM) chasePatternTM ).LoadCenter ( _target );
             }
+            */
             if ( chasePatternTM.GetType() == typeof ( HSTM ) ) {
                 ( (HSTM) chasePatternTM ).Bind ( _target );
             }

@@ -1,90 +1,66 @@
 using UnityEngine;
 
 public class LRCTM : TM {
-    public  Vector2[]     points;
-    public  float           resolution;
+    public  Vector2[]     positionPoints;
+    public  Vector2[]     controlPoints;
 
-    public  float           scanDistance;
+    public  float           stepsize;
 
-    private int             major = 0;
-    private float           minor = 0;
+    public  float           searchRange;
 
     public  float           STRTargetForwardSeek;       // Pathfind velocity offset
     public  float           STRTargetForwardCenterCounterseek;      // Targeting velocity offset
     public  float           STRApproachVCounter;      // Targeting velocity offset
 
-    public  Transform       center;
-    private Rigidbody2D     centerRGB;
-    private Vector2         offset = new( 0, 0 );
+    public  float           currentPos;
 
-    public Vector2 Gitmas ( int a2, float a1 ) {
-        float ma = 1 - a1;
-        return offset + points [ a2 ] * ma * ma * ma
+    public  bool            bidirectional;
+
+    public Vector2 PathGeneratorFunction ( float alpha ) {
+        int a1      = Mathf.FloorToInt ( alpha );
+        float a2    = alpha - a1;
+        int b1 = ( a1 + 1 ) % controlPoints.Length;
+        float ma = 1 - a2;
+        return positionPoints [ a1 ] * ma * ma * ma
                 + 3 * (
-                    ma * ma * a1 * ( points [ a2 ] + points [ a2 + 1 ] * ( ( a2 / 2 ) % 2 == 0 ? 1 : -1 ) ) +
-                    ma * a1 * a1 * ( points [ a2 + 2 ] + points [ a2 + 3 ] * ( ( a2 / 2 ) % 2 == 0 ? 1 : -1 ) )
+                    ma * ma * a2 * ( positionPoints [ a1 ] + controlPoints [ a1 ] * ( a1 % 2 == 0 ? 1 : -1 ) ) +
+                    ma * a2 * a2 * ( positionPoints [ b1 ] + controlPoints [ b1 ] * ( a1 % 2 == 0 ? 1 : -1 ) )
                 )
-                + a1 * a1 * a1 * points [ a2 + 2 ];
+                + a2 * a2 * a2 * positionPoints [ b1 ];
     }
 
     private void DrawCourse () {
-        Vector2 delta = Gitmas ( 0, 0 ), delta2;
-        if ( resolution <= 0 ) return;
-        for ( int i = 0; i < points.Length - 2; i += 2 ) {
-            for ( float j = 0; j <= 1; j += resolution ) {
-                delta2 = Gitmas ( i, j );
-                Debug.DrawLine ( delta, delta2 );
-                delta = delta2;
-            }
+        Vector2 delta = PathGeneratorFunction ( 0 ), delta2;
+        if ( stepsize <= 0 ) return;
+        for ( float i = 0; i < controlPoints.Length; i += stepsize * 100 ) {
+            delta2 = PathGeneratorFunction ( i );
+            Debug.DrawLine ( delta, delta2 );
+            delta = delta2;
         }
     }
 
-    public  void LoadCenter ( Transform a ) {
-        if ( a == null ) { center = null; centerRGB = null; return; }
-        center = a;
-        centerRGB = center.GetComponent<Rigidbody2D> ();
-    }
-
-    public override void Start () {
-        LoadCenter ( center );        
-        base.Start ();
+    protected float SafeProgress ( float alpha ) {
+        alpha += controlPoints.Length;
+        return alpha - Mathf.FloorToInt ( alpha / controlPoints.Length ) * controlPoints.Length;
     }
 
     public override void Update () {
-        if ( center != null ) offset = center.position;
-
         DrawCourse ();
 
-        float   bestScore = Mathf.Infinity;
-        Vector2 deltaA, deltaB = new Vector2 ( major, minor );
-        Vector2 target = transform.position + (Vector3)rgb.velocity * STRTargetForwardSeek;
-        if ( centerRGB != null ) target -= centerRGB.velocity * STRTargetForwardCenterCounterseek;
+        float bestScore = Mathf.Infinity;
+        float deltaScore;
 
-        Vector2 DEBUGP = Vector2.zero;
-
-        if ( scanDistance == 0 || resolution == 0 ) return;
-
-        for ( float i = -scanDistance; i < scanDistance; i += resolution ) {
-            int     md = ( major + Mathf.FloorToInt ( i + minor ) * 2 + points.Length - 2 ) % ( points.Length - 2 );
-            float   mi = minor + i - Mathf.Floor ( minor + i );
-            if ( mi < 0 ) mi += 1;
-            deltaA = Gitmas ( md, mi );
-            if ( ( target - deltaA ).sqrMagnitude < bestScore ) {
-                bestScore = ( target - deltaA ).sqrMagnitude;
-                deltaB = new Vector2 ( md, mi );
-            } 
-            if ( i != -scanDistance ) {
-                                                                Debug.DrawLine ( DEBUGP, deltaA, Color.magenta );
+        for ( float i = currentPos - ( bidirectional ? searchRange : 0 ); i < currentPos + searchRange; i += stepsize ) {
+            deltaScore = ( transform.position - (Vector3)PathGeneratorFunction ( SafeProgress ( i ) ) ).sqrMagnitude;
+            if ( deltaScore < bestScore ) {
+                bestScore = deltaScore;
+                currentPos = SafeProgress ( i );
             }
-            DEBUGP = deltaA;
         }
 
-        major = Mathf.RoundToInt ( deltaB.x );
-        minor = deltaB.y;
+        targetLink = PathGeneratorFunction ( currentPos );
 
-        targetLink = Gitmas ( major, minor ) - rgb.velocity * STRApproachVCounter;
-
-                                                                Debug.DrawLine ( transform.position, target, Color.red );
+        Debug.DrawLine ( transform.position, PathGeneratorFunction ( currentPos ) );
 
         base.Update ();
     }
