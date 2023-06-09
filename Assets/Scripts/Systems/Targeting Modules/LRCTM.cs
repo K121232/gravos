@@ -8,10 +8,6 @@ public class LRCTM : TM {
 
     public  float           searchRange;
 
-    public  float           STRTargetForwardSeek;       // Pathfind velocity offset
-    public  float           STRTargetForwardCenterCounterseek;      // Targeting velocity offset
-    public  float           STRApproachVCounter;      // Targeting velocity offset
-
     public  float           currentPos;
 
     public  bool            bidirectional;
@@ -32,7 +28,7 @@ public class LRCTM : TM {
     private void DrawCourse () {
         Vector2 delta = PathGeneratorFunction ( 0 ), delta2;
         if ( stepsize <= 0 ) return;
-        for ( float i = 0; i < controlPoints.Length; i += stepsize * 100 ) {
+        for ( float i = 0; i < controlPoints.Length; i += stepsize * 1 ) {
             delta2 = PathGeneratorFunction ( i );
             Debug.DrawLine ( delta, delta2 );
             delta = delta2;
@@ -50,17 +46,37 @@ public class LRCTM : TM {
         float bestScore = Mathf.Infinity;
         float deltaScore;
 
+        Vector2 deltaPastPoint = PathGeneratorFunction ( SafeProgress ( currentPos - ( bidirectional ? searchRange : 0 ) - stepsize ) );
+        Vector2 deltaPoint;
+
         for ( float i = currentPos - ( bidirectional ? searchRange : 0 ); i < currentPos + searchRange; i += stepsize ) {
-            deltaScore = ( transform.position - (Vector3)PathGeneratorFunction ( SafeProgress ( i ) ) ).sqrMagnitude;
+            deltaPoint = PathGeneratorFunction ( SafeProgress ( i ) );
+
+            //Debug.DrawLine ( deltaPoint, deltaPoint + ( deltaPastPoint - deltaPoint ).normalized * 50, Color.red );
+            
+            // Invert the delta and past point to make sure both the large and small angle are considered when intersecting two lines
+
+            deltaScore = Vector2.Angle ( ( Vector3 ) deltaPoint - transform.position, deltaPastPoint - deltaPoint );
+
             if ( deltaScore < bestScore ) {
                 bestScore = deltaScore;
                 currentPos = SafeProgress ( i );
             }
-        }
+
+            deltaScore = Vector2.Angle ( ( Vector3 ) deltaPoint - transform.position, deltaPoint - deltaPastPoint );
+
+            if ( deltaScore < bestScore ) {
+                bestScore = deltaScore;
+                currentPos = SafeProgress ( i );
+            }
+
+            deltaPastPoint = deltaPoint;
+        }   
 
         targetLink = PathGeneratorFunction ( currentPos );
 
-        Debug.DrawLine ( transform.position, PathGeneratorFunction ( currentPos ) );
+        //Debug.DrawLine ( targetLink, targetLink + ( PathGeneratorFunction ( SafeProgress ( currentPos + stepsize ) ) - targetLink ).normalized * 50, Color.blue );
+        //Debug.DrawLine ( transform.position, targetLink );
 
         base.Update ();
     }

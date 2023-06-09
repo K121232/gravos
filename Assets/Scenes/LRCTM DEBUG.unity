@@ -1002,8 +1002,36 @@ PrefabInstance:
     m_TransformParent: {fileID: 502076422}
     m_Modifications:
     - target: {fileID: 227007130, guid: 0301b2b219d3fb843968016df20b3297, type: 3}
+      propertyPath: acc
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 227007130, guid: 0301b2b219d3fb843968016df20b3297, type: 3}
+      propertyPath: mxv
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 227007130, guid: 0301b2b219d3fb843968016df20b3297, type: 3}
+      propertyPath: angleAcc
+      value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: 227007130, guid: 0301b2b219d3fb843968016df20b3297, type: 3}
+      propertyPath: angleMxv
+      value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: 227007130, guid: 0301b2b219d3fb843968016df20b3297, type: 3}
       propertyPath: m_Enabled
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 227007131, guid: 0301b2b219d3fb843968016df20b3297, type: 3}
+      propertyPath: Kd
+      value: 0.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 227007131, guid: 0301b2b219d3fb843968016df20b3297, type: 3}
+      propertyPath: Ki
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 227007131, guid: 0301b2b219d3fb843968016df20b3297, type: 3}
+      propertyPath: Kp
+      value: 0.81
       objectReference: {fileID: 0}
     - target: {fileID: 227007132, guid: 0301b2b219d3fb843968016df20b3297, type: 3}
       propertyPath: sod
@@ -1015,15 +1043,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 227007132, guid: 0301b2b219d3fb843968016df20b3297, type: 3}
       propertyPath: searchRange
-      value: 0.01
+      value: 0.05
       objectReference: {fileID: 0}
     - target: {fileID: 227007132, guid: 0301b2b219d3fb843968016df20b3297, type: 3}
       propertyPath: bidirectional
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 227007132, guid: 0301b2b219d3fb843968016df20b3297, type: 3}
       propertyPath: points.Array.size
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 227007132, guid: 0301b2b219d3fb843968016df20b3297, type: 3}
+      propertyPath: maximumAcceptDistance
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 227007132, guid: 0301b2b219d3fb843968016df20b3297, type: 3}
       propertyPath: points.Array.data[0].x
