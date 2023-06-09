@@ -27012,6 +27012,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2033271609}
   m_CullTransparentMesh: 1
+--- !u!114 &2037023529 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 227007131, guid: 0301b2b219d3fb843968016df20b3297, type: 3}
+  m_PrefabInstance: {fileID: 5913673754164427803}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 605e62bee47d4bd429eec15f4c6dddc0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2037782545
 GameObject:
   m_ObjectHideFlags: 0
@@ -28066,6 +28077,54 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 724142528}
     m_Modifications:
+    - target: {fileID: 227007132, guid: 0301b2b219d3fb843968016df20b3297, type: 3}
+      propertyPath: sod
+      value: 
+      objectReference: {fileID: 2037023529}
+    - target: {fileID: 227007132, guid: 0301b2b219d3fb843968016df20b3297, type: 3}
+      propertyPath: currentPos
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 227007132, guid: 0301b2b219d3fb843968016df20b3297, type: 3}
+      propertyPath: controlPoints.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 227007132, guid: 0301b2b219d3fb843968016df20b3297, type: 3}
+      propertyPath: positionPoints.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 227007132, guid: 0301b2b219d3fb843968016df20b3297, type: 3}
+      propertyPath: controlPoints.Array.data[0].x
+      value: 75.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 227007132, guid: 0301b2b219d3fb843968016df20b3297, type: 3}
+      propertyPath: controlPoints.Array.data[0].y
+      value: 131.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 227007132, guid: 0301b2b219d3fb843968016df20b3297, type: 3}
+      propertyPath: controlPoints.Array.data[1].x
+      value: -38.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 227007132, guid: 0301b2b219d3fb843968016df20b3297, type: 3}
+      propertyPath: controlPoints.Array.data[1].y
+      value: -58.600002
+      objectReference: {fileID: 0}
+    - target: {fileID: 227007132, guid: 0301b2b219d3fb843968016df20b3297, type: 3}
+      propertyPath: positionPoints.Array.data[0].x
+      value: -84.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 227007132, guid: 0301b2b219d3fb843968016df20b3297, type: 3}
+      propertyPath: positionPoints.Array.data[0].y
+      value: 81.299995
+      objectReference: {fileID: 0}
+    - target: {fileID: 227007132, guid: 0301b2b219d3fb843968016df20b3297, type: 3}
+      propertyPath: positionPoints.Array.data[1].x
+      value: 104.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 227007132, guid: 0301b2b219d3fb843968016df20b3297, type: 3}
+      propertyPath: positionPoints.Array.data[1].y
+      value: -35.100002
+      objectReference: {fileID: 0}
     - target: {fileID: 227007133, guid: 0301b2b219d3fb843968016df20b3297, type: 3}
       propertyPath: deathPs
       value: 
@@ -28130,6 +28189,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2338928406361690852, guid: 0301b2b219d3fb843968016df20b3297, type: 3}
+      propertyPath: trailLoader
+      value: 
+      objectReference: {fileID: 1072375455}
+    - target: {fileID: 2338928406361690852, guid: 0301b2b219d3fb843968016df20b3297, type: 3}
+      propertyPath: payloadLoader
+      value: 
+      objectReference: {fileID: 195569619}
     - target: {fileID: 5913673755136073782, guid: 0301b2b219d3fb843968016df20b3297, type: 3}
       propertyPath: trailLoader
       value: 
@@ -28143,14 +28210,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1072375455}
     - target: {fileID: 5913673755159479352, guid: 0301b2b219d3fb843968016df20b3297, type: 3}
-      propertyPath: payloadLoader
-      value: 
-      objectReference: {fileID: 195569619}
-    - target: {fileID: 5913673755336304847, guid: 0301b2b219d3fb843968016df20b3297, type: 3}
-      propertyPath: trailLoader
-      value: 
-      objectReference: {fileID: 1072375455}
-    - target: {fileID: 5913673755336304847, guid: 0301b2b219d3fb843968016df20b3297, type: 3}
       propertyPath: payloadLoader
       value: 
       objectReference: {fileID: 195569619}

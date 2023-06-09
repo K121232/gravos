@@ -41,6 +41,7 @@ public class LRCTM : TM {
     }
 
     public override void Update () {
+        if ( controlPoints.Length == 0 ) { enabled = false; return; }
         DrawCourse ();
 
         float bestScore = Mathf.Infinity;
