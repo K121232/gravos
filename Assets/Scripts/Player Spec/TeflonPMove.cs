@@ -3,18 +3,19 @@ using UnityEngine;
 public class TeflonPMove : TeflonMovement {
     public  Konig         sod;
 
-    public  bool        armourLock = false;
-    public override void Start () {
-        armourLock = false;
-        innerHeading = transform.up;
-        base.Start ();
-    }
+    public  bool        controlLock = false;
 
     public  bool        flybywire;
     public  Camera      cam;
 
     public  Vector2     innerHeading;
     public  float       trimSTR = 1;
+
+    public override void Start () {
+        controlLock = false;
+        innerHeading = transform.up;
+        base.Start ();
+    }
 
     public override void Update () {
         if ( flybywire ) {
@@ -44,15 +45,13 @@ public class TeflonPMove : TeflonMovement {
     }
 
     public override void FixedUpdate () {
-        if ( armourLock ) {
-            delta = 0;
-            deltaAngle = 0;
-            angleDrag = 0;
+        if ( controlLock ) {
+            ResetDeltas ();
         }
         base.FixedUpdate ();
     }
 
     public void SetLock ( bool a ) {
-        armourLock = a;
+        controlLock = a;
     }
 }

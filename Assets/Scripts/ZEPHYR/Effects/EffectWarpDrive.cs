@@ -25,10 +25,6 @@ public class EffectWarpDrive : EffectCore {
 
     public override void Update () {
         if ( isWarping && target != null ) {
-            Movement mv;
-            if ( target.TryGetComponent( out mv )  ) {
-                mv.SetV ( strength );
-            }
             TeflonMovement mvt;
             if ( target.TryGetComponent ( out mvt ) ) {
                 mvt.SetV ( strength );

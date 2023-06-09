@@ -16,12 +16,9 @@ public class TeflonMovement : MonoBehaviour {
     protected float               backupDeltaAngle;
     protected int                 ticks;
 
-    public  bool            hasParticles = false;
-    public  float           particleSTR = 0;
-    private ParticleSystem  ps;
-
     private bool           vLock;
     public void UpdateDeltas ( float alphaAcc, float alphaAngle, bool clipAngle = true ) {
+        if ( !enabled ) { alphaAcc = 0; alphaAngle = 0; }
         if ( clipAngle ) {
             deltaAngle += FilterAngle ( deltaAngle );
         } else {
@@ -50,6 +47,7 @@ public class TeflonMovement : MonoBehaviour {
     }
 
     public void AddAngle ( float a ) {
+        if ( !enabled ) { a = 0; }
         deltaAngle += FilterAngle ( a );
     }
     
@@ -69,7 +67,6 @@ public class TeflonMovement : MonoBehaviour {
 
     virtual public void Start() {
         rgb = GetComponent<Rigidbody2D>();
-        ps = GetComponent<ParticleSystem> ();
     }
 
     virtual public void Update() {
@@ -89,14 +86,18 @@ public class TeflonMovement : MonoBehaviour {
 
         Vector2 deltaProcessed = Cutter( transform.up * delta * acc * Time.fixedDeltaTime, rgb.velocity, mxv );
 
-        if ( hasParticles && deltaProcessed.magnitude > 1 ) {
-            ps.Emit ( (int) ( particleSTR * deltaProcessed.magnitude ) );
-        }
-
         rgb.AddForce( deltaProcessed * rgb.mass / Time.fixedDeltaTime );
 
+        ResetDeltas ();
+    }
+
+    protected virtual void ResetDeltas () {
         deltaAngle = 0;
         delta = 0;
         ticks = 0;
+    }
+
+    protected virtual void OnEnable () {
+        ResetDeltas ();
     }
 }
