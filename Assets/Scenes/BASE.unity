@@ -28226,6 +28226,10 @@ PrefabInstance:
       propertyPath: ps
       value: 
       objectReference: {fileID: 1817202013}
+    - target: {fileID: 954266159, guid: 319d950173e416b47ad24e3a5cac5dce, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 954266160, guid: 319d950173e416b47ad24e3a5cac5dce, type: 3}
       propertyPath: ntf
       value: 
