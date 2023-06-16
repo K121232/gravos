@@ -44,8 +44,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20cd2e696c5a826488560a0ed074cf65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mirror: {fileID: 0}
   radar: {fileID: 25565930093783094}
   mainHull: {fileID: 5217752662822019927}
+  datalink: {fileID: 0}
 --- !u!1 &3569209215130050225
 GameObject:
   m_ObjectHideFlags: 0
@@ -155,6 +157,7 @@ GameObject:
   - component: {fileID: 5217752661217200252}
   - component: {fileID: 5217752661217200253}
   - component: {fileID: 5217752661217200254}
+  - component: {fileID: 5999183973562064630}
   m_Layer: 6
   m_Name: Main Hitbox
   m_TagString: Ship
@@ -215,9 +218,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73c42b442eecd8d45945cc02076d2d2b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ps: {fileID: 0}
+  dispenser: {fileID: 5999183973562064630}
   controller: {fileID: 0}
   id: 0
+--- !u!114 &5999183973562064630
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5217752661217200515}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4cac4e059a0efec42bc597cb818d85a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  next: {fileID: 0}
+  deployed: 0
+  explosionEffect: {fileID: 0}
 --- !u!1 &5217752661276924953
 GameObject:
   m_ObjectHideFlags: 0
@@ -248,6 +266,7 @@ Transform:
   m_Children:
   - {fileID: 5217752662097122965}
   - {fileID: 5217752661426502672}
+  - {fileID: 1059765504350341881}
   m_Father: {fileID: 5217752662822019927}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -723,13 +742,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 459306f9a329b42409dbe1d12ecae582, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mainHull: {fileID: 5217752662822019934}
-  autoloader: {fileID: 0}
+  payloadLoader: {fileID: 0}
   trailLoader: {fileID: 0}
-  target: {fileID: 0}
   minRangeOffset: 2
   inheritLayer: 0
-  fcm: {fileID: 0}
   ports: []
 --- !u!1 &5217752663078518007
 GameObject:
@@ -762,3 +778,66 @@ Transform:
   m_Father: {fileID: 5217752662822019927}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &7824691694633481866
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1059765504350341881}
+  - component: {fileID: 3371957907875359662}
+  - component: {fileID: 1737071105299762555}
+  m_Layer: 6
+  m_Name: Death Payload
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1059765504350341881
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7824691694633481866}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5217752661276924954}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3371957907875359662
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7824691694633481866}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4acc025c5731134194e8014e2b973dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  next: {fileID: 1737071105299762555}
+  deployed: 0
+  earlyDetonationTarget: {fileID: 0}
+--- !u!114 &1737071105299762555
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7824691694633481866}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4cac4e059a0efec42bc597cb818d85a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  next: {fileID: 0}
+  deployed: 0
+  explosionEffect: {fileID: 0}

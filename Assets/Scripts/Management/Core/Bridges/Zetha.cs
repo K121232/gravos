@@ -12,7 +12,7 @@ public class Zetha : MonoBehaviour {
     public  float           baseHealth;
     public  float           currentHealth;
 
-    public  PoolSpooler     deathPs;
+    public  PayloadStart     onDeath;
 
     public virtual void Start() {
         currentHealth = baseHealth;
@@ -38,14 +38,7 @@ public class Zetha : MonoBehaviour {
         if ( currentHealth <= 0 ) {
             currentHealth = baseHealth;
             gameObject.SetActive ( false );
-            GameObject psfxo = deathPs.Request ();
-            ParticleSystem pfx = psfxo.GetComponent<ParticleSystem>();
-            psfxo.SetActive ( true );
-            if ( pfx != null ) {
-                var deltaShape = pfx.shape;
-                deltaShape.position = transform.position;
-                pfx.Play ();
-            }
+            onDeath.Deploy ( new PayloadObject ( Vector2.zero, transform.up, null ) );
         }
     }
 

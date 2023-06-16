@@ -22,7 +22,7 @@ public class PowerCell : MonoBehaviour {
         }
     }
 
-    public bool Available () {
+    public bool IsAvailable () {
         return !recovering && resourceCurrent > 0;
     }
 

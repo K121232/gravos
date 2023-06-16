@@ -33,7 +33,7 @@ public class ShipHUD : MonoBehaviour {
         for ( int i = 0; i < cells.Length; i++ ) {
             sliders [ i ].value = cells [ i ].GetAvailableLoad () * sliders [ i ].maxValue;
             
-            if ( cells [ i ].Available () ) {
+            if ( cells [ i ].IsAvailable () ) {
                 sliders [ i ].transform.GetChild ( 0 ).GetComponent<Image>().color = Color.white;
             } else {
                 sliders [ i ].transform.GetChild ( 0 ).GetComponent<Image> ().color = Color.red;

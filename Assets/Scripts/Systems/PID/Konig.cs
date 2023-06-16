@@ -44,7 +44,6 @@ public class Konig : MonoBehaviour {
     }
 
     public void UpdateIntegral ( float _alpha ) {
-        Debug.Log ( filterIndex );
         integral -= integralFilter [ filterIndex ];
         integralFilter [ filterIndex ] = _alpha / filterSize;
         integral += integralFilter [ filterIndex ];

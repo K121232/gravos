@@ -9,8 +9,12 @@ public class PayloadFireable : CoreFireable {
         if ( controller == null ) return;
         transfer = payloadLoader.Request ();
         if ( transfer == null ) return;
+
         if ( inheritLayer ) {
             transfer.layer = gameObject.layer;
+            foreach ( Transform t in transfer.GetComponentInChildren<Transform>(includeInactive:true) ) {
+                t.gameObject.layer = gameObject.layer;
+            }
         }
 
         transfer.transform.SetPositionAndRotation (

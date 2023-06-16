@@ -300,7 +300,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09c392c179dcc3b4bb5c1fa40dba42d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ps: {fileID: 0}
+  dispenser: {fileID: 0}
   baseHP: 3
 --- !u!61 &728417370
 BoxCollider2D:
@@ -977,7 +977,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09c392c179dcc3b4bb5c1fa40dba42d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ps: {fileID: 0}
+  dispenser: {fileID: 0}
   baseHP: 3
 --- !u!61 &1951724309
 BoxCollider2D:
@@ -1231,7 +1231,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5217752662822019934, guid: d60a5bfe7b0116d4abc2d58e3fb1f9da, type: 3}
       propertyPath: m_Name
-      value: Player
+      value: Player Variant
       objectReference: {fileID: 0}
     - target: {fileID: 5217752662822019935, guid: d60a5bfe7b0116d4abc2d58e3fb1f9da, type: 3}
       propertyPath: m_Constraints
@@ -1407,7 +1407,7 @@ MonoBehaviour:
     beta: 1
   baseHealth: 5
   currentHealth: 0
-  deathPs: {fileID: 0}
+  dispenser: {fileID: 0}
   notice: {fileID: 0}
   shieldCell: {fileID: 2071643748}
   STRShield: 25
@@ -1431,10 +1431,8 @@ MonoBehaviour:
   angleAcc: 180
   angleMxv: 360
   angleDrag: 0
-  hasParticles: 0
-  particleSTR: 0
   sod: {fileID: 954266159}
-  armourLock: 0
+  controlLock: 0
   flybywire: 1
   cam: {fileID: 0}
   innerHeading: {x: 0, y: 0}
