@@ -56,11 +56,11 @@ public class TeflonMovement : MonoBehaviour {
         return Mathf.Clamp ( a, -angleAcc, angleAcc ) / angleAcc;
     }
 
-    virtual public void AddV ( float a ) {
+    virtual public void AddThrusterOutput ( float a ) {
         delta += a;
     }
 
-    virtual public void SetV ( float a ) {
+    virtual public void SetThrusterOutput ( float a ) {
         backupDelta = a;
         vLock       = true;
     }

@@ -27,7 +27,7 @@ public class EffectWarpDrive : EffectCore {
         if ( isWarping && target != null ) {
             TeflonMovement mvt;
             if ( target.TryGetComponent ( out mvt ) ) {
-                mvt.SetV ( strength );
+                mvt.SetThrusterOutput ( strength );
             }
         }
         base.Update ();

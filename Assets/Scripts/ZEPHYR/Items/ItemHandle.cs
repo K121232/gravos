@@ -22,8 +22,8 @@ public class ItemHandle : ZephyrUnit {
 
     public override void Autobind ( ZephyrUnit _unit ) {
         ItemPort host = null;
-        if ( _unit != null ) {
-            host = ( ItemPort ) _unit;
+        if ( _unit != null && _unit is ItemPort ) {
+            host = _unit as ItemPort; 
 
             transform.SetParent ( host.transform );
             transform.localPosition = Vector3.zero;

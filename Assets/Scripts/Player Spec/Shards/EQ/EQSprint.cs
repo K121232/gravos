@@ -37,6 +37,6 @@ public class EQSprint : UnifiedOrdnance {
             pastMax = movementCore.mxv;
             movementCore.mxv = sprintSTR;
         }
-        movementCore.SetV ( 1 );
+        movementCore.SetThrusterOutput ( 1 );
     }
 }
