@@ -10751,7 +10751,6 @@ MonoBehaviour:
   trackingRigidbody: {fileID: 0}
   offset: {x: 0, y: 0, z: -10}
   velocitySTR: 0
-  strength: 0.75
   rotationLerpSTR: 0
   translationLerpSTR: 5
   scaledTime: 0
@@ -18143,8 +18142,8 @@ Camera:
     serializedVersion: 2
     x: -0
     y: 0
-    width: 0.2
-    height: 0.2
+    width: 0
+    height: 0
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 20
@@ -18181,7 +18180,6 @@ MonoBehaviour:
   trackingRigidbody: {fileID: 954266147}
   offset: {x: 0, y: 0, z: -10}
   velocitySTR: 0
-  strength: 1
   rotationLerpSTR: 0
   translationLerpSTR: 100
   scaledTime: 0
@@ -23870,7 +23868,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1775269986
 Transform:
   m_ObjectHideFlags: 0

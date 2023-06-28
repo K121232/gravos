@@ -3,9 +3,9 @@ using UnityEngine;
 public class Hitgen : MonoBehaviour {
     public  int     damageBase;
     public  bool    autoline = true;
-    private Vector3 deltaPos = Vector3.zero;
+    protected Vector3 deltaPos = Vector3.zero;
 
-    private  PayloadStart detonatePayloadFasttrack;
+    public  PayloadStart detonatePayloadFasttrack;
 
     RaycastHit2D[] hits;
     Hitbox delta;
@@ -25,6 +25,7 @@ public class Hitgen : MonoBehaviour {
         for ( int i = 0; i < hits.Length; i++ ) {
             if ( hits [ i ].transform.TryGetComponent( out delta )  ) {
                 delta.Superwrapper ( GetComponent<Collider2D>() );
+                break;
             }
         }
         deltaPos = transform.position;

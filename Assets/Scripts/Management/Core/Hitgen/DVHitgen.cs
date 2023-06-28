@@ -5,7 +5,6 @@ public class DVHitgen : Hitgen {
     // Delta V Hitgen
     private Rigidbody2D         rgb;
     
-    private Vector3             pastPosition;
     private Vector3             pastV;
 
     public  float               velocityScalingSTR;
@@ -20,7 +19,7 @@ public class DVHitgen : Hitgen {
         if ( !TryGetComponent ( out rgb ) ) {
             rgb = GetComponentInParent<Rigidbody2D> ();
         }
-        pastPosition = transform.position;
+        deltaPos = transform.position;
     }
 
     public override void Update () {
@@ -33,8 +32,8 @@ public class DVHitgen : Hitgen {
 
     private void LateUpdate () {
         if ( rgb == null ) {
-            pastV = ( transform.position - pastPosition );
-            pastPosition = transform.position;
+            pastV = ( transform.position - deltaPos );
+            deltaPos = transform.position;
         }
     }
 

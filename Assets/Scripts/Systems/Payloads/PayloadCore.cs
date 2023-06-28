@@ -20,4 +20,9 @@ public class PayloadCore : MonoBehaviour {
         }
         instructions = null;
     }
+
+    private void OnDisable () {
+        instructions = null;
+        deployed = false;
+    }
 }

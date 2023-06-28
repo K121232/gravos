@@ -7,7 +7,6 @@ public class SmoothTracker : MonoBehaviour {
     public  Vector3     offset;
     public  float       velocitySTR;
 
-    public  float       strength;
     public  float       rotationLerpSTR;
     public  float       translationLerpSTR;
 

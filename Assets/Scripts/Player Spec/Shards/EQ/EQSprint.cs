@@ -18,7 +18,9 @@ public class EQSprint : UnifiedOrdnance {
     public override void OnStartFire () {
         if ( controller == null ) return;
         pastMax = movementCore.mxv;
-        speedlines.Play ();
+        if ( speedlines != null ) {
+            speedlines.Play ();
+        }
     }
 
     public override void OnStopFire () {
