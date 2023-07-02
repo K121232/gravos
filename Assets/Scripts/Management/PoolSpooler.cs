@@ -31,7 +31,13 @@ public class PoolSpooler : MonoBehaviour {
         if ( pos == -1 || pool [ pos ] == null ) return null;
         int delta = pos;
         pos = ( pos + 1 ) % expected;
-        pool [ delta ].SetActive ( false );
+
+        if ( pool [ delta ] != null ) {
+            pool [ delta ].SetActive ( false );
+            TrailRenderer tr = pool [ delta ].GetComponent<TrailRenderer> ();
+            if ( tr != null ) { tr.Clear (); }
+        }
+
         return pool [ delta ];
     }
 }

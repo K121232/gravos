@@ -10,7 +10,7 @@ public class PayloadDelay : PayloadCore {
     }
 
     private void Update () {
-        if ( deployed && delta > 0 ) {
+        if ( delta > 0 ) {
             delta -= Time.deltaTime;
             if ( delta < 0 ) {
                 Store ();

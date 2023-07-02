@@ -11,8 +11,6 @@ public class LaserFireable : PayloadFireable {
 
     private RaycastHit2D[]  delta;
     private Hitbox          dhb;
-    private TrailRenderer   tr;
-    private GameObject      deltaOBJ;
 
     public override void Fire () {
         delta = Physics2D.RaycastAll ( transform.position, transform.up, range, ~LayerMask.GetMask ( LayerMask.LayerToName ( gameObject.layer ) ) );
@@ -21,16 +19,6 @@ public class LaserFireable : PayloadFireable {
                 if ( rayDamage > 0 ) {
                     dhb.DeltaF ( rayDamage );
                 }
-
-                deltaOBJ = poolLaserTrail.Request ();
-                if ( deltaOBJ.TryGetComponent ( out tr ) ) {
-                    tr.Clear ();
-                    tr.AddPosition ( transform.position );
-                    tr.AddPosition ( delta [ i ].point );
-                    deltaOBJ.GetComponent<TrailAddon> ().lifespan = laserTrailTime;
-                    deltaOBJ.SetActive ( true );
-                }
-
                 base.Fire ();
                 if ( transfer != null ) {
                     transfer.transform.position = delta [ i ].point;

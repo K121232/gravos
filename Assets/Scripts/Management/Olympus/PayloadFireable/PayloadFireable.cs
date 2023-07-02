@@ -24,17 +24,34 @@ public class PayloadFireable : CoreFireable {
 
         transfer.SetActive ( true );
 
-        transfer.GetComponent<PayloadStart> ().Deploy (
+        // Transfer payload start
+        PayloadStart tps = transfer.GetComponent<PayloadStart> ();
+
+        tps.Deploy (
             new PayloadObject (
                 controller.GetV (),
                 transform.rotation * controller.aimOffset,
                 controller.target )
             );
 
+        // Expected lifetime
+        float exlf = -2;
+        if ( tps is PayloadStartAD ) {
+            exlf = ( tps as PayloadStartAD ).lifespan;
+        }
+
         if ( trailLoader != null ) {
             GameObject instTrail    = trailLoader.Request();
-            instTrail.GetComponent<TrailAddon> ().Bind ( transfer.transform );
             instTrail.SetActive ( true );
+
+            instTrail.GetComponent<PayloadStart> ().Deploy (
+                new PayloadObject (
+                    controller.GetV (),
+                    transform.rotation * controller.aimOffset,
+                    transfer.transform,
+                    exlf
+                    )
+                );
         }
     }
 }
