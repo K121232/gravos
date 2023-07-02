@@ -12,7 +12,7 @@ public class Zetha : MonoBehaviour {
     public  float           baseHealth;
     public  float           currentHealth;
 
-    public  PayloadStart     onDeath;
+    public  PayloadCore     onDeath;
 
     public virtual void Start() {
         currentHealth = baseHealth;

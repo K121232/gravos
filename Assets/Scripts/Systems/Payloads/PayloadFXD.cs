@@ -17,6 +17,7 @@ public class PayloadFXD : PayloadCore {
                 deltaPS.Play ();
             }
         }
+        PassOn ();
         Store ();
     }
 }

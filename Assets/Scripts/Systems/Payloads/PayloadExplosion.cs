@@ -6,6 +6,8 @@ public class PayloadExplosion : PayloadCore {
     public  float   ekSTR;      // Explosion knockback STR
 
     public override void Deploy ( PayloadObject _instructions ) {
+        base.Deploy ( _instructions );
+
         Collider2D[] delta = Physics2D.OverlapAreaAll ( 
             transform.position - new Vector3 ( range, range ), 
             transform.position + new Vector3 ( range, range ),
@@ -26,7 +28,7 @@ public class PayloadExplosion : PayloadCore {
             }
         }
 
-        base.Deploy ( _instructions );
+        PassOn ();
         Store ();
     }
 }

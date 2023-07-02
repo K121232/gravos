@@ -4,8 +4,9 @@ public class PayloadProxyTrigger : PayloadCore {
     public Radar    radar;
 
     private void Update () {
-        if ( radar.collectedCount != 0 ) {
+        if ( radar != null && radar.collectedCount != 0 ) {
+            PassOn ();
             Store ();
-        }   
+        }
     }
 }

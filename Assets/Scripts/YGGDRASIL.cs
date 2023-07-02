@@ -45,18 +45,27 @@ public class PayloadObject {
     public  Vector2     hostV;
     public  Vector2     heading;
     public  Transform   target;
+    public  Transform   controllerRoot;
     public  float       expectedLifetime;
     public PayloadObject () {
         hostV = Vector2.zero;
         heading = Vector2.up;
         target = null;
+        controllerRoot = null;
         expectedLifetime = -1;
     }
-    public PayloadObject ( Vector2 _hostV, Vector2 _heading, Transform _target = null, float _expectedLifetime = -2 ) {
+    public PayloadObject ( Vector2 _hostV, Vector2 _heading, Transform _target = null, Transform _controllerRoot = null, float _expectedLifetime = -2 ) {
         hostV = _hostV;
         heading = _heading;
         target = _target;
         expectedLifetime = _expectedLifetime;
+        controllerRoot = _controllerRoot;
+    }
+    public void InjectCR ( Transform alpha ) {
+        controllerRoot = alpha;
+    }
+    public override string ToString () {
+        return hostV + " " + heading + " " + target + " " + controllerRoot + " " + expectedLifetime;
     }
 }
 

@@ -4,7 +4,9 @@ public class Hitbox : MonoBehaviour {
     public  PayloadFXD  dispenser;
 
     public  void    TriggerHitEffect ( Transform impactor ) {
-        dispenser.Deploy ( new PayloadObject ( Vector2.zero, ( impactor.position - transform.position ).normalized, null ) );
+        if ( dispenser != null ) {
+            dispenser.Deploy ( new PayloadObject ( Vector2.zero, ( impactor.position - transform.position ).normalized, null ) );
+        }
     }
 
     private void EvWrapper ( GameObject deltaOBJ, bool wasTrigger = false, Vector2 ? deltaV = null ) {

@@ -5,7 +5,7 @@ public class Hitgen : MonoBehaviour {
     public  bool    autoline = true;
     protected Vector3 deltaPos = Vector3.zero;
 
-    public  PayloadStart detonatePayloadFasttrack;
+    public  PayloadCore detonatePayloadFasttrack;
 
     RaycastHit2D[] hits;
     Hitbox delta;
@@ -33,7 +33,7 @@ public class Hitgen : MonoBehaviour {
 
     public  virtual int    Bump ( GameObject who = null, Vector2? deltaV = null ) {
         if ( detonatePayloadFasttrack != null ) {
-            detonatePayloadFasttrack.EarlyDetonate ();
+            detonatePayloadFasttrack.Deploy ( new PayloadObject () );
         }
         return damageBase;
     }

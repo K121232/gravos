@@ -36,19 +36,15 @@ public class PayloadFireable : CoreFireable {
 
         // Expected lifetime
         float exlf = -2;
-        if ( tps is PayloadStartAD ) {
-            exlf = ( tps as PayloadStartAD ).lifespan;
-        }
 
         if ( trailLoader != null ) {
             GameObject instTrail    = trailLoader.Request();
             instTrail.SetActive ( true );
-
             instTrail.GetComponent<PayloadStart> ().Deploy (
                 new PayloadObject (
                     controller.GetV (),
                     transform.rotation * controller.aimOffset,
-                    transfer.transform,
+                    transfer.transform, null,
                     exlf
                     )
                 );

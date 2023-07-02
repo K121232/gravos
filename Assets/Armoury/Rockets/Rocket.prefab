@@ -99,7 +99,6 @@ GameObject:
   - component: {fileID: 7781164887404175965}
   - component: {fileID: 6938031529853935775}
   - component: {fileID: 1202288943888136629}
-  - component: {fileID: 687800561341309169}
   - component: {fileID: 5626507015616054694}
   - component: {fileID: 5835145820545871652}
   m_Layer: 8
@@ -230,19 +229,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetInertia: 3000
   paramCenterOfMass: {fileID: 0}
---- !u!114 &687800561341309169
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 687800561341309174}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 838565ead8fd1af4b88abe7cbdf64ffc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  lifespan: 30
 --- !u!114 &5626507015616054694
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -256,7 +242,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   next: {fileID: 5835145820545871652}
-  deployed: 0
   earlyDetonationTarget: {fileID: 0}
 --- !u!114 &5835145820545871652
 MonoBehaviour:
@@ -271,7 +256,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   next: {fileID: 0}
-  deployed: 0
 --- !u!1 &6337755814102808016
 GameObject:
   m_ObjectHideFlags: 0
@@ -361,7 +345,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   next: {fileID: 0}
-  deployed: 0
   effect: {fileID: 0}
 --- !u!114 &6457068807656864445
 MonoBehaviour:
@@ -377,6 +360,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damageBase: 2
   autoline: 1
+  detonatePayloadFasttrack: {fileID: 0}
   inactiveTarget: {fileID: 687800561341309174}
 --- !u!1 &6695987960227517563
 GameObject:
@@ -424,7 +408,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   next: {fileID: 2917994382909972069}
-  deployed: 0
   earlyDetonationTarget: {fileID: 0}
 --- !u!114 &2917994382909972069
 MonoBehaviour:
@@ -439,5 +422,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   next: {fileID: 0}
-  deployed: 0
   effect: {fileID: 0}

@@ -6,9 +6,12 @@ public class PayloadInertial : PayloadCore {
 
     public override void Deploy ( PayloadObject _instructions ) {
         base.Deploy ( _instructions );
-        if ( rgb != null || TryGetComponent ( out rgb ) ) {
-            rgb.velocity = launchSpeed * _instructions.heading.normalized + _instructions.hostV;
+        if ( instructions != null ) {
+            if ( rgb != null || instructions.controllerRoot.TryGetComponent ( out rgb ) ) {
+                rgb.velocity = launchSpeed * instructions.heading.normalized + instructions.hostV;
+            }
         }
-        base.Store ();
+        PassOn ();
+        Store ();
     }
 }

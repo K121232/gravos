@@ -1,23 +1,36 @@
 using UnityEngine;
 
 public class PayloadFollower : PayloadCore {
-    public  Transform       target;
+    protected Transform         target;
+    protected Transform         moveTarget;
 
     public override void Deploy ( PayloadObject _instructions = null ) {
         base.Deploy ( _instructions );
-        if ( instructions.target != null ) {
-            target = instructions.target;
+
+        moveTarget = transform;
+        if ( instructions != null ) {
+            if ( instructions.target != null ) {
+                target = instructions.target;
+            }
+            if ( instructions.controllerRoot != null ) {
+                moveTarget = instructions.controllerRoot;
+            }
+        } else {
+            Store ();
         }
+
+        PassOn ();
     }
 
     public override void Store () {
         base.Store ();
-        target = null;
+        target      = null;
+        moveTarget  = null;
     }
 
     void LateUpdate () {
         if ( target != null ) {
-            transform.position = target.position;
+            moveTarget.position = target.position;
         }
     }
 }

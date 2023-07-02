@@ -1,3 +1,4 @@
+using System.Linq;
 using UnityEngine;
 
 public class Konig : MonoBehaviour {
@@ -44,6 +45,7 @@ public class Konig : MonoBehaviour {
     }
 
     public void UpdateIntegral ( float _alpha ) {
+        if ( integralFilter.Length == 0 ) { Start (); }
         integral -= integralFilter [ filterIndex ];
         integralFilter [ filterIndex ] = _alpha / filterSize;
         integral += integralFilter [ filterIndex ];

@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 7715938340512559881}
   - component: {fileID: 7715938340512559887}
   - component: {fileID: 7715938340512559880}
-  - component: {fileID: 3802595399656891243}
   m_Layer: 0
   m_Name: Hit Spark 1
   m_TagString: Untagged
@@ -4881,16 +4880,3 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     vectorLabel1_3: W
---- !u!114 &3802595399656891243
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7715938340512559882}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 838565ead8fd1af4b88abe7cbdf64ffc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  lifespan: 5
