@@ -156,14 +156,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2529466890095535997, guid: 61e4dde092a878944a7fd10707a995b6, type: 3}
+      propertyPath: next
+      value: 
+      objectReference: {fileID: 7121619675571130375}
     - target: {fileID: 5341056645431284628, guid: 61e4dde092a878944a7fd10707a995b6, type: 3}
       propertyPath: next
       value: 
       objectReference: {fileID: 1981339332}
-    - target: {fileID: 6111455947954110607, guid: 61e4dde092a878944a7fd10707a995b6, type: 3}
-      propertyPath: next
-      value: 
-      objectReference: {fileID: 7121619675571130375}
     - target: {fileID: 6111455948633739632, guid: 61e4dde092a878944a7fd10707a995b6, type: 3}
       propertyPath: m_Name
       value: PCS Trail Root
@@ -241,15 +241,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   next: {fileID: 0}
---- !u!114 &6386756225861664508 stripped
+--- !u!114 &6386756225861664507 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6111455947954110600, guid: 61e4dde092a878944a7fd10707a995b6, type: 3}
+  m_CorrespondingSourceObject: {fileID: 6111455947954110607, guid: 61e4dde092a878944a7fd10707a995b6, type: 3}
   m_PrefabInstance: {fileID: 896797129631039092}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6386756225861664510}
   m_Enabled: 0
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 313db52c5517eb24b826251487e8bed1, type: 3}
+  m_Script: {fileID: 11500000, guid: 08593021c773d9d4d8e2a0ed34917b0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &6386756225861664510 stripped
@@ -269,4 +269,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f7dc485f4f88894781d844898a089d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  next: {fileID: 6386756225861664508}
+  next: {fileID: 6386756225861664507}
+  trailRenderer: {fileID: 530013217}
