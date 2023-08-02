@@ -242,7 +242,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e37d555e265c074a98fb232e7c76350, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damageBase: 0
+  damageBase: 2
   autoline: 1
   detonatePayloadFasttrack: {fileID: 0}
   inactiveTarget: {fileID: 271163421439819528}

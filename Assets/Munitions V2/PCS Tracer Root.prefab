@@ -174,6 +174,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6111455949475101797, guid: 61e4dde092a878944a7fd10707a995b6, type: 3}
   m_PrefabInstance: {fileID: 3665867462686149926}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &7354246004445617235 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6111455948633739637, guid: 61e4dde092a878944a7fd10707a995b6, type: 3}
+  m_PrefabInstance: {fileID: 3665867462686149926}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7354246004445617238}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4acc025c5731134194e8014e2b973dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7354246004445617238 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6111455948633739632, guid: 61e4dde092a878944a7fd10707a995b6, type: 3}
@@ -241,7 +252,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e37d555e265c074a98fb232e7c76350, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damageBase: 0
+  damageBase: 1
   autoline: 1
-  detonatePayloadFasttrack: {fileID: 0}
+  detonatePayloadFasttrack: {fileID: 7354246004445617235}
   inactiveTarget: {fileID: 7354246004445617238}

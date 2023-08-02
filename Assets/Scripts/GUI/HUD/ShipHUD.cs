@@ -1,7 +1,6 @@
 using UnityEngine.UI;
 using UnityEngine;
 
-
 public class ShipHUD : MonoBehaviour {
     public  ProtoPlayerBridge   bridge;
     public  Slider              hpSlider;

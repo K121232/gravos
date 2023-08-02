@@ -11,7 +11,9 @@ public class Hitgen : MonoBehaviour {
     Hitbox delta;
 
     public void OnEnable () {
-        detonatePayloadFasttrack = GetComponent<PayloadStart> ();
+        if ( detonatePayloadFasttrack == null ) {
+            detonatePayloadFasttrack = GetComponent<PayloadStart> ();
+        }
         deltaPos = transform.position;
     }
 
@@ -33,7 +35,11 @@ public class Hitgen : MonoBehaviour {
 
     public  virtual int    Bump ( GameObject who = null, Vector2? deltaV = null ) {
         if ( detonatePayloadFasttrack != null ) {
-            detonatePayloadFasttrack.Deploy ( new PayloadObject () );
+            if ( detonatePayloadFasttrack is PayloadStart ) {
+                ( detonatePayloadFasttrack as PayloadStart ).EarlyDetonate ();
+            } else {
+                detonatePayloadFasttrack.Deploy ( new PayloadObject () );
+            }
         }
         return damageBase;
     }
